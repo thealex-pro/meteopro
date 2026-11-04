@@ -246,7 +246,7 @@
         .archive-cell:last-child { border-right: none; }
         .archive-month-title { font-weight: bold; font-size: 13px; color: var(--text-main); }
 
-        .archive-graph-row { grid-column: 1 / -1; position: relative; height: 120px; border-bottom: 1px solid var(--border-color); background: var(--bg-main); width: 100%; }
+        .archive-graph-row { grid-column: 1 / -1; position: relative; height: 185px; border-bottom: 1px solid var(--border-color); background: var(--bg-main); width: 100%; }
         #archiveCanvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; }
         .archive-labels-container { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 2; pointer-events: none; }
 
@@ -490,7 +490,8 @@
         let informerDataByCity = {
             "Запорожье": { temp: 10, feels: 5, sky: "overcast", key: "overcast" },
             "Приветное": { temp: 10, feels: 5, sky: "overcast", key: "overcast" },
-            "Днепр": { temp: 10, feels: 5, sky: "overcast", key: "overcast" }
+            "Днепр": { temp: 10, feels: 5, sky: "overcast", key: "overcast" },
+            "Томашполь": { temp: 8, feels: 4, sky: "cloudy-sun", key: "cloudy-sun" }
         };
         let currentCityKey = "Запорожье";
         
@@ -547,7 +548,7 @@
                     "2weeks": "Погода в {city} на 2 недели",
                     month: "Погода в {city} на месяц", geomagnetic: "Геомагнитная обстановка в {city}"
                 },
-                cities: { "Приветное": "Приветном", "Запорожье": "Запорожье", "Днепр": "Днепре" },
+                cities: { "Приветное": "Приветном", "Запорожье": "Запорожье", "Днепр": "Днепре", "Томашполь": "Томашполе" },
                 monthsGenitive: ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"],
                 geoStatus: {
                     0: "Нет возмущений", 1: "Нет возмущений", 2: "Нет возмущений", 3: "Сейчас небольшие возмущения", 
@@ -590,7 +591,7 @@
                     "2weeks": "Погода у {city} на 2 тижні",
                     month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}"
                 },
-                cities: { "Приветное": "Привітному", "Запорожье": "Запоріжжі", "Днепр": "Дніпрі" },
+                cities: { "Приветное": "Привітному", "Запорожье": "Запоріжжі", "Днепр": "Дніпрі", "Томашполь": "Томашполі" },
                 monthsGenitive: ["січня", "лютого", "березня", "квітня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"],
                 geoStatus: {
                     0: "Немає збурень", 1: "Немає збурень", 2: "Немає збурень", 3: "Зараз незначні збурення", 
@@ -633,7 +634,7 @@
                     "2weeks": "Weather in {city} for 2 weeks",
                     month: "Weather in {city} for a month", geomagnetic: "Geomagnetic forecast in {city}"
                 },
-                cities: { "Приветное": "Pryvitne", "Запорожье": "Zaporizhzhia", "Днепр": "Dnipro" },
+                cities: { "Приветное": "Pryvitne", "Запорожье": "Zaporizhzhia", "Днепр": "Dnipro", "Томашполь": "Tomashpil" },
                 monthsGenitive: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                 geoStatus: {
                     0: "No disturbances", 1: "No disturbances", 2: "No disturbances", 3: "Minor disturbances now", 
@@ -676,7 +677,7 @@
                     "2weeks": "Pogoda w {city} na 2 tygodnie",
                     month: "Pogoda w {city} na miesiąc", geomagnetic: "Aktywność geomagnetyczna w {city}"
                 },
-                cities: { "Приветное": "Priwitnym", "Запорожье": "Zaporożu", "Dnepr": "Dnieprze" },
+                cities: { "Приветное": "Priwitnym", "Запорожье": "Zaporożu", "Dnepr": "Dnieprze", "Томашполь": "Tomaszpolu" },
                 monthsGenitive: ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"],
                 geoStatus: {
                     0: "Brak zaburzeń", 1: "Brak zaburzeń", 2: "Brak zaburzeń", 3: "Niewielkie zaburzenia teraz", 
@@ -719,7 +720,7 @@
                     "2weeks": "Погода у {city} на 2 тижні",
                     month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}"
                 },
-                cities: { "Приветное": "Привітному", "Запорожье": "Запоріжжу", "Днепр": "Дніпрі" },
+                cities: { "Приветное": "Привітному", "Запорожье": "Запоріжжу", "Днепр": "Дніпрі", "Томашполь": "Томашполі" },
                 monthsGenitive: ["січня", "лютого", "березня", "квітня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"],
                 geoStatus: {
                     0: "Немає бурі", 1: "Немає бурі", 2: "Немає бурі", 3: "Зараз малі збурення", 
@@ -746,7 +747,8 @@ const weatherTranslations = {
         const searchLocations = [
             "Приветное, Широковская община, Запорожский район, Запорожская область",
             "Запорожье, Запорожский район, Запорожская область",
-            "Днепр, Днепропетровская область"
+            "Днепр, Днепропетровская область",
+            "Томашполь, Томашпольская община, Тульчинский район, Винницкая область"
         ];
 
         function toggleSettingsModal() {
@@ -1320,7 +1322,8 @@ const weatherTranslations = {
         let allCitiesData = {
             "Запорожье": createDefaultCityData(),
             "Приветное": createDefaultCityData(),
-            "Днепр": createDefaultCityData()
+            "Днепр": createDefaultCityData(),
+            "Томашполь": createDefaultCityData()
         };
 
         function handleSearch() {
@@ -1333,7 +1336,11 @@ const weatherTranslations = {
                 return;
             }
 
-            const filtered = searchLocations.filter(l => l.toLowerCase().includes(val));
+            const filtered = searchLocations.filter(loc => {
+                const words = loc.toLowerCase().split(/[\s,]+/);
+                return words.some(w => w.startsWith(val));
+            });
+
             if (filtered.length > 0) {
                 drop.innerHTML = filtered.map(l => `<div class="search-item" onclick="selectLocation('${l}')">${l}</div>`).join('');
                 drop.classList.add('active');
@@ -1831,7 +1838,7 @@ function drawArchiveCanvas() {
             const ctx = canvas.getContext('2d');
             const totalCols = archiveZaporozhyeData.length;
             const W = Math.max(gridContainer.scrollWidth, gridContainer.clientWidth, 4680);
-            const H = canvas.parentElement.clientHeight || 120;
+            const H = canvas.parentElement.clientHeight || 185;
             
             canvas.style.width = W + 'px';
             canvas.style.height = H + 'px';
@@ -1845,69 +1852,70 @@ function drawArchiveCanvas() {
             const range = (globalMax - globalMin) || 1;
 
             const step = W / totalCols;
+            const topPadding = 92; 
+            const usableHeight = 48;
 
-            if (graphStyleMode === "tiles") {
-                for (let i = 0; i < archiveZaporozhyeData.length; i++) {
-                    const day = archiveZaporozhyeData[i];
-                    const x = i * step;
-                    
-                    const yTop = 20 + (1 - (day.maxT - globalMin) / range) * (H - 45);
-                    const yBot = 20 + (1 - (day.minT - globalMin) / range) * (H - 45);
-                    
-                    ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, yBot, day.minT, day.maxT);
-                    ctx.strokeStyle = "#409950";
-                    ctx.lineWidth = 1.5;
-                    
-                    ctx.fillRect(x, yTop, step, Math.max(yBot - yTop, 2));
-                    
-                    ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x + step, yTop); ctx.stroke();
-                    ctx.beginPath(); ctx.moveTo(x, yBot); ctx.lineTo(x + step, yBot); ctx.stroke();
-                    
-                    if (i > 0) {
-                        const prevDay = archiveZaporozhyeData[i - 1];
-                        const prevYTop = 20 + (1 - (prevDay.maxT - globalMin) / range) * (H - 45);
-                        const prevYBot = 20 + (1 - (prevDay.minT - globalMin) / range) * (H - 45);
-                        ctx.beginPath(); ctx.moveTo(x, prevYTop); ctx.lineTo(x, yTop); ctx.stroke();
-                        ctx.beginPath(); ctx.moveTo(x, prevYBot); ctx.lineTo(x, yBot); ctx.stroke();
-                    }
-
-                    const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-15px; top:-15px;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>` : '';
-                    const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-15px; top:10px;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
-
-                    labelsContainer.innerHTML += `
-                        <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:${getGraphTextColor()}; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(day.maxT)} ${devMax}</span>
-                        </div>
-                        <div style="position:absolute; top:${yBot + 3}px; left:${x}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:${getGraphTextColor()}; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(day.minT)} ${devMin}</span>
-                        </div>`;
-                }
-            } else {
+            if (graphStyleMode === "lines") {
                 let ptsMax = [], ptsMin = [];
                 archiveZaporozhyeData.forEach((day, i) => {
                     let x = i * step + step / 2;
-                    let yMax = 20 + (1 - (day.maxT - globalMin)/range) * (H - 45);
-                    let yMin = 20 + (1 - (day.minT - globalMin)/range) * (H - 45);
-                    ptsMax.push({x, y: yMax, val: day.maxT, i});
-                    ptsMin.push({x, y: yMin, val: day.minT, i});
+                    let yMax = topPadding + (1 - (day.maxT - globalMin) / range) * usableHeight;
+                    let yMin = topPadding + (1 - (day.minT - globalMin) / range) * usableHeight;
+                    ptsMax.push({ x, y: yMax, val: day.maxT, i });
+                    ptsMin.push({ x, y: yMin, val: day.minT, i });
                 });
 
-                drawSmoothCurve(ctx, ptsMax, "#ff4757", 3);
+                drawSmoothCurve(ctx, ptsMax, "#e74c3c", 3);
                 drawSmoothCurve(ctx, ptsMin, "#3498db", 3);
 
                 archiveZaporozhyeData.forEach((day, i) => {
                     let pMax = ptsMax[i], pMin = ptsMin[i];
-                    const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-15px; top:-15px;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>` : '';
-                    const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-15px; top:10px;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
+                    const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>` : '';
+                    const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
                     
                     labelsContainer.innerHTML += `
-                        <div style="position:absolute; top:${pMax.y - 18}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:#ff4757; pointer-events:none;">
+                        <div style="position:absolute; top:${pMax.y - 18}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:#e74c3c; pointer-events:none;">
                             <span style="position:relative; pointer-events:auto;">${formatTemp(day.maxT)} ${devMax}</span>
                         </div>
                         <div style="position:absolute; top:${pMin.y + 2}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:#3498db; pointer-events:none;">
                             <span style="position:relative; pointer-events:auto;">${formatTemp(day.minT)} ${devMin}</span>
                         </div>`;
                 });
+            } else {
+                for (let i = 0; i < archiveZaporozhyeData.length; i++) {
+                    const day = archiveZaporozhyeData[i];
+                    const x = i * step;
+                    
+                    const yTop = topPadding + (1 - (day.maxT - globalMin) / range) * usableHeight;
+                    const yBot = topPadding + (1 - (day.minT - globalMin) / range) * usableHeight;
+                    
+                    ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, yBot, day.minT, day.maxT);
+                    ctx.strokeStyle = "#409950";
+                    ctx.lineWidth = 1.5;
+                    
+                    ctx.fillRect(x, yTop, step, Math.max(yBot - yTop, 2));
+                    ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x + step, yTop); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(x, yBot); ctx.lineTo(x + step, yBot); ctx.stroke();
+                    
+                    if (i > 0) {
+                        const prevDay = archiveZaporozhyeData[i - 1];
+                        const prevYTop = topPadding + (1 - (prevDay.maxT - globalMin) / range) * usableHeight;
+                        const prevYBot = topPadding + (1 - (prevDay.minT - globalMin) / range) * usableHeight;
+                        ctx.beginPath(); ctx.moveTo(x, prevYTop); ctx.lineTo(x, yTop); ctx.stroke();
+                        ctx.beginPath(); ctx.moveTo(x, prevYBot); ctx.lineTo(x, yBot); ctx.stroke();
+                    }
+
+                    const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>` : '';
+                    const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
+
+                    labelsContainer.innerHTML += `
+                        <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:${getGraphTextColor()}; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;">${formatTemp(day.maxT)} ${devMax}</span>
+                        </div>
+                        <div style="position:absolute; top:${yBot + 2}px; left:${x}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:${getGraphTextColor()}; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;">${formatTemp(day.minT)} ${devMin}</span>
+                        </div>`;
+                }
             }
         }
 
