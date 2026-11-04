@@ -82,9 +82,24 @@
         .logo span { color: #ff4757; }
 
         .header-btns { display: flex; align-items: center; gap: 8px; }
-        .settings-btn, .comments-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border-color); background: var(--bg-card); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; color: var(--text-main); }
+        .settings-btn, .comments-btn, .updates-btn { 
+            width: 34px; 
+            height: 34px; 
+            border-radius: 50%; 
+            border: 1px solid var(--border-color); 
+            background: var(--bg-card); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            color: var(--text-main); 
+            font-weight: bold;
+            font-size: 15px;
+        }
         .settings-btn:hover { background: #e1b12c; color: #fff; border-color: #e1b12c; transform: rotate(45deg); }
         .comments-btn:hover { background: #ff4757; color: #fff; border-color: #ff4757; transform: scale(1.08); }
+        .updates-btn:hover { background: #3498db; color: #fff; border-color: #3498db; transform: scale(1.08); }
         .settings-btn svg, .comments-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
         .search-container { position: relative; flex-grow: 1; min-width: 200px; }
@@ -116,7 +131,6 @@
         .inf-bg-clear { background-color: #2980b9; }
         .inf-bg-cloudy { background-color: #4b7bec; }
         .inf-bg-rain { background-color: #3d3d3d; }
-        
         .inf-time-row { font-size: 11px; font-weight: bold; opacity: 0.9; margin-bottom: 6px; text-transform: uppercase; }
         .inf-main-text-box { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: bold; z-index: 5; flex-wrap: wrap; }
         .inf-icon-container { width: 40px; height: 35px; cursor: pointer; position: relative;}
@@ -149,9 +163,9 @@
         .weather-content { padding: 15px; }
         .location-title { font-size: 20px; font-weight: 500; color: var(--text-main); margin-bottom: 15px; }
 
-        .single-day-scroll-container, .grouped-scroll-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-main); }
+        .single-day-scroll-container, .grouped-scroll-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-main); position: relative; }
         
-        .weather-grid-single { display: grid; grid-template-columns: repeat(8, minmax(65px, 1fr)); min-width: 520px; font-size: 12px; }
+        .weather-grid-single { display: grid; grid-template-columns: repeat(8, minmax(65px, 1fr)); min-width: 520px; font-size: 12px; position: relative; }
         
         .single-header-row { 
             grid-column: 1 / -1; 
@@ -159,14 +173,16 @@
             font-size: 13px; 
             color: var(--text-main); 
             text-align: left; 
-            font-weight: 500; 
-            background: var(--bg-card); 
+            font-weight: 600; 
+            background-color: var(--bg-card) !important; 
             border-top: 1px solid var(--border-color); 
             border-bottom: 1px solid var(--border-color); 
             position: sticky; 
             left: 0; 
-            z-index: 20; 
-            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+            z-index: 100; 
+            box-shadow: 2px 0 6px rgba(0,0,0,0.12); 
+            width: fit-content;
+            min-width: 100%;
         }
         .single-header-row:first-child { border-top: none; }
         .single-cell { position: relative; padding: 8px 0; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border-right: 1px solid var(--border-color); }
@@ -190,9 +206,18 @@
         .wind-icon { font-size: 15px; color: var(--text-main); font-weight: bold; line-height: 1; margin-bottom: 2px; }
         .wind-dir-txt { font-size: 10px; color: var(--text-muted); line-height: 1.2;}
         
-        .gust-bg { background: #fdf5d3; transform: skewX(-15deg); width: 80%; padding: 5px 0; margin: 0 auto; text-align: center; }
-        .gust-bg.grayish { background: rgba(0,0,0,0.06); }
-        .gust-val { transform: skewX(15deg); font-weight: 500; font-style: italic; color: #111; font-size: 13px;}
+        .gust-val-wrap { width: 100%; display: flex; justify-content: center; align-items: center; }
+        .gust-bg { 
+            background: #fff8d6; 
+            transform: skewX(-15deg); 
+            padding: 4px 12px; 
+            margin: 0 auto; 
+            text-align: center; 
+            display: inline-block;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .gust-bg.grayish { background: #f1f2f6; }
+        .gust-val { transform: skewX(15deg); font-weight: 600; font-style: italic; color: #2d3436; font-size: 13px; }
         
         .rain-bar-container { height: 40px; width: 100%; position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0; }
         .rain-fill { position: absolute; bottom: 0; left: 0; width: 100%; background: #8fcbfc; z-index: 1; border-top: 2px solid #5ca0f2; }
@@ -215,10 +240,6 @@
         .graph-row { position: relative; height: 85px; width: 100%; margin: 0; border-bottom: 1px solid var(--border-color); border-top: 1px solid var(--border-color); }
         #groupedCanvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1;}
         .grouped-labels { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 2; pointer-events: none;}
-        
-        .gust-row-header { padding: 10px 10px 5px 10px; font-weight: 500; font-size: 12px; }
-        .gust-val-wrap { width: 100%; padding: 4px 0; text-align: center; }
-        .rain-row-header { padding: 10px 10px 5px 10px; font-weight: 500; font-size: 12px; }
 
         .tiles-wrapper { display: flex; flex-direction: column; gap: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
         .tile-row { position: relative; height: 185px; min-width: 500px; width: 100%; display: flex; background: var(--bg-main); border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); border: 1px solid var(--border-color); overflow: hidden; }
@@ -232,13 +253,21 @@
         .tile-date { font-size: 11px; color: var(--text-muted); }
         .tile-red { color: #ff4757 !important; }
 
-        .twoweeks-monolith-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-main); }
-        .twoweeks-monolith-grid { display: grid; border-collapse: collapse; }
+        .twoweeks-monolith-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-main); position: relative; }
+        .twoweeks-monolith-grid { display: grid; border-collapse: collapse; position: relative; }
 
-        /* Архив */
-        .archive-scroll-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-main); }
-        .archive-grid { display: grid; border-collapse: collapse; min-width: 4680px; font-size: 12px; width: max-content; }
-        .archive-year-row { grid-column: 1 / -1; display: flex; background: var(--bg-card); border-bottom: 1px solid var(--border-color); font-weight: bold; font-size: 14px; text-align: center; }
+        .archive-scroll-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-main); position: relative; }
+        .archive-grid { display: grid; border-collapse: collapse; min-width: 4680px; font-size: 12px; width: max-content; position: relative; }
+        
+        .archive-year-row { 
+            grid-column: 1 / -1; 
+            display: flex; 
+            background: var(--bg-card); 
+            border-bottom: 1px solid var(--border-color); 
+            font-weight: bold; 
+            font-size: 14px; 
+            text-align: center;
+        }
         .archive-year-cell { flex: 1; padding: 8px; border-right: 1px solid var(--border-color); }
         .archive-year-cell:last-child { border-right: none; }
         
@@ -327,6 +356,10 @@
         .reply-btn { background: none; border: none; color: #ff4757; font-size: 11px; cursor: pointer; padding: 0; margin-top: 6px; text-decoration: underline; font-weight: bold; }
         .reply-input-area { display: none; margin-top: 8px; gap: 6px; }
         .reply-input-area.active { display: flex; flex-direction: column; }
+
+        .update-item { background: var(--bg-card); border-left: 3px solid #3498db; padding: 10px 12px; border-radius: 4px; margin-bottom: 10px; }
+        .update-date { font-size: 11px; color: var(--text-muted); font-weight: bold; margin-bottom: 4px; }
+        .update-text { font-size: 13px; color: var(--text-main); line-height: 1.4; }
     </style>
 </head>
 <body class="theme-white">
@@ -409,7 +442,8 @@
             </div>
         </div>
     </div>
-<div class="modal-overlay" id="commentsModal">
+
+    <div class="modal-overlay" id="commentsModal">
         <div class="modal-container">
             <button class="modal-close-btn" onclick="toggleCommentsModal()">✕</button>
             <div class="modal-title">Отзывы и комментарии</div>
@@ -437,6 +471,18 @@
         </div>
     </div>
 
+    <div class="modal-overlay" id="updatesModal">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="toggleUpdatesModal()">✕</button>
+            <div class="modal-title">Обновления и новости</div>
+            <div id="updatesList"></div>
+            <div id="addUpdateBox" style="display:none; margin-top:15px; border-top:1px solid var(--border-color); padding-top:10px;">
+                <textarea id="newUpdateText" class="comment-input" placeholder="Текст нового обновления..."></textarea>
+                <button class="submit-cmt-btn" onclick="addUpdateItem()">Опубликовать обновление</button>
+            </div>
+        </div>
+    </div>
+
     <div class="main-wrapper">
         <div class="header-top">
             <div class="logo-group">
@@ -448,6 +494,7 @@
                     <div class="comments-btn" onclick="toggleCommentsModal()" title="Отзывы и комментарии">
                         <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
                     </div>
+                    <div class="updates-btn" onclick="toggleUpdatesModal()" title="Обновления">i</div>
                 </div>
             </div>
 
@@ -483,7 +530,8 @@
             <div class="location-title" id="mainTitle">--</div>
             <div id="gridWrapDetail"></div>
         </div>
-    </div><script>
+    </div>
+<script>
         const DEV_PASSWORD = "1234";
         let currentTab = "month", isDevModeActive = false;
         
@@ -507,9 +555,17 @@
         let commentsData = JSON.parse(localStorage.getItem('meteopro_comments') || '[]');
         if (commentsData.length === 0) {
             commentsData = [
-                { id: 1, author: "Алексей", text: "Отличный удобный сайт! Очень точный прогноз погоды.", rating: 5, date: "31.10.2026, 14:20", reply: "Спасибо за ваш отзыв! Рады стараться!" }
+                { id: 1, author: "Алексей", text: "Отличный удобный сайт! Очень точный прогноз погоды.", rating: 5, date: "04.11.2026, 11:55", reply: "Спасибо за ваш отзыв! Рады стараться!" }
             ];
             localStorage.setItem('meteopro_comments', JSON.stringify(commentsData));
+        }
+
+        let updatesData = JSON.parse(localStorage.getItem('meteopro_updates') || '[]');
+        if (updatesData.length === 0) {
+            updatesData = [
+                { id: 1, date: "04.11.2026", text: "Обновлен стиль отображения порывов ветра и датировка прогноза на месяц для Томашполя. Добавлен архив с данными 2015–2020 годов в Томашполь." }
+            ];
+            localStorage.setItem('meteopro_updates', JSON.stringify(updatesData));
         }
 
         const i18n = {
@@ -531,9 +587,10 @@
                 windGust: "Порывы ветра, {unit}",
                 precip: "Осадки, мм",
                 precipLiquid: "Осадки в жидком эквиваленте, мм",
+                snowAndPrecipLabel: "Высота снежного покрова / мм осадков",
                 searchState: "Поиск состояния...",
                 devInDev: "В разработке...",
-                archiveNotAvailable: "Архив погоды за 2015–2020 гг. доступен исключительно для Запорожья. Выберите Запорожье в поиске.",
+                archiveNotAvailable: "Архив погоды за 2015–2020 гг. недоступен для выбранного города.",
                 monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
                 tabs: {
                     yesterday: "Вчера", now: "Сейчас", hourly: "По часам", today: "Сегодня",
@@ -543,7 +600,7 @@
                 titles: {
                     yesterday: "Погода в {city} вчера", today: "Погода в {city} сегодня",
                     tomorrow: "Погода в {city} на завтра", now: "Погода сейчас",
-                    hourly: "Погода по часам", archive: "Архив погоды в Запорожье",
+                    hourly: "Погода по часам", archive: "Архив погоды в {city}",
                     "3days": "Погода в {city} на 3 дня", weekend: "Погода в {city} на выходные",
                     "2weeks": "Погода в {city} на 2 недели",
                     month: "Погода в {city} на месяц", geomagnetic: "Геомагнитная обстановка в {city}"
@@ -574,9 +631,10 @@
                 windGust: "Пориви вітру, {unit}",
                 precip: "Опади, мм",
                 precipLiquid: "Опади у рідкому еквіваленті, мм",
+                snowAndPrecipLabel: "Висота снігового покриву / мм опадів",
                 searchState: "Пошук стану...",
                 devInDev: "У розробці...",
-                archiveNotAvailable: "Архів погоди за 2015–2020 рр. доступний виключно для Запоріжжя. Оберіть Запоріжжя у пошуку.",
+                archiveNotAvailable: "Архів погоди за 2015–2020 рр. недоступний для обраного міста.",
                 monthsShort: ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"],
                 tabs: {
                     yesterday: "Вчора", now: "Зараз", hourly: "По годинах", today: "Сьогодні",
@@ -586,7 +644,7 @@
                 titles: {
                     yesterday: "Погода у {city} вчора", today: "Погода у {city} сьогодні",
                     tomorrow: "Погода у {city} на завтра", now: "Погода зараз",
-                    hourly: "Погода по годинах", archive: "Архів погоди у Запоріжжі",
+                    hourly: "Погода по годинах", archive: "Архів погоди у {city}",
                     "3days": "Погода у {city} на 3 дні", weekend: "Погода у {city} на вихідні",
                     "2weeks": "Погода у {city} на 2 тижні",
                     month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}"
@@ -617,9 +675,10 @@
                 windGust: "Wind gusts, {unit}",
                 precip: "Precipitation, mm",
                 precipLiquid: "Liquid precipitation, mm",
+                snowAndPrecipLabel: "Snow depth / precipitation mm",
                 searchState: "Search weather...",
                 devInDev: "Under development...",
-                archiveNotAvailable: "Weather archive for 2015–2020 is available exclusively for Zaporizhzhia. Select Zaporizhzhia in search.",
+                archiveNotAvailable: "Weather archive for 2015–2020 is not available for selected city.",
                 monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 tabs: {
                     yesterday: "Yesterday", now: "Now", hourly: "Hourly", today: "Today",
@@ -629,7 +688,7 @@
                 titles: {
                     yesterday: "Weather in {city} yesterday", today: "Weather in {city} today",
                     tomorrow: "Weather in {city} tomorrow", now: "Weather now",
-                    hourly: "Hourly weather", archive: "Weather archive in Zaporizhzhia",
+                    hourly: "Hourly weather", archive: "Weather archive in {city}",
                     "3days": "Weather in {city} for 3 days", weekend: "Weekend weather in {city}",
                     "2weeks": "Weather in {city} for 2 weeks",
                     month: "Weather in {city} for a month", geomagnetic: "Geomagnetic forecast in {city}"
@@ -660,9 +719,10 @@
                 windGust: "Porywy wiatru, {unit}",
                 precip: "Opady, mm",
                 precipLiquid: "Ciekły ekwiwalent opadów, mm",
+                snowAndPrecipLabel: "Wysokość pokrywy śnieżnej / mm opadów",
                 searchState: "Szukaj stanu...",
                 devInDev: "W trakcie budowy...",
-                archiveNotAvailable: "Archiwum pogody na lata 2015–2020 jest dostępne wyłącznie dla Zaporoża. Wybierz Zaporoże в szukaj.",
+                archiveNotAvailable: "Archiwum pogody na lata 2015–2020 jest niedostępne dla wybranego miasta.",
                 monthsShort: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
                 tabs: {
                     yesterday: "Wczoraj", now: "Teraz", hourly: "Co godzinę", today: "Dzisiaj",
@@ -672,12 +732,12 @@
                 titles: {
                     yesterday: "Pogoda w {city} wczoraj", today: "Pogoda w {city} dzisiaj",
                     tomorrow: "Pogoda w {city} na jutro", now: "Pogoda teraz",
-                    hourly: "Pogoda co godzinę", archive: "Archiwum pogody w Zaporożu",
+                    hourly: "Pogoda co godzinę", archive: "Archiwum pogody w {city}",
                     "3days": "Pogoda w {city} na 3 dni", weekend: "Pogoda w {city} na weekend",
                     "2weeks": "Pogoda w {city} na 2 tygodnie",
                     month: "Pogoda w {city} na miesiąc", geomagnetic: "Aktywność geomagnetyczna w {city}"
                 },
-                cities: { "Приветное": "Priwitnym", "Запорожье": "Zaporożu", "Dnepr": "Dnieprze", "Томашполь": "Tomaszpolu" },
+                cities: { "Приветное": "Priwitnym", "Запорожье": "Zaporożu", "Днепр": "Dnieprze", "Томашполь": "Tomaszpolu" },
                 monthsGenitive: ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"],
                 geoStatus: {
                     0: "Brak zaburzeń", 1: "Brak zaburzeń", 2: "Brak zaburzeń", 3: "Niewielkie zaburzenia teraz", 
@@ -703,9 +763,10 @@
                 windGust: "Пориви вітру, {unit}",
                 precip: "Опади, мм",
                 precipLiquid: "Рідкі опади, мм",
+                snowAndPrecipLabel: "Висота снігового покриву / мм опадів",
                 searchState: "Шукати стан...",
                 devInDev: "У майстрованні...",
-                archiveNotAvailable: "Архів погоди за 2015–2020 рр. доступний виключно для Запоріжжя. Оберіть Запоріжжя у пошуку.",
+                archiveNotAvailable: "Архів погоди за 2015–2020 рр. недоступний для обраного міста.",
                 monthsShort: ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"],
                 tabs: {
                     yesterday: "Учора", now: "Тера", hourly: "По годинах", today: "Нині",
@@ -715,7 +776,7 @@
                 titles: {
                     yesterday: "Погода у {city} вчора", today: "Погода у {city} нині",
                     tomorrow: "Погода у {city} на завтра", now: "Погода тера",
-                    hourly: "Погода по годинах", archive: "Архів погоди у Запоріжжі",
+                    hourly: "Погода по годинах", archive: "Архів погоди у {city}",
                     "3days": "Погода у {city} на 3 дні", weekend: "Погода у {city} на вакації",
                     "2weeks": "Погода у {city} на 2 тижні",
                     month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}"
@@ -729,7 +790,8 @@
                 }
             }
         };
-const weatherTranslations = {
+
+        const weatherTranslations = {
             "clear": { ru: "Ясно", uk: "Ясно", en: "Clear", pl: "Czystе", gal: "Ясно" },
             "clear-fog": { ru: "Ясно, туман", uk: "Ясно, туман", en: "Clear, fog", pl: "Czysto, mgła", gal: "Ясно, мгла" },
             "cloudy-sun": { ru: "Малооблачно", uk: "Малооблачно", en: "Partly cloudy", pl: "Mało zachmurzenie", gal: "Малооблачно" },
@@ -751,13 +813,411 @@ const weatherTranslations = {
             "Томашполь, Томашпольская община, Тульчинский район, Винницкая область"
         ];
 
-        function toggleSettingsModal() {
-            document.getElementById('settingsModal').classList.toggle('active');
+        const dayTimes = ["2:00", "5:00", "8:00", "11:00", "14:00", "17:00", "20:00", "23:00"];
+        const template8Items = [
+            { ic: "cloudy", t: 11, minT: 9, windD: "E", gust: 9, rain: 0 },
+            { ic: "cloudy", t: 9, minT: 8, windD: "E", gust: 9, rain: 0 },
+            { ic: "cloudy-sun", t: 9, minT: 8, windD: "E", gust: 10, rain: 0 },
+            { ic: "cloudy", t: 14, minT: 10, windD: "E", gust: 10, rain: 0 },
+            { ic: "cloudy", t: 15, minT: 11, windD: "E", gust: 10, rain: 0 },
+            { ic: "cloudy", t: 14, minT: 10, windD: "E", gust: 9, rain: 0 },
+            { ic: "c-rain-light", t: 14, minT: 11, windD: "E", gust: 7, rain: 0.2 },
+            { ic: "c-rain-light", t: 15, minT: 12, windD: "E", gust: 6, rain: 0.3 }
+        ];
+
+        const archiveZaporozhyeData = [
+            { year: 2015, mIdx: 0, maxT: 8, minT: -25, skyClear: 20, skyCloudy: 45, skyOvercast: 35, rain: 5, snow: 28, mix: 9, none: 58, windAvg: 4, gust: 13, uv: 1, snowHeight: 12.5 },
+            { year: 2015, mIdx: 1, maxT: 16, minT: -13, skyClear: 25, skyCloudy: 50, skyOvercast: 25, rain: 6, snow: 18, mix: 6, none: 70, windAvg: 4, gust: 12, uv: 2, snowHeight: 8.2 },
+            { year: 2015, mIdx: 2, maxT: 20, minT: -6, skyClear: 35, skyCloudy: 40, skyOvercast: 25, rain: 24, snow: 3, mix: 4, none: 69, windAvg: 4, gust: 14, uv: 3, snowHeight: 1.1 },
+            { year: 2015, mIdx: 3, maxT: 24, minT: -1, skyClear: 45, skyCloudy: 35, skyOvercast: 20, rain: 38, snow: 0, mix: 0, none: 62, windAvg: 4, gust: 13, uv: 5, snowHeight: 0 },
+            { year: 2015, mIdx: 4, maxT: 30, minT: 5, skyClear: 50, skyCloudy: 35, skyOvercast: 15, rain: 59, snow: 0, mix: 0, none: 41, windAvg: 3, gust: 11, uv: 7, snowHeight: 0 },
+            { year: 2015, mIdx: 5, maxT: 32, minT: 11, skyClear: 55, skyCloudy: 30, skyOvercast: 15, rain: 64, snow: 0, mix: 0, none: 36, windAvg: 3, gust: 10, uv: 8, snowHeight: 0 },
+            { year: 2015, mIdx: 6, maxT: 36, minT: 12, skyClear: 70, skyCloudy: 20, skyOvercast: 10, rain: 32, snow: 0, mix: 0, none: 68, windAvg: 3, gust: 10, uv: 9, snowHeight: 0 },
+            { year: 2015, mIdx: 7, maxT: 38, minT: 11, skyClear: 65, skyCloudy: 25, skyOvercast: 10, rain: 25, snow: 0, mix: 0, none: 75, windAvg: 3, gust: 11, uv: 8, snowHeight: 0 },
+            { year: 2015, mIdx: 8, maxT: 36, minT: 7, skyClear: 50, skyCloudy: 35, skyOvercast: 15, rain: 29, snow: 0, mix: 0, none: 71, windAvg: 3, gust: 11, uv: 6, snowHeight: 0 },
+            { year: 2015, mIdx: 9, maxT: 23, minT: -4, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 35, snow: 0, mix: 0, none: 65, windAvg: 4, gust: 12, uv: 4, snowHeight: 0 },
+            { year: 2015, mIdx: 10, maxT: 16, minT: -8, skyClear: 30, skyCloudy: 40, skyOvercast: 30, rain: 32, snow: 4, mix: 4, none: 60, windAvg: 4, gust: 13, uv: 2, snowHeight: 0.5 },
+            { year: 2015, mIdx: 11, maxT: 3, minT: -15, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 9, snow: 31, mix: 5, none: 55, windAvg: 4, gust: 14, uv: 1, snowHeight: 4.4 },
+            
+            { year: 2016, mIdx: 0, maxT: 8, minT: -21, skyClear: 15, skyCloudy: 45, skyOvercast: 40, rain: 5, snow: 41, mix: 5, none: 49, windAvg: 4, gust: 15, uv: 1, snowHeight: 14.2 },
+            { year: 2016, mIdx: 1, maxT: 16, minT: -8, skyClear: 25, skyCloudy: 45, skyOvercast: 30, rain: 13, snow: 10, mix: 10, none: 67, windAvg: 4, gust: 13, uv: 2, snowHeight: 3.5 },
+            { year: 2016, mIdx: 2, maxT: 21, minT: -6, skyClear: 30, skyCloudy: 45, skyOvercast: 25, rain: 32, snow: 0, mix: 4, none: 64, windAvg: 4, gust: 14, uv: 3, snowHeight: 0 },
+            { year: 2016, mIdx: 3, maxT: 27, minT: 1, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 41, snow: 0, mix: 0, none: 59, windAvg: 4, gust: 13, uv: 5, snowHeight: 0 },
+            { year: 2016, mIdx: 4, maxT: 29, minT: 5, skyClear: 45, skyCloudy: 35, skyOvercast: 20, rain: 74, snow: 0, mix: 0, none: 26, windAvg: 3, gust: 12, uv: 7, snowHeight: 0 },
+            { year: 2016, mIdx: 5, maxT: 35, minT: 12, skyClear: 55, skyCloudy: 30, skyOvercast: 15, rain: 68, snow: 0, mix: 0, none: 32, windAvg: 3, gust: 11, uv: 8, snowHeight: 0 },
+            { year: 2016, mIdx: 6, maxT: 37, minT: 13, skyClear: 65, skyCloudy: 25, skyOvercast: 10, rain: 35, snow: 0, mix: 0, none: 65, windAvg: 3, gust: 11, uv: 9, snowHeight: 0 },
+            { year: 2016, mIdx: 7, maxT: 37, minT: 11, skyClear: 70, skyCloudy: 20, skyOvercast: 10, rain: 22, snow: 0, mix: 0, none: 78, windAvg: 3, gust: 10, uv: 8, snowHeight: 0 },
+            { year: 2016, mIdx: 8, maxT: 33, minT: 5, skyClear: 50, skyCloudy: 35, skyOvercast: 15, rain: 30, snow: 0, mix: 0, none: 70, windAvg: 3, gust: 11, uv: 6, snowHeight: 0 },
+            { year: 2016, mIdx: 9, maxT: 25, minT: -2, skyClear: 35, skyCloudy: 40, skyOvercast: 25, rain: 39, snow: 0, mix: 0, none: 61, windAvg: 4, gust: 13, uv: 3, snowHeight: 0 },
+            { year: 2016, mIdx: 10, maxT: 15, minT: -8, skyClear: 25, skyCloudy: 45, skyOvercast: 30, rain: 34, snow: 4, mix: 4, none: 58, windAvg: 4, gust: 14, uv: 2, snowHeight: 1.0 },
+            { year: 2016, mIdx: 11, maxT: 1, minT: -15, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 5, snow: 38, mix: 5, none: 52, windAvg: 4, gust: 15, uv: 1, snowHeight: 6.8 },
+
+            { year: 2017, mIdx: 0, maxT: 7, minT: -17, skyClear: 18, skyCloudy: 42, skyOvercast: 40, rain: 4, snow: 45, mix: 6, none: 45, windAvg: 4, gust: 15, uv: 1, snowHeight: 16.0 },
+            { year: 2017, mIdx: 1, maxT: 8, minT: -16, skyClear: 22, skyCloudy: 48, skyOvercast: 30, rain: 8, snow: 22, mix: 8, none: 62, windAvg: 4, gust: 14, uv: 2, snowHeight: 9.5 },
+            { year: 2017, mIdx: 2, maxT: 19, minT: -5, skyClear: 38, skyCloudy: 42, skyOvercast: 20, rain: 28, snow: 1, mix: 3, none: 68, windAvg: 4, gust: 13, uv: 3, snowHeight: 0.0 },
+            { year: 2017, mIdx: 3, maxT: 25, minT: -2, skyClear: 42, skyCloudy: 38, skyOvercast: 20, rain: 45, snow: 2, mix: 2, none: 51, windAvg: 4, gust: 14, uv: 5, snowHeight: 0.0 },
+            { year: 2017, mIdx: 4, maxT: 29, minT: 1, skyClear: 52, skyCloudy: 33, skyOvercast: 15, rain: 42, snow: 0, mix: 0, none: 58, windAvg: 3, gust: 11, uv: 7, snowHeight: 0.0 },
+            { year: 2017, mIdx: 5, maxT: 34, minT: 9, skyClear: 60, skyCloudy: 28, skyOvercast: 12, rain: 38, snow: 0, mix: 0, none: 62, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
+            { year: 2017, mIdx: 6, maxT: 37, minT: 10, skyClear: 68, skyCloudy: 22, skyOvercast: 10, rain: 29, snow: 0, mix: 0, none: 71, windAvg: 3, gust: 11, uv: 9, snowHeight: 0.0 },
+            { year: 2017, mIdx: 7, maxT: 38, minT: 11, skyClear: 75, skyCloudy: 18, skyOvercast: 7, rain: 18, snow: 0, mix: 0, none: 82, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
+            { year: 2017, mIdx: 8, maxT: 34, minT: 6, skyClear: 65, skyCloudy: 25, skyOvercast: 10, rain: 21, snow: 0, mix: 0, none: 79, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
+            { year: 2017, mIdx: 9, maxT: 23, minT: -2, skyClear: 45, skyCloudy: 38, skyOvercast: 17, rain: 31, snow: 0, mix: 0, none: 69, windAvg: 4, gust: 12, uv: 4, snowHeight: 0.0 },
+            { year: 2017, mIdx: 10, maxT: 15, minT: -5, skyClear: 28, skyCloudy: 42, skyOvercast: 30, rain: 36, snow: 2, mix: 3, none: 59, windAvg: 4, gust: 13, uv: 2, snowHeight: 0.0 },
+            { year: 2017, mIdx: 11, maxT: 4, minT: -5, skyClear: 21, skyCloudy: 44, skyOvercast: 35, rain: 15, snow: 18, mix: 7, none: 60, windAvg: 4, gust: 14, uv: 1, snowHeight: 2.1 },
+
+            { year: 2018, mIdx: 0, maxT: 8, minT: -15, skyClear: 20, skyCloudy: 45, skyOvercast: 35, rain: 12, snow: 25, mix: 8, none: 55, windAvg: 4, gust: 14, uv: 1, snowHeight: 5.5 },
+            { year: 2018, mIdx: 1, maxT: 8, minT: -15, skyClear: 18, skyCloudy: 44, skyOvercast: 38, rain: 6, snow: 35, mix: 9, none: 50, windAvg: 5, gust: 16, uv: 2, snowHeight: 11.2 },
+            { year: 2018, mIdx: 2, maxT: 15, minT: -14, skyClear: 28, skyCloudy: 45, skyOvercast: 27, rain: 20, snow: 18, mix: 8, none: 54, windAvg: 4, gust: 15, uv: 3, snowHeight: 4.0 },
+            { year: 2018, mIdx: 3, maxT: 28, minT: 1, skyClear: 55, skyCloudy: 32, skyOvercast: 13, rain: 22, snow: 0, mix: 0, none: 78, windAvg: 3, gust: 12, uv: 6, snowHeight: 0.0 },
+            { year: 2018, mIdx: 4, maxT: 31, minT: 7, skyClear: 62, skyCloudy: 28, skyOvercast: 10, rain: 26, snow: 0, mix: 0, none: 74, windAvg: 3, gust: 11, uv: 8, snowHeight: 0.0 },
+            { year: 2018, mIdx: 5, maxT: 34, minT: 10, skyClear: 68, skyCloudy: 22, skyOvercast: 10, rain: 45, snow: 0, mix: 0, none: 55, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
+            { year: 2018, mIdx: 6, maxT: 35, minT: 15, skyClear: 64, skyCloudy: 26, skyOvercast: 10, rain: 52, snow: 0, mix: 0, none: 48, windAvg: 3, gust: 11, uv: 9, snowHeight: 0.0 },
+            { year: 2018, mIdx: 7, maxT: 36, minT: 11, skyClear: 72, skyCloudy: 20, skyOvercast: 8, rain: 19, snow: 0, mix: 0, none: 81, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
+            { year: 2018, mIdx: 8, maxT: 32, minT: 4, skyClear: 60, skyCloudy: 28, skyOvercast: 12, rain: 18, snow: 0, mix: 0, none: 82, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
+            { year: 2018, mIdx: 9, maxT: 23, minT: -1, skyClear: 52, skyCloudy: 35, skyOvercast: 13, rain: 24, snow: 0, mix: 0, none: 76, windAvg: 3, gust: 12, uv: 4, snowHeight: 0.0 },
+            { year: 2018, mIdx: 10, maxT: 15, minT: -10, skyClear: 22, skyCloudy: 43, skyOvercast: 35, rain: 22, snow: 15, mix: 8, none: 55, windAvg: 4, gust: 14, uv: 2, snowHeight: 2.8 },
+            { year: 2018, mIdx: 11, maxT: 1, minT: -11, skyClear: 16, skyCloudy: 42, skyOvercast: 42, rain: 10, snow: 32, mix: 8, none: 50, windAvg: 4, gust: 15, uv: 1, snowHeight: 8.4 },
+
+            { year: 2019, mIdx: 0, maxT: 7, minT: -12, skyClear: 19, skyCloudy: 43, skyOvercast: 38, rain: 14, snow: 30, mix: 9, none: 47, windAvg: 4, gust: 14, uv: 1, snowHeight: 7.0 },
+            { year: 2019, mIdx: 1, maxT: 9, minT: -8, skyClear: 28, skyCloudy: 46, skyOvercast: 26, rain: 18, snow: 12, mix: 6, none: 64, windAvg: 4, gust: 13, uv: 2, snowHeight: 3.2 },
+            { year: 2019, mIdx: 2, maxT: 19, minT: -5, skyClear: 36, skyCloudy: 42, skyOvercast: 22, rain: 25, snow: 2, mix: 3, none: 70, windAvg: 4, gust: 14, uv: 3, snowHeight: 0.0 },
+            { year: 2019, mIdx: 3, maxT: 25, minT: 0, skyClear: 48, skyCloudy: 36, skyOvercast: 16, rain: 31, snow: 0, mix: 0, none: 69, windAvg: 3, gust: 12, uv: 5, snowHeight: 0.0 },
+            { year: 2019, mIdx: 4, maxT: 30, minT: 7, skyClear: 54, skyCloudy: 33, skyOvercast: 13, rain: 48, snow: 0, mix: 0, none: 52, windAvg: 3, gust: 11, uv: 7, snowHeight: 0.0 },
+            { year: 2019, mIdx: 5, maxT: 35, minT: 14, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 35, snow: 0, mix: 0, none: 65, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
+            { year: 2019, mIdx: 6, maxT: 36, minT: 10, skyClear: 66, skyCloudy: 24, skyOvercast: 10, rain: 41, snow: 0, mix: 0, none: 59, windAvg: 3, gust: 11, uv: 8, snowHeight: 0.0 },
+            { year: 2019, mIdx: 7, maxT: 35, minT: 10, skyClear: 73, skyCloudy: 20, skyOvercast: 7, rain: 15, snow: 0, mix: 0, none: 85, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
+            { year: 2019, mIdx: 8, maxT: 32, minT: 4, skyClear: 62, skyCloudy: 27, skyOvercast: 11, rain: 19, snow: 0, mix: 0, none: 81, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
+            { year: 2019, mIdx: 9, maxT: 23, minT: -4, skyClear: 50, skyCloudy: 36, skyOvercast: 14, rain: 22, snow: 0, mix: 0, none: 78, windAvg: 3, gust: 11, uv: 4, snowHeight: 0.0 },
+            { year: 2019, mIdx: 10, maxT: 18, minT: -10, skyClear: 32, skyCloudy: 42, skyOvercast: 26, rain: 28, snow: 1, mix: 2, none: 69, windAvg: 4, gust: 13, uv: 2, snowHeight: 0.0 },
+            { year: 2019, mIdx: 11, maxT: 6, minT: -6, skyClear: 24, skyCloudy: 45, skyOvercast: 31, rain: 20, snow: 8, mix: 5, none: 67, windAvg: 4, gust: 13, uv: 1, snowHeight: 0.5 },
+
+            { year: 2020, mIdx: 0, maxT: 6, minT: -8, skyClear: 22, skyCloudy: 46, skyOvercast: 32, rain: 18, snow: 10, mix: 6, none: 66, windAvg: 4, gust: 13, uv: 1, snowHeight: 1.2 },
+            { year: 2020, mIdx: 1, maxT: 12, minT: -11, skyClear: 26, skyCloudy: 48, skyOvercast: 26, rain: 22, snow: 8, mix: 5, none: 65, windAvg: 4, gust: 14, uv: 2, snowHeight: 0.8 },
+            { year: 2020, mIdx: 2, maxT: 20, minT: -6, skyClear: 42, skyCloudy: 40, skyOvercast: 18, rain: 21, snow: 0, mix: 1, none: 78, windAvg: 4, gust: 13, uv: 3, snowHeight: 0.0 },
+            { year: 2020, mIdx: 3, maxT: 22, minT: -3, skyClear: 52, skyCloudy: 34, skyOvercast: 14, rain: 26, snow: 0, mix: 0, none: 74, windAvg: 3, gust: 12, uv: 5, snowHeight: 0.0 },
+            { year: 2020, mIdx: 4, maxT: 28, minT: 2, skyClear: 48, skyCloudy: 36, skyOvercast: 16, rain: 55, snow: 0, mix: 0, none: 45, windAvg: 3, gust: 11, uv: 7, snowHeight: 0.0 },
+            { year: 2020, mIdx: 5, maxT: 34, minT: 10, skyClear: 58, skyCloudy: 28, skyOvercast: 14, rain: 62, snow: 0, mix: 0, none: 38, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
+            { year: 2020, mIdx: 6, maxT: 37, minT: 12, skyClear: 72, skyCloudy: 20, skyOvercast: 8, rain: 24, snow: 0, mix: 0, none: 76, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
+            { year: 2020, mIdx: 7, maxT: 38, minT: 11, skyClear: 76, skyCloudy: 18, skyOvercast: 6, rain: 14, snow: 0, mix: 0, none: 86, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
+            { year: 2020, mIdx: 8, maxT: 35, minT: 6, skyClear: 68, skyCloudy: 24, skyOvercast: 8, rain: 12, snow: 0, mix: 0, none: 88, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
+            { year: 2020, mIdx: 9, maxT: 24, minT: 4, skyClear: 58, skyCloudy: 30, skyOvercast: 12, rain: 28, snow: 0, mix: 0, none: 72, windAvg: 3, gust: 11, uv: 4, snowHeight: 0.0 },
+            { year: 2020, mIdx: 10, maxT: 14, minT: -5, skyClear: 28, skyCloudy: 44, skyOvercast: 28, rain: 26, snow: 0, mix: 2, none: 72, windAvg: 4, gust: 12, uv: 2, snowHeight: 0.0 },
+            { year: 2020, mIdx: 11, maxT: 2, minT: -10, skyClear: 18, skyCloudy: 44, skyOvercast: 38, rain: 15, snow: 22, mix: 8, none: 55, windAvg: 4, gust: 14, uv: 1, snowHeight: 3.5 }
+        ];
+
+        // Архивная база данных для Томашполя С ОКРУГЛЁННЫМИ ЗНАЧЕНИЯМИ (целые числа)
+        const archiveTomashpolData = [
+            // 2015
+            { year: 2015, mIdx: 0, maxT: 10, minT: -19, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 17, uv: 1, snowHeight: 0.5 },
+            { year: 2015, mIdx: 1, maxT: 12, minT: -14, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 29, windAvg: 4, gust: 18, uv: 2, snowHeight: 1.7 },
+            { year: 2015, mIdx: 2, maxT: 18, minT: -6, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 12, uv: 3, snowHeight: 0 },
+            { year: 2015, mIdx: 3, maxT: 27, minT: -3, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 4, gust: 14, uv: 4, snowHeight: 0 },
+            { year: 2015, mIdx: 4, maxT: 31, minT: 2, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 4, gust: 15, uv: 7, snowHeight: 0 },
+            { year: 2015, mIdx: 5, maxT: 34, minT: 7, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 14, uv: 8, snowHeight: 0 },
+            { year: 2015, mIdx: 6, maxT: 38, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 9, snowHeight: 0 },
+            { year: 2015, mIdx: 7, maxT: 38, minT: 8, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 11, uv: 8, snowHeight: 0 },
+            { year: 2015, mIdx: 8, maxT: 39, minT: 6, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 12, uv: 5, snowHeight: 0 },
+            { year: 2015, mIdx: 9, maxT: 26, minT: -4, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 5, snowHeight: 0 },
+            { year: 2015, mIdx: 10, maxT: 18, minT: -5, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 12, uv: 2, snowHeight: 0 },
+            { year: 2015, mIdx: 11, maxT: 16, minT: -10, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 1, snowHeight: 1.0 },
+
+            // 2016
+            { year: 2016, mIdx: 0, maxT: 11, minT: -19, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 17, uv: 1, snowHeight: 0.8 },
+            { year: 2016, mIdx: 1, maxT: 19, minT: -5, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 28, windAvg: 4, gust: 18, uv: 2, snowHeight: 1.7 },
+            { year: 2016, mIdx: 2, maxT: 23, minT: -5, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 13, uv: 4, snowHeight: 0 },
+            { year: 2016, mIdx: 3, maxT: 29, minT: -3, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 4, gust: 12, uv: 5, snowHeight: 0 },
+            { year: 2016, mIdx: 4, maxT: 28, minT: 3, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 4, gust: 16, uv: 7, snowHeight: 0 },
+            { year: 2016, mIdx: 5, maxT: 35, minT: 4, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 15, uv: 8, snowHeight: 0 },
+            { year: 2016, mIdx: 6, maxT: 37, minT: 10, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 9, snowHeight: 0 },
+            { year: 2016, mIdx: 7, maxT: 37, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 8, snowHeight: 0 },
+            { year: 2016, mIdx: 8, maxT: 33, minT: 3, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 12, uv: 6, snowHeight: 0 },
+            { year: 2016, mIdx: 9, maxT: 26, minT: -2, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 11, uv: 4, snowHeight: 0 },
+            { year: 2016, mIdx: 10, maxT: 19, minT: -8, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 12, uv: 2, snowHeight: 0 },
+            { year: 2016, mIdx: 11, maxT: 10, minT: -11, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 12, uv: 1, snowHeight: 1.0 },
+
+            // 2017
+            { year: 2017, mIdx: 0, maxT: 6, minT: -16, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 18, uv: 1, snowHeight: 0.5 },
+            { year: 2017, mIdx: 1, maxT: 16, minT: -20, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 27, windAvg: 4, gust: 17, uv: 2, snowHeight: 1.7 },
+            { year: 2017, mIdx: 2, maxT: 23, minT: -2, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 14, uv: 3, snowHeight: 0 },
+            { year: 2017, mIdx: 3, maxT: 28, minT: -3, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 4, gust: 13, uv: 5, snowHeight: 0 },
+            { year: 2017, mIdx: 4, maxT: 30, minT: 0, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 6, snowHeight: 0 },
+            { year: 2017, mIdx: 5, maxT: 33, minT: 7, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 16, uv: 8, snowHeight: 0 },
+            { year: 2017, mIdx: 6, maxT: 35, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 9, snowHeight: 0 },
+            { year: 2017, mIdx: 7, maxT: 39, minT: 6, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 8, snowHeight: 0 },
+            { year: 2017, mIdx: 8, maxT: 33, minT: 1, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 11, uv: 5, snowHeight: 0 },
+            { year: 2017, mIdx: 9, maxT: 25, minT: -1, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 4, snowHeight: 0 },
+            { year: 2017, mIdx: 10, maxT: 16, minT: -5, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 12, uv: 2, snowHeight: 0 },
+            { year: 2017, mIdx: 11, maxT: 12, minT: -4, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 11, uv: 1, snowHeight: 1.0 },
+
+            // 2018
+            { year: 2018, mIdx: 0, maxT: 9, minT: -16, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 17, uv: 2, snowHeight: 0.5 },
+            { year: 2018, mIdx: 1, maxT: 8, minT: -21, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 27, windAvg: 4, gust: 18, uv: 1, snowHeight: 1.7 },
+            { year: 2018, mIdx: 2, maxT: 16, minT: -21, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 11, uv: 3, snowHeight: 0 },
+            { year: 2018, mIdx: 3, maxT: 27, minT: -2, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 4, gust: 14, uv: 4, snowHeight: 0 },
+            { year: 2018, mIdx: 4, maxT: 32, minT: 4, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 7, snowHeight: 0 },
+            { year: 2018, mIdx: 5, maxT: 31, minT: 7, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 16, uv: 8, snowHeight: 0 },
+            { year: 2018, mIdx: 6, maxT: 33, minT: 10, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 9, snowHeight: 0 },
+            { year: 2018, mIdx: 7, maxT: 33, minT: 10, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 8, snowHeight: 0 },
+            { year: 2018, mIdx: 8, maxT: 33, minT: 2, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 12, uv: 6, snowHeight: 0 },
+            { year: 2018, mIdx: 9, maxT: 27, minT: 1, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 4, snowHeight: 0 },
+            { year: 2018, mIdx: 10, maxT: 19, minT: -14, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 11, uv: 1, snowHeight: 0 },
+            { year: 2018, mIdx: 11, maxT: 10, minT: -13, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 2, snowHeight: 1.0 },
+
+            // 2019
+            { year: 2019, mIdx: 0, maxT: 8, minT: -11, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 18, uv: 1, snowHeight: 0.5 },
+            { year: 2019, mIdx: 1, maxT: 16, minT: -8, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 27, windAvg: 4, gust: 17, uv: 2, snowHeight: 1.7 },
+            { year: 2019, mIdx: 2, maxT: 23, minT: -9, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 13, uv: 4, snowHeight: 0 },
+            { year: 2019, mIdx: 3, maxT: 26, minT: -4, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 4, gust: 12, uv: 5, snowHeight: 0 },
+            { year: 2019, mIdx: 4, maxT: 29, minT: 3, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 4, gust: 15, uv: 7, snowHeight: 0 },
+            { year: 2019, mIdx: 5, maxT: 34, minT: 10, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 14, uv: 8, snowHeight: 0 },
+            { year: 2019, mIdx: 6, maxT: 35, minT: 8, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 11, uv: 9, snowHeight: 0 },
+            { year: 2019, mIdx: 7, maxT: 36, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 8, snowHeight: 0 },
+            { year: 2019, mIdx: 8, maxT: 33, minT: 1, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 13, uv: 6, snowHeight: 0 },
+            { year: 2019, mIdx: 9, maxT: 26, minT: -3, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 4, snowHeight: 0 },
+            { year: 2019, mIdx: 10, maxT: 22, minT: -5, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 11, uv: 2, snowHeight: 0 },
+            { year: 2019, mIdx: 11, maxT: 14, minT: -6, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 12, uv: 1, snowHeight: 1.0 },
+
+            // 2020
+            { year: 2020, mIdx: 0, maxT: 10, minT: -10, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 18, uv: 2, snowHeight: 0.5 },
+            { year: 2020, mIdx: 1, maxT: 15, minT: -7, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 28, windAvg: 4, gust: 17, uv: 1, snowHeight: 1.7 },
+            { year: 2020, mIdx: 2, maxT: 21, minT: -8, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 12, uv: 3, snowHeight: 0 },
+            { year: 2020, mIdx: 3, maxT: 26, minT: -9, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 4, gust: 14, uv: 5, snowHeight: 0 },
+            { year: 2020, mIdx: 4, maxT: 30, minT: 0, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 6, snowHeight: 0 },
+            { year: 2020, mIdx: 5, maxT: 34, minT: 5, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 15, uv: 8, snowHeight: 0 },
+            { year: 2020, mIdx: 6, maxT: 36, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 9, snowHeight: 0 },
+            { year: 2020, mIdx: 7, maxT: 37, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 11, uv: 8, snowHeight: 0 },
+            { year: 2020, mIdx: 8, maxT: 36, minT: 4, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 12, uv: 5, snowHeight: 0 },
+            { year: 2020, mIdx: 9, maxT: 26, minT: 3, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 4, snowHeight: 0 },
+            { year: 2020, mIdx: 10, maxT: 13, minT: -5, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 12, uv: 2, snowHeight: 0 },
+            { year: 2020, mIdx: 11, maxT: 10, minT: -5, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 1, snowHeight: 1.0 }
+        ];
+
+        function createDefaultCityData(isTomashpol = false) {
+            let monthRows;
+            if (isTomashpol) {
+                monthRows = [
+                    [
+                        { dw: "Пн", date: "2 нояб", ic: "cloudy", maxT: 10, minT: 6 },
+                        { dw: "Вт", date: "3", ic: "cloudy-sun", maxT: 11, minT: 7 },
+                        { dw: "Ср", date: "4", ic: "cloudy", maxT: 12, minT: 9 },
+                        { dw: "Чт", date: "5", ic: "cloudy", maxT: 13, minT: 9 },
+                        { dw: "Пт", date: "6", ic: "cloudy-sun", maxT: 10, minT: 1 },
+                        { dw: "Сб", date: "7", ic: "c-rain-light", maxT: 5, minT: 1, isWknd: true },
+                        { dw: "Вс", date: "8", ic: "c-rain-light", maxT: 3, minT: 0, isWknd: true }
+                    ],
+                    [
+                        { dw: "Пн", date: "9", ic: "clear", maxT: 8, minT: 0 },
+                        { dw: "Вт", date: "10", ic: "c-rain-light", maxT: 6, minT: 1 },
+                        { dw: "Ср", date: "11", ic: "c-rain-light", maxT: 7, minT: 2 },
+                        { dw: "Чт", date: "12", ic: "c-rain-light", maxT: 5, minT: 2 },
+                        { dw: "Пт", date: "13", ic: "cloudy-sun", maxT: 4, minT: 4 },
+                        { dw: "Сб", date: "14", ic: "overcast", maxT: 8, minT: 6, isWknd: true },
+                        { dw: "Вс", date: "15", ic: "clear", maxT: 8, minT: 7, isWknd: true }
+                    ],
+                    [
+                        { dw: "Пн", date: "16", ic: "c-rain-light", maxT: 8, minT: 0 },
+                        { dw: "Вт", date: "17", ic: "c-rain-light", maxT: 3, minT: 1 },
+                        { dw: "Ср", date: "18", ic: "c-rain-light", maxT: 2, minT: 2 },
+                        { dw: "Чт", date: "19", ic: "cloudy-sun", maxT: 4, minT: 2 },
+                        { dw: "Пт", date: "20", ic: "overcast", maxT: 6, minT: 3 },
+                        { dw: "Сб", date: "21", ic: "clear", maxT: 7, minT: 3, isWknd: true },
+                        { dw: "Вс", date: "22", ic: "overcast", maxT: 5, minT: 5, isWknd: true }
+                    ],
+                    [
+                        { dw: "Пн", date: "23", ic: "clear", maxT: 3, minT: -1 },
+                        { dw: "Вт", date: "24", ic: "clear", maxT: 3, minT: 0 },
+                        { dw: "Ср", date: "25", ic: "cloudy-sun", maxT: 3, minT: -1 },
+                        { dw: "Чт", date: "26 нояб", ic: "snow", maxT: -1, minT: -5 },
+                        { dw: "Пт", date: "27", ic: "cloudy-sun", maxT: 3, minT: -1 },
+                        { dw: "Сб", date: "28", ic: "c-rain-light", maxT: 2, minT: -2, isWknd: true },
+                        { dw: "Вс", date: "29 нояб", ic: "c-rain-light", maxT: 2, minT: -1, isWknd: true }
+                    ]
+                ];
+            } else {
+                monthRows = [
+                    [
+                        { dw: "Ср", date: "4 нояб", ic: "cloudy", maxT: 12, minT: 9 },
+                        { dw: "Чт", date: "5", ic: "cloudy", maxT: 13, minT: 9 },
+                        { dw: "Пт", date: "6", ic: "cloudy-sun", maxT: 10, minT: 1 },
+                        { dw: "Сб", date: "7", ic: "c-rain-light", maxT: 5, minT: 1, isWknd: true },
+                        { dw: "Вс", date: "8", ic: "c-rain-light", maxT: 3, minT: 0, isWknd: true },
+                        { dw: "Пн", date: "9", ic: "clear", maxT: 8, minT: 0 },
+                        { dw: "Вт", date: "10", ic: "c-rain-light", maxT: 6, minT: 1 }
+                    ],
+                    [
+                        { dw: "Ср", date: "11", ic: "c-rain-light", maxT: 7, minT: 2 },
+                        { dw: "Чт", date: "12", ic: "c-rain-light", maxT: 5, minT: 2 },
+                        { dw: "Пт", date: "13", ic: "cloudy-sun", maxT: 4, minT: 4 },
+                        { dw: "Сб", date: "14", ic: "overcast", maxT: 8, minT: 6, isWknd: true },
+                        { dw: "Вс", date: "15", ic: "clear", maxT: 8, minT: 7, isWknd: true },
+                        { dw: "Пн", date: "16", ic: "c-rain-light", maxT: 8, minT: 0 },
+                        { dw: "Вт", date: "17", ic: "c-rain-light", maxT: 3, minT: 1 }
+                    ],
+                    [
+                        { dw: "Ср", date: "18", ic: "c-rain-light", maxT: 2, minT: 2 },
+                        { dw: "Чт", date: "19", ic: "cloudy-sun", maxT: 4, minT: 2 },
+                        { dw: "Пт", date: "20", ic: "overcast", maxT: 6, minT: 3 },
+                        { dw: "Сб", date: "21", ic: "clear", maxT: 7, minT: 3, isWknd: true },
+                        { dw: "Вс", date: "22", ic: "overcast", maxT: 5, minT: 5, isWknd: true },
+                        { dw: "Пн", date: "23", ic: "clear", maxT: 3, minT: -1 },
+                        { dw: "Вт", date: "24", ic: "clear", maxT: 3, minT: 0 }
+                    ],
+                    [
+                        { dw: "Ср", date: "25 нояб", ic: "cloudy-sun", maxT: 3, minT: -1 },
+                        { dw: "Чт", date: "26", ic: "cloudy-sun", maxT: 3, minT: -1 },
+                        { dw: "Пт", date: "27", ic: "cloudy-sun", maxT: 3, minT: -1 },
+                        { dw: "Сб", date: "28", ic: "c-rain-light", maxT: 2, minT: -2, isWknd: true },
+                        { dw: "Вс", date: "29", ic: "c-rain-light", maxT: 2, minT: -1, isWknd: true },
+                        { dw: "Пн", date: "30", ic: "cloudy", maxT: 2, minT: -2 },
+                        { dw: "Вт", date: "1 дек", ic: "clear", maxT: 1, minT: -3 }
+                    ]
+                ];
+            }
+
+            return {
+                "yesterday": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t - 2, minT: v.minT - 2})) },
+                "today": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i]})) },
+                "tomorrow": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t + 1, minT: v.minT + 1})) },
+                "now": { mode: "empty" },
+                "hourly": { mode: "empty" },
+                
+                "3days": {
+                    mode: "grouped",
+                    days: [
+                        {
+                            date: "Ср, 4 ноября", isWknd: false,
+                            parts: [
+                                { tNm:"Ночь", ic:"overcast", t:10, minT:9, wD:"W", gust:9, rain:0 },
+                                { tNm:"Утро", ic:"overcast", t:9, minT:8, wD:"W", gust:10, rain:0 },
+                                { tNm:"День", ic:"overcast", t:15, minT:10, wD:"W", gust:10, rain:0 },
+                                { tNm:"Вечер", ic:"o-rain-med", t:13, minT:12, wD:"W", gust:7, rain:0.5 }
+                            ]
+                        },
+                        {
+                            date: "Чт, 5 ноября", isWknd: false,
+                            parts: [
+                                { tNm:"Ночь", ic:"o-rain-med", t:15, minT:12, wD:"W", gust:6, rain:2.5 },
+                                { tNm:"Утро", ic:"o-rain-med", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
+                                { tNm:"День", ic:"o-rain-med", t:13, minT:10, wD:"W", gust:7, rain:3.5 },
+                                { tNm:"Вечер", ic:"c-rain-light", t:12, minT:11, wD:"SW", gust:6, rain:0.4 }
+                            ]
+                        },
+                        {
+                            date: "Пт, 6 ноября", isWknd: false,
+                            parts: [
+                                { tNm:"Ночь", ic:"overcast", t:8, minT:7, wD:"W", gust:6, rain:0 },
+                                { tNm:"Утро", ic:"overcast", t:8, minT:7, wD:"SW", gust:6, rain:0 },
+                                { tNm:"День", ic:"overcast", t:10, minT:8, wD:"W", gust:6, rain:0 },
+                                { tNm:"Вечер", ic:"overcast", t:9, minT:8, wD:"NW", gust:4, rain:0 }
+                            ]
+                        }
+                    ]
+                },
+                "weekend": {
+                    mode: "grouped",
+                    days: [
+                        {
+                            date: "Сб, 7 ноября", isWknd: true,
+                            parts: [
+                                { tNm:"Ночь", ic:"o-rain-med", t:15, minT:12, wD:"W", gust:6, rain:2.5 },
+                                { tNm:"Утро", ic:"o-rain-med", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
+                                { tNm:"День", ic:"o-rain-med", t:13, minT:10, wD:"W", gust:7, rain:3.5 },
+                                { tNm:"Вечер", ic:"c-rain-light", t:12, minT:11, wD:"SW", gust:6, rain:0.4 }
+                            ]
+                        },
+                        {
+                            date: "Вс, 8 ноября", isWknd: true,
+                            parts: [
+                                { tNm:"Ночь", ic:"overcast", t:8, minT:7, wD:"W", gust:6, rain:0 },
+                                { tNm:"Утро", ic:"overcast", t:8, minT:7, wD:"SW", gust:6, rain:0 },
+                                { tNm:"День", ic:"overcast", t:10, minT:8, wD:"W", gust:6, rain:0 },
+                                { tNm:"Вечер", ic:"overcast", t:9, minT:8, wD:"NW", gust:4, rain:0 }
+                            ]
+                        }
+                    ]
+                },
+                "2weeks": {
+                    mode: "tiles",
+                    singleRow: true,
+                    rows: [
+                        [
+                            { dw: "Ср", date: "4 нояб", ic: "c-rain-light", maxT: 15, minT: 9, windD: "S", gust: 5, rain: 0 },
+                            { dw: "Чт", date: "5", ic: "cloudy-sun", maxT: 16, minT: 8, windD: "S", gust: 7, rain: 0 },
+                            { dw: "Пт", date: "6", ic: "c-rain-light", maxT: 15, minT: 9, windD: "S", gust: 10, rain: 0 },
+                            { dw: "Сб", date: "7", ic: "cloudy-sun", maxT: 17, minT: 8, windD: "NW", gust: 9, rain: 0, isWknd: true },
+                            { dw: "Вс", date: "8", ic: "c-rain-light", maxT: 15, minT: 8, windD: "E", gust: 9, rain: 2.1, isWknd: true },
+                            { dw: "Пн", date: "9", ic: "o-rain-med", maxT: 14, minT: 11, windD: "S", gust: 8, rain: 0.9 },
+                            { dw: "Вт", date: "10", ic: "c-rain-light", maxT: 9, minT: 8, windD: "E", gust: 6, rain: 0 },
+                            { dw: "Ср", date: "11", ic: "cloudy", maxT: 12, minT: 9, windD: "S", gust: 7, rain: 0 },
+                            { dw: "Чт", date: "12", ic: "cloudy", maxT: 13, minT: 9, windD: "S", gust: 6, rain: 0.1 },
+                            { dw: "Пт", date: "13", ic: "cloudy-sun", maxT: 10, minT: 1, windD: "SE", gust: 6, rain: 0.1 },
+                            { dw: "Сб", date: "14", ic: "c-rain-light", maxT: 5, minT: 1, windD: "SE", gust: 8, rain: 5.2, isWknd: true },
+                            { dw: "Вс", date: "15", ic: "c-rain-light", maxT: 3, minT: 0, windD: "SE", gust: 8, rain: 19.6, isWknd: true },
+                            { dw: "Пн", date: "16", ic: "clear", maxT: 8, minT: 0, windD: "S", gust: 7, rain: 14.5 },
+                            { dw: "Вт", date: "17", ic: "c-rain-light", maxT: 6, minT: 1, windD: "NE", gust: 6, rain: 10.7 }
+                        ]
+                    ]
+                },
+                "month": {
+                    mode: "tiles",
+                    singleRow: false,
+                    rows: monthRows
+                },
+                "archive": { mode: "archive" },
+                "geomagnetic": {
+                    mode: "geomagnetic",
+                    days: [
+                        { date: "Ср, 4 нояб", values: [3, 2, 2, 3, 3, 4, 3, 3] },
+                        { date: "Чт, 5 нояб", values: [4, 3, 5, 4, 3, 3, 2, 3] },
+                        { date: "Пт, 6 нояб", values: [2, 2, 2, 3, 2, 2, 2, 2] }
+                    ]
+                }
+            };
         }
 
-        function toggleCommentsModal() {
-            document.getElementById('commentsModal').classList.toggle('active');
-            renderComments();
+        let allCitiesData = {
+            "Запорожье": createDefaultCityData(false),
+            "Приветное": createDefaultCityData(false),
+            "Днепр": createDefaultCityData(false),
+            "Томашполь": createDefaultCityData(true)
+        };
+function toggleSettingsModal() { document.getElementById('settingsModal').classList.toggle('active'); }
+        function toggleCommentsModal() { document.getElementById('commentsModal').classList.toggle('active'); renderComments(); }
+        
+        function toggleUpdatesModal() {
+            document.getElementById('updatesModal').classList.toggle('active');
+            renderUpdates();
+        }
+
+        function renderUpdates() {
+            const container = document.getElementById('updatesList');
+            const addBox = document.getElementById('addUpdateBox');
+            if(addBox) addBox.style.display = isDevModeActive ? 'block' : 'none';
+
+            if (updatesData.length === 0) {
+                container.innerHTML = `<div style="color:var(--text-muted); text-align:center; padding:20px;">Пока нет опубликованных обновлений.</div>`;
+                return;
+            }
+
+            container.innerHTML = updatesData.map(u => `
+                <div class="update-item">
+                    <div class="update-date">${u.date}</div>
+                    <div class="update-text">${u.text}</div>
+                </div>
+            `).join('');
+        }
+
+        function addUpdateItem() {
+            const txt = document.getElementById('newUpdateText').value.trim();
+            if (!txt) return alert('Введите текст обновления!');
+
+            const now = new Date();
+            const dateStr = `${now.getDate().toString().padStart(2,'0')}.${(now.getMonth()+1).toString().padStart(2,'0')}.${now.getFullYear()}`;
+
+            updatesData.unshift({ id: Date.now(), date: dateStr, text: txt });
+            localStorage.setItem('meteopro_updates', JSON.stringify(updatesData));
+            document.getElementById('newUpdateText').value = '';
+            renderUpdates();
         }
 
         function setStarRating(stars) {
@@ -941,7 +1401,7 @@ const weatherTranslations = {
         function convertTemp(tC) {
             if (tempUnit === 'F') return Math.round(tC * 1.8 + 32);
             if (tempUnit === 'K') return Math.round(tC + 273.15);
-            return tC;
+            return Math.round(tC);
         }
 
         function formatTemp(tC) {
@@ -1079,263 +1539,10 @@ const weatherTranslations = {
             return '#111111';
         }
 
-        const dayTimes = ["2:00", "5:00", "8:00", "11:00", "14:00", "17:00", "20:00", "23:00"];
-        const template8Items = [
-            { ic: "cloudy", t: 11, minT: 9, windD: "E", gust: 9, rain: 0 },
-            { ic: "cloudy", t: 9, minT: 8, windD: "E", gust: 9, rain: 0 },
-            { ic: "cloudy-sun", t: 9, minT: 8, windD: "E", gust: 10, rain: 0 },
-            { ic: "cloudy", t: 14, minT: 10, windD: "E", gust: 10, rain: 0 },
-            { ic: "cloudy", t: 15, minT: 11, windD: "E", gust: 10, rain: 0 },
-            { ic: "cloudy", t: 14, minT: 10, windD: "E", gust: 9, rain: 0 },
-            { ic: "c-rain-light", t: 14, minT: 11, windD: "E", gust: 7, rain: 0.2 },
-            { ic: "c-rain-light", t: 15, minT: 12, windD: "E", gust: 6, rain: 0.3 }
-        ];
-
-        // Архивные данные для Запорожья (2015-2020 гг.)
-        const archiveZaporozhyeData = [
-            // 2015
-            { year: 2015, mIdx: 0, maxT: 8, minT: -25, skyClear: 20, skyCloudy: 45, skyOvercast: 35, rain: 5, snow: 28, mix: 9, none: 58, windAvg: 4, gust: 13, uv: 1, snowHeight: 12.5 },
-            { year: 2015, mIdx: 1, maxT: 16, minT: -13, skyClear: 25, skyCloudy: 50, skyOvercast: 25, rain: 6, snow: 18, mix: 6, none: 70, windAvg: 4, gust: 12, uv: 2, snowHeight: 8.2 },
-            { year: 2015, mIdx: 2, maxT: 20, minT: -6, skyClear: 35, skyCloudy: 40, skyOvercast: 25, rain: 24, snow: 3, mix: 4, none: 69, windAvg: 4, gust: 14, uv: 3, snowHeight: 1.1 },
-            { year: 2015, mIdx: 3, maxT: 24, minT: -1, skyClear: 45, skyCloudy: 35, skyOvercast: 20, rain: 38, snow: 0, mix: 0, none: 62, windAvg: 4, gust: 13, uv: 5, snowHeight: 0 },
-            { year: 2015, mIdx: 4, maxT: 30, minT: 5, skyClear: 50, skyCloudy: 35, skyOvercast: 15, rain: 59, snow: 0, mix: 0, none: 41, windAvg: 3, gust: 11, uv: 7, snowHeight: 0 },
-            { year: 2015, mIdx: 5, maxT: 32, minT: 11, skyClear: 55, skyCloudy: 30, skyOvercast: 15, rain: 64, snow: 0, mix: 0, none: 36, windAvg: 3, gust: 10, uv: 8, snowHeight: 0 },
-            { year: 2015, mIdx: 6, maxT: 36, minT: 12, skyClear: 70, skyCloudy: 20, skyOvercast: 10, rain: 32, snow: 0, mix: 0, none: 68, windAvg: 3, gust: 10, uv: 9, snowHeight: 0 },
-            { year: 2015, mIdx: 7, maxT: 38, minT: 11, skyClear: 65, skyCloudy: 25, skyOvercast: 10, rain: 25, snow: 0, mix: 0, none: 75, windAvg: 3, gust: 11, uv: 8, snowHeight: 0 },
-            { year: 2015, mIdx: 8, maxT: 36, minT: 7, skyClear: 50, skyCloudy: 35, skyOvercast: 15, rain: 29, snow: 0, mix: 0, none: 71, windAvg: 3, gust: 11, uv: 6, snowHeight: 0 },
-            { year: 2015, mIdx: 9, maxT: 23, minT: -4, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 35, snow: 0, mix: 0, none: 65, windAvg: 4, gust: 12, uv: 4, snowHeight: 0 },
-            { year: 2015, mIdx: 10, maxT: 16, minT: -8, skyClear: 30, skyCloudy: 40, skyOvercast: 30, rain: 32, snow: 4, mix: 4, none: 60, windAvg: 4, gust: 13, uv: 2, snowHeight: 0.5 },
-            { year: 2015, mIdx: 11, maxT: 3, minT: -15, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 9, snow: 31, mix: 5, none: 55, windAvg: 4, gust: 14, uv: 1, snowHeight: 4.4 },
-            
-            // 2016
-            { year: 2016, mIdx: 0, maxT: 8, minT: -21, skyClear: 15, skyCloudy: 45, skyOvercast: 40, rain: 5, snow: 41, mix: 5, none: 49, windAvg: 4, gust: 15, uv: 1, snowHeight: 14.2 },
-            { year: 2016, mIdx: 1, maxT: 16, minT: -8, skyClear: 25, skyCloudy: 45, skyOvercast: 30, rain: 13, snow: 10, mix: 10, none: 67, windAvg: 4, gust: 13, uv: 2, snowHeight: 3.5 },
-            { year: 2016, mIdx: 2, maxT: 21, minT: -6, skyClear: 30, skyCloudy: 45, skyOvercast: 25, rain: 32, snow: 0, mix: 4, none: 64, windAvg: 4, gust: 14, uv: 3, snowHeight: 0 },
-            { year: 2016, mIdx: 3, maxT: 27, minT: 1, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 41, snow: 0, mix: 0, none: 59, windAvg: 4, gust: 13, uv: 5, snowHeight: 0 },
-            { year: 2016, mIdx: 4, maxT: 29, minT: 5, skyClear: 45, skyCloudy: 35, skyOvercast: 20, rain: 74, snow: 0, mix: 0, none: 26, windAvg: 3, gust: 12, uv: 7, snowHeight: 0 },
-            { year: 2016, mIdx: 5, maxT: 35, minT: 12, skyClear: 55, skyCloudy: 30, skyOvercast: 15, rain: 68, snow: 0, mix: 0, none: 32, windAvg: 3, gust: 11, uv: 8, snowHeight: 0 },
-            { year: 2016, mIdx: 6, maxT: 37, minT: 13, skyClear: 65, skyCloudy: 25, skyOvercast: 10, rain: 35, snow: 0, mix: 0, none: 65, windAvg: 3, gust: 11, uv: 9, snowHeight: 0 },
-            { year: 2016, mIdx: 7, maxT: 37, minT: 11, skyClear: 70, skyCloudy: 20, skyOvercast: 10, rain: 22, snow: 0, mix: 0, none: 78, windAvg: 3, gust: 10, uv: 8, snowHeight: 0 },
-            { year: 2016, mIdx: 8, maxT: 33, minT: 5, skyClear: 50, skyCloudy: 35, skyOvercast: 15, rain: 30, snow: 0, mix: 0, none: 70, windAvg: 3, gust: 11, uv: 6, snowHeight: 0 },
-            { year: 2016, mIdx: 9, maxT: 25, minT: -2, skyClear: 35, skyCloudy: 40, skyOvercast: 25, rain: 39, snow: 0, mix: 0, none: 61, windAvg: 4, gust: 13, uv: 3, snowHeight: 0 },
-            { year: 2016, mIdx: 10, maxT: 15, minT: -8, skyClear: 25, skyCloudy: 45, skyOvercast: 30, rain: 34, snow: 4, mix: 4, none: 58, windAvg: 4, gust: 14, uv: 2, snowHeight: 1.0 },
-            { year: 2016, mIdx: 11, maxT: 1, minT: -15, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 5, snow: 38, mix: 5, none: 52, windAvg: 4, gust: 15, uv: 1, snowHeight: 6.8 },
-
-            // 2017
-            { year: 2017, mIdx: 0, maxT: 7, minT: -17, skyClear: 18, skyCloudy: 42, skyOvercast: 40, rain: 4, snow: 45, mix: 6, none: 45, windAvg: 4, gust: 15, uv: 1, snowHeight: 16.0 },
-            { year: 2017, mIdx: 1, maxT: 8, minT: -16, skyClear: 22, skyCloudy: 48, skyOvercast: 30, rain: 8, snow: 22, mix: 8, none: 62, windAvg: 4, gust: 14, uv: 2, snowHeight: 9.5 },
-            { year: 2017, mIdx: 2, maxT: 19, minT: -5, skyClear: 38, skyCloudy: 42, skyOvercast: 20, rain: 28, snow: 1, mix: 3, none: 68, windAvg: 4, gust: 13, uv: 3, snowHeight: 0.0 },
-            { year: 2017, mIdx: 3, maxT: 25, minT: -2, skyClear: 42, skyCloudy: 38, skyOvercast: 20, rain: 45, snow: 2, mix: 2, none: 51, windAvg: 4, gust: 14, uv: 5, snowHeight: 0.0 },
-            { year: 2017, mIdx: 4, maxT: 29, minT: 1, skyClear: 52, skyCloudy: 33, skyOvercast: 15, rain: 42, snow: 0, mix: 0, none: 58, windAvg: 3, gust: 11, uv: 7, snowHeight: 0.0 },
-            { year: 2017, mIdx: 5, maxT: 34, minT: 9, skyClear: 60, skyCloudy: 28, skyOvercast: 12, rain: 38, snow: 0, mix: 0, none: 62, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
-            { year: 2017, mIdx: 6, maxT: 37, minT: 10, skyClear: 68, skyCloudy: 22, skyOvercast: 10, rain: 29, snow: 0, mix: 0, none: 71, windAvg: 3, gust: 11, uv: 9, snowHeight: 0.0 },
-            { year: 2017, mIdx: 7, maxT: 38, minT: 11, skyClear: 75, skyCloudy: 18, skyOvercast: 7, rain: 18, snow: 0, mix: 0, none: 82, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
-            { year: 2017, mIdx: 8, maxT: 34, minT: 6, skyClear: 65, skyCloudy: 25, skyOvercast: 10, rain: 21, snow: 0, mix: 0, none: 79, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
-            { year: 2017, mIdx: 9, maxT: 23, minT: -2, skyClear: 45, skyCloudy: 38, skyOvercast: 17, rain: 31, snow: 0, mix: 0, none: 69, windAvg: 4, gust: 12, uv: 4, snowHeight: 0.0 },
-            { year: 2017, mIdx: 10, maxT: 15, minT: -5, skyClear: 28, skyCloudy: 42, skyOvercast: 30, rain: 36, snow: 2, mix: 3, none: 59, windAvg: 4, gust: 13, uv: 2, snowHeight: 0.0 },
-            { year: 2017, mIdx: 11, maxT: 4, minT: -5, skyClear: 21, skyCloudy: 44, skyOvercast: 35, rain: 15, snow: 18, mix: 7, none: 60, windAvg: 4, gust: 14, uv: 1, snowHeight: 2.1 },
-
-            // 2018
-            { year: 2018, mIdx: 0, maxT: 8, minT: -15, skyClear: 20, skyCloudy: 45, skyOvercast: 35, rain: 12, snow: 25, mix: 8, none: 55, windAvg: 4, gust: 14, uv: 1, snowHeight: 5.5 },
-            { year: 2018, mIdx: 1, maxT: 8, minT: -15, skyClear: 18, skyCloudy: 44, skyOvercast: 38, rain: 6, snow: 35, mix: 9, none: 50, windAvg: 5, gust: 16, uv: 2, snowHeight: 11.2 },
-            { year: 2018, mIdx: 2, maxT: 15, minT: -14, skyClear: 28, skyCloudy: 45, skyOvercast: 27, rain: 20, snow: 18, mix: 8, none: 54, windAvg: 4, gust: 15, uv: 3, snowHeight: 4.0 },
-            { year: 2018, mIdx: 3, maxT: 28, minT: 1, skyClear: 55, skyCloudy: 32, skyOvercast: 13, rain: 22, snow: 0, mix: 0, none: 78, windAvg: 3, gust: 12, uv: 6, snowHeight: 0.0 },
-            { year: 2018, mIdx: 4, maxT: 31, minT: 7, skyClear: 62, skyCloudy: 28, skyOvercast: 10, rain: 26, snow: 0, mix: 0, none: 74, windAvg: 3, gust: 11, uv: 8, snowHeight: 0.0 },
-            { year: 2018, mIdx: 5, maxT: 34, minT: 10, skyClear: 68, skyCloudy: 22, skyOvercast: 10, rain: 45, snow: 0, mix: 0, none: 55, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
-            { year: 2018, mIdx: 6, maxT: 35, minT: 15, skyClear: 64, skyCloudy: 26, skyOvercast: 10, rain: 52, snow: 0, mix: 0, none: 48, windAvg: 3, gust: 11, uv: 9, snowHeight: 0.0 },
-            { year: 2018, mIdx: 7, maxT: 36, minT: 11, skyClear: 72, skyCloudy: 20, skyOvercast: 8, rain: 19, snow: 0, mix: 0, none: 81, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
-            { year: 2018, mIdx: 8, maxT: 32, minT: 4, skyClear: 60, skyCloudy: 28, skyOvercast: 12, rain: 18, snow: 0, mix: 0, none: 82, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
-            { year: 2018, mIdx: 9, maxT: 23, minT: -1, skyClear: 52, skyCloudy: 35, skyOvercast: 13, rain: 24, snow: 0, mix: 0, none: 76, windAvg: 3, gust: 12, uv: 4, snowHeight: 0.0 },
-            { year: 2018, mIdx: 10, maxT: 15, minT: -10, skyClear: 22, skyCloudy: 43, skyOvercast: 35, rain: 22, snow: 15, mix: 8, none: 55, windAvg: 4, gust: 14, uv: 2, snowHeight: 2.8 },
-            { year: 2018, mIdx: 11, maxT: 1, minT: -11, skyClear: 16, skyCloudy: 42, skyOvercast: 42, rain: 10, snow: 32, mix: 8, none: 50, windAvg: 4, gust: 15, uv: 1, snowHeight: 8.4 },
-
-            // 2019
-            { year: 2019, mIdx: 0, maxT: 7, minT: -12, skyClear: 19, skyCloudy: 43, skyOvercast: 38, rain: 14, snow: 30, mix: 9, none: 47, windAvg: 4, gust: 14, uv: 1, snowHeight: 7.0 },
-            { year: 2019, mIdx: 1, maxT: 9, minT: -8, skyClear: 28, skyCloudy: 46, skyOvercast: 26, rain: 18, snow: 12, mix: 6, none: 64, windAvg: 4, gust: 13, uv: 2, snowHeight: 3.2 },
-            { year: 2019, mIdx: 2, maxT: 19, minT: -5, skyClear: 36, skyCloudy: 42, skyOvercast: 22, rain: 25, snow: 2, mix: 3, none: 70, windAvg: 4, gust: 14, uv: 3, snowHeight: 0.0 },
-            { year: 2019, mIdx: 3, maxT: 25, minT: 0, skyClear: 48, skyCloudy: 36, skyOvercast: 16, rain: 31, snow: 0, mix: 0, none: 69, windAvg: 3, gust: 12, uv: 5, snowHeight: 0.0 },
-            { year: 2019, mIdx: 4, maxT: 30, minT: 7, skyClear: 54, skyCloudy: 33, skyOvercast: 13, rain: 48, snow: 0, mix: 0, none: 52, windAvg: 3, gust: 11, uv: 7, snowHeight: 0.0 },
-            { year: 2019, mIdx: 5, maxT: 35, minT: 14, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 35, snow: 0, mix: 0, none: 65, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
-            { year: 2019, mIdx: 6, maxT: 36, minT: 10, skyClear: 66, skyCloudy: 24, skyOvercast: 10, rain: 41, snow: 0, mix: 0, none: 59, windAvg: 3, gust: 11, uv: 8, snowHeight: 0.0 },
-            { year: 2019, mIdx: 7, maxT: 35, minT: 10, skyClear: 73, skyCloudy: 20, skyOvercast: 7, rain: 15, snow: 0, mix: 0, none: 85, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
-            { year: 2019, mIdx: 8, maxT: 32, minT: 4, skyClear: 62, skyCloudy: 27, skyOvercast: 11, rain: 19, snow: 0, mix: 0, none: 81, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
-            { year: 2019, mIdx: 9, maxT: 23, minT: -4, skyClear: 50, skyCloudy: 36, skyOvercast: 14, rain: 22, snow: 0, mix: 0, none: 78, windAvg: 3, gust: 11, uv: 4, snowHeight: 0.0 },
-            { year: 2019, mIdx: 10, maxT: 18, minT: -10, skyClear: 32, skyCloudy: 42, skyOvercast: 26, rain: 28, snow: 1, mix: 2, none: 69, windAvg: 4, gust: 13, uv: 2, snowHeight: 0.0 },
-            { year: 2019, mIdx: 11, maxT: 6, minT: -6, skyClear: 24, skyCloudy: 45, skyOvercast: 31, rain: 20, snow: 8, mix: 5, none: 67, windAvg: 4, gust: 13, uv: 1, snowHeight: 0.5 },
-
-            // 2020
-            { year: 2020, mIdx: 0, maxT: 6, minT: -8, skyClear: 22, skyCloudy: 46, skyOvercast: 32, rain: 18, snow: 10, mix: 6, none: 66, windAvg: 4, gust: 13, uv: 1, snowHeight: 1.2 },
-            { year: 2020, mIdx: 1, maxT: 12, minT: -11, skyClear: 26, skyCloudy: 48, skyOvercast: 26, rain: 22, snow: 8, mix: 5, none: 65, windAvg: 4, gust: 14, uv: 2, snowHeight: 0.8 },
-            { year: 2020, mIdx: 2, maxT: 20, minT: -6, skyClear: 42, skyCloudy: 40, skyOvercast: 18, rain: 21, snow: 0, mix: 1, none: 78, windAvg: 4, gust: 13, uv: 3, snowHeight: 0.0 },
-            { year: 2020, mIdx: 3, maxT: 22, minT: -3, skyClear: 52, skyCloudy: 34, skyOvercast: 14, rain: 26, snow: 0, mix: 0, none: 74, windAvg: 3, gust: 12, uv: 5, snowHeight: 0.0 },
-            { year: 2020, mIdx: 4, maxT: 28, minT: 2, skyClear: 48, skyCloudy: 36, skyOvercast: 16, rain: 55, snow: 0, mix: 0, none: 45, windAvg: 3, gust: 11, uv: 7, snowHeight: 0.0 },
-            { year: 2020, mIdx: 5, maxT: 34, minT: 10, skyClear: 58, skyCloudy: 28, skyOvercast: 14, rain: 62, snow: 0, mix: 0, none: 38, windAvg: 3, gust: 10, uv: 8, snowHeight: 0.0 },
-            { year: 2020, mIdx: 6, maxT: 37, minT: 12, skyClear: 72, skyCloudy: 20, skyOvercast: 8, rain: 24, snow: 0, mix: 0, none: 76, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
-            { year: 2020, mIdx: 7, maxT: 38, minT: 11, skyClear: 76, skyCloudy: 18, skyOvercast: 6, rain: 14, snow: 0, mix: 0, none: 86, windAvg: 3, gust: 10, uv: 9, snowHeight: 0.0 },
-            { year: 2020, mIdx: 8, maxT: 35, minT: 6, skyClear: 68, skyCloudy: 24, skyOvercast: 8, rain: 12, snow: 0, mix: 0, none: 88, windAvg: 3, gust: 11, uv: 6, snowHeight: 0.0 },
-            { year: 2020, mIdx: 9, maxT: 24, minT: 4, skyClear: 58, skyCloudy: 30, skyOvercast: 12, rain: 28, snow: 0, mix: 0, none: 72, windAvg: 3, gust: 11, uv: 4, snowHeight: 0.0 },
-            { year: 2020, mIdx: 10, maxT: 14, minT: -5, skyClear: 28, skyCloudy: 44, skyOvercast: 28, rain: 26, snow: 0, mix: 2, none: 72, windAvg: 4, gust: 12, uv: 2, snowHeight: 0.0 },
-            { year: 2020, mIdx: 11, maxT: 2, minT: -10, skyClear: 18, skyCloudy: 44, skyOvercast: 38, rain: 15, snow: 22, mix: 8, none: 55, windAvg: 4, gust: 14, uv: 1, snowHeight: 3.5 }
-        ];
-
-        function createDefaultCityData() {
-            return {
-                "yesterday": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t - 2, minT: v.minT - 2})) },
-                "today": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i]})) },
-                "tomorrow": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t + 1, minT: v.minT + 1})) },
-                "now": { mode: "empty" },
-                "hourly": { mode: "empty" },
-                
-                "3days": {
-                    mode: "grouped",
-                    days: [
-                        {
-                            date: "Пт, 30 октября", isWknd: false,
-                            parts: [
-                                { tNm:"Ночь", ic:"overcast", t:10, minT:9, wD:"W", gust:9, rain:0 },
-                                { tNm:"Утро", ic:"overcast", t:9, minT:8, wD:"W", gust:10, rain:0 },
-                                { tNm:"День", ic:"overcast", t:15, minT:10, wD:"W", gust:10, rain:0 },
-                                { tNm:"Вечер", ic:"o-rain-med", t:13, minT:12, wD:"W", gust:7, rain:0.5 }
-                            ]
-                        },
-                        {
-                            date: "Сб, 31 октября", isWknd: true,
-                            parts: [
-                                { tNm:"Ночь", ic:"o-rain-med", t:15, minT:12, wD:"W", gust:6, rain:2.5 },
-                                { tNm:"Утро", ic:"o-rain-med", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
-                                { tNm:"День", ic:"o-rain-med", t:13, minT:10, wD:"W", gust:7, rain:3.5 },
-                                { tNm:"Вечер", ic:"c-rain-light", t:12, minT:11, wD:"SW", gust:6, rain:0.4 }
-                            ]
-                        },
-                        {
-                            date: "Вс, 1 ноября", isWknd: true,
-                            parts: [
-                                { tNm:"Ночь", ic:"overcast", t:8, minT:7, wD:"W", gust:6, rain:0 },
-                                { tNm:"Утро", ic:"overcast", t:8, minT:7, wD:"SW", gust:6, rain:0 },
-                                { tNm:"День", ic:"overcast", t:10, minT:8, wD:"W", gust:6, rain:0 },
-                                { tNm:"Вечер", ic:"overcast", t:9, minT:8, wD:"NW", gust:4, rain:0 }
-                            ]
-                        }
-                    ]
-                },
-                "weekend": {
-                    mode: "grouped",
-                    days: [
-                        {
-                            date: "Сб, 31 октября", isWknd: true,
-                            parts: [
-                                { tNm:"Ночь", ic:"o-rain-med", t:15, minT:12, wD:"W", gust:6, rain:2.5 },
-                                { tNm:"Утро", ic:"o-rain-med", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
-                                { tNm:"День", ic:"o-rain-med", t:13, minT:10, wD:"W", gust:7, rain:3.5 },
-                                { tNm:"Вечер", ic:"c-rain-light", t:12, minT:11, wD:"SW", gust:6, rain:0.4 }
-                            ]
-                        },
-                        {
-                            date: "Вс, 1 ноября", isWknd: true,
-                            parts: [
-                                { tNm:"Ночь", ic:"overcast", t:8, minT:7, wD:"W", gust:6, rain:0 },
-                                { tNm:"Утро", ic:"overcast", t:8, minT:7, wD:"SW", gust:6, rain:0 },
-                                { tNm:"День", ic:"overcast", t:10, minT:8, wD:"W", gust:6, rain:0 },
-                                { tNm:"Вечер", ic:"overcast", t:9, minT:8, wD:"NW", gust:4, rain:0 }
-                            ]
-                        }
-                    ]
-                },
-                "2weeks": {
-                    mode: "tiles",
-                    singleRow: true,
-                    rows: [
-                        [
-                            { dw: "Пн", date: "26 окт", ic: "c-rain-light", maxT: 15, minT: 9, windD: "S", gust: 5, rain: 0 },
-                            { dw: "Вт", date: "27", ic: "cloudy-sun", maxT: 16, minT: 8, windD: "S", gust: 7, rain: 0 },
-                            { dw: "Ср", date: "28", ic: "c-rain-light", maxT: 15, minT: 9, windD: "S", gust: 10, rain: 0 },
-                            { dw: "Чт", date: "29", ic: "cloudy-sun", maxT: 17, minT: 8, windD: "NW", gust: 9, rain: 0 },
-                            { dw: "Пт", date: "30", ic: "c-rain-light", maxT: 15, minT: 8, windD: "E", gust: 9, rain: 2.1 },
-                            { dw: "Сб", date: "31", ic: "o-rain-med", maxT: 14, minT: 11, windD: "S", gust: 8, rain: 0.9, isWknd: true },
-                            { dw: "Вс", date: "1 нояб", ic: "c-rain-light", maxT: 9, minT: 8, windD: "E", gust: 6, rain: 0, isWknd: true },
-                            { dw: "Пн", date: "2 нояб", ic: "cloudy", maxT: 12, minT: 9, windD: "S", gust: 7, rain: 0 },
-                            { dw: "Вт", date: "3", ic: "cloudy", maxT: 13, minT: 9, windD: "S", gust: 6, rain: 0.1 },
-                            { dw: "Ср", date: "4", ic: "cloudy-sun", maxT: 10, minT: 1, windD: "SE", gust: 6, rain: 0.1 },
-                            { dw: "Чт", date: "5", ic: "c-rain-light", maxT: 5, minT: 1, windD: "SE", gust: 8, rain: 5.2 },
-                            { dw: "Пт", date: "6", ic: "c-rain-light", maxT: 3, minT: 0, windD: "SE", gust: 8, rain: 19.6 },
-                            { dw: "Сб", date: "7", ic: "clear", maxT: 8, minT: 0, windD: "S", gust: 7, rain: 14.5, isWknd: true },
-                            { dw: "Вс", date: "8", ic: "c-rain-light", maxT: 6, minT: 1, windD: "NE", gust: 6, rain: 10.7, isWknd: true }
-                        ]
-                    ]
-                },
-                "month": {
-                    mode: "tiles",
-                    singleRow: false,
-                    rows: [
-                        [
-                            { dw: "Пн", date: "2 нояб", ic: "cloudy", maxT: 12, minT: 9 },
-                            { dw: "Вт", date: "3", ic: "cloudy", maxT: 13, minT: 9 },
-                            { dw: "Ср", date: "4", ic: "cloudy-sun", maxT: 10, minT: 1 },
-                            { dw: "Чт", date: "5", ic: "c-rain-light", maxT: 5, minT: 1 },
-                            { dw: "Пт", date: "6", ic: "c-rain-light", maxT: 3, minT: 0 },
-                            { dw: "Сб", date: "7", ic: "clear", maxT: 8, minT: 0, isWknd: true },
-                            { dw: "Вс", date: "8", ic: "c-rain-light", maxT: 6, minT: 1, isWknd: true }
-                        ],
-                        [
-                            { dw: "Пн", date: "9", ic: "c-rain-light", maxT: 7, minT: 2 },
-                            { dw: "Вт", date: "10", ic: "c-rain-light", maxT: 5, minT: 2 },
-                            { dw: "Ср", date: "11", ic: "cloudy-sun", maxT: 4, minT: 4 },
-                            { dw: "Чт", date: "12", ic: "overcast", maxT: 8, minT: 6 },
-                            { dw: "Пт", date: "13", ic: "clear", maxT: 8, minT: 7 },
-                            { dw: "Сб", date: "14", ic: "c-rain-light", maxT: 8, minT: 0, isWknd: true },
-                            { dw: "Вс", date: "15", ic: "c-rain-light", maxT: 3, minT: 1, isWknd: true }
-                        ],
-                        [
-                            { dw: "Пн", date: "16", ic: "c-rain-light", maxT: 2, minT: 2 },
-                            { dw: "Вт", date: "17", ic: "cloudy-sun", maxT: 4, minT: 2 },
-                            { dw: "Ср", date: "18", ic: "overcast", maxT: 6, minT: 3 },
-                            { dw: "Чт", date: "19", ic: "clear", maxT: 7, minT: 3 },
-                            { dw: "Пт", date: "20", ic: "overcast", maxT: 5, minT: 5 },
-                            { dw: "Сб", date: "21", ic: "overcast", maxT: 5, minT: 5, isWknd: true },
-                            { dw: "Вс", date: "22", ic: "overcast", maxT: 3, minT: 1, isWknd: true }
-                        ],
-                        [
-                            { dw: "Пн", date: "23 нояб", ic: "overcast", maxT: 5, minT: 0 },
-                            { dw: "Вт", date: "24", ic: "cloudy-sun", maxT: 4, minT: -1 },
-                            { dw: "Ср", date: "25", ic: "cloudy", maxT: 6, minT: 1 },
-                            { dw: "Чт", date: "26", ic: "c-rain-light", maxT: 7, minT: 2 },
-                            { dw: "Пт", date: "27", ic: "snow", maxT: 3, minT: 0 },
-                            { dw: "Сб", date: "28", ic: "cloudy", maxT: 2, minT: -2, isWknd: true },
-                            { dw: "Вс", date: "29", ic: "clear", maxT: 1, minT: -3, isWknd: true }
-                        ]
-                    ] 
-                },
-                "archive": {
-                    mode: "archive"
-                },
-                "geomagnetic": {
-                    mode: "geomagnetic",
-                    days: [
-                        { date: "Сб, 31 окт", values: [4, 3, 3, 3, 3, 3, 3, 4] },
-                        { date: "Вс, 1 нояб", values: [5, 4, 5, 3, 3, 2, 3, 4] },
-                        { date: "Пн, 2 нояб", values: [3, 3, 2, 2, 2, 2, 2, 2] }
-                    ]
-                }
-            };
-        }
-
-        let allCitiesData = {
-            "Запорожье": createDefaultCityData(),
-            "Приветное": createDefaultCityData(),
-            "Днепр": createDefaultCityData(),
-            "Томашполь": createDefaultCityData()
-        };
-
         function handleSearch() {
             const val = document.getElementById('searchInput').value.trim().toLowerCase();
             const drop = document.getElementById('searchDropdown');
-            
-            if (val.length === 0) {
-                drop.innerHTML = '';
-                drop.classList.remove('active');
-                return;
-            }
-
+            if (val.length === 0) { drop.innerHTML = ''; drop.classList.remove('active'); return; }
             const filtered = searchLocations.filter(loc => {
                 const words = loc.toLowerCase().split(/[\s,]+/);
                 return words.some(w => w.startsWith(val));
@@ -1344,16 +1551,13 @@ const weatherTranslations = {
             if (filtered.length > 0) {
                 drop.innerHTML = filtered.map(l => `<div class="search-item" onclick="selectLocation('${l}')">${l}</div>`).join('');
                 drop.classList.add('active');
-            } else {
-                drop.innerHTML = '';
-                drop.classList.remove('active');
-            }
+            } else { drop.innerHTML = ''; drop.classList.remove('active'); }
         }
 
         function selectLocation(loc) {
             currentCityKey = loc.split(',')[0].trim(); 
             if (!allCitiesData[currentCityKey]) {
-                allCitiesData[currentCityKey] = createDefaultCityData();
+                allCitiesData[currentCityKey] = createDefaultCityData(currentCityKey === "Томашполь");
             }
             if (!informerDataByCity[currentCityKey]) {
                 informerDataByCity[currentCityKey] = { temp: 10, feels: 5, sky: "overcast", key: "overcast" };
@@ -1409,14 +1613,21 @@ function renderAllDOM() {
             let devCls = isDevModeActive ? 'dev-active' : '';
 
             if (data.mode === "archive") {
-                if (currentCityKey !== "Запорожье") {
+                let currentArchiveDataset = null;
+                if (currentCityKey === "Запорожье") {
+                    currentArchiveDataset = archiveZaporozhyeData;
+                } else if (currentCityKey === "Томашполь") {
+                    currentArchiveDataset = archiveTomashpolData;
+                }
+
+                if (!currentArchiveDataset) {
                     wrap.innerHTML = `<div class="empty-state">${lang.archiveNotAvailable}</div>`;
                     updateInformer();
                     return;
                 }
 
                 let monthsNames = lang.monthsShort || i18n['ru'].monthsShort;
-                let html = `<div class="archive-scroll-container"><div class="archive-grid ${devCls}" id="archiveGridContainer" style="grid-template-columns: repeat(${archiveZaporozhyeData.length}, minmax(65px, 1fr));">`;
+                let html = `<div class="archive-scroll-container"><div class="archive-grid ${devCls}" id="archiveGridContainer" style="grid-template-columns: repeat(${currentArchiveDataset.length}, minmax(65px, 1fr));">`;
 
                 html += `<div class="archive-year-row" style="align-items:center; justify-space-around; padding: 4px 10px;">
                     <div class="archive-year-cell">2015</div>
@@ -1427,7 +1638,7 @@ function renderAllDOM() {
                     <div class="archive-year-cell">2020</div>
                 </div>`;
 
-                archiveZaporozhyeData.forEach(item => {
+                currentArchiveDataset.forEach(item => {
                     html += `<div class="archive-cell"><div class="archive-month-title">${monthsNames[item.mIdx]}</div></div>`;
                 });
 
@@ -1435,7 +1646,7 @@ function renderAllDOM() {
                 html += `<div class="archive-graph-row"><canvas id="archiveCanvas"></canvas><div class="archive-labels-container" id="archiveLabelsContainer"></div></div>`;
 
                 html += `<div class="single-header-row"><span class="info-icon">i</span> <span style="background:#00a8ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">Ясные</span> <span style="background:#74b9ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">облачные</span> <span style="background:#a4b0be; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">пасмурные дни</span></div>`;
-                archiveZaporozhyeData.forEach((item, i) => {
+                currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'skyClear',5)">▲</button><button onclick="modArchiveData(${i},'skyClear',-5)">▼</button></div>`;
                     html += `<div class="archive-cell">
                         <div class="archive-bar-pills">
@@ -1449,43 +1660,27 @@ function renderAllDOM() {
                     </div>`;
                 });
 
-                html += `<div class="single-header-row"><span class="info-icon">i</span> <span style="background:#00a8ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">Дождь</span> <span style="background:#a29bfe; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">снег</span> <span style="background:#74b9ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">смешанные осадки</span> <span style="background:#dfe6e9; color:#2d3436; padding:2px 6px; border-radius:4px; font-size:11px;">без осадков</span></div>`;
-                archiveZaporozhyeData.forEach((item, i) => {
-                    let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'rain',2)">▲</button><button onclick="modArchiveData(${i},'rain',-2)">▼</button></div>`;
-                    html += `<div class="archive-cell">
-                        <div class="archive-bar-pills">
-                            <div class="pill-stacked-precip" style="height:100%;">
-                                <div style="height:${item.rain}%; background:#00a8ff;"></div>
-                                <div style="height:${item.snow}%; background:#a29bfe;"></div>
-                                <div style="height:${item.mix}%; background:#74b9ff;"></div>
-                                <div style="height:${item.none}%; background:#dfe6e9;"></div>
-                            </div>
-                        </div>
-                        ${devCtrls}
-                    </div>`;
-                });
-
                 html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.windSpeedAvg.replace('{unit}', getWindUnitLabel())}</div>`;
-                archiveZaporozhyeData.forEach((item, i) => {
+                currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'windAvg',1)">▲</button><button onclick="modArchiveData(${i},'windAvg',-1)">▼</button></div>`;
                     html += `<div class="archive-cell"><div class="gust-val-wrap"><div class="gust-bg grayish"><div class="gust-val">${convertWind(item.windAvg)}</div></div></div>${devCtrls}</div>`;
                 });
 
                 html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.windGust.replace('{unit}', getWindUnitLabel())}</div>`;
-                archiveZaporozhyeData.forEach((item, i) => {
+                currentArchiveDataset.forEach((item, i) => {
                     let bgClass = (item.gust < 8) ? "grayish" : "";
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'gust',1)">▲</button><button onclick="modArchiveData(${i},'gust',-1)">▼</button></div>`;
                     html += `<div class="archive-cell"><div class="gust-val-wrap"><div class="gust-bg ${bgClass}"><div class="gust-val">${convertWind(item.gust)}</div></div></div>${devCtrls}</div>`;
                 });
 
                 html += `<div class="single-header-row"><span class="info-icon">i</span> УФ-индекс, баллы</div>`;
-                archiveZaporozhyeData.forEach((item, i) => {
+                currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'uv',1)">▲</button><button onclick="modArchiveData(${i},'uv',-1)">▼</button></div>`;
                     html += `<div class="archive-cell"><div class="uv-badge uv-${item.uv}">${item.uv}</div>${devCtrls}</div>`;
                 });
 
-                html += `<div class="single-header-row"><span class="info-icon">i</span> Высота снежного покрова, см</div>`;
-                archiveZaporozhyeData.forEach((item, i) => {
+                html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.snowAndPrecipLabel}</div>`;
+                currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'snowHeight',0.5)">▲</button><button onclick="modArchiveData(${i},'snowHeight',-0.5)">▼</button></div>`;
                     let valStr = item.snowHeight === 0 ? "0" : (item.snowHeight < 1 ? "<1" : item.snowHeight);
                     let h = Math.min(item.snowHeight * 3, 30);
@@ -1524,7 +1719,7 @@ function renderAllDOM() {
                 html += `<div class="single-header-row">${lang.tempAir}</div>`;
                 html += `<div class="cell-graph-single"><canvas id="tempCanvasSingle"></canvas><div class="temp-labels-container" id="tempLabelsContainer"></div></div>`;
                 
-                html += `<div class="single-header-row" style="margin-top: 5px;">${lang.windDir}</div>`;
+                html += `<div class="single-header-row">${lang.windDir}</div>`;
                 data.items.forEach((it, i) => {
                     let windMenuHtml = `<div class="icon-select-dropdown wind-dropdown" id="dd-single-wind-${i}"><div id="wind-list-s-${i}">${windKeys.map(k => `<div class="icon-select-item wind-menu-item" onclick="modSingleWind(${i}, '${k}')"><div class="wind-item-icon">${wDir[k]}</div><span>${wTxt[k]}</span></div>`).join('')}</div></div>`;
                     html += `<div class="single-cell">
@@ -1540,7 +1735,7 @@ function renderAllDOM() {
                 data.items.forEach((it, i) => {
                     let bgClass = (it.gust < 8) ? "grayish" : ""; 
                     let devCtrls = `<div class="dev-arrows" style="right:5px;"><button onclick="modSingleData(${i},'gust',1)">▲</button><button onclick="modSingleData(${i},'gust',-1)">▼</button></div>`;
-                    html += `<div class="single-cell"><div class="gust-bg ${bgClass}"><div class="gust-val">${convertWind(it.gust)}</div></div>${devCtrls}</div>`;
+                    html += `<div class="single-cell"><div class="gust-val-wrap"><div class="gust-bg ${bgClass}"><div class="gust-val">${convertWind(it.gust)}</div></div></div>${devCtrls}</div>`;
                 });
                 
                 html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.precipLiquid}</div>`;
@@ -1595,7 +1790,7 @@ function renderAllDOM() {
                 });
                 html += `</div>`;
 
-                html += `<div style="padding: 10px 10px 0 10px;">${lang.tempAir}</div>`;
+                html += `<div class="single-header-row">${lang.tempAir}</div>`;
                 html += `<div class="graph-row">
                     <canvas id="groupedCanvas"></canvas>
                     <div class="grouped-labels" id="groupedLabels"></div>
@@ -1618,7 +1813,7 @@ function renderAllDOM() {
                     });
                     html += `</div>`;
 
-                    html += `<div class="gust-row-header"><span class="info-icon">i</span> ${lang.windGust.replace('{unit}', getWindUnitLabel())}</div>`;
+                    html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.windGust.replace('{unit}', getWindUnitLabel())}</div>`;
                     html += `<div class="parts-row">`;
                     day.parts.forEach((p, pIdx) => {
                         let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modGrpVal(${dIdx}, ${pIdx}, 'gust', 1)">▲</button><button onclick="modGrpVal(${dIdx}, ${pIdx}, 'gust', -1)">▼</button></div>`;
@@ -1627,7 +1822,7 @@ function renderAllDOM() {
                     });
                     html += `</div>`;
 
-                    html += `<div class="rain-row-header"><span class="info-icon">i</span> ${lang.precip}</div>`;
+                    html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.precip}</div>`;
                     html += `<div class="parts-row">`;
                     day.parts.forEach((p, pIdx) => {
                         let h = p.rain > 0 ? Math.min(p.rain * 10, 40) : 0;
@@ -1834,9 +2029,17 @@ function drawArchiveCanvas() {
             const gridContainer = document.getElementById('archiveGridContainer');
             if(!canvas || !gridContainer) return;
             labelsContainer.innerHTML = '';
+
+            let currentArchiveDataset = null;
+            if (currentCityKey === "Запорожье") {
+                currentArchiveDataset = archiveZaporozhyeData;
+            } else if (currentCityKey === "Томашполь") {
+                currentArchiveDataset = archiveTomashpolData;
+            }
+            if (!currentArchiveDataset) return;
             
             const ctx = canvas.getContext('2d');
-            const totalCols = archiveZaporozhyeData.length;
+            const totalCols = currentArchiveDataset.length;
             const W = Math.max(gridContainer.scrollWidth, gridContainer.clientWidth, 4680);
             const H = canvas.parentElement.clientHeight || 185;
             
@@ -1847,8 +2050,8 @@ function drawArchiveCanvas() {
             canvas.height = H * dpr;
             ctx.scale(dpr, dpr);
 
-            const allMax = archiveZaporozhyeData.map(d => d.maxT);
-            const allMin = archiveZaporozhyeData.map(d => d.minT);
+            const allMax = currentArchiveDataset.map(d => d.maxT);
+            const allMin = currentArchiveDataset.map(d => d.minT);
             const globalMax = Math.max(...allMax);
             const globalMin = Math.min(...allMin);
             const range = (globalMax - globalMin) || 1;
@@ -1859,7 +2062,7 @@ function drawArchiveCanvas() {
 
             if (graphStyleMode === "lines") {
                 let ptsMax = [], ptsMin = [];
-                archiveZaporozhyeData.forEach((day, i) => {
+                currentArchiveDataset.forEach((day, i) => {
                     let x = i * step + step / 2;
                     let yMax = topPadding + (1 - (day.maxT - globalMin) / range) * usableHeight;
                     let yMin = topPadding + (1 - (day.minT - globalMin) / range) * usableHeight;
@@ -1870,7 +2073,7 @@ function drawArchiveCanvas() {
                 drawSmoothCurve(ctx, ptsMax, "#e74c3c", 3);
                 drawSmoothCurve(ctx, ptsMin, "#3498db", 3);
 
-                archiveZaporozhyeData.forEach((day, i) => {
+                currentArchiveDataset.forEach((day, i) => {
                     let pMax = ptsMax[i], pMin = ptsMin[i];
                     
                     ctx.fillStyle = "#e74c3c";
@@ -1895,8 +2098,8 @@ function drawArchiveCanvas() {
                     }
                 });
             } else {
-                for (let i = 0; i < archiveZaporozhyeData.length; i++) {
-                    const day = archiveZaporozhyeData[i];
+                for (let i = 0; i < currentArchiveDataset.length; i++) {
+                    const day = currentArchiveDataset[i];
                     const x = i * step;
                     
                     const yTop = topPadding + (1 - (day.maxT - globalMin) / range) * usableHeight;
@@ -1911,7 +2114,7 @@ function drawArchiveCanvas() {
                     ctx.beginPath(); ctx.moveTo(x, yBot); ctx.lineTo(x + step, yBot); ctx.stroke();
                     
                     if (i > 0) {
-                        const prevDay = archiveZaporozhyeData[i - 1];
+                        const prevDay = currentArchiveDataset[i - 1];
                         const prevYTop = topPadding + (1 - (prevDay.maxT - globalMin) / range) * usableHeight;
                         const prevYBot = topPadding + (1 - (prevDay.minT - globalMin) / range) * usableHeight;
                         ctx.beginPath(); ctx.moveTo(x, prevYTop); ctx.lineTo(x, yTop); ctx.stroke();
@@ -1944,13 +2147,21 @@ function drawArchiveCanvas() {
         }
 
         function modArchiveData(idx, key, val) {
-            let item = archiveZaporozhyeData[idx];
+            let currentArchiveDataset = null;
+            if (currentCityKey === "Запорожье") {
+                currentArchiveDataset = archiveZaporozhyeData;
+            } else if (currentCityKey === "Томашполь") {
+                currentArchiveDataset = archiveTomashpolData;
+            }
+            if (!currentArchiveDataset) return;
+
+            let item = currentArchiveDataset[idx];
             if (key === 'uv') { item.uv = Math.min(9, Math.max(1, item.uv + val)); }
             else if (key === 'snowHeight') { item.snowHeight = Math.max(0, parseFloat((item.snowHeight + val).toFixed(1))); }
             else if (key === 'rain') { item.rain = Math.max(0, item.rain + val); }
             else if (key === 'gust') { item.gust = Math.max(0, item.gust + val); }
             else if (key === 'windAvg') { item.windAvg = Math.max(0, item.windAvg + val); }
-            else { item[key] += val; }
+            else { item[key] = Math.round(item[key] + val); }
             
             if (key === 'minT' && item.minT > item.maxT) item.minT = item.maxT;
             if (key === 'maxT' && item.maxT < item.minT) item.maxT = item.minT;
