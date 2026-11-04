@@ -144,13 +144,13 @@
         .inline-arrow { background: #2f3542; color: white; border: none; width: 20px; height: 16px; border-radius: 3px; cursor: pointer; font-size: 8px; font-weight: bold; display: flex; align-items: center; justify-content: center;}
         .inline-arrow:hover { background: #ff4757; }
 
-        .icon-select-dropdown { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); background: var(--dropdown-bg); border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-radius: 6px; display: none; z-index: 200; width: 220px; padding: 5px 0; text-shadow: none; max-height: 250px; overflow-y: auto;}
+        .icon-select-dropdown { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); background: var(--dropdown-bg); border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-radius: 6px; display: none; z-index: 200; width: 260px; padding: 5px 0; text-shadow: none; max-height: 280px; overflow-y: auto;}
         .icon-select-dropdown.active { display: block; }
         .weather-search-input { width: calc(100% - 16px); margin: 4px 8px 8px 8px; padding: 6px 10px; font-size: 12px; border: 1px solid var(--border-color); border-radius: 4px; outline: none; background: var(--bg-card); color: var(--text-main); }
         .weather-search-input:focus { border-color: #3498db; }
         .icon-select-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; font-size: 12px; color: var(--text-main); cursor: pointer; border-bottom: 1px solid var(--border-color); }
         .icon-select-item:hover { background: var(--bg-card); color: #ff4757; }
-        .preview-svg { width: 24px; height: 24px; flex-shrink: 0; }
+        .preview-svg { width: 26px; height: 26px; flex-shrink: 0; }
         .preview-svg svg { filter: none !important; }
         
         .wind-dropdown { width: 140px; top: 50px; left: 50%; transform: translateX(-50%); }
@@ -165,7 +165,7 @@
 
         .single-day-scroll-container, .grouped-scroll-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-main); position: relative; }
         
-        .weather-grid-single { display: grid; grid-template-columns: repeat(8, minmax(65px, 1fr)); min-width: 520px; font-size: 12px; position: relative; }
+        .weather-grid-single { display: grid; grid-template-columns: repeat(8, 1fr); width: 100%; font-size: 12px; position: relative; }
         
         .single-header-row { 
             grid-column: 1 / -1; 
@@ -190,14 +190,14 @@
         .single-time { font-size: 12px; color: var(--text-main); margin-bottom: 5px; }
         
         .w-ico { width: 38px; height: 32px; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
-        .w-ico.dev-clickable { border: 1px dashed #ff4757; background: rgba(255,71,87,0.05); border-radius: 4px; }
+        .w-ico.dev-clickable { border: 1.5px dashed #ff4757; background: rgba(255,71,87,0.1); border-radius: 4px; box-shadow: 0 0 4px rgba(255,71,87,0.3); }
         .w-ico svg { width: 100%; height: 100%; filter: none;}
         
         .weather-tooltip { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #4b6584; color: #ffffff; padding: 4px 8px; border-radius: 5px; font-size: 11px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 250; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 6px; font-weight: 500; text-shadow: none; }
         .weather-tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #4b6584 transparent transparent transparent; }
         .w-ico:hover .weather-tooltip, .w-ico.active-touch .weather-tooltip { opacity: 1; transform: translateX(-50%) translateY(-2px); }
 
-        .cell-graph-single { grid-column: 1 / -1; position: relative; height: 85px; margin: 0; padding: 0; border-bottom: 1px solid var(--border-color); }
+        .cell-graph-single { grid-column: 1 / -1; position: relative; height: 110px; margin: 0; padding: 0; border-bottom: 1px solid var(--border-color); }
         #tempCanvasSingle { width: 100%; height: 100%; display: block; position: absolute; top:0; left:0; z-index: 1;}
         .temp-labels-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
         
@@ -225,7 +225,7 @@
         .info-icon { display: inline-block; width: 15px; height: 15px; border: 1px solid var(--text-main); border-radius: 50%; text-align: center; line-height: 13px; font-size: 10px; margin-right: 6px; font-weight: bold;}
 
         .grouped-wrap { display: flex; flex-direction: column; width: 100%; font-size: 13px; }
-        .day-group { display: flex; flex-direction: column; border-right: 1px solid var(--border-color); flex: 1; min-width: 240px; }
+        .day-group { display: flex; flex-direction: column; border-right: 1px solid var(--border-color); flex: 1; }
         .day-group:last-child { border-right: none; }
         .day-header { padding: 10px; text-align: left; font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--border-color); }
         .day-header.red { color: #ff4757; }
@@ -237,27 +237,30 @@
         .time-lbl { padding: 8px 0; color: var(--text-main); font-size: 12px; }
         .ico-row { padding-bottom: 10px; }
         
-        .graph-row { position: relative; height: 85px; width: 100%; margin: 0; border-bottom: 1px solid var(--border-color); border-top: 1px solid var(--border-color); }
+        .graph-row { position: relative; height: 110px; width: 100%; margin: 0; border-bottom: 1px solid var(--border-color); border-top: 1px solid var(--border-color); }
         #groupedCanvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1;}
         .grouped-labels { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 2; pointer-events: none;}
 
-        .tiles-wrapper { display: flex; flex-direction: column; gap: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
-        .tile-row { position: relative; height: 185px; min-width: 500px; width: 100%; display: flex; background: var(--bg-main); border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); border: 1px solid var(--border-color); overflow: hidden; }
+        .tiles-wrapper { display: flex; flex-direction: column; gap: 12px; width: 100%; }
+        .tile-row { position: relative; height: 210px; width: 100%; display: flex; background: var(--bg-main); border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); border: 1px solid var(--border-color); overflow: hidden; }
         .tile-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; border-radius: 12px; }
         .tile-labels-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; }
         .tile-grid-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: flex; pointer-events: none; }
-        .tile-col { flex: 1; min-width: 65px; display: flex; flex-direction: column; align-items: center; padding-top: 8px; border-right: 1px solid var(--border-color); pointer-events: auto;}
+        .tile-col { flex: 1; display: flex; flex-direction: column; align-items: center; padding-top: 8px; border-right: 1px solid var(--border-color); pointer-events: auto;}
         .tile-col:last-child { border-right: none; }
-        .tile-header-txt { text-align: center; margin-bottom: 4px; line-height: 1.2; }
+        .tile-header-txt { text-align: center; margin-bottom: 4px; line-height: 1.2; cursor: pointer; border-radius: 4px; padding: 2px 4px; transition: background 0.2s; }
+        .dev-active .tile-header-txt { border: 1px dashed #ff4757; background: rgba(255, 71, 87, 0.08); }
         .tile-dw { font-size: 13px; font-weight: 500; color: var(--text-main); }
         .tile-date { font-size: 11px; color: var(--text-muted); }
         .tile-red { color: #ff4757 !important; }
 
+        .date-picker-input { padding: 8px 12px; font-size: 14px; border: 1px solid var(--border-color); border-radius: 6px; outline: none; background: var(--bg-card); color: var(--text-main); margin-bottom: 15px; width: 100%; }
+
         .twoweeks-monolith-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-main); position: relative; }
-        .twoweeks-monolith-grid { display: grid; border-collapse: collapse; position: relative; }
+        .twoweeks-monolith-grid { display: grid; border-collapse: collapse; position: relative; width: 100%; }
 
         .archive-scroll-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-main); position: relative; }
-        .archive-grid { display: grid; border-collapse: collapse; min-width: 4680px; font-size: 12px; width: max-content; position: relative; }
+        .archive-grid { display: grid; border-collapse: collapse; font-size: 12px; width: 100%; min-width: max-content; position: relative; }
         
         .archive-year-row { 
             grid-column: 1 / -1; 
@@ -267,15 +270,16 @@
             font-weight: bold; 
             font-size: 14px; 
             text-align: center;
+            width: 100%;
         }
         .archive-year-cell { flex: 1; padding: 8px; border-right: 1px solid var(--border-color); }
         .archive-year-cell:last-child { border-right: none; }
         
-        .archive-cell { position: relative; padding: 8px 4px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border-right: 1px solid var(--border-color); }
+        .archive-cell { position: relative; padding: 8px 4px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border-right: 1px solid var(--border-color); min-width: 50px; }
         .archive-cell:last-child { border-right: none; }
         .archive-month-title { font-weight: bold; font-size: 13px; color: var(--text-main); }
 
-        .archive-graph-row { grid-column: 1 / -1; position: relative; height: 185px; border-bottom: 1px solid var(--border-color); background: var(--bg-main); width: 100%; }
+        .archive-graph-row { grid-column: 1 / -1; position: relative; height: 210px; border-bottom: 1px solid var(--border-color); background: var(--bg-main); width: 100%; }
         #archiveCanvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 1; }
         .archive-labels-container { position: absolute; top:0; left:0; width:100%; height:100%; z-index: 2; pointer-events: none; }
 
@@ -319,7 +323,7 @@
         .dev-active .geo-circle { cursor: pointer; border-style: dashed; }
         .dev-active .geo-circle:hover { transform: scale(1.15); }
 
-        .geo-grid-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; min-width: 480px; }
+        .geo-grid-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
         .geo-grid-table th { font-weight: 400; font-size: 13px; color: var(--text-main); padding: 8px 4px; text-align: center; border-bottom: 1px solid var(--border-color); }
         .geo-grid-table td { padding: 10px 4px; text-align: center; border-bottom: 1px solid var(--border-color); }
         .geo-grid-table td.date-cell { text-align: left; font-weight: 500; color: var(--text-main); font-size: 13px; }
@@ -329,7 +333,7 @@
 
         .geo-dropdown { width: 160px; top: 40px; }
 
-        .geo-chart-wrap { position: relative; width: 100%; height: 240px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); min-width: 500px; }
+        .geo-chart-wrap { position: relative; width: 100%; height: 240px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); }
         #geoChartCanvas { width: 100%; height: 100%; display: block; }
         .geo-chart-labels { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 
@@ -363,6 +367,18 @@
     </style>
 </head>
 <body class="theme-white">
+
+    <div class="modal-overlay" id="datePickerModal">
+        <div class="modal-container" style="max-width: 380px;">
+            <button class="modal-close-btn" onclick="toggleDatePickerModal()">✕</button>
+            <div class="modal-title">Изменить дату</div>
+            <div class="setting-section">
+                <div class="setting-label">Выберите нужный день и месяц:</div>
+                <input type="date" id="calendarInput" class="date-picker-input" max="2027-12-31">
+                <button class="submit-cmt-btn" style="width:100%; font-size:14px; padding:10px;" onclick="applyNewDate()">Сохранить дату</button>
+            </div>
+        </div>
+    </div>
 
     <div class="modal-overlay" id="settingsModal">
         <div class="modal-container">
@@ -434,7 +450,7 @@
             </div>
 
             <div class="setting-section">
-                <div class="setting-label">8. Вид графиков температуры (для всех вкладок, включая Архив):</div>
+                <div class="setting-label">8. Вид графиков температуры:</div>
                 <div class="options-grid" id="graphStyleOptions">
                     <button class="opt-btn" onclick="setGraphStyle('tiles', event)">🟩 Плитка</button>
                     <button class="opt-btn" onclick="setGraphStyle('lines', event)">📈 Плавные линии</button>
@@ -534,11 +550,12 @@
 <script>
         const DEV_PASSWORD = "1234";
         let currentTab = "month", isDevModeActive = false;
+        let editingTilePos = { rIdx: 0, cIdx: 0 };
         
         let informerDataByCity = {
-            "Запорожье": { temp: 10, feels: 5, sky: "overcast", key: "overcast" },
-            "Приветное": { temp: 10, feels: 5, sky: "overcast", key: "overcast" },
-            "Днепр": { temp: 10, feels: 5, sky: "overcast", key: "overcast" },
+            "Запорожье": { temp: 14, feels: 11, sky: "cloudy-rain-light", key: "cloudy-rain-light" },
+            "Приветное": { temp: 14, feels: 11, sky: "cloudy-sun", key: "cloudy-sun" },
+            "Днепр": { temp: 10, feels: 8, sky: "cloudy-sun", key: "cloudy-sun" },
             "Томашполь": { temp: 8, feels: 4, sky: "cloudy-sun", key: "cloudy-sun" }
         };
         let currentCityKey = "Запорожье";
@@ -563,9 +580,65 @@
         let updatesData = JSON.parse(localStorage.getItem('meteopro_updates') || '[]');
         if (updatesData.length === 0) {
             updatesData = [
-                { id: 1, date: "04.11.2026", text: "Обновлен стиль отображения порывов ветра и датировка прогноза на месяц для Томашполя. Добавлен архив с данными 2015–2020 годов в Томашполь." }
+                { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" }
             ];
             localStorage.setItem('meteopro_updates', JSON.stringify(updatesData));
+        }
+
+        const daysOfWeekList = {
+            ru: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+            uk: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+            en: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+            pl: ["Nd", "Pn", "Wt", "Śr", "Cz", "Pt", "Sob"],
+            gal: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
+        };
+
+        const shortMonthsList = {
+            ru: ["янв", "февр", "мар", "апр", "мая", "июн", "июл", "авг", "сент", "окт", "нояб", "дек"],
+            uk: ["січ", "лют", "берез", "квіт", "трав", "черв", "лип", "серп", "вер", "жовт", "листоп", "груд"],
+            en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            pl: ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"],
+            gal: ["січ", "лют", "берез", "квіт", "трав", "черв", "лип", "серп", "вер", "жовт", "листоп", "груд"]
+        };
+
+        function toggleDatePickerModal() {
+            document.getElementById('datePickerModal').classList.toggle('active');
+        }
+
+        function openDatePicker(rIdx, cIdx) {
+            if (!isDevModeActive) return;
+            editingTilePos = { rIdx, cIdx };
+            let todayStr = new Date().toISOString().split('T')[0];
+            document.getElementById('calendarInput').value = todayStr;
+            toggleDatePickerModal();
+        }
+
+        function applyNewDate() {
+            let val = document.getElementById('calendarInput').value;
+            if (!val) return;
+            let parts = val.split('-');
+            let year = parseInt(parts[0]);
+            if (year > 2027) {
+                alert("Выберите дату до 2027 года!");
+                return;
+            }
+            let d = new Date(val);
+            let dayOfWeek = d.getDay();
+            let isWknd = (dayOfWeek === 0 || dayOfWeek === 6);
+            
+            let dwStr = (daysOfWeekList[currentLang] || daysOfWeekList['ru'])[dayOfWeek];
+            let monthStr = (shortMonthsList[currentLang] || shortMonthsList['ru'])[d.getMonth()];
+            
+            let dateNum = d.getDate();
+            let displayDateStr = (editingTilePos.cIdx === 0 || dateNum === 1) ? `${dateNum} ${monthStr}` : `${dateNum}`;
+
+            let dayObj = allCitiesData[currentCityKey][currentTab].rows[editingTilePos.rIdx][editingTilePos.cIdx];
+            dayObj.dw = dwStr;
+            dayObj.date = displayDateStr;
+            dayObj.isWknd = isWknd;
+
+            toggleDatePickerModal();
+            renderAllDOM();
         }
 
         const i18n = {
@@ -689,7 +762,7 @@
                     yesterday: "Weather in {city} yesterday", today: "Weather in {city} today",
                     tomorrow: "Weather in {city} tomorrow", now: "Weather now",
                     hourly: "Hourly weather", archive: "Weather archive in {city}",
-                    "3days": "Weather in {city} for 3 days", weekend: "Weekend weather in {city}",
+                    "3days": "Weather in {city} for 3 days", weekend: "Weather in {city} for weekend",
                     "2weeks": "Weather in {city} for 2 weeks",
                     month: "Weather in {city} for a month", geomagnetic: "Geomagnetic forecast in {city}"
                 },
@@ -722,7 +795,7 @@
                 snowAndPrecipLabel: "Wysokość pokrywy śnieżnej / mm opadów",
                 searchState: "Szukaj stanu...",
                 devInDev: "W trakcie budowy...",
-                archiveNotAvailable: "Archiwum pogody na lata 2015–2020 jest niedostępne dla wybranego miasta.",
+                archiveNotAvailable: "Archiwum pogody na lata 2015–2020 jest niedostępne dla выбранного miasta.",
                 monthsShort: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
                 tabs: {
                     yesterday: "Wczoraj", now: "Teraz", hourly: "Co godzinę", today: "Dzisiaj",
@@ -790,20 +863,42 @@
                 }
             }
         };
-
-        const weatherTranslations = {
-            "clear": { ru: "Ясно", uk: "Ясно", en: "Clear", pl: "Czystе", gal: "Ясно" },
+const weatherTranslations = {
+            "clear": { ru: "Ясно", uk: "Ясно", en: "Clear", pl: "Czysto", gal: "Ясно" },
             "clear-fog": { ru: "Ясно, туман", uk: "Ясно, туман", en: "Clear, fog", pl: "Czysto, mgła", gal: "Ясно, мгла" },
+            
             "cloudy-sun": { ru: "Малооблачно", uk: "Малооблачно", en: "Partly cloudy", pl: "Mało zachmurzenie", gal: "Малооблачно" },
             "cloudy-sun-fog": { ru: "Малооблачно, туман", uk: "Малооблачно, туман", en: "Partly cloudy, fog", pl: "Mało zachmurzenie, mgła", gal: "Малооблачно, мгла" },
+            "cloudy-rain-light": { ru: "Малооблачно, небольшой дождь", uk: "Малооблачно, невеликий дощ", en: "Partly cloudy, light rain", pl: "Mało zachmurzenie, lekki deszcz", gal: "Малооблачно, малий дощ" },
+            "cloudy-rain-med": { ru: "Малооблачно, дождь", uk: "Малооблачно, дощ", en: "Partly cloudy, rain", pl: "Mało zachmurzenie, deszcz", gal: "Малооблачно, дощ" },
+            "cloudy-rain-heavy": { ru: "Малооблачно, сильный дождь", uk: "Малооблачно, сильний дощ", en: "Partly cloudy, heavy rain", pl: "Mało zachmurzenie, ulewa", gal: "Малооблачно, моцний дощ" },
+            "cloudy-rain-light-thunder": { ru: "Малооблачно, небольшой дождь, гроза", uk: "Малооблачно, невеликий дощ, гроза", en: "Partly cloudy, light rain, storm", pl: "Mało zachmurzenie, lekki deszcz, burza", gal: "Малооблачно, малий дощ, громовиця" },
+            "cloudy-rain-med-thunder": { ru: "Малооблачно, дождь, гроза", uk: "Малооблачно, дощ, гроза", en: "Partly cloudy, rain, thunderstorm", pl: "Mało zachmurzenie, deszcz, burza", gal: "Малооблачно, дощ, громовиця" },
+            "cloudy-rain-heavy-thunder": { ru: "Малооблачно, сильный дождь, гроза", uk: "Малооблачно, сильний дощ, гроза", en: "Partly cloudy, heavy rain, storm", pl: "Mało zachmurzenie, ulewa, burza", gal: "Малооблачно, моцний дощ, громовиця" },
+            "cloudy-snow": { ru: "Малооблачно, снег", uk: "Малооблачно, сніг", en: "Partly cloudy, snow", pl: "Mało zachmurzenie, śnieg", gal: "Малооблачно, сніг" },
+            "cloudy-sleet": { ru: "Малооблачно, мокрый снег", uk: "Малооблачно, мокрий сніг", en: "Partly cloudy, sleet", pl: "Mało zachmurzenie, deszcz ze śniegiem", gal: "Малооблачно, мокрий сніг" },
+
             "cloudy": { ru: "Облачно", uk: "Хмарно", en: "Cloudy", pl: "Zachmurzenie", gal: "Хмарно" },
             "cloudy-fog": { ru: "Облачно, туман", uk: "Хмарно, туман", en: "Cloudy, fog", pl: "Zachmurzenie, mgła", gal: "Хмарно, мгла" },
+            "c-rain-light": { ru: "Облачно, небольшой дождь", uk: "Хмарно, невеликий дощ", en: "Cloudy, light rain", pl: "Zachmurzenie, lekki deszcz", gal: "Хмарно, малий дощ" },
+            "c-rain-med": { ru: "Облачно, дождь", uk: "Хмарно, дощ", en: "Cloudy, rain", pl: "Zachmurzenie, deszcz", gal: "Хмарно, дощ" },
+            "c-rain-heavy": { ru: "Облачно, сильный дождь", uk: "Хмарно, сильний дощ", en: "Cloudy, heavy rain", pl: "Zachmurzenie, ulewa", gal: "Хмарно, моцний дощ" },
+            "c-rain-light-thunder": { ru: "Облачно, небольшой дождь, гроза", uk: "Хмарно, невеликий дощ, гроза", en: "Cloudy, light rain, storm", pl: "Zachmurzenie, lekki deszcz, burza", gal: "Хмарно, малий дощ, громовиця" },
+            "c-rain-med-thunder": { ru: "Облачно, дождь, гроза", uk: "Хмарно, дощ, гроза", en: "Cloudy, rain, thunderstorm", pl: "Zachmurzenie, deszcz, burza", gal: "Хмарно, дощ, громовиця" },
+            "c-rain-heavy-thunder": { ru: "Облачно, сильный дождь, гроза", uk: "Хмарно, сильний дощ, гроза", en: "Cloudy, heavy rain, storm", pl: "Zachmurzenie, ulewa, burza", gal: "Хмарно, моцний дощ, громовиця" },
+            "c-snow": { ru: "Облачно, снег", uk: "Хмарно, сніг", en: "Cloudy, snow", pl: "Zachmurzenie, śnieg", gal: "Хмарно, сніг" },
+            "c-sleet": { ru: "Облачно, мокрый снег", uk: "Хмарно, мокрий сніг", en: "Cloudy, sleet", pl: "Zachmurzenie, deszcz ze śniegiem", gal: "Хмарно, мокрий сніг" },
+
             "overcast": { ru: "Пасмурно", uk: "Похмуро", en: "Overcast", pl: "Pochmurno", gal: "Похмуро" },
             "overcast-fog": { ru: "Пасмурно, туман", uk: "Похмуро, туман", en: "Overcast, fog", pl: "Pochmurno, mgła", gal: "Похмуро, мгла" },
-            "c-rain-light": { ru: "Небольшой дождь", uk: "Невеликий дощ", en: "Light rain", pl: "Lekki deszcz", gal: "Малий дощ" },
-            "o-rain-med": { ru: "Дождь", uk: "Дощ", en: "Rain", pl: "Deszcz", gal: "Дощ" },
-            "thunder": { ru: "Гроза", uk: "Гроза", en: "Thunderstorm", pl: "Burza", gal: "Громовиця" },
-            "snow": { ru: "Снег", uk: "Сніг", en: "Snow", pl: "Śnieg", gal: "Сніг" }
+            "o-rain-light": { ru: "Пасмурно, небольшой дождь", uk: "Похмуро, невеликий дощ", en: "Overcast, light rain", pl: "Pochmurno, lekki deszcz", gal: "Похмуро, малий дощ" },
+            "o-rain-med": { ru: "Пасмурно, дождь", uk: "Похмуро, дощ", en: "Overcast, rain", pl: "Pochmurno, deszcz", gal: "Похмуро, дощ" },
+            "o-rain-heavy": { ru: "Пасмурно, сильный дождь", uk: "Похмуро, сильний дощ", en: "Overcast, heavy rain", pl: "Pochmurno, ulewa", gal: "Похмуро, моцний дощ" },
+            "o-rain-light-thunder": { ru: "Пасмурно, небольшой дождь, гроза", uk: "Пасмурно, невеликий дощ, гроза", en: "Overcast, light rain, storm", pl: "Pochmurno, lekki deszcz, burza", gal: "Похмуро, малий дощ, громовиця" },
+            "o-rain-med-thunder": { ru: "Пасмурно, дождь, гроза", uk: "Похмуро, дощ, гроза", en: "Overcast, rain, thunderstorm", pl: "Pochmurno, deszcz, burza", gal: "Похмуро, дощ, громовиця" },
+            "o-rain-heavy-thunder": { ru: "Пасмурно, сильный дождь, гроза", uk: "Пасмурно, сильний дощ, гроза", en: "Overcast, heavy rain, storm", pl: "Pochmurno, ulewa, burza", gal: "Похмуро, моцний дощ, громовиця" },
+            "snow": { ru: "Пасмурно, снег", uk: "Пасмурно, сніг", en: "Overcast, snow", pl: "Pochmurno, śnieg", gal: "Похмуро, сніг" },
+            "o-sleet": { ru: "Пасмурно, мокрый снег", uk: "Похмуро, мокрий сніг", en: "Overcast, sleet", pl: "Pochmurno, deszcz ze śniegiem", gal: "Похмуро, мокрий сніг" }
         };
 
         const searchLocations = [
@@ -905,9 +1000,7 @@
             { year: 2020, mIdx: 11, maxT: 2, minT: -10, skyClear: 18, skyCloudy: 44, skyOvercast: 38, rain: 15, snow: 22, mix: 8, none: 55, windAvg: 4, gust: 14, uv: 1, snowHeight: 3.5 }
         ];
 
-        // Архивная база данных для Томашполя С ОКРУГЛЁННЫМИ ЗНАЧЕНИЯМИ (целые числа)
         const archiveTomashpolData = [
-            // 2015
             { year: 2015, mIdx: 0, maxT: 10, minT: -19, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 17, uv: 1, snowHeight: 0.5 },
             { year: 2015, mIdx: 1, maxT: 12, minT: -14, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 29, windAvg: 4, gust: 18, uv: 2, snowHeight: 1.7 },
             { year: 2015, mIdx: 2, maxT: 18, minT: -6, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 12, uv: 3, snowHeight: 0 },
@@ -921,7 +1014,6 @@
             { year: 2015, mIdx: 10, maxT: 18, minT: -5, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 12, uv: 2, snowHeight: 0 },
             { year: 2015, mIdx: 11, maxT: 16, minT: -10, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 1, snowHeight: 1.0 },
 
-            // 2016
             { year: 2016, mIdx: 0, maxT: 11, minT: -19, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 17, uv: 1, snowHeight: 0.8 },
             { year: 2016, mIdx: 1, maxT: 19, minT: -5, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 28, windAvg: 4, gust: 18, uv: 2, snowHeight: 1.7 },
             { year: 2016, mIdx: 2, maxT: 23, minT: -5, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 13, uv: 4, snowHeight: 0 },
@@ -931,25 +1023,23 @@
             { year: 2016, mIdx: 6, maxT: 37, minT: 10, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 9, snowHeight: 0 },
             { year: 2016, mIdx: 7, maxT: 37, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 8, snowHeight: 0 },
             { year: 2016, mIdx: 8, maxT: 33, minT: 3, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 12, uv: 6, snowHeight: 0 },
-            { year: 2016, mIdx: 9, maxT: 26, minT: -2, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 11, uv: 4, snowHeight: 0 },
+            { year: 2016, mIdx: 9, maxT: 26, minT: -2, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, fill: 3, gust: 11, uv: 4, snowHeight: 0 },
             { year: 2016, mIdx: 10, maxT: 19, minT: -8, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 12, uv: 2, snowHeight: 0 },
             { year: 2016, mIdx: 11, maxT: 10, minT: -11, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 12, uv: 1, snowHeight: 1.0 },
 
-            // 2017
             { year: 2017, mIdx: 0, maxT: 6, minT: -16, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 18, uv: 1, snowHeight: 0.5 },
             { year: 2017, mIdx: 1, maxT: 16, minT: -20, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 27, windAvg: 4, gust: 17, uv: 2, snowHeight: 1.7 },
             { year: 2017, mIdx: 2, maxT: 23, minT: -2, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 14, uv: 3, snowHeight: 0 },
             { year: 2017, mIdx: 3, maxT: 28, minT: -3, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 4, gust: 13, uv: 5, snowHeight: 0 },
             { year: 2017, mIdx: 4, maxT: 30, minT: 0, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 6, snowHeight: 0 },
             { year: 2017, mIdx: 5, maxT: 33, minT: 7, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 16, uv: 8, snowHeight: 0 },
-            { year: 2017, mIdx: 6, maxT: 35, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 9, snowHeight: 0 },
+            { year: 2017, mIdx: 6, maxT: 35, minT: 9, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 9, snowHeight: 0 },
             { year: 2017, mIdx: 7, maxT: 39, minT: 6, skyClear: 70, skyCloudy: 22, skyOvercast: 8, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 12, uv: 8, snowHeight: 0 },
             { year: 2017, mIdx: 8, maxT: 33, minT: 1, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 29, windAvg: 3, gust: 11, uv: 5, snowHeight: 0 },
             { year: 2017, mIdx: 9, maxT: 25, minT: -1, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 1, snow: 0, mix: 0, none: 30, windAvg: 3, gust: 13, uv: 4, snowHeight: 0 },
             { year: 2017, mIdx: 10, maxT: 16, minT: -5, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 12, uv: 2, snowHeight: 0 },
             { year: 2017, mIdx: 11, maxT: 12, minT: -4, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 11, uv: 1, snowHeight: 1.0 },
 
-            // 2018
             { year: 2018, mIdx: 0, maxT: 9, minT: -16, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 17, uv: 2, snowHeight: 0.5 },
             { year: 2018, mIdx: 1, maxT: 8, minT: -21, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 27, windAvg: 4, gust: 18, uv: 1, snowHeight: 1.7 },
             { year: 2018, mIdx: 2, maxT: 16, minT: -21, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 11, uv: 3, snowHeight: 0 },
@@ -963,7 +1053,6 @@
             { year: 2018, mIdx: 10, maxT: 19, minT: -14, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 11, uv: 1, snowHeight: 0 },
             { year: 2018, mIdx: 11, maxT: 10, minT: -13, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 2, snowHeight: 1.0 },
 
-            // 2019
             { year: 2019, mIdx: 0, maxT: 8, minT: -11, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 18, uv: 1, snowHeight: 0.5 },
             { year: 2019, mIdx: 1, maxT: 16, minT: -8, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 27, windAvg: 4, gust: 17, uv: 2, snowHeight: 1.7 },
             { year: 2019, mIdx: 2, maxT: 23, minT: -9, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 13, uv: 4, snowHeight: 0 },
@@ -977,7 +1066,6 @@
             { year: 2019, mIdx: 10, maxT: 22, minT: -5, skyClear: 55, skyCloudy: 33, skyOvercast: 12, rain: 0, snow: 0, mix: 1, none: 29, windAvg: 3, gust: 11, uv: 2, snowHeight: 0 },
             { year: 2019, mIdx: 11, maxT: 14, minT: -6, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 12, uv: 1, snowHeight: 1.0 },
 
-            // 2020
             { year: 2020, mIdx: 0, maxT: 10, minT: -10, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 18, uv: 2, snowHeight: 0.5 },
             { year: 2020, mIdx: 1, maxT: 15, minT: -7, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 28, windAvg: 4, gust: 17, uv: 1, snowHeight: 1.7 },
             { year: 2020, mIdx: 2, maxT: 21, minT: -8, skyClear: 40, skyCloudy: 40, skyOvercast: 20, rain: 0, snow: 0, mix: 1, none: 30, windAvg: 4, gust: 12, uv: 3, snowHeight: 0 },
@@ -992,10 +1080,9 @@
             { year: 2020, mIdx: 11, maxT: 10, minT: -5, skyClear: 20, skyCloudy: 40, skyOvercast: 40, rain: 0, snow: 1, mix: 0, none: 30, windAvg: 4, gust: 13, uv: 1, snowHeight: 1.0 }
         ];
 
-        function createDefaultCityData(isTomashpol = false) {
-            let monthRows;
-            if (isTomashpol) {
-                monthRows = [
+        function createMonthRowsForCity(cityName) {
+            if (cityName === "Томашполь") {
+                return [
                     [
                         { dw: "Пн", date: "2 нояб", ic: "cloudy", maxT: 10, minT: 6 },
                         { dw: "Вт", date: "3", ic: "cloudy-sun", maxT: 11, minT: 7 },
@@ -1033,47 +1120,131 @@
                         { dw: "Вс", date: "29 нояб", ic: "c-rain-light", maxT: 2, minT: -1, isWknd: true }
                     ]
                 ];
-            } else {
-                monthRows = [
+            }
+
+            if (cityName === "Днепр") {
+                return [
                     [
-                        { dw: "Ср", date: "4 нояб", ic: "cloudy", maxT: 12, minT: 9 },
-                        { dw: "Чт", date: "5", ic: "cloudy", maxT: 13, minT: 9 },
-                        { dw: "Пт", date: "6", ic: "cloudy-sun", maxT: 10, minT: 1 },
-                        { dw: "Сб", date: "7", ic: "c-rain-light", maxT: 5, minT: 1, isWknd: true },
-                        { dw: "Вс", date: "8", ic: "c-rain-light", maxT: 3, minT: 0, isWknd: true },
-                        { dw: "Пн", date: "9", ic: "clear", maxT: 8, minT: 0 },
-                        { dw: "Вт", date: "10", ic: "c-rain-light", maxT: 6, minT: 1 }
+                        { dw: "Пн", date: "2 нояб", ic: "clear", maxT: 10, minT: 3 },
+                        { dw: "Вт", date: "3", ic: "cloudy-sun", maxT: 12, minT: 4 },
+                        { dw: "Ср", date: "4", ic: "cloudy-sun", maxT: 10, minT: 3 },
+                        { dw: "Чт", date: "5", ic: "cloudy", maxT: 7, minT: 1 },
+                        { dw: "Пт", date: "6", ic: "c-rain-light", maxT: 6, minT: 0 },
+                        { dw: "Сб", date: "7", ic: "overcast", maxT: 5, minT: -1, isWknd: true },
+                        { dw: "Вс", date: "8", ic: "cloudy-sun", maxT: 6, minT: 0, isWknd: true }
                     ],
                     [
-                        { dw: "Ср", date: "11", ic: "c-rain-light", maxT: 7, minT: 2 },
-                        { dw: "Чт", date: "12", ic: "c-rain-light", maxT: 5, minT: 2 },
-                        { dw: "Пт", date: "13", ic: "cloudy-sun", maxT: 4, minT: 4 },
-                        { dw: "Сб", date: "14", ic: "overcast", maxT: 8, minT: 6, isWknd: true },
-                        { dw: "Вс", date: "15", ic: "clear", maxT: 8, minT: 7, isWknd: true },
-                        { dw: "Пн", date: "16", ic: "c-rain-light", maxT: 8, minT: 0 },
-                        { dw: "Вт", date: "17", ic: "c-rain-light", maxT: 3, minT: 1 }
+                        { dw: "Пн", date: "9", ic: "clear", maxT: 7, minT: 1 },
+                        { dw: "Вт", date: "10", ic: "cloudy-sun", maxT: 6, minT: 0 },
+                        { dw: "Ср", date: "11", ic: "c-rain-light", maxT: 5, minT: 1 },
+                        { dw: "Чт", date: "12", ic: "cloudy", maxT: 4, minT: -1 },
+                        { dw: "Пт", date: "13", ic: "overcast", maxT: 4, minT: -2 },
+                        { dw: "Сб", date: "14", ic: "cloudy-sun", maxT: 3, minT: -2, isWknd: true },
+                        { dw: "Вс", date: "15", ic: "clear", maxT: 4, minT: -3, isWknd: true }
                     ],
                     [
-                        { dw: "Ср", date: "18", ic: "c-rain-light", maxT: 2, minT: 2 },
-                        { dw: "Чт", date: "19", ic: "cloudy-sun", maxT: 4, minT: 2 },
-                        { dw: "Пт", date: "20", ic: "overcast", maxT: 6, minT: 3 },
-                        { dw: "Сб", date: "21", ic: "clear", maxT: 7, minT: 3, isWknd: true },
-                        { dw: "Вс", date: "22", ic: "overcast", maxT: 5, minT: 5, isWknd: true },
-                        { dw: "Пн", date: "23", ic: "clear", maxT: 3, minT: -1 },
-                        { dw: "Вт", date: "24", ic: "clear", maxT: 3, minT: 0 }
+                        { dw: "Пн", date: "16", ic: "cloudy-sun", maxT: 3, minT: -2 },
+                        { dw: "Вт", date: "17", ic: "cloudy", maxT: 2, minT: -3 },
+                        { dw: "Ср", date: "18", ic: "snow", maxT: 1, minT: -4 },
+                        { dw: "Чт", date: "19", ic: "snow", maxT: 0, minT: -5 },
+                        { dw: "Пт", date: "20", ic: "clear", maxT: 1, minT: -4 },
+                        { dw: "Сб", date: "21", ic: "cloudy-sun", maxT: 2, minT: -3, isWknd: true },
+                        { dw: "Вс", date: "22", ic: "overcast", maxT: 1, minT: -4, isWknd: true }
                     ],
                     [
-                        { dw: "Ср", date: "25 нояб", ic: "cloudy-sun", maxT: 3, minT: -1 },
-                        { dw: "Чт", date: "26", ic: "cloudy-sun", maxT: 3, minT: -1 },
-                        { dw: "Пт", date: "27", ic: "cloudy-sun", maxT: 3, minT: -1 },
-                        { dw: "Сб", date: "28", ic: "c-rain-light", maxT: 2, minT: -2, isWknd: true },
-                        { dw: "Вс", date: "29", ic: "c-rain-light", maxT: 2, minT: -1, isWknd: true },
-                        { dw: "Пн", date: "30", ic: "cloudy", maxT: 2, minT: -2 },
-                        { dw: "Вт", date: "1 дек", ic: "clear", maxT: 1, minT: -3 }
+                        { dw: "Пн", date: "23", ic: "c-rain-light", maxT: 2, minT: -2 },
+                        { dw: "Вт", date: "24", ic: "cloudy", maxT: 3, minT: -1 },
+                        { dw: "Ср", date: "25", ic: "clear", maxT: 2, minT: -3 },
+                        { dw: "Чт", date: "26 нояб", ic: "cloudy-sun", maxT: 1, minT: -4 },
+                        { dw: "Пт", date: "27", ic: "overcast", maxT: 0, minT: -5 },
+                        { dw: "Сб", date: "28", ic: "snow", maxT: -1, minT: -6, isWknd: true },
+                        { dw: "Вс", date: "29 нояб", ic: "clear", maxT: 0, minT: -5, isWknd: true }
                     ]
                 ];
             }
 
+            if (cityName === "Приветное") {
+                return [
+                    [
+                        { dw: "Пн", date: "2 нояб", ic: "cloudy-sun", maxT: 15, minT: 8 },
+                        { dw: "Вт", date: "3", ic: "cloudy-sun", maxT: 14, minT: 9 },
+                        { dw: "Ср", date: "4", ic: "cloudy", maxT: 14, minT: 8 },
+                        { dw: "Чт", date: "5", ic: "cloudy", maxT: 8, minT: 2 },
+                        { dw: "Пт", date: "6", ic: "c-rain-light", maxT: 7, minT: 1 },
+                        { dw: "Сб", date: "7", ic: "overcast", maxT: 7, minT: 1, isWknd: true },
+                        { dw: "Вс", date: "8", ic: "clear", maxT: 8, minT: 2, isWknd: true }
+                    ],
+                    [
+                        { dw: "Пн", date: "9", ic: "clear", maxT: 9, minT: 2 },
+                        { dw: "Вт", date: "10", ic: "cloudy-sun", maxT: 8, minT: 2 },
+                        { dw: "Ср", date: "11", ic: "cloudy", maxT: 7, minT: 3 },
+                        { dw: "Чт", date: "12", ic: "c-rain-light", maxT: 6, minT: 1 },
+                        { dw: "Пт", date: "13", ic: "overcast", maxT: 5, minT: 0 },
+                        { dw: "Сб", date: "14", ic: "cloudy-sun", maxT: 5, minT: 0, isWknd: true },
+                        { dw: "Вс", date: "15", ic: "clear", maxT: 6, minT: -1, isWknd: true }
+                    ],
+                    [
+                        { dw: "Пн", date: "16", ic: "cloudy-sun", maxT: 5, minT: -1 },
+                        { dw: "Вт", date: "17", ic: "cloudy", maxT: 4, minT: -2 },
+                        { dw: "Ср", date: "18", ic: "c-rain-light", maxT: 3, minT: -3 },
+                        { dw: "Чт", date: "19", ic: "snow", maxT: 1, minT: -4 },
+                        { dw: "Пт", date: "20", ic: "clear", maxT: 2, minT: -3 },
+                        { dw: "Сб", date: "21", ic: "clear", maxT: 3, minT: -2, isWknd: true },
+                        { dw: "Вс", date: "22", ic: "cloudy-sun", maxT: 3, minT: -2, isWknd: true }
+                    ],
+                    [
+                        { dw: "Пн", date: "23", ic: "cloudy", maxT: 4, minT: -1 },
+                        { dw: "Вт", date: "24", ic: "c-rain-light", maxT: 3, minT: -2 },
+                        { dw: "Ср", date: "25", ic: "overcast", maxT: 2, minT: -3 },
+                        { dw: "Чт", date: "26 нояб", ic: "clear", maxT: 2, minT: -4 },
+                        { dw: "Пт", date: "27", ic: "cloudy-sun", maxT: 1, minT: -4 },
+                        { dw: "Сб", date: "28", ic: "snow", maxT: 0, minT: -5, isWknd: true },
+                        { dw: "Вс", date: "29 нояб", ic: "clear", maxT: 1, minT: -4, isWknd: true }
+                    ]
+                ];
+            }
+
+            return [
+                [
+                    { dw: "Пн", date: "2 нояб", ic: "cloudy-sun", maxT: 15, minT: 8 },
+                    { dw: "Вт", date: "3", ic: "cloudy-sun", maxT: 14, minT: 9 },
+                    { dw: "Ср", date: "4", ic: "cloudy-rain-light", maxT: 14, minT: 9 },
+                    { dw: "Чт", date: "5", ic: "cloudy", maxT: 8, minT: 2 },
+                    { dw: "Пт", date: "6", ic: "c-rain-light", maxT: 7, minT: 1 },
+                    { dw: "Сб", date: "7", ic: "overcast", maxT: 7, minT: 1, isWknd: true },
+                    { dw: "Вс", date: "8", ic: "clear", maxT: 8, minT: 2, isWknd: true }
+                ],
+                [
+                    { dw: "Пн", date: "9", ic: "clear", maxT: 9, minT: 2 },
+                    { dw: "Вт", date: "10", ic: "cloudy-sun", maxT: 8, minT: 2 },
+                    { dw: "Ср", date: "11", ic: "c-rain-light", maxT: 7, minT: 3 },
+                    { dw: "Чт", date: "12", ic: "cloudy", maxT: 6, minT: 1 },
+                    { dw: "Пт", date: "13", ic: "overcast", maxT: 5, minT: 0 },
+                    { dw: "Сб", date: "14", ic: "c-rain-light", maxT: 5, minT: 0, isWknd: true },
+                    { dw: "Вс", date: "15", ic: "clear", maxT: 6, minT: -1, isWknd: true }
+                ],
+                [
+                    { dw: "Пн", date: "16", ic: "cloudy-sun", maxT: 5, minT: -1 },
+                    { dw: "Вт", date: "17", ic: "cloudy", maxT: 4, minT: -2 },
+                    { dw: "Ср", date: "18", ic: "c-rain-light", maxT: 3, minT: -3 },
+                    { dw: "Чт", date: "19", ic: "snow", maxT: 1, minT: -4 },
+                    { dw: "Пт", date: "20", ic: "clear", maxT: 2, minT: -3 },
+                    { dw: "Сб", date: "21", ic: "cloudy-sun", maxT: 3, minT: -2, isWknd: true },
+                    { dw: "Вс", date: "22", ic: "overcast", maxT: 3, minT: -2, isWknd: true }
+                ],
+                [
+                    { dw: "Пн", date: "23", ic: "c-rain-light", maxT: 4, minT: -1 },
+                    { dw: "Вт", date: "24", ic: "cloudy", maxT: 3, minT: -2 },
+                    { dw: "Ср", date: "25", ic: "clear", maxT: 2, minT: -3 },
+                    { dw: "Чт", date: "26 нояб", ic: "cloudy-sun", maxT: 2, minT: -4 },
+                    { dw: "Пт", date: "27", ic: "overcast", maxT: 1, minT: -4 },
+                    { dw: "Сб", date: "28", ic: "snow", maxT: 0, minT: -5, isWknd: true },
+                    { dw: "Вс", date: "29 нояб", ic: "clear", maxT: 1, minT: -4, isWknd: true }
+                ]
+            ];
+        }
+
+        function createDefaultCityData(cityName) {
             return {
                 "yesterday": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t - 2, minT: v.minT - 2})) },
                 "today": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i]})) },
@@ -1089,15 +1260,15 @@
                             parts: [
                                 { tNm:"Ночь", ic:"overcast", t:10, minT:9, wD:"W", gust:9, rain:0 },
                                 { tNm:"Утро", ic:"overcast", t:9, minT:8, wD:"W", gust:10, rain:0 },
-                                { tNm:"День", ic:"overcast", t:15, minT:10, wD:"W", gust:10, rain:0 },
-                                { tNm:"Вечер", ic:"o-rain-med", t:13, minT:12, wD:"W", gust:7, rain:0.5 }
+                                { tNm:"День", ic:"cloudy-rain-light", t:15, minT:10, wD:"W", gust:10, rain:0.2 },
+                                { tNm:"Вечер", ic:"c-rain-med-thunder", t:13, minT:12, wD:"W", gust:7, rain:0.5 }
                             ]
                         },
                         {
                             date: "Чт, 5 ноября", isWknd: false,
                             parts: [
                                 { tNm:"Ночь", ic:"o-rain-med", t:15, minT:12, wD:"W", gust:6, rain:2.5 },
-                                { tNm:"Утро", ic:"o-rain-med", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
+                                { tNm:"Утро", ic:"o-rain-heavy-thunder", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
                                 { tNm:"День", ic:"o-rain-med", t:13, minT:10, wD:"W", gust:7, rain:3.5 },
                                 { tNm:"Вечер", ic:"c-rain-light", t:12, minT:11, wD:"SW", gust:6, rain:0.4 }
                             ]
@@ -1141,7 +1312,7 @@
                     singleRow: true,
                     rows: [
                         [
-                            { dw: "Ср", date: "4 нояб", ic: "c-rain-light", maxT: 15, minT: 9, windD: "S", gust: 5, rain: 0 },
+                            { dw: "Ср", date: "4 нояб", ic: "cloudy-rain-light", maxT: 15, minT: 9, windD: "S", gust: 5, rain: 0.2 },
                             { dw: "Чт", date: "5", ic: "cloudy-sun", maxT: 16, minT: 8, windD: "S", gust: 7, rain: 0 },
                             { dw: "Пт", date: "6", ic: "c-rain-light", maxT: 15, minT: 9, windD: "S", gust: 10, rain: 0 },
                             { dw: "Сб", date: "7", ic: "cloudy-sun", maxT: 17, minT: 8, windD: "NW", gust: 9, rain: 0, isWknd: true },
@@ -1161,7 +1332,7 @@
                 "month": {
                     mode: "tiles",
                     singleRow: false,
-                    rows: monthRows
+                    rows: createMonthRowsForCity(cityName)
                 },
                 "archive": { mode: "archive" },
                 "geomagnetic": {
@@ -1176,12 +1347,13 @@
         }
 
         let allCitiesData = {
-            "Запорожье": createDefaultCityData(false),
-            "Приветное": createDefaultCityData(false),
-            "Днепр": createDefaultCityData(false),
-            "Томашполь": createDefaultCityData(true)
+            "Запорожье": createDefaultCityData("Запорожье"),
+            "Приветное": createDefaultCityData("Приветное"),
+            "Днепр": createDefaultCityData("Днепр"),
+            "Томашполь": createDefaultCityData("Томашполь")
         };
-function toggleSettingsModal() { document.getElementById('settingsModal').classList.toggle('active'); }
+
+        function toggleSettingsModal() { document.getElementById('settingsModal').classList.toggle('active'); }
         function toggleCommentsModal() { document.getElementById('commentsModal').classList.toggle('active'); renderComments(); }
         
         function toggleUpdatesModal() {
@@ -1408,7 +1580,7 @@ function toggleSettingsModal() { document.getElementById('settingsModal').classL
             let val = convertTemp(tC);
             if (tempUnit === 'K') return val + ' K';
             if (tempUnit === 'F') return (val > 0 ? '+' : '') + val + '°F';
-            return (val > 0 ? '+' : '') + val + '°C';
+            return (val > 0 ? '+' : '') + val + '°';
         }
 
         function convertWind(speedMS) {
@@ -1424,26 +1596,49 @@ function toggleSettingsModal() { document.getElementById('settingsModal').classL
             if (windUnit === 'mph') return 'mph';
             return 'м/с';
         }
-
-        const meteoforIcons = {
+const meteoforIcons = {
             "clear": `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="6" fill="#f1c40f"/></svg>`,
             "clear-fog": `<svg viewBox="0 0 32 32"><circle cx="16" cy="10" r="5" fill="#f1c40f"/><path d="M6 20h20M8 23h16M6 26h20" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
+            
             "cloudy-sun": `<svg viewBox="0 0 32 32"><circle cx="21" cy="11" r="5" fill="#f1c40f"/><path d="M5 23a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#bdc3c7"/></svg>`,
             "cloudy-sun-fog": `<svg viewBox="0 0 32 32"><circle cx="21" cy="8" r="4" fill="#f1c40f"/><path d="M6 16a3.5 3.5 0 0 1 0-7h1a4 4 0 0 1 7 1.5h1a3.5 3.5 0 0 1 0 17Z" fill="#bdc3c7"/><path d="M6 20h20M8 23h16M6 26h20" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "cloudy-rain-light": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 21a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#bdc3c7"/><path d="M10 23l-1 2M14 23l-1 2" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "cloudy-rain-med": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 20a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#bdc3c7"/><path d="M8 22l-1 2M12 22l-1 2M8 26l-1 2M12 26l-1 2" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "cloudy-rain-heavy": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#bdc3c7"/><path d="M7 21l-1 2M11 21l-1 2M15 21l-1 2M7 24l-1 2M11 24l-1 2M15 24l-1 2M7 27l-1 2M11 27l-1 2M15 27l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+            "cloudy-rain-light-thunder": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 20a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#a0a0a0"/><path d="M10 22l-1 2M13 22l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M16 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "cloudy-rain-med-thunder": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#a0a0a0"/><path d="M7 21l-1 2M11 21l-1 2M7 25l-1 2M11 25l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M16 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "cloudy-rain-heavy-thunder": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M6 21l-1 2M9 21l-1 2M12 21l-1 2M6 24l-1 2M9 24l-1 2M12 24l-1 2M6 27l-1 2M9 27l-1 2M12 27l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M16 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "cloudy-snow": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 21a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#bdc3c7"/><circle cx="9" cy="24" r="1.2" fill="#74b9ff"/><circle cx="14" cy="24" r="1.2" fill="#74b9ff"/></svg>`,
+            "cloudy-sleet": `<svg viewBox="0 0 32 32"><circle cx="21" cy="9" r="4" fill="#f1c40f"/><path d="M5 21a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#bdc3c7"/><path d="M9 23l-1 2" stroke="#3498db" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="24" r="1.2" fill="#74b9ff"/></svg>`,
+
             "cloudy": `<svg viewBox="0 0 32 32"><path d="M5 23a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#e0e0e0"/><path d="M10 25a3 3 0 0 1 0-6h1a4 4 0 0 1 7 1.5h1a3 3 0 0 1 0 6Z" fill="#f5f5f5"/></svg>`,
             "cloudy-fog": `<svg viewBox="0 0 32 32"><path d="M6 16a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#e0e0e0"/><path d="M6 20h20M8 23h16M6 26h20" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "c-rain-light": `<svg viewBox="0 0 32 32"><path d="M6 22a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/><path d="M10 24l-1 2.5M14 24l-1 2.5" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "c-rain-med": `<svg viewBox="0 0 32 32"><path d="M6 21a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/><path d="M9 23l-1 2M13 23l-1 2M9 27l-1 2M13 27l-1 2" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "c-rain-heavy": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#bdc3c7"/><path d="M8 22l-1 2M12 22l-1 2M16 22l-1 2M8 25l-1 2M12 25l-1 2M16 25l-1 2M8 28l-1 2M12 28l-1 2M16 28l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+            "c-rain-light-thunder": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#a0a0a0"/><path d="M10 22l-1 2M13 22l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M17 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "c-rain-med-thunder": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#a0a0a0"/><path d="M8 22l-1 2M12 22l-1 2M8 26l-1 2M12 26l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M17 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "c-rain-heavy-thunder": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#7f8c8d"/><path d="M7 22l-1 2M10 22l-1 2M13 22l-1 2M7 25l-1 2M10 25l-1 2M13 25l-1 2M7 28l-1 2M10 28l-1 2M13 28l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M17 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "c-snow": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/><circle cx="10" cy="24" r="1.2" fill="#74b9ff"/><circle cx="15" cy="24" r="1.2" fill="#74b9ff"/></svg>`,
+            "c-sleet": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/><path d="M10 23l-1 2" stroke="#3498db" stroke-width="2" stroke-linecap="round"/><circle cx="15" cy="24" r="1.2" fill="#74b9ff"/></svg>`,
+
             "overcast": `<svg viewBox="0 0 32 32"><path d="M6 22a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/></svg>`,
             "overcast-fog": `<svg viewBox="0 0 32 32"><path d="M6 16a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 8Z" fill="#bdc3c7"/><path d="M6 20h20M8 23h16M6 26h20" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "c-rain-light": `<svg viewBox="0 0 32 32"><path d="M6 22a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/><path d="M10 24l-1 2.5M14 24l-1 2.5" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "o-rain-med": `<svg viewBox="0 0 32 32"><path d="M6 22a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/><path d="M9 25l-1 3M13 25l-1 3M17 25l-1 3" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "thunder": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#a0a0a0"/><path d="M15 19l-3 5h3l-1 4 5-6h-3l2-3z" fill="#f1c40f"/></svg>`,
-            "snow": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#e0e0e0"/><circle cx="10" cy="24" r="1.5" fill="#3498db"/><circle cx="16" cy="25" r="1.5" fill="#3498db"/><circle cx="21" cy="23" r="1.5" fill="#3498db"/></svg>`
+            "o-rain-light": `<svg viewBox="0 0 32 32"><path d="M6 22a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#bdc3c7"/><path d="M10 24l-1 2.5M14 24l-1 2.5" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "o-rain-med": `<svg viewBox="0 0 32 32"><path d="M6 21a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#bdc3c7"/><path d="M9 23l-1 2M13 23l-1 2M9 27l-1 2M13 27l-1 2" stroke="#3498db" stroke-width="2" stroke-linecap="round"/></svg>`,
+            "o-rain-heavy": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#7f8c8d"/><path d="M8 22l-1 2M12 22l-1 2M16 22l-1 2M8 25l-1 2M12 25l-1 2M16 25l-1 2M8 28l-1 2M12 28l-1 2M16 28l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+            "o-rain-light-thunder": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#7f8c8d"/><path d="M10 22l-1 2M13 22l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M17 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "o-rain-med-thunder": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#7f8c8d"/><path d="M8 22l-1 2M12 22l-1 2M8 26l-1 2M12 26l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M17 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "o-rain-heavy-thunder": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#4b6584"/><path d="M7 22l-1 2M10 22l-1 2M13 22l-1 2M7 25l-1 2M10 25l-1 2M13 25l-1 2M7 28l-1 2M10 28l-1 2M13 28l-1 2" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M17 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
+            "snow": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#bdc3c7"/><circle cx="10" cy="24" r="1.5" fill="#3498db"/><circle cx="16" cy="25" r="1.5" fill="#3498db"/><circle cx="21" cy="23" r="1.5" fill="#3498db"/></svg>`,
+            "o-sleet": `<svg viewBox="0 0 32 32"><path d="M6 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 10Z" fill="#bdc3c7"/><path d="M9 23l-1 2M13 23l-1 2" stroke="#3498db" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="24" r="1.3" fill="#74b9ff"/></svg>`
         };
         
         const fullWeatherList = [
-            { key: "clear" }, { key: "clear-fog" }, { key: "cloudy-sun" }, { key: "cloudy-sun-fog" },
-            { key: "cloudy" }, { key: "cloudy-fog" }, { key: "overcast" }, { key: "overcast-fog" },
-            { key: "c-rain-light" }, { key: "o-rain-med" }, { key: "thunder" }, { key: "snow" }
+            { key: "clear" }, { key: "clear-fog" },
+            { key: "cloudy-sun" }, { key: "cloudy-sun-fog" }, { key: "cloudy-rain-light" }, { key: "cloudy-rain-med" }, { key: "cloudy-rain-heavy" }, { key: "cloudy-rain-light-thunder" }, { key: "cloudy-rain-med-thunder" }, { key: "cloudy-rain-heavy-thunder" }, { key: "cloudy-snow" }, { key: "cloudy-sleet" },
+            { key: "cloudy" }, { key: "cloudy-fog" }, { key: "c-rain-light" }, { key: "c-rain-med" }, { key: "c-rain-heavy" }, { key: "c-rain-light-thunder" }, { key: "c-rain-med-thunder" }, { key: "c-rain-heavy-thunder" }, { key: "c-snow" }, { key: "c-sleet" },
+            { key: "overcast" }, { key: "overcast-fog" }, { key: "o-rain-light" }, { key: "o-rain-med" }, { key: "o-rain-heavy" }, { key: "o-rain-light-thunder" }, { key: "o-rain-med-thunder" }, { key: "o-rain-heavy-thunder" }, { key: "snow" }, { key: "o-sleet" }
         ];
 
         function getWeatherText(key) {
@@ -1516,22 +1711,53 @@ function toggleSettingsModal() { document.getElementById('settingsModal').classL
             }
         }
 
-        function drawSmoothCurve(ctx, points, color, lineWidth = 3) {
+        function drawSmoothCurveWithGradientFill(ctx, points, color, heightLimit) {
             if (!points || points.length === 0) return;
+            
+            ctx.save();
             ctx.beginPath();
             ctx.moveTo(points[0].x, points[0].y);
-            if (points.length === 1) {
-                ctx.lineTo(points[0].x, points[0].y);
-            } else {
-                for (let i = 0; i < points.length - 1; i++) {
-                    let p0 = points[i], p1 = points[i + 1];
-                    let cx = (p0.x + p1.x) / 2;
-                    ctx.bezierCurveTo(cx, p0.y, cx, p1.y, p1.x, p1.y);
-                }
+
+            for (let i = 0; i < points.length - 1; i++) {
+                let p0 = points[i], p1 = points[i + 1];
+                let cx = (p0.x + p1.x) / 2;
+                ctx.bezierCurveTo(cx, p0.y, cx, p1.y, p1.x, p1.y);
+            }
+
+            let last = points[points.length - 1];
+            let first = points[0];
+            ctx.lineTo(last.x, heightLimit);
+            ctx.lineTo(first.x, heightLimit);
+            ctx.closePath();
+
+            let grad = ctx.createLinearGradient(0, 0, 0, heightLimit);
+            grad.addColorStop(0, color.replace("1)", "0.55)"));
+            grad.addColorStop(0.7, color.replace("1)", "0.15)"));
+            grad.addColorStop(1, color.replace("1)", "0.0)"));
+            ctx.fillStyle = grad;
+            ctx.fill();
+            ctx.restore();
+
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (let i = 0; i < points.length - 1; i++) {
+                let p0 = points[i], p1 = points[i + 1];
+                let cx = (p0.x + p1.x) / 2;
+                ctx.bezierCurveTo(cx, p0.y, cx, p1.y, p1.x, p1.y);
             }
             ctx.strokeStyle = color;
-            ctx.lineWidth = lineWidth;
+            ctx.lineWidth = 2.5;
             ctx.stroke();
+
+            points.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = "#ffffff";
+                ctx.fill();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            });
         }
 
         function getGraphTextColor() {
@@ -1557,7 +1783,7 @@ function toggleSettingsModal() { document.getElementById('settingsModal').classL
         function selectLocation(loc) {
             currentCityKey = loc.split(',')[0].trim(); 
             if (!allCitiesData[currentCityKey]) {
-                allCitiesData[currentCityKey] = createDefaultCityData(currentCityKey === "Томашполь");
+                allCitiesData[currentCityKey] = createDefaultCityData(currentCityKey);
             }
             if (!informerDataByCity[currentCityKey]) {
                 informerDataByCity[currentCityKey] = { temp: 10, feels: 5, sky: "overcast", key: "overcast" };
@@ -1566,7 +1792,8 @@ function toggleSettingsModal() { document.getElementById('settingsModal').classL
             document.getElementById('searchDropdown').classList.remove('active'); 
             renderAllDOM();
         }
-function renderAllDOM() {
+
+        function renderAllDOM() {
             const lang = i18n[currentLang];
 
             document.getElementById('searchInput').placeholder = lang.searchPlaceholder;
@@ -1627,7 +1854,7 @@ function renderAllDOM() {
                 }
 
                 let monthsNames = lang.monthsShort || i18n['ru'].monthsShort;
-                let html = `<div class="archive-scroll-container"><div class="archive-grid ${devCls}" id="archiveGridContainer" style="grid-template-columns: repeat(${currentArchiveDataset.length}, minmax(65px, 1fr));">`;
+                let html = `<div class="archive-scroll-container"><div class="archive-grid ${devCls}" id="archiveGridContainer" style="grid-template-columns: repeat(${currentArchiveDataset.length}, minmax(55px, 1fr));">`;
 
                 html += `<div class="archive-year-row" style="align-items:center; justify-space-around; padding: 4px 10px;">
                     <div class="archive-year-cell">2015</div>
@@ -1642,10 +1869,10 @@ function renderAllDOM() {
                     html += `<div class="archive-cell"><div class="archive-month-title">${monthsNames[item.mIdx]}</div></div>`;
                 });
 
-                html += `<div class="single-header-row">${lang.tempAir}</div>`;
+                html += `<div class="single-header-row" style="min-width: 100%; width: 100%;">${lang.tempAir}</div>`;
                 html += `<div class="archive-graph-row"><canvas id="archiveCanvas"></canvas><div class="archive-labels-container" id="archiveLabelsContainer"></div></div>`;
 
-                html += `<div class="single-header-row"><span class="info-icon">i</span> <span style="background:#00a8ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">Ясные</span> <span style="background:#74b9ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">облачные</span> <span style="background:#a4b0be; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">пасмурные дни</span></div>`;
+                html += `<div class="single-header-row" style="min-width: 100%; width: 100%;"><span class="info-icon">i</span> <span style="background:#00a8ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">Ясные</span> <span style="background:#74b9ff; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">облачные</span> <span style="background:#a4b0be; color:white; padding:2px 6px; border-radius:4px; font-size:11px;">пасмурные дни</span></div>`;
                 currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'skyClear',5)">▲</button><button onclick="modArchiveData(${i},'skyClear',-5)">▼</button></div>`;
                     html += `<div class="archive-cell">
@@ -1660,26 +1887,26 @@ function renderAllDOM() {
                     </div>`;
                 });
 
-                html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.windSpeedAvg.replace('{unit}', getWindUnitLabel())}</div>`;
+                html += `<div class="single-header-row" style="min-width: 100%; width: 100%;"><span class="info-icon">i</span> ${lang.windSpeedAvg.replace('{unit}', getWindUnitLabel())}</div>`;
                 currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'windAvg',1)">▲</button><button onclick="modArchiveData(${i},'windAvg',-1)">▼</button></div>`;
                     html += `<div class="archive-cell"><div class="gust-val-wrap"><div class="gust-bg grayish"><div class="gust-val">${convertWind(item.windAvg)}</div></div></div>${devCtrls}</div>`;
                 });
 
-                html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.windGust.replace('{unit}', getWindUnitLabel())}</div>`;
+                html += `<div class="single-header-row" style="min-width: 100%; width: 100%;"><span class="info-icon">i</span> ${lang.windGust.replace('{unit}', getWindUnitLabel())}</div>`;
                 currentArchiveDataset.forEach((item, i) => {
                     let bgClass = (item.gust < 8) ? "grayish" : "";
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'gust',1)">▲</button><button onclick="modArchiveData(${i},'gust',-1)">▼</button></div>`;
                     html += `<div class="archive-cell"><div class="gust-val-wrap"><div class="gust-bg ${bgClass}"><div class="gust-val">${convertWind(item.gust)}</div></div></div>${devCtrls}</div>`;
                 });
 
-                html += `<div class="single-header-row"><span class="info-icon">i</span> УФ-индекс, баллы</div>`;
+                html += `<div class="single-header-row" style="min-width: 100%; width: 100%;"><span class="info-icon">i</span> УФ-индекс, баллы</div>`;
                 currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'uv',1)">▲</button><button onclick="modArchiveData(${i},'uv',-1)">▼</button></div>`;
                     html += `<div class="archive-cell"><div class="uv-badge uv-${item.uv}">${item.uv}</div>${devCtrls}</div>`;
                 });
 
-                html += `<div class="single-header-row"><span class="info-icon">i</span> ${lang.snowAndPrecipLabel}</div>`;
+                html += `<div class="single-header-row" style="min-width: 100%; width: 100%;"><span class="info-icon">i</span> ${lang.snowAndPrecipLabel}</div>`;
                 currentArchiveDataset.forEach((item, i) => {
                     let devCtrls = `<div class="dev-arrows" style="right:2px;"><button onclick="modArchiveData(${i},'snowHeight',0.5)">▲</button><button onclick="modArchiveData(${i},'snowHeight',-0.5)">▼</button></div>`;
                     let valStr = item.snowHeight === 0 ? "0" : (item.snowHeight < 1 ? "<1" : item.snowHeight);
@@ -1765,9 +1992,8 @@ function renderAllDOM() {
             else if (data.mode === "grouped") {
                 let totalPartsCount = 0;
                 data.days.forEach(d => totalPartsCount += d.parts.length);
-                let minWidthPx = Math.max(520, totalPartsCount * 65);
 
-                let html = `<div class="grouped-scroll-container"><div class="grouped-wrap ${devCls}" style="min-width: ${minWidthPx}px;">
+                let html = `<div class="grouped-scroll-container"><div class="grouped-wrap ${devCls}">
                     <div style="display:flex; width: 100%;">`;
                 
                 data.days.forEach((day, dIdx) => {
@@ -1858,11 +2084,10 @@ function renderAllDOM() {
 
                 if (data.singleRow) {
                     let firstRow = data.rows[0];
-                    let minWidthPx = firstRow.length * 65;
 
-                    html += `<div class="twoweeks-monolith-scroll"><div class="twoweeks-monolith-grid ${devCls}" style="grid-template-columns: repeat(${firstRow.length}, minmax(65px, 1fr)); min-width: ${minWidthPx}px;">`;
+                    html += `<div class="twoweeks-monolith-scroll"><div class="twoweeks-monolith-grid ${devCls}" style="grid-template-columns: repeat(${firstRow.length}, 1fr);">`;
 
-                    html += `<div style="grid-column: 1 / -1; position: relative; height: 185px;">
+                    html += `<div style="grid-column: 1 / -1; position: relative; height: 210px;">
                                 <div class="tile-row" style="border:none; border-radius:0; height:100%;">
                                     <canvas class="tile-canvas" id="tileCanvas_0"></canvas>
                                     <div class="tile-labels-container" id="tileLabels_0"></div>
@@ -1872,7 +2097,7 @@ function renderAllDOM() {
                         let wMenu = buildWeatherDropdownHTML(`modTileIco_0_${cIdx}`);
                         let wText = getWeatherText(day.ic);
                         html += `<div class="tile-col">
-                            <div class="tile-header-txt"><div class="tile-dw ${isRed}">${day.dw}</div><div class="tile-date ${isRed}">${day.date}</div></div>
+                            <div class="tile-header-txt" onclick="openDatePicker(0, ${cIdx})"><div class="tile-dw ${isRed}">${day.dw}</div><div class="tile-date ${isRed}">${day.date}</div></div>
                             <div class="w-ico ${isDevModeActive ? 'dev-clickable' : ''}" onclick="toggleDropdown('tile-ico', '0-${cIdx}', event)" ontouchstart="handleIconTouch(this, event)">
                                 ${meteoforIcons[day.ic] || meteoforIcons['cloudy']}
                                 <div class="weather-tooltip">${wText}</div>
@@ -1924,7 +2149,7 @@ function renderAllDOM() {
                             let wMenu = buildWeatherDropdownHTML(`modTileIco_${rIdx}_${cIdx}`);
                             let wText = getWeatherText(day.ic);
                             html += `<div class="tile-col">
-                                <div class="tile-header-txt"><div class="tile-dw ${isRed}">${day.dw}</div><div class="tile-date ${isRed}">${day.date}</div></div>
+                                <div class="tile-header-txt" onclick="openDatePicker(${rIdx}, ${cIdx})"><div class="tile-dw ${isRed}">${day.dw}</div><div class="tile-date ${isRed}">${day.date}</div></div>
                                 <div class="w-ico ${isDevModeActive ? 'dev-clickable' : ''}" onclick="toggleDropdown('tile-ico', '${rIdx}-${cIdx}', event)" ontouchstart="handleIconTouch(this, event)">
                                     ${meteoforIcons[day.ic] || meteoforIcons['cloudy']}
                                     <div class="weather-tooltip">${wText}</div>
@@ -2023,7 +2248,8 @@ function renderAllDOM() {
                 }
             }
         }
-function drawArchiveCanvas() {
+
+        function drawArchiveCanvas() {
             const canvas = document.getElementById('archiveCanvas');
             const labelsContainer = document.getElementById('archiveLabelsContainer');
             const gridContainer = document.getElementById('archiveGridContainer');
@@ -2040,8 +2266,8 @@ function drawArchiveCanvas() {
             
             const ctx = canvas.getContext('2d');
             const totalCols = currentArchiveDataset.length;
-            const W = Math.max(gridContainer.scrollWidth, gridContainer.clientWidth, 4680);
-            const H = canvas.parentElement.clientHeight || 185;
+            const W = gridContainer.scrollWidth || gridContainer.clientWidth || canvas.parentElement.clientWidth;
+            const H = canvas.parentElement.clientHeight || 210;
             
             const dpr = window.devicePixelRatio || 1;
             canvas.style.width = W + 'px';
@@ -2057,8 +2283,8 @@ function drawArchiveCanvas() {
             const range = (globalMax - globalMin) || 1;
 
             const step = W / totalCols;
-            const topPadding = 92; 
-            const usableHeight = 48;
+            const topPadding = 45;
+            const usableHeight = H - 90;
 
             if (graphStyleMode === "lines") {
                 let ptsMax = [], ptsMin = [];
@@ -2070,32 +2296,22 @@ function drawArchiveCanvas() {
                     ptsMin.push({ x, y: yMin, val: day.minT, i });
                 });
 
-                drawSmoothCurve(ctx, ptsMax, "#e74c3c", 3);
-                drawSmoothCurve(ctx, ptsMin, "#3498db", 3);
+                drawSmoothCurveWithGradientFill(ctx, ptsMax, "rgba(255, 71, 87, 1)", H);
+                drawSmoothCurveWithGradientFill(ctx, ptsMin, "rgba(52, 152, 219, 1)", H);
 
                 currentArchiveDataset.forEach((day, i) => {
                     let pMax = ptsMax[i], pMin = ptsMin[i];
-                    
-                    ctx.fillStyle = "#e74c3c";
-                    ctx.textAlign = "center";
-                    ctx.font = "bold 12px -apple-system, BlinkMacSystemFont, Arial, sans-serif";
-                    ctx.fillText(formatTemp(day.maxT), pMax.x, pMax.y - 6);
 
-                    ctx.fillStyle = "#3498db";
-                    ctx.font = "500 11px -apple-system, BlinkMacSystemFont, Arial, sans-serif";
-                    ctx.fillText(formatTemp(day.minT), pMin.x, pMin.y + 14);
+                    const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:-25px;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>` : '';
+                    const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:25px;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
 
-                    if (isDevModeActive) {
-                        const devMax = `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>`;
-                        const devMin = `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>`;
-                        labelsContainer.innerHTML += `
-                            <div style="position:absolute; top:${pMax.y - 18}px; left:${i * step}px; width:${step}px; pointer-events:none;">
-                                <span style="position:relative; pointer-events:auto;">${devMax}</span>
-                            </div>
-                            <div style="position:absolute; top:${pMin.y + 2}px; left:${i * step}px; width:${step}px; pointer-events:none;">
-                                <span style="position:relative; pointer-events:auto;">${devMin}</span>
-                            </div>`;
-                    }
+                    labelsContainer.innerHTML += `
+                        <div style="position:absolute; top:${pMax.y - 24}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#ff4757; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:12px;">↑</span>${formatTemp(day.maxT)} ${devMax}</span>
+                        </div>
+                        <div style="position:absolute; top:${pMin.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#3498db; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:12px;">↓</span>${formatTemp(day.minT)} ${devMin}</span>
+                        </div>`;
                 });
             } else {
                 for (let i = 0; i < currentArchiveDataset.length; i++) {
@@ -2122,26 +2338,16 @@ function drawArchiveCanvas() {
                     }
 
                     const textColor = getGraphTextColor();
-                    ctx.fillStyle = textColor;
-                    ctx.textAlign = "center";
+                    const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>` : '';
+                    const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
 
-                    ctx.font = "bold 12px -apple-system, BlinkMacSystemFont, Arial, sans-serif";
-                    ctx.fillText(formatTemp(day.maxT), x + step / 2, yTop - 6);
-
-                    ctx.font = "500 11px -apple-system, BlinkMacSystemFont, Arial, sans-serif";
-                    ctx.fillText(formatTemp(day.minT), x + step / 2, yBot + 14);
-
-                    if (isDevModeActive) {
-                        const devMax = `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'maxT',1)">▲</button><button onclick="modArchiveData(${i},'maxT',-1)">▼</button></div>`;
-                        const devMin = `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>`;
-                        labelsContainer.innerHTML += `
-                            <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; pointer-events:none;">
-                                <span style="position:relative; pointer-events:auto;">${devMax}</span>
-                            </div>
-                            <div style="position:absolute; top:${yBot + 2}px; left:${x}px; width:${step}px; pointer-events:none;">
-                                <span style="position:relative; pointer-events:auto;">${devMin}</span>
-                            </div>`;
-                    }
+                    labelsContainer.innerHTML += `
+                        <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:${textColor}; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;">${formatTemp(day.maxT)} ${devMax}</span>
+                        </div>
+                        <div style="position:absolute; top:${yBot + 2}px; left:${x}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:${textColor}; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;">${formatTemp(day.minT)} ${devMin}</span>
+                        </div>`;
                 }
             }
         }
@@ -2207,18 +2413,7 @@ function drawArchiveCanvas() {
                 ctx.beginPath(); ctx.moveTo(0, ly); ctx.lineTo(W, ly); ctx.stroke();
             }
 
-            drawSmoothCurve(ctx, ptsWithCoords, "#ff4757", 3);
-
-            let lastPt = ptsWithCoords[ptsWithCoords.length - 1];
-            let firstPt = ptsWithCoords[0];
-            ctx.lineTo(lastPt.x, H - bottomMargin);
-            ctx.lineTo(firstPt.x, H - bottomMargin);
-            ctx.closePath();
-            let fillGrad = ctx.createLinearGradient(0, topMargin, 0, H - bottomMargin);
-            fillGrad.addColorStop(0, "rgba(255, 71, 87, 0.25)");
-            fillGrad.addColorStop(1, "rgba(255, 71, 87, 0.0)");
-            ctx.fillStyle = fillGrad;
-            ctx.fill();
+            drawSmoothCurveWithGradientFill(ctx, ptsWithCoords, "rgba(255, 71, 87, 1)", H);
 
             ptsWithCoords.forEach(p => {
                 let menuItems = [0,1,2,3,4,5,6,7,8,9].map(num => `
@@ -2254,8 +2449,8 @@ function drawArchiveCanvas() {
             const labelsContainer = document.getElementById('tempLabelsContainer');
             labelsContainer.innerHTML = '';
             
-            const parentW = canvas.parentElement.clientWidth || 520;
-            const parentH = canvas.parentElement.clientHeight || 85;
+            const parentW = canvas.parentElement.clientWidth;
+            const parentH = canvas.parentElement.clientHeight || 110;
             canvas.width = parentW;
             canvas.height = parentH;
 
@@ -2272,34 +2467,37 @@ function drawArchiveCanvas() {
             const globalMin = Math.min(...allMinT);
             const range = (globalMax - globalMin) || 1;
 
+            const topPadding = 30;
+            const usableHeight = H - 60;
+
             if (graphStyleMode === "lines") {
                 let ptsTop = [], ptsBot = [];
                 for (let i = 0; i < items.length; i++) {
                     let p = items[i];
                     let x = i * step + step / 2;
-                    let yTop = 22 + (1 - (p.t - globalMin) / range) * (H - 44);
-                    let yBot = 22 + (1 - (p.minT - globalMin) / range) * (H - 44);
+                    let yTop = topPadding + (1 - (p.t - globalMin) / range) * usableHeight;
+                    let yBot = topPadding + (1 - (p.minT - globalMin) / range) * usableHeight;
                     ptsTop.push({ x, y: yTop, t: p.t, i });
                     ptsBot.push({ x, y: yBot, minT: p.minT, i });
                 }
 
-                drawSmoothCurve(ctx, ptsTop, "#e74c3c", 3);
-                drawSmoothCurve(ctx, ptsBot, "#3498db", 3);
+                drawSmoothCurveWithGradientFill(ctx, ptsTop, "rgba(255, 71, 87, 1)", H);
+                drawSmoothCurveWithGradientFill(ctx, ptsBot, "rgba(52, 152, 219, 1)", H);
 
                 for (let i = 0; i < items.length; i++) {
                     const p = items[i];
                     const ptT = ptsTop[i];
                     const ptB = ptsBot[i];
 
-                    const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-18px;"><button onclick="modSingleData(${i},'t',1)">▲</button><button onclick="modSingleData(${i},'t',-1)">▼</button></div>` : '';
-                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:12px; background:rgba(0,0,0,0.1);"><button onclick="modSingleData(${i},'minT',1)">▲</button><button onclick="modSingleData(${i},'minT',-1)">▼</button></div>` : '';
+                    const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-25px;"><button onclick="modSingleData(${i},'t',1)">▲</button><button onclick="modSingleData(${i},'t',-1)">▼</button></div>` : '';
+                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:25px;"><button onclick="modSingleData(${i},'minT',1)">▲</button><button onclick="modSingleData(${i},'minT',-1)">▼</button></div>` : '';
 
                     labelsContainer.innerHTML += `
-                        <div style="position:absolute; top:${ptT.y - 20}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:#e74c3c; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.t)} ${devTop}</span>
+                        <div style="position:absolute; top:${ptT.y - 22}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#ff4757; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:12px;">↑</span>${formatTemp(p.t)} ${devTop}</span>
                         </div>
-                        <div style="position:absolute; top:${ptB.y + 4}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:500; font-size:12px; color:#3498db; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.minT)} ${devBot}</span>
+                        <div style="position:absolute; top:${ptB.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#3498db; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:12px;">↓</span>${formatTemp(p.minT)} ${devBot}</span>
                         </div>`;
                 }
             } else {
@@ -2346,8 +2544,8 @@ function drawArchiveCanvas() {
             if(!canvas) return;
             labels.innerHTML = '';
             
-            const parentW = canvas.parentElement.clientWidth || 520;
-            const parentH = canvas.parentElement.clientHeight || 85;
+            const parentW = canvas.parentElement.clientWidth;
+            const parentH = canvas.parentElement.clientHeight || 110;
             canvas.width = parentW; 
             canvas.height = parentH;
 
@@ -2365,35 +2563,37 @@ function drawArchiveCanvas() {
             const range = (globalMax - globalMin) || 1;
             
             const step = W / parts.length;
+            const topPadding = 30;
+            const usableHeight = H - 60;
 
             if (graphStyleMode === "lines") {
                 let ptsTop = [], ptsBot = [];
                 for (let i = 0; i < parts.length; i++) {
                     let p = parts[i];
                     let x = i * step + step / 2;
-                    let yTop = 22 + (1 - (p.t - globalMin) / range) * (H - 44);
-                    let yBot = 22 + (1 - (p.minT - globalMin) / range) * (H - 44);
+                    let yTop = topPadding + (1 - (p.t - globalMin) / range) * usableHeight;
+                    let yBot = topPadding + (1 - (p.minT - globalMin) / range) * usableHeight;
                     ptsTop.push({ x, y: yTop, t: p.t, i });
                     ptsBot.push({ x, y: yBot, minT: p.minT, i });
                 }
 
-                drawSmoothCurve(ctx, ptsTop, "#e74c3c", 3);
-                drawSmoothCurve(ctx, ptsBot, "#3498db", 3);
+                drawSmoothCurveWithGradientFill(ctx, ptsTop, "rgba(255, 71, 87, 1)", H);
+                drawSmoothCurveWithGradientFill(ctx, ptsBot, "rgba(52, 152, 219, 1)", H);
 
                 for (let i = 0; i < parts.length; i++) {
                     const p = parts[i];
                     const ptT = ptsTop[i];
                     const ptB = ptsBot[i];
 
-                    const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-20px;"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',-1)">▼</button></div>` : '';
-                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:15px; background:rgba(0,0,0,0.1);"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',-1)">▼</button></div>` : '';
+                    const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-25px;"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',-1)">▼</button></div>` : '';
+                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:25px;"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',-1)">▼</button></div>` : '';
 
                     labels.innerHTML += `
-                        <div style="position:absolute; top:${ptT.y - 20}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:#e74c3c; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.t)} ${devTop}</span>
+                        <div style="position:absolute; top:${ptT.y - 22}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#ff4757; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:12px;">↑</span>${formatTemp(p.t)} ${devTop}</span>
                         </div>
-                        <div style="position:absolute; top:${ptB.y + 4}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:500; font-size:12px; color:#3498db; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.minT)} ${devBot}</span>
+                        <div style="position:absolute; top:${ptB.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#3498db; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:12px;">↓</span>${formatTemp(p.minT)} ${devBot}</span>
                         </div>`;
                 }
             } else {
@@ -2438,20 +2638,25 @@ function drawArchiveCanvas() {
         function drawTilesCanvas() {
             const cityData = allCitiesData[currentCityKey] || allCitiesData["Запорожье"];
             const data = cityData[currentTab];
-            let allMax = [], allMin = [];
-            data.rows.forEach(r => r.forEach(d => { allMax.push(d.maxT); allMin.push(d.minT); }));
-            
-            const globalMax = Math.max(...allMax);
-            const globalMin = Math.min(...allMin);
-            const range = (globalMax - globalMin) || 1;
+
+            let allMaxT = [], allMinT = [];
+            data.rows.forEach(row => {
+                row.forEach(day => {
+                    allMaxT.push(day.maxT);
+                    allMinT.push(day.minT);
+                });
+            });
+            let globalMax = Math.max(...allMaxT);
+            let globalMin = Math.min(...allMinT);
+            let globalRange = (globalMax - globalMin) || 1;
 
             data.rows.forEach((row, rIdx) => {
                 const canvas = document.getElementById(`tileCanvas_${rIdx}`), labels = document.getElementById(`tileLabels_${rIdx}`);
                 if (!canvas) return; 
                 labels.innerHTML = '';
                 
-                const parentW = canvas.parentElement.clientWidth || 500;
-                const parentH = canvas.parentElement.clientHeight || 185;
+                const parentW = canvas.parentElement.clientWidth;
+                const parentH = canvas.parentElement.clientHeight || 210;
                 canvas.width = parentW; 
                 canvas.height = parentH;
                 
@@ -2459,36 +2664,40 @@ function drawArchiveCanvas() {
                 const W = canvas.width, H = canvas.height;
                 const step = W / row.length;
                 
-                const topPadding = 92; 
-                const usableHeight = 48;
+                const topPadding = 100; 
+                const usableHeight = 80;
 
                 if (graphStyleMode === "lines") {
                     let ptsMax = [], ptsMin = [];
                     row.forEach((day, i) => {
                         let x = i * step + step / 2;
-                        let yMax = topPadding + (1 - (day.maxT - globalMin)/range) * usableHeight;
-                        let yMin = topPadding + (1 - (day.minT - globalMin)/range) * usableHeight;
+                        let yMax = topPadding + (1 - (day.maxT - globalMin) / globalRange) * usableHeight;
+                        let yMin = topPadding + (1 - (day.minT - globalMin) / globalRange) * usableHeight;
                         ptsMax.push({x, y: yMax, val: day.maxT, i});
                         ptsMin.push({x, y: yMin, val: day.minT, i});
                     });
 
-                    drawSmoothCurve(ctx, ptsMax, "#e74c3c", 3);
-                    drawSmoothCurve(ctx, ptsMin, "#3498db", 3);
+                    drawSmoothCurveWithGradientFill(ctx, ptsMax, "rgba(255, 71, 87, 1)", H);
+                    drawSmoothCurveWithGradientFill(ctx, ptsMin, "rgba(52, 152, 219, 1)", H);
 
                     row.forEach((day, i) => {
                         let pMax = ptsMax[i], pMin = ptsMin[i];
-                        const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modTileVal(${rIdx},${i},'maxT',1)">▲</button><button onclick="modTileVal(${rIdx},${i},'maxT',-1)">▼</button></div>` : '';
-                        const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modTileVal(${rIdx},${i},'minT',1)">▲</button><button onclick="modTileVal(${rIdx},${i},'minT',-1)">▼</button></div>` : '';
+                        const devMax = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:-25px;"><button onclick="modTileVal(${rIdx},${i},'maxT',1)">▲</button><button onclick="modTileVal(${rIdx},${i},'maxT',-1)">▼</button></div>` : '';
+                        const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:25px;"><button onclick="modTileVal(${rIdx},${i},'minT',1)">▲</button><button onclick="modTileVal(${rIdx},${i},'minT',-1)">▼</button></div>` : '';
                         
-                        labels.innerHTML += `<div style="position:absolute; top:${pMax.y - 18}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:#e74c3c; pointer-events:none;"><span style="position:relative; pointer-events:auto;">${formatTemp(day.maxT)} ${devMax}</span></div>
-                                             <div style="position:absolute; top:${pMin.y + 2}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:#3498db; pointer-events:none;"><span style="position:relative; pointer-events:auto;">${formatTemp(day.minT)} ${devMin}</span></div>`;
+                        labels.innerHTML += `<div style="position:absolute; top:${pMax.y - 22}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#ff4757; pointer-events:none;">
+                                                <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:12px;">↑</span>${formatTemp(day.maxT)} ${devMax}</span>
+                                             </div>
+                                             <div style="position:absolute; top:${pMin.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#3498db; pointer-events:none;">
+                                                <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:12px;">↓</span>${formatTemp(day.minT)} ${devMin}</span>
+                                             </div>`;
                     });
                 } else {
                     for(let i=0; i<row.length; i++) {
                         const day = row[i], x = i * step;
                         
-                        const yTop = topPadding + (1 - (day.maxT - globalMin)/range) * usableHeight;
-                        const yBot = topPadding + (1 - (day.minT - globalMin)/range) * usableHeight;
+                        const yTop = topPadding + (1 - (day.maxT - globalMin)/globalRange) * usableHeight;
+                        const yBot = topPadding + (1 - (day.minT - globalMin)/globalRange) * usableHeight;
                         
                         ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, yBot, day.minT, day.maxT);
                         ctx.strokeStyle = "#409950";
@@ -2499,8 +2708,8 @@ function drawArchiveCanvas() {
                         ctx.beginPath(); ctx.moveTo(x, yBot); ctx.lineTo(x+step, yBot); ctx.stroke();
                         if (i > 0) {
                             const prevDay = row[i-1];
-                            const prevYTop = topPadding + (1 - (prevDay.maxT - globalMin)/range) * usableHeight;
-                            const prevYBot = topPadding + (1 - (prevDay.minT - globalMin)/range) * usableHeight;
+                            const prevYTop = topPadding + (1 - (prevDay.maxT - globalMin)/globalRange) * usableHeight;
+                            const prevYBot = topPadding + (1 - (prevDay.minT - globalMin)/globalRange) * usableHeight;
                             ctx.beginPath(); ctx.moveTo(x, prevYTop); ctx.lineTo(x, yTop); ctx.stroke();
                             ctx.beginPath(); ctx.moveTo(x, prevYBot); ctx.lineTo(x, yBot); ctx.stroke();
                         }
@@ -2618,9 +2827,9 @@ function drawArchiveCanvas() {
         }
 
         function updateRealTime() {
-            const now = new Date(), days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'], mos = ['ЯНВАРЯ', 'ФЕВРАЛЯ', 'МАРТА', 'АПРЕЛЯ', 'МАЯ', 'ИЮНЯ', 'ИЮЛЯ', 'АВГУСТА', 'СЕНТЯБРЯ', 'ОКТЯБРЯ', 'НОЯБРЯ', 'ДЕКАБРЯ'];
+            const now = new Date(), days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'], mos = ['ЯНВАРЯ', 'ФЕВРАЛЯ', 'МАРТА', 'АПРЕЛЯ', 'МАЯ', 'ИЮНЯ', 'ИЮЛЯ', 'АВГУСТА', 'СЕНТЯБРЯ', 'НОЯБРЯ', 'ДЕКАБРЯ'];
             const el = document.getElementById('infTimeRow');
-            if(el) el.innerText = `${days[now.getDay()]}, ${now.getDate()} ${mos[now.getMonth()]}, ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+            if(el) el.innerText = `${days[now.getDay()]}, ${now.getDate()} ${mos[now.getMonth()]} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
         }
 
         window.addEventListener('resize', renderAllDOM);
