@@ -409,8 +409,7 @@
             </div>
         </div>
     </div>
-
-    <div class="modal-overlay" id="commentsModal">
+<div class="modal-overlay" id="commentsModal">
         <div class="modal-container">
             <button class="modal-close-btn" onclick="toggleCommentsModal()">✕</button>
             <div class="modal-title">Отзывы и комментарии</div>
@@ -487,7 +486,7 @@
     </div><script>
         const DEV_PASSWORD = "1234";
         let currentTab = "month", isDevModeActive = false;
-        let informerData = { temp: 9, feels: 4, sky: "overcast", key: "overcast" };
+        let informerData = { temp: 10, feels: 5, sky: "overcast", key: "overcast" };
         let currentCityKey = "Запорожье";
         
         let currentLang = localStorage.getItem('m_lang') || "ru";
@@ -724,8 +723,7 @@
                 }
             }
         };
-
-        const weatherTranslations = {
+const weatherTranslations = {
             "clear": { ru: "Ясно", uk: "Ясно", en: "Clear", pl: "Czystе", gal: "Ясно" },
             "clear-fog": { ru: "Ясно, туман", uk: "Ясно, туман", en: "Clear, fog", pl: "Czysto, mgła", gal: "Ясно, мгла" },
             "cloudy-sun": { ru: "Малооблачно", uk: "Малооблачно", en: "Partly cloudy", pl: "Mało zachmurzenie", gal: "Малооблачно" },
@@ -1325,9 +1323,7 @@
             document.getElementById('searchInput').value = loc;
             document.getElementById('searchDropdown').classList.remove('active'); 
             renderAllDOM();
-        }
-
-        function renderAllDOM() {
+        }function renderAllDOM() {
             const lang = i18n[currentLang];
 
             document.getElementById('searchInput').placeholder = lang.searchPlaceholder;
@@ -1792,8 +1788,7 @@
                 }
             }
         }
-
-        function drawArchiveCanvas() {
+function drawArchiveCanvas() {
             const canvas = document.getElementById('archiveCanvas');
             const labelsContainer = document.getElementById('archiveLabelsContainer');
             const gridContainer = document.getElementById('archiveGridContainer');
