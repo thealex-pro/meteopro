@@ -452,7 +452,7 @@
             </div>
 
             <div class="search-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="Поиск города..." oninput="handleSearch()" onfocus="showSearchDrop()" autocomplete="off">
+                <input type="text" id="searchInput" class="search-input" placeholder="Поиск города..." oninput="handleSearch()" autocomplete="off">
                 <div class="search-dropdown" id="searchDropdown"></div>
             </div>
         </div>
@@ -1323,14 +1323,26 @@ const weatherTranslations = {
             "Днепр": createDefaultCityData()
         };
 
-        function showSearchDrop() { handleSearch(); document.getElementById('searchDropdown').classList.add('active'); }
         function handleSearch() {
-            const val = document.getElementById('searchInput').value.toLowerCase();
+            const val = document.getElementById('searchInput').value.trim().toLowerCase();
             const drop = document.getElementById('searchDropdown');
+            
+            if (val.length === 0) {
+                drop.innerHTML = '';
+                drop.classList.remove('active');
+                return;
+            }
+
             const filtered = searchLocations.filter(l => l.toLowerCase().includes(val));
-            drop.innerHTML = filtered.map(l => `<div class="search-item" onclick="selectLocation('${l}')">${l}</div>`).join('');
-            if(filtered.length > 0) drop.classList.add('active'); else drop.classList.remove('active');
+            if (filtered.length > 0) {
+                drop.innerHTML = filtered.map(l => `<div class="search-item" onclick="selectLocation('${l}')">${l}</div>`).join('');
+                drop.classList.add('active');
+            } else {
+                drop.innerHTML = '';
+                drop.classList.remove('active');
+            }
         }
+
         function selectLocation(loc) {
             currentCityKey = loc.split(',')[0].trim(); 
             if (!allCitiesData[currentCityKey]) {
@@ -1818,7 +1830,7 @@ function drawArchiveCanvas() {
             
             const ctx = canvas.getContext('2d');
             const totalCols = archiveZaporozhyeData.length;
-            const W = gridContainer.scrollWidth || 4680;
+            const W = Math.max(gridContainer.scrollWidth, gridContainer.clientWidth, 4680);
             const H = canvas.parentElement.clientHeight || 120;
             
             canvas.style.width = W + 'px';
