@@ -237,7 +237,7 @@
 
         /* Архив */
         .archive-scroll-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-main); }
-        .archive-grid { display: grid; border-collapse: collapse; min-width: 4680px; font-size: 12px; }
+        .archive-grid { display: grid; border-collapse: collapse; min-width: 4680px; font-size: 12px; width: max-content; }
         .archive-year-row { grid-column: 1 / -1; display: flex; background: var(--bg-card); border-bottom: 1px solid var(--border-color); font-weight: bold; font-size: 14px; text-align: center; }
         .archive-year-cell { flex: 1; padding: 8px; border-right: 1px solid var(--border-color); }
         .archive-year-cell:last-child { border-right: none; }
@@ -1791,7 +1791,9 @@
                     setTimeout(drawGeoChartCanvas, 50);
                 }
             }
-        }function drawArchiveCanvas() {
+        }
+
+        function drawArchiveCanvas() {
             const canvas = document.getElementById('archiveCanvas');
             const labelsContainer = document.getElementById('archiveLabelsContainer');
             const gridContainer = document.getElementById('archiveGridContainer');
@@ -1800,7 +1802,7 @@
             
             const ctx = canvas.getContext('2d');
             const totalCols = archiveZaporozhyeData.length;
-            const W = gridContainer.scrollWidth || gridContainer.clientWidth || 4680;
+            const W = gridContainer.scrollWidth || 4680;
             const H = canvas.parentElement.clientHeight || 120;
             
             canvas.style.width = W + 'px';
