@@ -894,9 +894,9 @@ const weatherTranslations = {
             "o-rain-light": { ru: "Пасмурно, небольшой дождь", uk: "Похмуро, невеликий дощ", en: "Overcast, light rain", pl: "Pochmurno, lekki deszcz", gal: "Похмуро, малий дощ" },
             "o-rain-med": { ru: "Пасмурно, дождь", uk: "Похмуро, дощ", en: "Overcast, rain", pl: "Pochmurno, deszcz", gal: "Похмуро, дощ" },
             "o-rain-heavy": { ru: "Пасмурно, сильный дождь", uk: "Похмуро, сильний дощ", en: "Overcast, heavy rain", pl: "Pochmurno, ulewa", gal: "Похмуро, моцний дощ" },
-            "o-rain-light-thunder": { ru: "Пасмурно, небольшой дождь, гроза", uk: "Пасмурно, невеликий дощ, гроза", en: "Overcast, light rain, storm", pl: "Pochmurno, lekki deszcz, burza", gal: "Похмуро, малий дощ, громовиця" },
-            "o-rain-med-thunder": { ru: "Пасмурно, дождь, гроза", uk: "Похмуро, дощ, гроза", en: "Overcast, rain, thunderstorm", pl: "Pochmurno, deszcz, burza", gal: "Похмуро, дощ, громовиця" },
-            "o-rain-heavy-thunder": { ru: "Пасмурно, сильный дождь, гроза", uk: "Пасмурно, сильний дощ, гроза", en: "Overcast, heavy rain, storm", pl: "Pochmurno, ulewa, burza", gal: "Похмуро, моцний дощ, громовиця" },
+            "o-rain-light-thunder": { ru: "Пасмурно, небольшой дождь, гроза", uk: "Пасмурно, невеликий дощ, гроза", en: "Overcast, light rain, storm", pl: "Pochmurno, lekki deszcz, burza", gal: "Пасмурно, малий дощ, громовиця" },
+            "o-rain-med-thunder": { ru: "Пасмурно, дождь, гроза", uk: "Похмуро, дощ, гроза", en: "Overcast, rain, thunderstorm", pl: "Pochmurno, deszcz, burza", gal: "Пасмурно, дощ, громовиця" },
+            "o-rain-heavy-thunder": { ru: "Пасмурно, сильный дождь, гроза", uk: "Пасмурно, сильний дощ, гроза", en: "Overcast, heavy rain, storm", pl: "Pochmurno, ulewa, burza", gal: "Пасмурно, моцний дощ, громовиця" },
             "snow": { ru: "Пасмурно, снег", uk: "Пасмурно, сніг", en: "Overcast, snow", pl: "Pochmurno, śnieg", gal: "Похмуро, сніг" },
             "o-sleet": { ru: "Пасмурно, мокрый снег", uk: "Похмуро, мокрий сніг", en: "Overcast, sleet", pl: "Pochmurno, deszcz ze śniegiem", gal: "Похмуро, мокрий сніг" }
         };
@@ -910,17 +910,16 @@ const weatherTranslations = {
 
         const dayTimes = ["2:00", "5:00", "8:00", "11:00", "14:00", "17:00", "20:00", "23:00"];
         const template8Items = [
-            { ic: "cloudy", t: 11, minT: 9, windD: "E", gust: 9, rain: 0 },
-            { ic: "cloudy", t: 9, minT: 8, windD: "E", gust: 9, rain: 0 },
-            { ic: "cloudy-sun", t: 9, minT: 8, windD: "E", gust: 10, rain: 0 },
-            { ic: "cloudy", t: 14, minT: 10, windD: "E", gust: 10, rain: 0 },
-            { ic: "cloudy", t: 15, minT: 11, windD: "E", gust: 10, rain: 0 },
-            { ic: "cloudy", t: 14, minT: 10, windD: "E", gust: 9, rain: 0 },
-            { ic: "c-rain-light", t: 14, minT: 11, windD: "E", gust: 7, rain: 0.2 },
-            { ic: "c-rain-light", t: 15, minT: 12, windD: "E", gust: 6, rain: 0.3 }
+            { ic: "cloudy", t: 11, windD: "E", gust: 9, rain: 0 },
+            { ic: "cloudy", t: 9, windD: "E", gust: 9, rain: 0 },
+            { ic: "cloudy-sun", t: 9, windD: "E", gust: 10, rain: 0 },
+            { ic: "cloudy", t: 14, windD: "E", gust: 10, rain: 0 },
+            { ic: "cloudy", t: 15, windD: "E", gust: 10, rain: 0 },
+            { ic: "cloudy", t: 14, windD: "E", gust: 9, rain: 0 },
+            { ic: "c-rain-light", t: 14, windD: "E", gust: 7, rain: 0.2 },
+            { ic: "c-rain-light", t: 15, windD: "E", gust: 6, rain: 0.3 }
         ];
-
-        const archiveZaporozhyeData = [
+const archiveZaporozhyeData = [
             { year: 2015, mIdx: 0, maxT: 8, minT: -25, skyClear: 20, skyCloudy: 45, skyOvercast: 35, rain: 5, snow: 28, mix: 9, none: 58, windAvg: 4, gust: 13, uv: 1, snowHeight: 12.5 },
             { year: 2015, mIdx: 1, maxT: 16, minT: -13, skyClear: 25, skyCloudy: 50, skyOvercast: 25, rain: 6, snow: 18, mix: 6, none: 70, windAvg: 4, gust: 12, uv: 2, snowHeight: 8.2 },
             { year: 2015, mIdx: 2, maxT: 20, minT: -6, skyClear: 35, skyCloudy: 40, skyOvercast: 25, rain: 24, snow: 3, mix: 4, none: 69, windAvg: 4, gust: 14, uv: 3, snowHeight: 1.1 },
@@ -1246,9 +1245,9 @@ const weatherTranslations = {
 
         function createDefaultCityData(cityName) {
             return {
-                "yesterday": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t - 2, minT: v.minT - 2})) },
+                "yesterday": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t - 2})) },
                 "today": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i]})) },
-                "tomorrow": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t + 1, minT: v.minT + 1})) },
+                "tomorrow": { mode: "single_day", items: template8Items.map((v, i) => ({...v, time: dayTimes[i], t: v.t + 1})) },
                 "now": { mode: "empty" },
                 "hourly": { mode: "empty" },
                 
@@ -1258,28 +1257,28 @@ const weatherTranslations = {
                         {
                             date: "Ср, 4 ноября", isWknd: false,
                             parts: [
-                                { tNm:"Ночь", ic:"overcast", t:10, minT:9, wD:"W", gust:9, rain:0 },
-                                { tNm:"Утро", ic:"overcast", t:9, minT:8, wD:"W", gust:10, rain:0 },
-                                { tNm:"День", ic:"cloudy-rain-light", t:15, minT:10, wD:"W", gust:10, rain:0.2 },
-                                { tNm:"Вечер", ic:"c-rain-med-thunder", t:13, minT:12, wD:"W", gust:7, rain:0.5 }
+                                { tNm:"Ночь", ic:"overcast", t:8, wD:"W", gust:9, rain:0 },
+                                { tNm:"Утро", ic:"overcast", t:7, wD:"W", gust:10, rain:0 },
+                                { tNm:"День", ic:"cloudy-rain-light", t:15, wD:"W", gust:10, rain:0.2 },
+                                { tNm:"Вечер", ic:"c-rain-med-thunder", t:11, wD:"W", gust:7, rain:0.5 }
                             ]
                         },
                         {
                             date: "Чт, 5 ноября", isWknd: false,
                             parts: [
-                                { tNm:"Ночь", ic:"o-rain-med", t:15, minT:12, wD:"W", gust:6, rain:2.5 },
-                                { tNm:"Утро", ic:"o-rain-heavy-thunder", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
-                                { tNm:"День", ic:"o-rain-med", t:13, minT:10, wD:"W", gust:7, rain:3.5 },
-                                { tNm:"Вечер", ic:"c-rain-light", t:12, minT:11, wD:"SW", gust:6, rain:0.4 }
+                                { tNm:"Ночь", ic:"o-rain-med", t:11, wD:"W", gust:6, rain:2.5 },
+                                { tNm:"Утро", ic:"o-rain-heavy-thunder", t:8, wD:"W", gust:7, rain:6.3 },
+                                { tNm:"День", ic:"o-rain-med", t:13, wD:"W", gust:7, rain:3.5 },
+                                { tNm:"Вечер", ic:"c-rain-light", t:9, wD:"SW", gust:6, rain:0.4 }
                             ]
                         },
                         {
                             date: "Пт, 6 ноября", isWknd: false,
                             parts: [
-                                { tNm:"Ночь", ic:"overcast", t:8, minT:7, wD:"W", gust:6, rain:0 },
-                                { tNm:"Утро", ic:"overcast", t:8, minT:7, wD:"SW", gust:6, rain:0 },
-                                { tNm:"День", ic:"overcast", t:10, minT:8, wD:"W", gust:6, rain:0 },
-                                { tNm:"Вечер", ic:"overcast", t:9, minT:8, wD:"NW", gust:4, rain:0 }
+                                { tNm:"Ночь", ic:"overcast", t:5, wD:"W", gust:6, rain:0 },
+                                { tNm:"Утро", ic:"overcast", t:5, wD:"SW", gust:6, rain:0 },
+                                { tNm:"День", ic:"overcast", t:10, wD:"W", gust:6, rain:0 },
+                                { tNm:"Вечер", ic:"overcast", t:6, wD:"NW", gust:4, rain:0 }
                             ]
                         }
                     ]
@@ -1290,19 +1289,19 @@ const weatherTranslations = {
                         {
                             date: "Сб, 7 ноября", isWknd: true,
                             parts: [
-                                { tNm:"Ночь", ic:"o-rain-med", t:15, minT:12, wD:"W", gust:6, rain:2.5 },
-                                { tNm:"Утро", ic:"o-rain-med", t:10, minT:8, wD:"W", gust:7, rain:6.3 },
-                                { tNm:"День", ic:"o-rain-med", t:13, minT:10, wD:"W", gust:7, rain:3.5 },
-                                { tNm:"Вечер", ic:"c-rain-light", t:12, minT:11, wD:"SW", gust:6, rain:0.4 }
+                                { tNm:"Ночь", ic:"o-rain-med", t:10, wD:"W", gust:6, rain:2.5 },
+                                { tNm:"Утро", ic:"o-rain-med", t:7, wD:"W", gust:7, rain:6.3 },
+                                { tNm:"День", ic:"o-rain-med", t:13, wD:"W", gust:7, rain:3.5 },
+                                { tNm:"Вечер", ic:"c-rain-light", t:8, wD:"SW", gust:6, rain:0.4 }
                             ]
                         },
                         {
                             date: "Вс, 8 ноября", isWknd: true,
                             parts: [
-                                { tNm:"Ночь", ic:"overcast", t:8, minT:7, wD:"W", gust:6, rain:0 },
-                                { tNm:"Утро", ic:"overcast", t:8, minT:7, wD:"SW", gust:6, rain:0 },
-                                { tNm:"День", ic:"overcast", t:10, minT:8, wD:"W", gust:6, rain:0 },
-                                { tNm:"Вечер", ic:"overcast", t:9, minT:8, wD:"NW", gust:4, rain:0 }
+                                { tNm:"Ночь", ic:"overcast", t:5, wD:"W", gust:6, rain:0 },
+                                { tNm:"Утро", ic:"overcast", t:5, wD:"SW", gust:6, rain:0 },
+                                { tNm:"День", ic:"overcast", t:10, wD:"W", gust:6, rain:0 },
+                                { tNm:"Вечер", ic:"overcast", t:6, wD:"NW", gust:4, rain:0 }
                             ]
                         }
                     ]
@@ -1990,9 +1989,6 @@ const meteoforIcons = {
                 setTimeout(drawCanvasSingleDay, 50);
             } 
             else if (data.mode === "grouped") {
-                let totalPartsCount = 0;
-                data.days.forEach(d => totalPartsCount += d.parts.length);
-
                 let html = `<div class="grouped-scroll-container"><div class="grouped-wrap ${devCls}">
                     <div style="display:flex; width: 100%;">`;
                 
@@ -2463,77 +2459,63 @@ const meteoforIcons = {
             const step = W / items.length;
             
             let allT = items.map(p => p.t);
-            let allMinT = items.map(p => p.minT);
             const globalMax = Math.max(...allT);
-            const globalMin = Math.min(...allMinT);
-            const range = (globalMax - globalMin) || 1;
+            const globalMin = Math.min(...allT);
+            const baseMin = Math.min(0, globalMin - 2);
+            const range = Math.max(1, globalMax - baseMin);
 
-            const topPadding = 30;
-            const usableHeight = H - 60;
+            const topPadding = 25;
+            const usableHeight = H - 35;
 
             if (graphStyleMode === "lines") {
-                let ptsTop = [], ptsBot = [];
+                let ptsTop = [];
                 for (let i = 0; i < items.length; i++) {
                     let p = items[i];
                     let x = i * step + step / 2;
-                    let yTop = topPadding + (1 - (p.t - globalMin) / range) * usableHeight;
-                    let yBot = topPadding + (1 - (p.minT - globalMin) / range) * usableHeight;
+                    let yTop = topPadding + (1 - (p.t - baseMin) / range) * usableHeight;
                     ptsTop.push({ x, y: yTop, t: p.t, i });
-                    ptsBot.push({ x, y: yBot, minT: p.minT, i });
                 }
 
-                drawSmoothCurveWithGradientFill(ctx, ptsTop, "rgba(255, 71, 87, 1)", H);
-                drawSmoothCurveWithGradientFill(ctx, ptsBot, "rgba(52, 152, 219, 1)", H);
+                drawSmoothCurveWithGradientFill(ctx, ptsTop, "rgba(95, 207, 128, 1)", H);
 
                 for (let i = 0; i < items.length; i++) {
                     const p = items[i];
                     const ptT = ptsTop[i];
-                    const ptB = ptsBot[i];
 
                     const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-25px;"><button onclick="modSingleData(${i},'t',1)">▲</button><button onclick="modSingleData(${i},'t',-1)">▼</button></div>` : '';
-                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:25px;"><button onclick="modSingleData(${i},'minT',1)">▲</button><button onclick="modSingleData(${i},'minT',-1)">▼</button></div>` : '';
 
                     labelsContainer.innerHTML += `
-                        <div style="position:absolute; top:${ptT.y - 22}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#ff4757; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:12px;">↑</span>${formatTemp(p.t)} ${devTop}</span>
-                        </div>
-                        <div style="position:absolute; top:${ptB.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#3498db; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:12px;">↓</span>${formatTemp(p.minT)} ${devBot}</span>
+                        <div style="position:absolute; top:${ptT.y - 22}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:${getGraphTextColor()}; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.t)} ${devTop}</span>
                         </div>`;
                 }
             } else {
+                const baseY = H - 10;
                 for(let i=0; i<items.length; i++) {
                     const p = items[i];
                     const x = i * step;
                     
-                    const yTop = 20 + (1 - (p.t - globalMin)/range) * (H - 40);
-                    const yBot = 20 + (1 - (p.minT - globalMin)/range) * (H - 40);
+                    const yTop = topPadding + (1 - (p.t - baseMin)/range) * usableHeight;
                     
-                    ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, yBot, p.minT, p.t);
+                    ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, baseY, baseMin, p.t);
                     ctx.strokeStyle = "#409950";
                     ctx.lineWidth = 1.5;
                     
-                    ctx.fillRect(x, yTop, step, Math.max(yBot - yTop, 2));
+                    ctx.fillRect(x, yTop, step, Math.max(baseY - yTop, 2));
                     ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x+step, yTop); ctx.stroke();
-                    ctx.beginPath(); ctx.moveTo(x, yBot); ctx.lineTo(x+step, yBot); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(x, baseY); ctx.lineTo(x+step, baseY); ctx.stroke();
                     
                     if (i > 0) {
                         const prevP = items[i-1];
-                        const prevYTop = 20 + (1 - (prevP.t - globalMin)/range) * (H - 40);
-                        const prevYBot = 20 + (1 - (prevP.minT - globalMin)/range) * (H - 40);
+                        const prevYTop = topPadding + (1 - (prevP.t - baseMin)/range) * usableHeight;
                         ctx.beginPath(); ctx.moveTo(x, prevYTop); ctx.lineTo(x, yTop); ctx.stroke();
-                        ctx.beginPath(); ctx.moveTo(x, prevYBot); ctx.lineTo(x, yBot); ctx.stroke();
                     }
 
                     const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-18px;"><button onclick="modSingleData(${i},'t',1)">▲</button><button onclick="modSingleData(${i},'t',-1)">▼</button></div>` : '';
-                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:12px; background:rgba(0,0,0,0.1);"><button onclick="modSingleData(${i},'minT',1)">▲</button><button onclick="modSingleData(${i},'minT',-1)">▼</button></div>` : '';
 
                     labelsContainer.innerHTML += `
                         <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:${getGraphTextColor()}; pointer-events:none;">
                             <span style="position:relative; pointer-events:auto;">${formatTemp(p.t)} ${devTop}</span>
-                        </div>
-                        <div style="position:absolute; top:${yBot + 2}px; left:${x}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:${getGraphTextColor()}; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.minT)} ${devBot}</span>
                         </div>`;
                 }
             }
@@ -2558,79 +2540,65 @@ const meteoforIcons = {
             cityData[currentTab].days.forEach((d, dIdx) => d.parts.forEach((p, pIdx) => parts.push({...p, dIdx, pIdx})));
             
             let allT = parts.map(p => p.t);
-            let allMinT = parts.map(p => p.minT);
             const globalMax = Math.max(...allT);
-            const globalMin = Math.min(...allMinT);
-            const range = (globalMax - globalMin) || 1;
+            const globalMin = Math.min(...allT);
+            const baseMin = Math.min(0, globalMin - 2);
+            const range = Math.max(1, globalMax - baseMin);
             
             const step = W / parts.length;
-            const topPadding = 30;
-            const usableHeight = H - 60;
+            const topPadding = 25;
+            const usableHeight = H - 35;
 
             if (graphStyleMode === "lines") {
-                let ptsTop = [], ptsBot = [];
+                let ptsTop = [];
                 for (let i = 0; i < parts.length; i++) {
                     let p = parts[i];
                     let x = i * step + step / 2;
-                    let yTop = topPadding + (1 - (p.t - globalMin) / range) * usableHeight;
-                    let yBot = topPadding + (1 - (p.minT - globalMin) / range) * usableHeight;
+                    let yTop = topPadding + (1 - (p.t - baseMin) / range) * usableHeight;
                     ptsTop.push({ x, y: yTop, t: p.t, i });
-                    ptsBot.push({ x, y: yBot, minT: p.minT, i });
                 }
 
-                drawSmoothCurveWithGradientFill(ctx, ptsTop, "rgba(255, 71, 87, 1)", H);
-                drawSmoothCurveWithGradientFill(ctx, ptsBot, "rgba(52, 152, 219, 1)", H);
+                drawSmoothCurveWithGradientFill(ctx, ptsTop, "rgba(95, 207, 128, 1)", H);
 
                 for (let i = 0; i < parts.length; i++) {
                     const p = parts[i];
                     const ptT = ptsTop[i];
-                    const ptB = ptsBot[i];
 
                     const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-25px;"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',-1)">▼</button></div>` : '';
-                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:25px;"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',-1)">▼</button></div>` : '';
 
                     labels.innerHTML += `
-                        <div style="position:absolute; top:${ptT.y - 22}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#ff4757; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:12px;">↑</span>${formatTemp(p.t)} ${devTop}</span>
-                        </div>
-                        <div style="position:absolute; top:${ptB.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#3498db; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:12px;">↓</span>${formatTemp(p.minT)} ${devBot}</span>
+                        <div style="position:absolute; top:${ptT.y - 22}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:${getGraphTextColor()}; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.t)} ${devTop}</span>
                         </div>`;
                 }
             } else {
+                const baseY = H - 10;
                 for(let i=0; i<parts.length; i++) {
                     const p = parts[i];
                     const x = i * step;
                     
-                    const yTop = 20 + (1 - (p.t - globalMin)/range) * (H - 40);
-                    const yBot = 20 + (1 - (p.minT - globalMin)/range) * (H - 40);
+                    const yTop = topPadding + (1 - (p.t - baseMin)/range) * usableHeight;
                     
-                    ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, yBot, p.minT, p.t);
+                    ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, baseY, baseMin, p.t);
                     ctx.strokeStyle = "#409950";
                     ctx.lineWidth = 1.5;
                     
-                    ctx.fillRect(x, yTop, step, Math.max(yBot - yTop, 2));
+                    ctx.fillRect(x, yTop, step, Math.max(baseY - yTop, 2));
                     
                     ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x+step, yTop); ctx.stroke();
-                    ctx.beginPath(); ctx.moveTo(x, yBot); ctx.lineTo(x+step, yBot); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(x, baseY); ctx.lineTo(x+step, baseY); ctx.stroke();
                     
                     if (i > 0) {
                         const prevP = parts[i-1];
-                        const prevYTop = 20 + (1 - (prevP.t - globalMin)/range) * (H - 40);
-                        const prevYBot = 20 + (1 - (prevP.minT - globalMin)/range) * (H - 40);
+                        const prevYTop = topPadding + (1 - (prevP.t - baseMin)/range) * usableHeight;
                         ctx.beginPath(); ctx.moveTo(x, prevYTop); ctx.lineTo(x, yTop); ctx.stroke();
-                        ctx.beginPath(); ctx.moveTo(x, prevYBot); ctx.lineTo(x, yBot); ctx.stroke();
                     }
 
-                    const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-20px;"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',-1)">▼</button></div>` : '';
-                    const devBot = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:15px; background:rgba(0,0,0,0.1);"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'minT',-1)">▼</button></div>` : '';
+                    const devTop = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-5px; top:-18px;"><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',1)">▲</button><button onclick="modGrpVal(${p.dIdx},${p.pIdx},'t',-1)">▼</button></div>` : '';
 
                     labels.innerHTML += `
                         <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:${getGraphTextColor()}; pointer-events:none;">
                             <span style="position:relative; pointer-events:auto;">${formatTemp(p.t)} ${devTop}</span>
-                        </div>
-                        <div style="position:absolute; top:${yBot + 2}px; left:${x}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:${getGraphTextColor()}; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;">${formatTemp(p.minT)} ${devBot}</span>
                         </div>`;
                 }
             }
@@ -2750,8 +2718,6 @@ const meteoforIcons = {
             if(key === 'rain') { item.rain = Math.max(0, parseFloat((item.rain + val).toFixed(1))); }
             else if(key === 'gust') { item.gust = Math.max(0, item.gust + val); }
             else { item[key] += val; }
-            if(item.t < item.minT) item.t = item.minT;
-            if(item.minT > item.t) item.minT = item.t;
             renderAllDOM(); 
         }
         function modSingleWind(idx, windId) { allCitiesData[currentCityKey][currentTab].items[idx].windD = windId; renderAllDOM(); }
@@ -2761,8 +2727,6 @@ const meteoforIcons = {
             if (key === 'wD') { part.wD = val; }
             else if (key === 'rain') { part.rain = Math.max(0, part.rain + val); }
             else { part[key] += val; }
-            if (key === 't' && part.t < part.minT) part.t = part.minT;
-            if (key === 'minT' && part.minT > part.t) part.minT = part.t;
             renderAllDOM();
         }
 
