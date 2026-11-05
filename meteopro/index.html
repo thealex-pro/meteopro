@@ -275,7 +275,7 @@
         .archive-year-cell { flex: 1; padding: 8px; border-right: 1px solid var(--border-color); }
         .archive-year-cell:last-child { border-right: none; }
         
-        .archive-cell { position: relative; padding: 8px 4px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border-right: 1px solid var(--border-color); min-width: 50px; }
+        .archive-cell { position: relative; padding: 8px 4px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border-right: 1px solid var(--border-color); min-width: 55px; }
         .archive-cell:last-child { border-right: none; }
         .archive-month-title { font-weight: bold; font-size: 13px; color: var(--text-main); }
 
@@ -1924,7 +1924,7 @@ const meteoforIcons = {
                 wrap.innerHTML = html;
 
                 updateInformer();
-                setTimeout(drawArchiveCanvas, 50);
+                setTimeout(drawArchiveCanvas, 100);
             }
             else if (data.mode === "single_day") {
                 let html = `<div class="single-day-scroll-container"><div class="weather-grid-single ${devCls}">`;
@@ -2253,7 +2253,7 @@ const meteoforIcons = {
             const canvas = document.getElementById('archiveCanvas');
             const labelsContainer = document.getElementById('archiveLabelsContainer');
             const gridContainer = document.getElementById('archiveGridContainer');
-            if(!canvas || !gridContainer) return;
+            if (!canvas || !gridContainer) return;
             labelsContainer.innerHTML = '';
 
             let currentArchiveDataset = null;
@@ -2263,16 +2263,17 @@ const meteoforIcons = {
                 currentArchiveDataset = archiveTomashpolData;
             }
             if (!currentArchiveDataset) return;
-            
+
             const ctx = canvas.getContext('2d');
             const totalCols = currentArchiveDataset.length;
-            const W = gridContainer.scrollWidth || gridContainer.clientWidth || canvas.parentElement.clientWidth;
+
+            const W = gridContainer.scrollWidth;
             const H = canvas.parentElement.clientHeight || 210;
-            
+
             const dpr = window.devicePixelRatio || 1;
             canvas.style.width = W + 'px';
             canvas.style.height = H + 'px';
-            canvas.width = W * dpr; 
+            canvas.width = W * dpr;
             canvas.height = H * dpr;
             ctx.scale(dpr, dpr);
 
@@ -2306,29 +2307,29 @@ const meteoforIcons = {
                     const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:25px;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
 
                     labelsContainer.innerHTML += `
-                        <div style="position:absolute; top:${pMax.y - 24}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#ff4757; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:12px;">↑</span>${formatTemp(day.maxT)} ${devMax}</span>
+                        <div style="position:absolute; top:${pMax.y - 24}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:#ff4757; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#ff4757; font-size:11px;">↑</span>${formatTemp(day.maxT)} ${devMax}</span>
                         </div>
-                        <div style="position:absolute; top:${pMin.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:13px; color:#3498db; pointer-events:none;">
-                            <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:12px;">↓</span>${formatTemp(day.minT)} ${devMin}</span>
+                        <div style="position:absolute; top:${pMin.y + 6}px; left:${i * step}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:#3498db; pointer-events:none;">
+                            <span style="position:relative; pointer-events:auto;"><span style="color:#3498db; font-size:11px;">↓</span>${formatTemp(day.minT)} ${devMin}</span>
                         </div>`;
                 });
             } else {
                 for (let i = 0; i < currentArchiveDataset.length; i++) {
                     const day = currentArchiveDataset[i];
                     const x = i * step;
-                    
+
                     const yTop = topPadding + (1 - (day.maxT - globalMin) / range) * usableHeight;
                     const yBot = topPadding + (1 - (day.minT - globalMin) / range) * usableHeight;
-                    
+
                     ctx.fillStyle = createSmoothVerticalGradient(ctx, yTop, yBot, day.minT, day.maxT);
                     ctx.strokeStyle = "#409950";
                     ctx.lineWidth = 1.5;
-                    
+
                     ctx.fillRect(x, yTop, step, Math.max(yBot - yTop, 2));
                     ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x + step, yTop); ctx.stroke();
                     ctx.beginPath(); ctx.moveTo(x, yBot); ctx.lineTo(x + step, yBot); ctx.stroke();
-                    
+
                     if (i > 0) {
                         const prevDay = currentArchiveDataset[i - 1];
                         const prevYTop = topPadding + (1 - (prevDay.maxT - globalMin) / range) * usableHeight;
@@ -2342,10 +2343,10 @@ const meteoforIcons = {
                     const devMin = isDevModeActive ? `<div class="temp-dev-ctrl" style="right:-20px; top:0;"><button onclick="modArchiveData(${i},'minT',1)">▲</button><button onclick="modArchiveData(${i},'minT',-1)">▼</button></div>` : '';
 
                     labelsContainer.innerHTML += `
-                        <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; text-align:center; font-weight:bold; font-size:12px; color:${textColor}; pointer-events:none;">
+                        <div style="position:absolute; top:${yTop - 18}px; left:${x}px; width:${step}px; text-align:center; font-weight:bold; font-size:11px; color:${textColor}; pointer-events:none;">
                             <span style="position:relative; pointer-events:auto;">${formatTemp(day.maxT)} ${devMax}</span>
                         </div>
-                        <div style="position:absolute; top:${yBot + 2}px; left:${x}px; width:${step}px; text-align:center; font-weight:500; font-size:11px; color:${textColor}; pointer-events:none;">
+                        <div style="position:absolute; top:${yBot + 2}px; left:${x}px; width:${step}px; text-align:center; font-weight:500; font-size:10px; color:${textColor}; pointer-events:none;">
                             <span style="position:relative; pointer-events:auto;">${formatTemp(day.minT)} ${devMin}</span>
                         </div>`;
                 }
