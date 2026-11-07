@@ -553,8 +553,8 @@
         let editingTilePos = { rIdx: 0, cIdx: 0 };
         
         let informerDataByCity = {
-            "Запорожье": { temp: 4, feels: -3, sky: "o-rain-heavy", key: "o-rain-heavy" },
-            "Приветное": { temp: 4, feels: -3, sky: "o-rain-heavy", key: "o-rain-heavy" },
+            "Запорожье": { temp: 5, feels: -2, sky: "o-rain-heavy", key: "o-rain-heavy" },
+            "Приветное": { temp: 5, feels: -4, sky: "o-rain-heavy", key: "o-rain-heavy" },
             "Днепр": { temp: 10, feels: 8, sky: "cloudy-sun", key: "cloudy-sun" },
             "Томашполь": { temp: 8, feels: 4, sky: "cloudy-sun", key: "cloudy-sun" }
         };
@@ -579,9 +579,10 @@
 
         let updatesData = JSON.parse(localStorage.getItem('meteopro_updates') || '[]');
         if (updatesData.length === 0) {
-            updatesData = [
-                { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" }
-            ];
+         updatesData = [
+        { id: 2, date: "07.11.2026", text: "Исправлены критические ошибки, заменена погода." },
+        { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" }
+    ];   
             localStorage.setItem('meteopro_updates', JSON.stringify(updatesData));
         }
 
@@ -1516,11 +1517,12 @@ const archiveZaporozhyeData = [
         }
 
         function setLanguage(lang, e) {
-            currentLang = lang;
-            localStorage.setItem('m_lang', lang);
-            updateModalActiveButtons();
-            renderAllDOM();
-        }
+    currentLang = lang;
+    localStorage.setItem('m_lang', lang);
+    updateModalActiveButtons();
+    renderAllDOM();
+    updateRealTime();
+}
 
         function setTempUnit(unit, e) {
             tempUnit = unit;
@@ -1809,33 +1811,37 @@ const meteoforIcons = {
             return '#111111';
         }
 
+       
+
         function handleSearch() {
-            const val = document.getElementById('searchInput').value.trim().toLowerCase();
-            const drop = document.getElementById('searchDropdown');
-            if (val.length === 0) { drop.innerHTML = ''; drop.classList.remove('active'); return; }
-            const filtered = searchLocations.filter(loc => {
-                const words = loc.toLowerCase().split(/[\s,]+/);
-                return words.some(w => w.startsWith(val));
-            });
-
-            if (filtered.length > 0) {
-                drop.innerHTML = filtered.map(l => `<div class="search-item" onclick="selectLocation('${l}')">${l}</div>`).join('');
-                drop.classList.add('active');
-            } else { drop.innerHTML = ''; drop.classList.remove('active'); }
+    const val = document.getElementById('searchInput').value.trim().toLowerCase();
+    const drop = document.getElementById('searchDropdown');
+    if (val.length === 0) { drop.innerHTML = ''; drop.classList.remove('active'); return; }
+    
+    const lang = (typeof currentLang !== 'undefined' && currentLang) ? currentLang : 'ru';
+    
+    const filtered = searchLocations.map(loc => {
+        const cityKey = loc.split(',')[0].trim();
+        const cityObj = (typeof allCitiesData !== 'undefined') ? allCitiesData[cityKey] : null;
+        
+        let localizedName = loc;
+        if (cityObj && cityObj.names && cityObj.names[lang]) {
+            const reg = (cityObj.regions && cityObj.regions[lang]) ? cityObj.regions[lang] : '';
+            localizedName = reg ? `${cityObj.names[lang]}, ${reg}` : cityObj.names[lang];
         }
+        return { original: loc, display: localizedName };
+    }).filter(item => {
+        // Ищет одновременно и по переведенному названию, и по русскому оригиналу
+        const wordsDisplay = item.display.toLowerCase().split(/[\s,]+/);
+        const wordsOriginal = item.original.toLowerCase().split(/[\s,]+/);
+        return wordsDisplay.some(w => w.startsWith(val)) || wordsOriginal.some(w => w.startsWith(val));
+    });
 
-        function selectLocation(loc) {
-            currentCityKey = loc.split(',')[0].trim(); 
-            if (!allCitiesData[currentCityKey]) {
-                allCitiesData[currentCityKey] = createDefaultCityData(currentCityKey);
-            }
-            if (!informerDataByCity[currentCityKey]) {
-                informerDataByCity[currentCityKey] = { temp: 10, feels: 5, sky: "overcast", key: "overcast" };
-            }
-            document.getElementById('searchInput').value = loc;
-            document.getElementById('searchDropdown').classList.remove('active'); 
-            renderAllDOM();
-        }
+    if (filtered.length > 0) {
+        drop.innerHTML = filtered.map(item => `<div class="search-item" onclick="selectLocation('${item.original}')">${item.display}</div>`).join('');
+        drop.classList.add('active');
+    } else { drop.innerHTML = ''; drop.classList.remove('active'); }
+}
 
         function renderAllDOM() {
             const lang = i18n[currentLang];
@@ -2134,18 +2140,18 @@ const meteoforIcons = {
                                     <div class="tile-labels-container" id="tileLabels_0"></div>
                                     <div class="tile-grid-overlay">`;
                     firstRow.forEach((day, cIdx) => {
-                        let isRed = day.isWknd ? 'tile-red' : '';
-                        let wMenu = buildWeatherDropdownHTML(`modTileIco_0_${cIdx}`);
-                        let wText = getWeatherText(day.ic);
-                        html += `<div class="tile-col">
-                            <div class="tile-header-txt" onclick="openDatePicker(0, ${cIdx})"><div class="tile-dw ${isRed}">${day.dw}</div><div class="tile-date ${isRed}">${day.date}</div></div>
-                            <div class="w-ico ${isDevModeActive ? 'dev-clickable' : ''}" onclick="toggleDropdown('tile-ico', '0-${cIdx}', event)" ontouchstart="handleIconTouch(this, event)">
-                                ${meteoforIcons[day.ic] || meteoforIcons['cloudy']}
-                                <div class="weather-tooltip">${wText}</div>
-                                <div class="icon-select-dropdown" id="dd-tile-ico-0-${cIdx}" style="top:38px;">${wMenu}</div>
-                            </div>
-                        </div>`;
-                    });
+    let isRed = day.iswknd ? 'tile-red' : '';
+    let wMenu = buildWeatherDropdownHTML(`modTileIco_0_${cIdx}`);
+    let wText = getWeatherText(day.ic);
+    html += `<div class="tile-col">
+        <div class="tile-header-txt" onclick="openDatePicker(0, ${cIdx})"><div class="tile-dw ${isRed}">${(daysOfWeekList[currentLang] || daysOfWeekList['ru'])[cIdx % 7]}</div><div class="tile-date ${isRed}">${day.date}</div></div>
+        <div class="w-ico ${isDevModeActive ? 'dev-clickable' : ''}" onclick="toggleDropdown('tile-ico', '0-${cIdx}', event)" ontouchstart="handleIconTouch(this, event)">
+            ${meteoforIcons[day.ic] || meteoforIcons['cloudy']}
+            <div class="weather-tooltip">${wText}</div>
+            <div class="icon-select-dropdown" id="dd-tile-ico-0-${cIdx}" style="top:38px;">${wMenu}</div>
+        </div>
+    </div>`;
+});
                     html += `</div></div></div>`;
 
                     html += `<div class="single-header-row">${lang.windDir}</div>`;
@@ -2836,10 +2842,23 @@ const meteoforIcons = {
             updateInformer(); 
         }
 
-        function updateRealTime() {
-    const now = new Date(), days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'], mos = ['ЯНВАРЯ', 'ФЕВРАЛЯ', 'МАРТА', 'АПРЕЛЯ', 'МАЯ', 'ИЮНЯ', 'ИЮЛЯ', 'АВГУСТА', 'СЕНТЯБРЯ', 'ОКТЯБРЯ', 'НОЯБРЯ', 'ДЕКАБРЯ'];
+        const monthsListByLang = {
+    ru: ['ЯНВАРЯ', 'ФЕВРАЛЯ', 'МАРТА', 'АПРЕЛЯ', 'МАЯ', 'ИЮНЯ', 'ИЮЛЯ', 'АВГУСТА', 'СЕНТЯБРЯ', 'ОКТЯБРЯ', 'НОЯБРЯ', 'ДЕКАБРЯ'],
+    uk: ['СІЧНЯ', 'ЛЮТОГО', 'БЕРЕЗНЯ', 'КВІТНЯ', 'ТРАВНЯ', 'ЧЕРВНЯ', 'ЛИПНЯ', 'СЕРПНЯ', 'ВЕРЕСНЯ', 'ЖОВТНЯ', 'ЛИСТОПАДА', 'ГРУДНЯ'],
+    en: ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
+};
+
+function updateRealTime() {
+    const now = new Date();
+    const lang = (typeof currentLang !== 'undefined' && currentLang) ? currentLang : 'ru';
+    const days = daysOfWeekList[lang] || daysOfWeekList['ru'];
+    const mos = monthsListByLang[lang] || monthsListByLang['ru'];
     const el = document.getElementById('infTimeRow');
-    if(el) el.innerText = `${days[now.getDay()]}, ${now.getDate()} ${mos[now.getMonth()]} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+    if(el) {
+        const dayName = (days[now.getDay()] || '').toUpperCase();
+        const monthName = mos[now.getMonth()] || '';
+        el.innerText = `${dayName}, ${now.getDate()} ${monthName} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+    }
 }
 
         window.addEventListener('resize', renderAllDOM);
