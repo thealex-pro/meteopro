@@ -1458,12 +1458,23 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
         }
 
         let allCitiesData = {
-            "Запорожье": createDefaultCityData("Запорожье"),
-            "Приветное": createDefaultCityData("Приветное"),
-            "Днепр": createDefaultCityData("Днепр"),
-            "Томашполь": createDefaultCityData("Томашполь")
-        };
+  "Запорожье": createDefaultCityData("Запорожье"),
+  "Запоріжжя": createDefaultCityData("Запорожье"),
+  "Zaporizhzhia": createDefaultCityData("Запорожье"),
+  "Zaporozhye": createDefaultCityData("Запорожье"),
 
+  "Приветное": createDefaultCityData("Приветное"),
+  "Привітне":  createDefaultCityData("Приветное"),
+  "Pryvitne":  createDefaultCityData("Приветное"),
+
+  "Днепр":     createDefaultCityData("Днепр"),
+  "Дніпро":    createDefaultCityData("Днепр"),
+  "Dnipro":    createDefaultCityData("Днепр"),
+
+  "Томашполь": createDefaultCityData("Томашполь"),
+  "Томашпіль": createDefaultCityData("Томашполь"),
+  "Tomashpil": createDefaultCityData("Томашполь")
+};
         function toggleSettingsModal() { document.getElementById('settingsModal').classList.toggle('active'); }
         function toggleCommentsModal() { document.getElementById('commentsModal').classList.toggle('active'); renderComments(); }
         
