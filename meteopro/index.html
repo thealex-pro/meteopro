@@ -1454,16 +1454,18 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
                     rows: createMonthRowsForCity(cityName)
                 },
                 "archive": { mode: "archive" },
+                "archive": { mode: "archive" },
+                "archive": { mode: "archive" },
                 "geomagnetic": {
-    mode: "geomagnetic",
-    days: [
-      { date: "Пн, 9 нояб", values: [3, 5, 1, 0, 3, 4, 3, 3] },
-      { date: "Вт, 10 нояб", values: [4, 5, 5, 0, 3, 3, 2, 3] },
-      { date: "Ср, 11 нояб", values: [2, 2, 1, 1, 1, 4, 2, 0] }
-    ]
-  }
-};
-        }
+                    mode: "geomagnetic",
+                    days: [
+                        { date: "Вт, 10 нояб", values: [3, 5, 5, 3, 2, 2, 1, 1] },
+                        { date: "Ср, 11 нояб", values: [0, 3, 3, 4, 1, 2, 2, 5] },
+                        { date: "Чт, 12 нояб", values: [4, 4, 4, 4, 3, 2, 1, 0] }
+                    ]
+                }
+            };
+                }
 
         let allCitiesData = {
   "Запорожье": createDefaultCityData("Запорожье"),
