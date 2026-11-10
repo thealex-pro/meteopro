@@ -551,16 +551,23 @@
         const DEV_PASSWORD = "1234";
         let currentTab = "month", isDevModeActive = false;
         let editingTilePos = { rIdx: 0, cIdx: 0 };
+
+let cityLastEditTimes = {
+    "Запорожье": "2026-11-09 17:17",
+    "Приветное":  "2026-11-09 17:17",
+    "Днепр":     "2026-11-09 17:17",
+    "Томашполь": "2026-11-09 17:17"
+  };
         
         let informerDataByCity = {
-  "Привітне":   { temp: 5, feels: 4, sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
-  "Приветное":  { temp: 5, feels: 4, sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
-  "Запоріжжя":  { temp: 5, feels: 4, sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
-  "Запорожье":  { temp: 5, feels: 4, sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
-  "Дніпро":     { temp: 6, feels: 6, sky: "cloudy-sun", key: "cloudy-sun" },
-  "Днепр":      { temp: 6, feels: 6, sky: "cloudy-sun", key: "cloudy-sun" },
-  "Томашпіль":  { temp: 1, feels: -8, sky: "cloudy-sun", key: "cloudy-sun" },
-  "Томашполь":  { temp: 1, feels: -8, sky: "cloudy-sun", key: "cloudy-sun" }
+    "Привітне":   { temp: 5, feels: 6, sky: "cloudy-sun", key: "cloudy-sun", dateText: "Пн, 9 ноября 15:53" },
+    "Приветное":  { temp: 5, feels: 6, sky: "cloudy-sun", key: "cloudy-sun", dateText: "Пн, 9 ноября 15:53" },
+    "Запоріжжя":  { temp: 5, feels: 6, sky: "cloudy-sun", key: "cloudy-sun", dateText: "Пн, 9 ноября 15:53" },
+    "Запорожье":  { temp: 5, feels: 6, sky: "cloudy-sun", key: "cloudy-sun", dateText: "Пн, 9 ноября 15:53" },
+    "Дніпро":     { temp: 5, feels: 6, sky: "cloudy-sun", key: "cloudy-sun", dateText: "Пн, 9 ноября 15:53" },
+    "Днепр":      { temp: 5, feels: 6, sky: "cloudy-sun", key: "cloudy-sun", dateText: "Пн, 9 ноября 15:53" },
+    "Томашпіль":  { temp: 1, feels: -3, sky: "cloudy-sun", key: "cloudy-sun" },
+    "Томашполь":  { temp: 1, feels: -3, sky: "cloudy-sun", key: "cloudy-sun" }
 };
         let currentCityKey = "Запорожье";
         
@@ -1127,82 +1134,82 @@ const archiveZaporozhyeData = [
 if (cityName && cityName.toString().toLowerCase().indexOf("запор") !== -1) {
     return [
         [
-            { dw: "Пн", date: "9 нояб", ic: "overcast-fog",          maxT: 6,  minT: 1 },
-            { dw: "Вт", date: "10",     ic: "cloudy",               maxT: 8,  minT: 3 },
-            { dw: "Ср", date: "11",     ic: "c-rain-heavy-thunder", maxT: 8,  minT: 3 },  // Облачно, сильный дождь, гроза
-            { dw: "Чт", date: "12",     ic: "o-rain-heavy",         maxT: 15, minT: 12 },
-            { dw: "Пт", date: "13",     ic: "c-rain-heavy",         maxT: 14, minT: 11 },
-            { dw: "Сб", date: "14",     ic: "clear-fog",            maxT: 5,  minT: -1, iswknd: true },
-            { dw: "Вс", date: "15",     ic: "cloudy-sun",           maxT: 7,  minT: 0,  iswknd: true }
+            { dw: "Пн", date: "9 нояб",  ic: "overcast-fog",          maxT: 6,  minT: -1 },
+            { dw: "Вт", date: "10",      ic: "cloudy",               maxT: 7,  minT: 4 },
+            { dw: "Ср", date: "11",      ic: "c-rain-heavy-thunder", maxT: 8,  minT: 2 },
+            { dw: "Чт", date: "12",      ic: "c-rain-heavy",         maxT: 10, minT: 8 },
+            { dw: "Пт", date: "13",      ic: "o-rain-heavy",         maxT: 15, minT: 11 },
+            { dw: "Сб", date: "14",      ic: "o-rain-heavy",         maxT: 13, minT: 3,  iswknd: true },
+            { dw: "Вс", date: "15",      ic: "o-rain-light",         maxT: 6,  minT: 1,  iswknd: true }
         ],
         [
-            { dw: "Пн", date: "16 нояб",ic: "c-rain-light",         maxT: 9,  minT: 0 },
-            { dw: "Вт", date: "17",     ic: "overcast",             maxT: 7,  minT: 3 },
-            { dw: "Ср", date: "18",     ic: "c-rain-light",         maxT: 9,  minT: 5 },
-            { dw: "Чт", date: "19",     ic: "c-rain-heavy",         maxT: 10, minT: 6 },
-            { dw: "Пт", date: "20",     ic: "c-rain-light",         maxT: 11, minT: 8 },
-            { dw: "Сб", date: "21",     ic: "cloudy-sun",           maxT: 5,  minT: 2,  iswknd: true },
-            { dw: "Вс", date: "22",     ic: "cloudy-sun",           maxT: 4,  minT: 1,  iswknd: true }
+            { dw: "Пн", date: "16 нояб", ic: "clear-fog",            maxT: 5,  minT: -1 },
+            { dw: "Вт", date: "17",      ic: "clear",                maxT: 7,  minT: 0 },
+            { dw: "Ср", date: "18",      ic: "c-rain-heavy",         maxT: 8,  minT: 4 },
+            { dw: "Чт", date: "19",      ic: "cloudy-sun",           maxT: 7,  minT: 3 },
+            { dw: "Пт", date: "20",      ic: "cloudy-sun",           maxT: 9,  minT: 4 },
+            { dw: "Сб", date: "21",      ic: "cloudy",               maxT: 9,  minT: 4,  iswknd: true },
+            { dw: "Вс", date: "22",      ic: "cloudy",               maxT: 7,  minT: -1, iswknd: true }
         ],
         [
-            { dw: "Пн", date: "23 нояб",ic: "c-sleet-light",        maxT: 3,  minT: 0 },
-            { dw: "Вт", date: "24",     ic: "clear",                maxT: 6,  minT: 0 },
-            { dw: "Ср", date: "25",     ic: "c-sleet-light",        maxT: 2,  minT: -1 },
-            { dw: "Чт", date: "26",     ic: "c-sleet-heavy",        maxT: 1,  minT: -3 },
-            { dw: "Пт", date: "27",     ic: "c-rain-heavy",         maxT: 3,  minT: 0 },
-            { dw: "Сб", date: "28",     ic: "c-rain-heavy",         maxT: 3,  minT: 3,  iswknd: true },
-            { dw: "Вс", date: "29",     ic: "c-sleet-heavy",        maxT: 0,  minT: -4, iswknd: true }
+            { dw: "Пн", date: "23 нояб", ic: "c-sleet-light",        maxT: 1,  minT: 1 },
+            { dw: "Вт", date: "24",      ic: "clear",                maxT: 4,  minT: 2 },
+            { dw: "Ср", date: "25",      ic: "c-sleet-light",        maxT: 3,  minT: 0 },
+            { dw: "Чт", date: "26",      ic: "c-sleet",              maxT: 5,  minT: 2 },
+            { dw: "Пт", date: "27",      ic: "c-rain-heavy",         maxT: 3,  minT: -1 },
+            { dw: "Сб", date: "28",      ic: "c-rain-heavy",         maxT: 2,  minT: -2, iswknd: true },
+            { dw: "Вс", date: "29",      ic: "c-sleet",              maxT: 2,  minT: -4, iswknd: true }
         ],
         [
-            { dw: "Пн", date: "30 нояб",ic: "clear",                maxT: 3,  minT: 0 },
-            { dw: "Вт", date: "1 дек",  ic: "clear",                maxT: 2,  minT: 1 },
-            { dw: "Ср", date: "2",      ic: "clear-fog",            maxT: 6,  minT: 4 },
-            { dw: "Чт", date: "3",      ic: "c-rain-light",         maxT: 7,  minT: 2 },
-            { dw: "Пт", date: "4",      ic: "clear-fog",            maxT: 7,  minT: 1 },
-            { dw: "Сб", date: "5",      ic: "o-rain-heavy",         maxT: 4,  minT: 3,  iswknd: true },
-            { dw: "Вс", date: "6",      ic: "snow-heavy",           maxT: -3, minT: -8, iswknd: true }
+            { dw: "Пн", date: "30 нояб", ic: "clear",                maxT: 1,  minT: -5 },
+            { dw: "Вт", date: "1 дек",   ic: "clear",                maxT: 3,  minT: 0 },
+            { dw: "Ср", date: "2",       ic: "clear-fog",            maxT: 6,  minT: 3 },
+            { dw: "Чт", date: "3",       ic: "o-rain-light",         maxT: 6,  minT: 1 },
+            { dw: "Пт", date: "4",       ic: "clear-fog",            maxT: 6,  minT: -3 },
+            { dw: "Сб", date: "5",       ic: "snow-heavy",           maxT: -1, minT: -6, iswknd: true },
+            { dw: "Вс", date: "6",       ic: "snow-heavy",           maxT: -1, minT: -6, iswknd: true }
         ]
     ];
 }
 if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -1 || cityName.toString().toLowerCase().indexOf("привіт") !== -1)) {
-  return [
-    [
-      { dw: "Пн", date: "9 нояб", ic: "overcast-fog",          maxT: 6,  minT: 1 },
-      { dw: "Вт", date: "10",     ic: "cloudy",               maxT: 8,  minT: 3 },
-      { dw: "Ср", date: "11",     ic: "c-rain-heavy-thunder", maxT: 8,  minT: 3 },
-      { dw: "Чт", date: "12",     ic: "o-rain-heavy",         maxT: 15, minT: 12 },
-      { dw: "Пт", date: "13",     ic: "c-rain-heavy",         maxT: 14, minT: 11 },
-      { dw: "Сб", date: "14",     ic: "clear-fog",            maxT: 5,  minT: -1, iswknd: true },
-      { dw: "Вс", date: "15",     ic: "cloudy-sun",           maxT: 7,  minT: 0,  iswknd: true }
-    ],
-    [
-      { dw: "Пн", date: "16",     ic: "c-rain-light",         maxT: 9,  minT: 0 },
-      { dw: "Вт", date: "17",     ic: "overcast",             maxT: 7,  minT: 3 },
-      { dw: "Ср", date: "18",     ic: "c-rain-light",         maxT: 9,  minT: 5 },
-      { dw: "Чт", date: "19",     ic: "c-rain-heavy",         maxT: 10, minT: 6 },
-      { dw: "Пт", date: "20",     ic: "c-rain-light",         maxT: 11, minT: 8 },
-      { dw: "Сб", date: "21",     ic: "cloudy-sun",           maxT: 5,  minT: 2,  iswknd: true },
-      { dw: "Вс", date: "22",     ic: "cloudy-sun",           maxT: 4,  minT: 1,  iswknd: true }
-    ],
-    [
-      { dw: "Пн", date: "23",     ic: "c-sleet-light",        maxT: 3,  minT: 0 },
-      { dw: "Вт", date: "24",     ic: "clear",                maxT: 6,  minT: 0 },
-      { dw: "Ср", date: "25",     ic: "c-sleet-light",        maxT: 2,  minT: -1 },
-      { dw: "Чт", date: "26",     ic: "c-sleet-heavy",        maxT: 1,  minT: -3 },
-      { dw: "Пт", date: "27",     ic: "c-rain-heavy",         maxT: 3,  minT: 0 },
-      { dw: "Сб", date: "28",     ic: "c-rain-heavy",         maxT: 3,  minT: 3,  iswknd: true },
-      { dw: "Вс", date: "29",     ic: "c-sleet-heavy",        maxT: 0,  minT: -4, iswknd: true }
-    ],
-    [
-      { dw: "Пн", date: "30",     ic: "clear",                maxT: 3,  minT: 0 },
-      { dw: "Вт", date: "1 дек",   ic: "clear",                maxT: 2,  minT: 1 },
-      { dw: "Ср", date: "2",       ic: "cloudy-sun",           maxT: 6,  minT: 4 },
-      { dw: "Чт", date: "3",       ic: "c-rain-light",         maxT: 7,  minT: 2 },
-      { dw: "Пт", date: "4",       ic: "cloudy-sun",           maxT: 7,  minT: 1 },
-      { dw: "Сб", date: "5",       ic: "c-rain-heavy",         maxT: 4,  minT: 3,  iswknd: true },
-      { dw: "Вс", date: "6",       ic: "overcast-fog",         maxT: -3, minT: -8, iswknd: true }
-    ]
-  ];
+    return [
+        [
+            { dw: "Пн", date: "9 нояб",  ic: "overcast-fog",          maxT: 6,  minT: -1 },
+            { dw: "Вт", date: "10",      ic: "cloudy",               maxT: 7,  minT: 4 },
+            { dw: "Ср", date: "11",      ic: "c-rain-heavy-thunder", maxT: 8,  minT: 2 },
+            { dw: "Чт", date: "12",      ic: "c-rain-heavy",         maxT: 10, minT: 8 },
+            { dw: "Пт", date: "13",      ic: "o-rain-heavy",         maxT: 15, minT: 11 },
+            { dw: "Сб", date: "14",      ic: "o-rain-heavy",         maxT: 13, minT: 3,  iswknd: true },
+            { dw: "Вс", date: "15",      ic: "o-rain-light",         maxT: 6,  minT: 1,  iswknd: true }
+        ],
+        [
+            { dw: "Пн", date: "16 нояб", ic: "clear-fog",            maxT: 5,  minT: -1 },
+            { dw: "Вт", date: "17",      ic: "clear",                maxT: 7,  minT: 0 },
+            { dw: "Ср", date: "18",      ic: "c-rain-heavy",         maxT: 8,  minT: 4 },
+            { dw: "Чт", date: "19",      ic: "cloudy-sun",           maxT: 7,  minT: 3 },
+            { dw: "Пт", date: "20",      ic: "cloudy-sun",           maxT: 9,  minT: 4 },
+            { dw: "Сб", date: "21",      ic: "cloudy",               maxT: 9,  minT: 4,  iswknd: true },
+            { dw: "Вс", date: "22",      ic: "cloudy",               maxT: 7,  minT: -1, iswknd: true }
+        ],
+        [
+            { dw: "Пн", date: "23 нояб", ic: "c-sleet-light",        maxT: 1,  minT: 1 },
+            { dw: "Вт", date: "24",      ic: "clear",                maxT: 4,  minT: 2 },
+            { dw: "Ср", date: "25",      ic: "c-sleet-light",        maxT: 3,  minT: 0 },
+            { dw: "Чт", date: "26",      ic: "c-sleet",              maxT: 5,  minT: 2 },
+            { dw: "Пт", date: "27",      ic: "c-rain-heavy",         maxT: 3,  minT: -1 },
+            { dw: "Сб", date: "28",      ic: "c-rain-heavy",         maxT: 2,  minT: -2, iswknd: true },
+            { dw: "Вс", date: "29",      ic: "c-sleet",              maxT: 2,  minT: -4, iswknd: true }
+        ],
+        [
+            { dw: "Пн", date: "30 нояб", ic: "clear",                maxT: 1,  minT: -5 },
+            { dw: "Вт", date: "1 дек",   ic: "clear",                maxT: 3,  minT: 0 },
+            { dw: "Ср", date: "2",       ic: "clear-fog",            maxT: 6,  minT: 3 },
+            { dw: "Чт", date: "3",       ic: "o-rain-light",         maxT: 6,  minT: 1 },
+            { dw: "Пт", date: "4",       ic: "clear-fog",            maxT: 6,  minT: -3 },
+            { dw: "Сб", date: "5",       ic: "snow-heavy",           maxT: -1, minT: -6, iswknd: true },
+            { dw: "Вс", date: "6",       ic: "snow-heavy",           maxT: -1, minT: -6, iswknd: true }
+        ]
+    ];
 }
             if (cityName === "Днепр") {
                 return [
@@ -1331,116 +1338,116 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
 
         function createDefaultCityData(cityName) {
             return {
-               "yesterday": { mode: "single_day", items: [
-    { time: "2:00",  ic: "overcast",     t: 1,  windD: "S",  gust: 3, rain: 0 },
-    { time: "5:00",  ic: "overcast",     t: -1, windD: "S",  gust: 5, rain: 0 },
-    { time: "8:00",  ic: "clear-fog",    t: 0,  windD: "S",  gust: 6, rain: 0 },
-    { time: "11:00", ic: "clear",        t: 3,  windD: "S",  gust: 8, rain: 0 },
-    { time: "14:00", ic: "cloudy",       t: 6,  windD: "S",  gust: 1, rain: 0 },
-    { time: "17:00", ic: "cloudy-sun",   t: 6,  windD: "NW", gust: 8, rain: 0 },
-    { time: "20:00", ic: "cloudy-sun",   t: 1,  windD: "NW", gust: 2, rain: 0 },
-    { time: "23:00", ic: "overcast-fog", t: 2,  windD: "NW", gust: 0, rain: 0 }
-  ] },
+                "yesterday": { mode: "single_day", items: [
+                    { time: "2:00",  ic: "overcast",     t: -1, windD: "N",  gust: 3, rain: 0 },
+                    { time: "5:00",  ic: "overcast",     t: -1, windD: "N",  gust: 3, rain: 0 },
+                    { time: "8:00",  ic: "overcast-fog", t: 0,  windD: "NE", gust: 3, rain: 0 },
+                    { time: "11:00", ic: "overcast",     t: 4,  windD: "NE", gust: 3, rain: 0 },
+                    { time: "14:00", ic: "overcast",     t: 6,  windD: "NE", gust: 3, rain: 0 },
+                    { time: "17:00", ic: "overcast",     t: 6,  windD: "N",  gust: 3, rain: 0 },
+                    { time: "20:00", ic: "overcast",     t: 4,  windD: "N",  gust: 3, rain: 0 },
+                    { time: "23:00", ic: "overcast-fog", t: 3,  windD: "N",  gust: 3, rain: 0 }
+                ] },
                 "today": { mode: "single_day", items: [
-    { time: "2:00",  ic: "overcast",     t: -1, windD: "N",  gust: 3, rain: 0 },
-    { time: "5:00",  ic: "overcast",     t: -1, windD: "N",  gust: 3, rain: 0 },
-    { time: "8:00",  ic: "overcast-fog", t: 0,  windD: "NE", gust: 3, rain: 0 },
-    { time: "11:00", ic: "overcast",     t: 4,  windD: "NE", gust: 3, rain: 0 },
-    { time: "14:00", ic: "overcast",     t: 6,  windD: "NE", gust: 3, rain: 0 },
-    { time: "17:00", ic: "overcast",     t: 6,  windD: "N",  gust: 3, rain: 0 },
-    { time: "20:00", ic: "overcast",     t: 4,  windD: "N",  gust: 3, rain: 0 },
-    { time: "23:00", ic: "overcast-fog", t: 3,  windD: "N",  gust: 3, rain: 0 }
-  ] },
+                    { time: "2:00",  ic: "overcast",   t: 5, windD: "NW", gust: 0, rain: 0 },
+                    { time: "5:00",  ic: "overcast",   t: 4, windD: "NW", gust: 0, rain: 0 },
+                    { time: "8:00",  ic: "cloudy-sun", t: 4, windD: "NW", gust: 0, rain: 0 },
+                    { time: "11:00", ic: "cloudy-sun", t: 5, windD: "NW", gust: 1, rain: 0 },
+                    { time: "14:00", ic: "cloudy",     t: 7, windD: "N",  gust: 1, rain: 0 },
+                    { time: "17:00", ic: "cloudy",     t: 7, windD: "NE", gust: 2, rain: 0 },
+                    { time: "20:00", ic: "overcast",   t: 6, windD: "NE", gust: 2, rain: 0 },
+                    { time: "23:00", ic: "overcast",   t: 6, windD: "NE", gust: 1, rain: 0 }
+                ] },
                 "tomorrow": { mode: "single_day", items: [
-    { time: "2:00",  ic: "overcast",   t: 4, windD: "NE", gust: 0, rain: 0 },
-    { time: "5:00",  ic: "cloudy-sun", t: 2, windD: "NE", gust: 1, rain: 0 },
-    { time: "8:00",  ic: "cloudy-sun", t: 3, windD: "NE", gust: 1, rain: 0 },
-    { time: "11:00", ic: "cloudy-sun", t: 5, windD: "NE", gust: 3, rain: 0 },
-    { time: "14:00", ic: "cloudy",     t: 8, windD: "NE", gust: 3, rain: 0 },
-    { time: "17:00", ic: "overcast",   t: 6, windD: "NE", gust: 3, rain: 0 },
-    { time: "20:00", ic: "overcast",   t: 5, windD: "NE", gust: 2, rain: 0 },
-    { time: "23:00", ic: "overcast",   t: 4, windD: "NE", gust: 1, rain: 0 }
-  ] },
-                "now": { mode: "empty" },
+                    { time: "2:00",  ic: "overcast",             t: 4,  windD: "SE", gust: 3, rain: 0 },
+                    { time: "5:00",  ic: "o-rain-light-thunder", t: 2,  windD: "SE", gust: 3, rain: 0.1 },
+                    { time: "8:00",  ic: "overcast",             t: 4,  windD: "SE", gust: 3, rain: 0.1 },
+                    { time: "11:00", ic: "o-rain-heavy-thunder", t: 6,  windD: "SE", gust: 3, rain: 1.1 },
+                    { time: "14:00", ic: "o-rain-med-thunder",   t: 10, windD: "SE", gust: 5, rain: 0.5 },
+                    { time: "17:00", ic: "o-rain-heavy",         t: 9,  windD: "E",  gust: 5, rain: 1.9 },
+                    { time: "20:00", ic: "o-rain-med",           t: 9,  windD: "E",  gust: 4, rain: 0.8 },
+                    { time: "23:00", ic: "overcast",             t: 9,  windD: "E",  gust: 6, rain: 0 }
+                ] },
+                 
                 "hourly": { mode: "empty" },
                 
                 "3days": {
-    mode: "grouped",
-    days: [
-      {
-        date: "Вт, 10 ноября", iswknd: false,
-        parts: [
-          { tNm: "Ночь",  ic: "overcast",     t: 4, wD: "NE", gust: 0, rain: 0 },
-          { tNm: "Утро",  ic: "cloudy-sun",   t: 2, wD: "NE", gust: 3, rain: 0 },
-          { tNm: "День",  ic: "overcast",     t: 8, wD: "NE", gust: 3, rain: 0 },
-          { tNm: "Вечер", ic: "overcast",     t: 5, wD: "NE", gust: 1, rain: 0 }
-        ]
-      },
-      {
-        date: "Ср, 11 ноября", iswknd: false,
-        parts: [
-          { tNm: "Ночь",  ic: "c-rain-light", t: 3,  wD: "NE", gust: 6, rain: 0.5 },
-          { tNm: "Утро",  ic: "c-rain-light", t: 4,  wD: "NE", gust: 7, rain: 0.5 },
-          { tNm: "День",  ic: "c-rain-light", t: 8,  wD: "NE", gust: 7, rain: 2 },
-          { tNm: "Вечер", ic: "c-rain-heavy", t: 10, wD: "NE", gust: 6, rain: 6.5 }
-        ]
-      },
-      {
-        date: "Чт, 12 ноября", iswknd: false,
-        parts: [
-          { tNm: "Ночь",  ic: "c-rain-heavy", t: 11, wD: "SW", gust: 6,  rain: 3.5 },
-          { tNm: "Утро",  ic: "c-rain-heavy", t: 12, wD: "S",  gust: 10, rain: 2 },
-          { tNm: "День",  ic: "o-rain-heavy", t: 15, wD: "S",  gust: 13, rain: 7 },
-          { tNm: "Вечер", ic: "o-rain-heavy", t: 15, wD: "S",  gust: 11, rain: 2.5 }
-        ]
-      }
-    ]
-  },
+                    mode: "grouped",
+                    days: [
+                        {
+                            date: "Ср, 11 ноября", isWknd: false,
+                            parts: [
+                                { tNm: "Ночь",  ic: "overcast",             t: 4,  wD: "SE", gust: 3, rain: 0 },
+                                { tNm: "Утро",  ic: "o-rain-light-thunder", t: 2,  wD: "SE", gust: 3, rain: 0.5 },
+                                { tNm: "День",  ic: "o-rain-heavy-thunder", t: 10, wD: "SE", gust: 5, rain: 1 },
+                                { tNm: "Вечер", ic: "o-rain-light",         t: 9,  wD: "E",  gust: 6, rain: 0.5 }
+                            ]
+                        },
+                        {
+                            date: "Чт, 12 ноября", isWknd: false,
+                            parts: [
+                                { tNm: "Ночь",  ic: "o-rain-light", t: 8,  wD: "E",  gust: 7,  rain: 0.5 },
+                                { tNm: "Утро",  ic: "o-rain-med",   t: 9,  wD: "E",  gust: 9,  rain: 0.5 },
+                                { tNm: "День",  ic: "o-rain-heavy", t: 10, wD: "SE", gust: 9,  rain: 2.5 },
+                                { tNm: "Вечер", ic: "o-rain-light", t: 11, wD: "SE", gust: 10, rain: 1 }
+                            ]
+                        },
+                        {
+                            date: "Пт, 13 ноября", isWknd: false,
+                            parts: [
+                                { tNm: "Ночь",  ic: "overcast",     t: 11, wD: "SE", gust: 12, rain: 0 },
+                                { tNm: "Утро",  ic: "o-rain-med",   t: 14, wD: "SE", gust: 14, rain: 2 },
+                                { tNm: "День",  ic: "o-rain-med",   t: 15, wD: "SE", gust: 13, rain: 3.5 },
+                                { tNm: "Вечер", ic: "o-rain-light", t: 14, wD: "E",  gust: 11, rain: 1 }
+                            ]
+                        }
+                    ]
+                },
                 "weekend": {
-    mode: "grouped",
-    days: [
-      {
-        date: "Сб, 14 ноября", iswknd: true,
-        parts: [
-          { tNm: "Ночь",  ic: "overcast",   t: -1, wD: "W",  gust: 3, rain: 0 },
-          { tNm: "Утро",  ic: "clear-fog",  t: 0,  wD: "W",  gust: 7, rain: 0 },
-          { tNm: "День",  ic: "clear",      t: 5,  wD: "W",  gust: 8, rain: 0 },
-          { tNm: "Вечер", ic: "clear",      t: 1,  wD: "W",  gust: 6, rain: 0 }
-        ]
-      },
-      {
-        date: "Вс, 15 ноября", iswknd: true,
-        parts: [
-          { tNm: "Ночь",  ic: "overcast",   t: 0,  wD: "NW", gust: 4, rain: 0 },
-          { tNm: "Утро",  ic: "cloudy-sun", t: 3,  wD: "NW", gust: 1, rain: 0 },
-          { tNm: "День",  ic: "cloudy-sun", t: 7,  wD: "NW", gust: 3, rain: 0 },
-          { tNm: "Вечер", ic: "cloudy-sun", t: 2,  wD: "NW", gust: 4, rain: 0 }
-        ]
-      }
-    ]
-  },               
-                  "2weeks": {
-    mode: "tiles",
-    singleRow: true,
-    rows: [
-      [
-        { dw: "Пн", date: "9 нояб", ic: "overcast-fog",          maxT: 6,  minT: 1,  windD: "N",  gust: 3,  rain: 0 },
-        { dw: "Вт", date: "10",     ic: "cloudy",               maxT: 8,  minT: 3,  windD: "NE", gust: 3,  rain: 0 },
-        { dw: "Ср", date: "11",     ic: "c-rain-heavy-thunder", maxT: 8,  minT: 3,  windD: "NE", gust: 7,  rain: 6.5 },
-        { dw: "Чт", date: "12",     ic: "o-rain-heavy",         maxT: 15, minT: 12, windD: "S",  gust: 13, rain: 7 },
-        { dw: "Пт", date: "13",     ic: "c-rain-heavy",         maxT: 14, minT: 11, windD: "SW", gust: 10, rain: 10.1 },
-        { dw: "Сб", date: "14",     ic: "clear-fog",            maxT: 5,  minT: -1, windD: "W",  gust: 8,  rain: 0,   iswknd: true },
-        { dw: "Вс", date: "15",     ic: "cloudy-sun",           maxT: 7,  minT: 0,  windD: "NW", gust: 4,  rain: 0,   iswknd: true },
-        { dw: "Пн", date: "16",     ic: "c-rain-light",         maxT: 9,  minT: 5,  windD: "N",  gust: 1,  rain: 0.5 },
-        { dw: "Вт", date: "17",     ic: "overcast",             maxT: 7,  minT: 3,  windD: "N",  gust: 6,  rain: 0 },
-        { dw: "Ср", date: "18",     ic: "c-rain-light",         maxT: 9,  minT: 5,  windD: "E",  gust: 10, rain: 1.1 },
-        { dw: "Чт", date: "19",     ic: "c-rain-heavy",         maxT: 10, minT: 6,  windD: "E",  gust: 11, rain: 5.2 },
-        { dw: "Пт", date: "20",     ic: "c-rain-light",         maxT: 11, minT: 8,  windD: "S",  gust: 10, rain: 0.5 },
-        { dw: "Сб", date: "21",     ic: "cloudy-sun",           maxT: 4,  minT: 2,  windD: "S",  gust: 5,  rain: 0,   iswknd: true },
-        { dw: "Вс", date: "22",     ic: "cloudy-sun",           maxT: 4,  minT: 1,  windD: "S",  gust: 3,  rain: 0,   iswknd: true }
-      ]
-    ]
-  },
+                    mode: "grouped",
+                    days: [
+                        {
+                            date: "Сб, 14 ноября", isWknd: true,
+                            parts: [
+                                { tNm: "Ночь",  ic: "overcast",     t: 10, wD: "NE", gust: 7,  rain: 0 },
+                                { tNm: "Утро",  ic: "o-rain-light", t: 10, wD: "NE", gust: 8,  rain: 0.5 },
+                                { tNm: "День",  ic: "o-rain-heavy", t: 13, wD: "NE", gust: 14, rain: 2.5 },
+                                { tNm: "Вечер", ic: "o-rain-light", t: 6,  wD: "NE", gust: 10, rain: 1 }
+                            ]
+                        },
+                        {
+                            date: "Вс, 15 ноября", isWknd: true,
+                            parts: [
+                                { tNm: "Ночь",  ic: "overcast",     t: 3,  wD: "NW", gust: 8,  rain: 0 },
+                                { tNm: "Утро",  ic: "overcast",     t: 4,  wD: "NW", gust: 5,  rain: 0 },
+                                { tNm: "День",  ic: "o-rain-light", t: 6,  wD: "NW", gust: 3,  rain: 0.5 },
+                                { tNm: "Вечер", ic: "overcast",     t: 2,  wD: "NW", gust: 5,  rain: 0 }
+                            ]
+                        }
+                    ]
+                },            
+                 "2weeks": {
+                    mode: "tiles",
+                    singleRow: true,
+                    rows: [
+                        [
+                            { dw: "Пн", date: "9 нояб", ic: "overcast-fog",          maxT: 6,  minT: -1, windD: "N",  gust: 3,  rain: 0 },
+                            { dw: "Вт", date: "10",     ic: "cloudy",               maxT: 7,  minT: 4,  windD: "NW", gust: 2,  rain: 0 },
+                            { dw: "Ср", date: "11",     ic: "c-rain-heavy-thunder", maxT: 8,  minT: 2,  windD: "SE", gust: 6,  rain: 4.5 },
+                            { dw: "Чт", date: "12",     ic: "c-rain-heavy",         maxT: 10, minT: 8,  windD: "E",  gust: 10, rain: 4.5 },
+                            { dw: "Пт", date: "13",     ic: "o-rain-med",           maxT: 15, minT: 11, windD: "SE", gust: 14, rain: 6.6 },
+                            { dw: "Сб", date: "14",     ic: "o-rain-heavy",         maxT: 13, minT: 3,  windD: "NE", gust: 14, rain: 4 },
+                            { dw: "Вс", date: "15",     ic: "o-rain-light",         maxT: 6,  minT: 1,  windD: "NW", gust: 8,  rain: 0.5 },
+                            { dw: "Пн", date: "16",     ic: "clear-fog",            maxT: 5,  minT: -1, windD: "NE", gust: 6,  rain: 0 },
+                            { dw: "Вт", date: "17",     ic: "clear",                maxT: 7,  minT: 0,  windD: "NW", gust: 6,  rain: 0 },
+                            { dw: "Ср", date: "18",     ic: "c-rain-heavy",         maxT: 8,  minT: 4,  windD: "NE", gust: 7,  rain: 10.1 },
+                            { dw: "Чт", date: "19",     ic: "cloudy-sun",           maxT: 7,  minT: 3,  windD: "NE", gust: 6,  rain: 0 },
+                            { dw: "Пт", date: "20",     ic: "cloudy-sun",           maxT: 9,  minT: 4,  windD: "NE", gust: 10, rain: 0 },
+                            { dw: "Сб", date: "21",     ic: "cloudy",               maxT: 9,  minT: 4,  windD: "NE", gust: 11, rain: 0, isWknd: true },
+                            { dw: "Вс", date: "22",     ic: "cloudy",               maxT: 7,  minT: -1, windD: "N",  gust: 13, rain: 0, isWknd: true }
+                        ]
+                    ]
+                },
                 "month": {
                     mode: "tiles",
                     singleRow: false,
@@ -2956,6 +2963,60 @@ const meteoforIcons = {
                 navigator.serviceWorker.register('./sw.js').catch(() => {});
             });
         }
-    </script>
+      
+  function getUpdateStatusText(cityName) {
+    const cityMap = {
+      "Запоріжжя": "Запорожье", "Zaporizhzhia": "Запорожье",
+      "Привітне": "Приветное",   "Pryvitne": "Приветное",
+      "Дніпро": "Днепр",        "Dnipro": "Днепр",
+      "Томашпіль": "Томашполь", "Tomashpil": "Томашполь"
+    };
+
+    let key = cityMap[cityName] || cityName;
+    let rawTime = cityLastEditTimes[key];
+
+    if (!rawTime) return "";
+
+    let editDate = new Date(rawTime.replace(" ", "T"));
+    let now = new Date();
+    let diffMinutes = Math.floor((now - editDate) / 60000);
+
+    let hours = String(editDate.getHours()).padStart(2, '0');
+    let minutes = String(editDate.getMinutes()).padStart(2, '0');
+    let day = editDate.getDate();
+    let year = editDate.getFullYear();
+
+    let timeString = `${year}г, ${day} ноября, в ${hours}:${minutes}`;
+
+    if (diffMinutes < 0 || diffMinutes < 3) {
+      return `Данные обновлены: ${timeString}, только что`;
+    } else if (diffMinutes < 60) {
+      return `Данные обновлены: ${timeString} (${diffMinutes} мин. назад)`;
+    } else if (diffMinutes < 1440) {
+      let hrs = Math.floor(diffMinutes / 60);
+      return `Данные обновлены: ${timeString} (${hrs} ч. назад)`;
+    } else {
+      let days = Math.floor(diffMinutes / 1440);
+      return `Данные обновлены: ${timeString} (${days} дн. назад)`;
+    }
+  }
+function updateInformerStatus() {
+  let el = document.getElementById("lastUpdateText");
+
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "lastUpdateText";
+    el.style.cssText = "font-size: 11px; opacity: 0.75; margin-top: 4px;";
+    
+    let mainText = document.querySelector(".informer-text-main");
+    if (mainText) {
+      mainText.appendChild(el);
+    }
+  }
+
+  el.innerText = getUpdateStatusText(currentCityKey);
+  }
+  updateInformerStatus();
+</script>
 </body>
 </html>
