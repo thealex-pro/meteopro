@@ -364,6 +364,31 @@
         .update-item { background: var(--bg-card); border-left: 3px solid #3498db; padding: 10px 12px; border-radius: 4px; margin-bottom: 10px; }
         .update-date { font-size: 11px; color: var(--text-muted); font-weight: bold; margin-bottom: 4px; }
         .update-text { font-size: 13px; color: var(--text-main); line-height: 1.4; }
+/* Качество воздуха (AQI) */
+        .aqi-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 15px; align-items: start; }
+        @media (max-width: 768px) { .aqi-layout { grid-template-columns: 1fr; } }
+        .aqi-left-col { display: flex; flex-direction: column; gap: 15px; min-width: 0; }
+        .aqi-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; position: relative; }
+        .aqi-card-title { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 14px; }
+        .aqi-hero-box { display: flex; align-items: center; gap: 24px; padding: 10px 5px; flex-wrap: wrap; }
+        .aqi-ring-wrap { position: relative; width: 124px; height: 124px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .aqi-ring-svg { width: 100%; height: 100%; transform: rotate(135deg); }
+        .aqi-ring-bg-circle { fill: none; stroke: var(--border-color); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 251.2 335; }
+        .aqi-ring-val-circle { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 0.4s ease, stroke 0.3s ease; }
+        .aqi-ring-number { position: absolute; font-size: 32px; font-weight: 700; color: var(--text-main); }
+        .aqi-status-text { font-size: 28px; font-weight: 600; color: var(--text-main); }
+        .aqi-scroll-x { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .aqi-chart-box { position: relative; height: 135px; min-width: 960px; }
+        .aqi-daily-box { position: relative; height: 145px; width: 100%; min-width: 300px; }
+        .aqi-canvas, .aqi-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .aqi-canvas { z-index: 1; }
+        .aqi-overlay { z-index: 2; pointer-events: none; }
+        .aqi-legend-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+        .aqi-leg-item { display: flex; gap: 10px; align-items: stretch; }
+        .aqi-leg-bar { width: 4px; border-radius: 4px; flex-shrink: 0; }
+        .aqi-leg-content { flex: 1; }
+        .aqi-leg-head { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 3px; color: var(--text-main); gap: 8px; }
+        .aqi-leg-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.35; }
     </style>
 </head>
 <body class="theme-white">
@@ -560,12 +585,12 @@ let cityLastEditTimes = {
   };
         
         let informerDataByCity = {
-    "Привітне":   { temp: 12, feels: 12, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
-    "Приветное":  { temp: 12, feels: 12, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
-    "Запоріжжя":  { temp: 12, feels: 12, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
-    "Запорожье":  { temp: 12, feels: 12, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
-    "Дніпро":     { temp: 12, feels: 12, sky: "overcast", key: "overcast", dateText: "Пн, 9 ноября 15:53" },
-    "Днепр":      { temp: 12, feels: 12, sky: "overcast", key: "overcast", dateText: "Пн, 9 ноября 15:53" },
+    "Привітне":   { temp: 11, feels: 11, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
+    "Приветное":  { temp: 11, feels: 11, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
+    "Запоріжжя":  { temp: 11, feels: 11, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
+    "Запорожье":  { temp: 11, feels: 11, sky: "overcast", key: "overcast", dateText: "Ср, 11 ноября 15:53" },
+    "Дніпро":     { temp: 11, feels: 10, sky: "overcast", key: "overcast", dateText: "Пн, 9 ноября 15:53" },
+    "Днепр":      { temp: 11, feels: 10, sky: "overcast", key: "overcast", dateText: "Пн, 9 ноября 15:53" },
     "Томашпіль":  { temp: 1, feels: -3, sky: "cloudy-sun", key: "cloudy-sun" },
     "Томашполь":  { temp: 1, feels: -3, sky: "cloudy-sun", key: "cloudy-sun" }
 };
@@ -679,7 +704,7 @@ let cityLastEditTimes = {
                 tabs: {
                     yesterday: "Вчера", now: "Сейчас", hourly: "По часам", today: "Сегодня",
                     tomorrow: "Завтра", "3days": "3 дня", weekend: "Выходные", "2weeks": "2 недели", month: "Месяц", archive: "Архив",
-                    geomagnetic: "Геомагнитная активность"
+                    geomagnetic: "Геомагнитная активность", airquality: "Качество воздуха",
                 },
                 titles: {
                     yesterday: "Погода в {city} вчера", today: "Погода в {city} сегодня",
@@ -687,16 +712,27 @@ let cityLastEditTimes = {
                     hourly: "Погода по часам", archive: "Архив погоды в {city}",
                     "3days": "Погода в {city} на 3 дня", weekend: "Погода в {city} на выходные",
                     "2weeks": "Погода в {city} на 2 недели",
-                    month: "Погода в {city} на месяц", geomagnetic: "Геомагнитная обстановка в {city}"
+                    month: "Погода в {city} на месяц", geomagnetic: "Геомагнитная обстановка в {city}", airquality: "Качество воздуха в {city}"
                 },
+                 
                 cities: { "Приветное": "Приветном", "Запорожье": "Запорожье", "Днепр": "Днепре", "Томашполь": "Томашполе" },
                 monthsGenitive: ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"],
                 geoStatus: {
                     0: "Нет возмущений", 1: "Нет возмущений", 2: "Нет возмущений", 3: "Сейчас небольшие возмущения", 
                     4: "Небольшие возмущения", 5: "Слабая буря", 6: "Умеренная буря", 7: "Сильная буря", 
-                    8: "Шторм", 9: "Экстремальный шторм"
-                }
-            },
+                    8: "Шторм", 9: "Экстремальный шторм" 
+
+                },
+             aqiHourlyTitle: "Почасовой прогноз", aqiDailyTitle: "Ежедневный прогноз", aqiScaleTitle: "Уровень индекса качества воздуха",
+                aqiLevels: [
+                    { min: 0, max: 50, title: "Хорошо", color: "#2ecc71", desc: "Качество воздуха хорошее и, вероятно, не представляет опасности. Вы можете наслаждаться на природе." },
+                    { min: 51, max: 100, title: "Умеренно", color: "#f1c40f", desc: "Качество воздуха хорошее, но чувствительные люди могут испытывать негативные последствия для здоровья." },
+                    { min: 101, max: 150, title: "Вредно для чувствительных групп", color: "#e67e22", desc: "Чувствительные группы могут иметь негативные последствия для здоровья. Широкая общественность вряд ли пострадает." },
+                    { min: 151, max: 200, title: "Вредно", color: "#e74c3c", desc: "Берегите себя. Каждый может столкнуться с последствиями для здоровья и ухудшением состояния легких и сердца." },
+                    { min: 201, max: 300, title: "Очень вредно", color: "#8e44ad", desc: "Избегайте пребывания на улице или используйте защитную маску. Каждый может чувствовать более серьезные последствия для здоровья." },
+                    { min: 301, max: 500, title: "Опасно", color: "#7f0000", desc: "Оставайтесь в помещении или используйте респиратор. Каждый может испытывать сильное раздражение и негативные последствия для здоровья." }
+                ]
+            },           
             uk: {
                 searchPlaceholder: "Пошук міста...",
                 mTitle: "Налаштування",
@@ -723,7 +759,7 @@ let cityLastEditTimes = {
                 tabs: {
                     yesterday: "Вчора", now: "Зараз", hourly: "По годинах", today: "Сьогодні",
                     tomorrow: "Завтра", "3days": "3 дні", weekend: "Вихідні", "2weeks": "2 тижні", month: "Місяць", archive: "Архів",
-                    geomagnetic: "Геомагнітна активність"
+                    geomagnetic: "Геомагнітна активність", airquality: "Якість повітря"
                 },
                 titles: {
                     yesterday: "Погода у {city} вчора", today: "Погода у {city} сьогодні",
@@ -731,7 +767,7 @@ let cityLastEditTimes = {
                     hourly: "Погода по годинах", archive: "Архів погоди у {city}",
                     "3days": "Погода у {city} на 3 дні", weekend: "Погода у {city} на вихідні",
                     "2weeks": "Погода у {city} на 2 тижні",
-                    month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}"
+                    month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}", airquality: "Якість повітря у {city}"
                 },
                 cities: { "Приветное": "Привітному", "Запорожье": "Запоріжжі", "Днепр": "Дніпрі", "Томашполь": "Томашполі" },
                 monthsGenitive: ["січня", "лютого", "березня", "квітня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"],
@@ -739,7 +775,8 @@ let cityLastEditTimes = {
                     0: "Немає збурень", 1: "Немає збурень", 2: "Немає збурень", 3: "Зараз незначні збурення", 
                     4: "Незначні збурення", 5: "Слабка буря", 6: "Помірна буря", 7: "Сильна буря", 
                     8: "Шторм", 9: "Екстремальний шторм"
-                }
+                },
+                aqiHourlyTitle: "Погодинний прогноз", aqiDailyTitle: "Щоденний прогноз", aqiScaleTitle: "Рівень індексу якості повітря"
             },
             en: {
                 searchPlaceholder: "Search city...",
@@ -767,7 +804,7 @@ let cityLastEditTimes = {
                 tabs: {
                     yesterday: "Yesterday", now: "Now", hourly: "Hourly", today: "Today",
                     tomorrow: "Tomorrow", "3days": "3 days", weekend: "Weekend", "2weeks": "2 weeks", month: "Month", archive: "Archive",
-                    geomagnetic: "Geomagnetic activity"
+                    geomagnetic: "Geomagnetic activity", airquality: "Air quality"
                 },
                 titles: {
                     yesterday: "Weather in {city} yesterday", today: "Weather in {city} today",
@@ -775,7 +812,7 @@ let cityLastEditTimes = {
                     hourly: "Hourly weather", archive: "Weather archive in {city}",
                     "3days": "Weather in {city} for 3 days", weekend: "Weather in {city} for weekend",
                     "2weeks": "Weather in {city} for 2 weeks",
-                    month: "Weather in {city} for a month", geomagnetic: "Geomagnetic forecast in {city}"
+                    month: "Weather in {city} for a month", geomagnetic: "Geomagnetic forecast in {city}", airquality: "Air quality in {city}"
                 },
                 cities: { "Приветное": "Pryvitne", "Запорожье": "Zaporizhzhia", "Днепр": "Dnipro", "Томашполь": "Tomashpil" },
                 monthsGenitive: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -783,7 +820,8 @@ let cityLastEditTimes = {
                     0: "No disturbances", 1: "No disturbances", 2: "No disturbances", 3: "Minor disturbances now", 
                     4: "Minor disturbances", 5: "Minor storm", 6: "Moderate storm", 7: "Strong storm", 
                     8: "Severe storm", 9: "Extreme storm"
-                }
+                },
+                aqiHourlyTitle: "Hourly forecast", aqiDailyTitle: "Daily forecast", aqiScaleTitle: "Air Quality Index Level"
             },
             pl: {
                 searchPlaceholder: "Szukaj miasta...",
@@ -811,7 +849,7 @@ let cityLastEditTimes = {
                 tabs: {
                     yesterday: "Wczoraj", now: "Teraz", hourly: "Co godzinę", today: "Dzisiaj",
                     tomorrow: "Jutro", "3days": "3 dni", weekend: "Weekend", "2weeks": "2 tygodnie", month: "Miesiąc", archive: "Archiwum",
-                    geomagnetic: "Aktywność geomagnetyczna"
+                    geomagnetic: "Aktywność geomagnetyczna", airquality: "Jakość powietrza"
                 },
                 titles: {
                     yesterday: "Pogoda w {city} wczoraj", today: "Pogoda w {city} dzisiaj",
@@ -819,7 +857,7 @@ let cityLastEditTimes = {
                     hourly: "Pogoda co godzinę", archive: "Archiwum pogody w {city}",
                     "3days": "Pogoda w {city} na 3 dni", weekend: "Pogoda w {city} na weekend",
                     "2weeks": "Pogoda w {city} na 2 tygodnie",
-                    month: "Pogoda w {city} na miesiąc", geomagnetic: "Aktywność geomagnetyczna w {city}"
+                    month: "Pogoda w {city} na miesiąc", geomagnetic: "Aktywność geomagnetyczna w {city}" , airquality: "Jakość powietrza w {city}"
                 },
                 cities: { "Приветное": "Priwitnym", "Запорожье": "Zaporożu", "Днепр": "Dnieprze", "Томашполь": "Tomaszpolu" },
                 monthsGenitive: ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"],
@@ -827,7 +865,8 @@ let cityLastEditTimes = {
                     0: "Brak zaburzeń", 1: "Brak zaburzeń", 2: "Brak zaburzeń", 3: "Niewielkie zaburzenia teraz", 
                     4: "Niewielkie zaburzenia", 5: "Słaba burza", 6: "Umiarkowana burza", 7: "Silna burza", 
                     8: "Sztorm", 9: "Ekstremalny sztorm"
-                }
+                },
+                aqiHourlyTitle: "Prognoza godzinowa", aqiDailyTitle: "Prognoza dzienna", aqiScaleTitle: "Poziom indeksu jakości powietrza"
             },
             gal: {
                 searchPlaceholder: "Шукати місто...",
@@ -855,7 +894,7 @@ let cityLastEditTimes = {
                 tabs: {
                     yesterday: "Учора", now: "Тера", hourly: "По годинах", today: "Нині",
                     tomorrow: "Завтра", "3days": "3 дні", weekend: "Вакації", "2weeks": "2 тижні", month: "Місяць", archive: "Архів",
-                    geomagnetic: "Геомагнітна активність"
+                    geomagnetic: "Геомагнітна активність", airquality: "Якість повітря"
                 },
                 titles: {
                     yesterday: "Погода у {city} вчора", today: "Погода у {city} нині",
@@ -863,15 +902,16 @@ let cityLastEditTimes = {
                     hourly: "Погода по годинах", archive: "Архів погоди у {city}",
                     "3days": "Погода у {city} на 3 дні", weekend: "Погода у {city} на вакації",
                     "2weeks": "Погода у {city} на 2 тижні",
-                    month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}"
+                    month: "Погода у {city} на місяць", geomagnetic: "Геомагнітна обстановка у {city}", airquality: "Якість повітря у {city}"
                 },
                 cities: { "Приветное": "Привітному", "Запорожье": "Запоріжжу", "Днепр": "Дніпрі", "Томашполь": "Томашполі" },
                 monthsGenitive: ["січня", "лютого", "березня", "квітня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"],
                 geoStatus: {
                     0: "Немає бурі", 1: "Немає бурі", 2: "Немає бурі", 3: "Зараз малі збурення", 
                     4: "Малі збурення", 5: "Слаба буря", 6: "Умірена буря", 7: "Сильна буря", 
-                    8: "Шторм", 9: "Екстремальний шторм"
-                }
+                    8: "Сильний шторм", 9: "Екстремальний шторм"
+                },
+                aqiHourlyTitle: "Погодинний прогноз", aqiDailyTitle: "Прогноз по днях", aqiScaleTitle: "Рівень індексу якості повітря"
             }
         };
 const weatherTranslations = {
@@ -1456,14 +1496,37 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
                 },
                 "archive": { mode: "archive" },
                 "geomagnetic": {
-    mode: "geomagnetic",
-    days: [
-      { date: "Пт, 13 нояб", values: [1, 1, 1, 0, 0, 0, 1, 1 ] },
-      { date: "Сб, 14 нояб", values: [2, 2, 3, 2, 3, 0, 2, 0] },
-      { date: "Вс, 15 нояб", values: [1, 1, 1, 1, 1, 1, 1, 4] }
-    ]
-  }
-};
+                    mode: "geomagnetic",
+                    days: [
+                        { date: "Чт, 12 нояб", values: [1, 1, 1, 2, 3, 0, 1, 1 ] },
+                        { date: "Пт, 13 нояб", values: [2, 2, 1, 2, 3, 0, 2, 0] },
+                        { date: "Сб, 14 нояб", values: [3, 1, 4, 4, 4, 3, 2, 4] }
+                    ]
+                },
+                "airquality": {
+                    mode: "airquality",
+                    hourly: [
+                        { time: "0:00", aqi: 38 }, { time: "1:00", aqi: 36 }, { time: "2:00", aqi: 35 }, { time: "3:00", aqi: 35 },
+                        { time: "4:00", aqi: 37 }, { time: "5:00", aqi: 39 }, { time: "6:00", aqi: 42 }, { time: "7:00", aqi: 46 },
+                        { time: "8:00", aqi: 50 }, { time: "9:00", aqi: 54 }, { time: "10:00", aqi: 57 }, { time: "11:00", aqi: 59 },
+                        { time: "12:00", aqi: 61 }, { time: "13:00", aqi: 60 }, { time: "14:00", aqi: 59 }, { time: "15:00", aqi: 58 },
+                        { time: "16:00", aqi: 55 }, { time: "17:00", aqi: 52 }, { time: "18:00", aqi: 49 }, { time: "19:00", aqi: 46 },
+                        { time: "20:00", aqi: 43 }, { time: "21:00", aqi: 41 }, { time: "22:00", aqi: 40 }, { time: "23:00", aqi: 39 }
+                    ],
+                    daily: [
+                        { date: "Чт, 12 нояб", aqi: 42 },
+                        { date: "Пт, 13 нояб", aqi: 54 },
+                        { date: "Сб, 14 нояб", aqi: 48 },
+                        { date: "Вс, 15 нояб", aqi: 36 },
+                        { date: "Пн, 16 нояб", aqi: 45 },
+                        { date: "Вт, 17 нояб", aqi: 52 },
+                        { date: "Ср, 18 нояб", aqi: 58 },
+                        { date: "Чт, 19 нояб", aqi: 44 },
+                        { date: "Пт, 20 нояб", aqi: 39 },
+                        { date: "Сб, 21 нояб", aqi: 41 }
+                    ]
+                }
+            };
         }
 
         let allCitiesData = {
@@ -1967,7 +2030,7 @@ const meteoforIcons = {
             updateModalActiveButtons();
 
             const nav = document.getElementById('mainNavBar');
-            const tabKeys = ['yesterday', 'now', 'hourly', 'today', 'tomorrow', '3days', 'weekend', '2weeks', 'month', 'geomagnetic', 'archive'];
+            const tabKeys = ['yesterday', 'now', 'hourly', 'today', 'tomorrow', '3days', 'weekend', '2weeks', 'month', 'geomagnetic', 'airquality', 'archive'];
             nav.innerHTML = tabKeys.map(k => `<span class="${k === currentTab ? 'active' : ''}" onclick="switchTab('${k}', this)">${lang.tabs[k]}</span>`).join('');
 
             const cityInLoc = lang.cities[currentCityKey] || currentCityKey;
@@ -1984,8 +2047,217 @@ const meteoforIcons = {
                 return; 
             }
 
+            
             let devCls = isDevModeActive ? 'dev-active' : '';
 
+            if (data.mode === "airquality") {
+                const targetWrap = wrap;
+
+                const renderAirQualityPanel = () => {
+                    const levels = lang.aqiLevels || i18n['ru'].aqiLevels;
+                    const getAqiInfo = (val) => levels.find(l => val >= l.min && val <= l.max) || levels[0];
+                    const isDark = document.body.classList.contains('dark-theme') || document.documentElement.getAttribute('data-theme') === 'dark';
+
+                    const cardBg = isDark ? 'rgba(255,255,255,0.05)' : '#ffffff';
+                    const cardBorder = isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid #e2e8f0';
+                    const subTextColor = isDark ? '#94a3b8' : '#64748b';
+                    const mainTextColor = isDark ? '#f1f5f9' : '#1e293b';
+                    const ringTrackColor = isDark ? 'rgba(255,255,255,0.12)' : '#e2e8f0';
+                    const btnBg = isDark ? 'rgba(255,255,255,0.12)' : 'rgba(128,128,128,0.15)';
+
+                    const isWeekTab = String(currentTab).toLowerCase().includes('week') || String(currentTab).includes('7') || String(currentTab).includes('нед');
+                    const visibleDaily = data.daily.slice(0, isWeekTab ? 7 : 4);
+
+                    const currentAqi = data.currentAqi !== undefined ? data.currentAqi : (data.hourly[0] ? data.hourly[0].aqi : 50);
+                    const curInfo = getAqiInfo(currentAqi);
+                    const radius = 38;
+                    const circumference = 2 * Math.PI * radius;
+                    const pct = Math.min(currentAqi / 300, 1);
+                    const dashOffset = circumference * (1 - pct);
+
+                    const buildSmoothChartSvg = (points, type, labelKey, subLabelKey, minWidthPx) => {
+                        const w = Math.max(minWidthPx, points.length * (subLabelKey ? 86 : 78));
+                        const h = isDevModeActive ? 136 : 115;
+                        const padX = 42;
+                        const topY = isDevModeActive ? 46 : 28;
+                        const botY = isDevModeActive ? 90 : 72;
+                        const vals = points.map(p => p.aqi);
+                        const minV = Math.min(...vals);
+                        const maxV = Math.max(...vals);
+                        const range = (maxV - minV) || 1;
+                        const gradId = `aqi-grad-${type}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+                        const coords = points.map((p, i) => {
+                            const x = points.length === 1 ? w / 2 : padX + (i * (w - padX * 2)) / (points.length - 1);
+                            const norm = (p.aqi - minV) / range;
+                            const y = botY - norm * (botY - topY);
+                            return { x, y, idx: i, aqi: p.aqi, label: p[labelKey], sub: subLabelKey ? p[subLabelKey] : '', color: getAqiInfo(p.aqi).color };
+                        });
+
+                        let pathD = `M ${coords[0].x} ${coords[0].y}`;
+                        for (let i = 0; i < coords.length - 1; i++) {
+                            const p0 = coords[i];
+                            const p1 = coords[i + 1];
+                            const cx = (p0.x + p1.x) / 2;
+                            pathD += ` C ${cx} ${p0.y}, ${cx} ${p1.y}, ${p1.x} ${p1.y}`;
+                        }
+
+                        let svg = `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="display:block; overflow:visible;">`;
+                        svg += `<defs><linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">`;
+                        coords.forEach((c, i) => {
+                            const offsetPct = coords.length === 1 ? 0 : (i / (coords.length - 1)) * 100;
+                            svg += `<stop offset="${offsetPct}%" stop-color="${c.color}"/>`;
+                        });
+                        svg += `</linearGradient></defs>`;
+
+                        if (subLabelKey) {
+                            for (let i = 0; i < coords.length - 1; i++) {
+                                const midX = (coords[i].x + coords[i + 1].x) / 2;
+                                svg += `<line x1="${midX}" y1="12" x2="${midX}" y2="${h - 4}" stroke="${isDark ? 'rgba(255,255,255,0.06)' : '#f1f5f9'}" stroke-width="1"/>`;
+                            }
+                        }
+
+                        svg += `<path d="${pathD}" fill="none" stroke="url(#${gradId})" stroke-width="2.5" stroke-linecap="round"/>`;
+
+                        coords.forEach(c => {
+                            svg += `<circle cx="${c.x}" cy="${c.y}" r="4.5" fill="${cardBg}" stroke="${c.color}" stroke-width="2.5"/>`;
+
+                            if (isDevModeActive) {
+                                svg += `<foreignObject x="${c.x - 28}" y="${c.y - 40}" width="56" height="32" style="overflow:visible;">
+                                    <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex; align-items:center; justify-content:center; gap:4px;">
+                                        <span style="font-size:12px; font-weight:700; color:${mainTextColor};">${c.aqi}</span>
+                                        <div style="display:flex; flex-direction:column; gap:1px;">
+                                            <button type="button" class="aqi-step-btn" data-aqi-type="${type}" data-aqi-idx="${c.idx}" data-step="1" style="border:none; background:${btnBg}; color:${mainTextColor}; border-radius:3px; width:16px; height:13px; font-size:8px; cursor:pointer; line-height:1; padding:0; display:flex; align-items:center; justify-content:center;">▲</button>
+                                            <button type="button" class="aqi-step-btn" data-aqi-type="${type}" data-aqi-idx="${c.idx}" data-step="-1" style="border:none; background:${btnBg}; color:${mainTextColor}; border-radius:3px; width:16px; height:13px; font-size:8px; cursor:pointer; line-height:1; padding:0; display:flex; align-items:center; justify-content:center;">▼</button>
+                                        </div>
+                                    </div>
+                                </foreignObject>`;
+                            } else {
+                                svg += `<text x="${c.x}" y="${c.y - 11}" text-anchor="middle" font-size="12" font-weight="700" fill="${mainTextColor}">${c.aqi}</text>`;
+                            }
+
+                            svg += `<text x="${c.x}" y="${h - (subLabelKey ? 18 : 6)}" text-anchor="middle" font-size="12" font-weight="${subLabelKey ? '600' : '400'}" fill="${subLabelKey ? mainTextColor : subTextColor}">${c.label}</text>`;
+                            if (subLabelKey && c.sub) {
+                                svg += `<text x="${c.x}" y="${h - 3}" text-anchor="middle" font-size="11" fill="${subTextColor}">${c.sub}</text>`;
+                            }
+                        });
+                        svg += `</svg>`;
+                        return svg;
+                    };
+
+                    const dailyParsed = visibleDaily.map(d => {
+                        const parts = d.date.split(',');
+                        return {
+                            aqi: d.aqi,
+                            dayName: parts[0] ? parts[0].trim() : d.date,
+                            dayDate: parts[1] ? parts[1].trim() : ''
+                        };
+                    });
+
+                    let html = `<div style="display:grid; grid-template-columns: 1.45fr 1fr; gap:16px; padding:6px 2px; align-items:start;">`;
+
+                    // === ЛЕВАЯ КОЛОНКА ===
+                    html += `<div style="display:flex; flex-direction:column; gap:16px; min-width:0;">`;
+
+                    // 1. Карточка текущего AQI с кольцом и стрелочками
+                    const currentArrowsHtml = isDevModeActive ? `
+                        <div style="display:flex; flex-direction:column; gap:2px; margin-left:-12px;">
+                            <button type="button" class="aqi-step-btn" data-aqi-type="current" data-step="1" style="border:none; background:${btnBg}; color:${mainTextColor}; border-radius:4px; width:22px; height:20px; font-size:10px; cursor:pointer; line-height:1; padding:0;">▲</button>
+                            <button type="button" class="aqi-step-btn" data-aqi-type="current" data-step="-1" style="border:none; background:${btnBg}; color:${mainTextColor}; border-radius:4px; width:22px; height:20px; font-size:10px; cursor:pointer; line-height:1; padding:0;">▼</button>
+                        </div>` : '';
+
+                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:22px 26px; display:flex; align-items:center; gap:24px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="position:relative; width:92px; height:92px; flex-shrink:0;">
+                            <svg width="92" height="92" viewBox="0 0 92 92" style="transform: rotate(-90deg);">
+                                <circle cx="46" cy="46" r="${radius}" fill="none" stroke="${ringTrackColor}" stroke-width="8"/>
+                                <circle cx="46" cy="46" r="${radius}" fill="none" stroke="${curInfo.color}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${dashOffset}"/>
+                            </svg>
+                            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; color:${mainTextColor};">${currentAqi}</div>
+                        </div>
+                        ${currentArrowsHtml}
+                        <div style="font-size:22px; font-weight:700; color:${mainTextColor};">${curInfo.title}</div>
+                    </div>`;
+
+                    // 2. Почасовой прогноз
+                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="font-size:15px; font-weight:700; color:${mainTextColor}; margin-bottom:10px;">${lang.aqiHourlyTitle || "Почасовой прогноз"}</div>
+                        <div class="aqi-hourly-scroll" style="overflow-x:auto; padding-bottom:6px;">
+                            ${buildSmoothChartSvg(data.hourly, 'hourly', 'time', null, 560)}
+                        </div>
+                    </div>`;
+
+                    // 3. Ежедневный прогноз
+                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="font-size:15px; font-weight:700; color:${mainTextColor}; margin-bottom:10px;">${lang.aqiDailyTitle || "Ежедневный прогноз"}</div>
+                        <div class="aqi-daily-scroll" style="overflow-x:auto;">
+                            ${buildSmoothChartSvg(dailyParsed, 'daily', 'dayName', 'dayDate', 320)}
+                        </div>
+                    </div>`;
+
+                    html += `</div>`;
+
+                    // === ПРАВАЯ КОЛОНКА ===
+                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:20px 22px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="font-size:16px; font-weight:700; color:${mainTextColor}; margin-bottom:16px;">${lang.aqiScaleTitle || "Уровень индекса качества воздуха"}</div>
+                        <div style="display:flex; flex-direction:column; gap:14px;">`;
+
+                    levels.forEach((lvl, idx) => {
+                        const rangeText = idx === levels.length - 1 ? `${lvl.min}+` : `${lvl.min}-${lvl.max}`;
+                        html += `<div style="display:flex; align-items:stretch; gap:12px;">
+                            <div style="width:3.5px; border-radius:3px; background:${lvl.color}; flex-shrink:0;"></div>
+                            <div style="flex:1;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                                    <span style="font-size:13.5px; font-weight:700; color:${mainTextColor};">${lvl.title}</span>
+                                    <span style="font-size:12.5px; font-weight:600; color:${subTextColor};">${rangeText}</span>
+                                </div>
+                                <div style="font-size:12px; line-height:1.4; color:${subTextColor};">${lvl.desc}</div>
+                            </div>
+                        </div>`;
+                    });
+
+                    html += `</div></div></div>`;
+
+                    const prevHourlyScroll = targetWrap.querySelector('.aqi-hourly-scroll')?.scrollLeft || 0;
+                    const prevDailyScroll = targetWrap.querySelector('.aqi-daily-scroll')?.scrollLeft || 0;
+
+                    targetWrap.innerHTML = html;
+
+                    const newHourlyEl = targetWrap.querySelector('.aqi-hourly-scroll');
+                    const newDailyEl = targetWrap.querySelector('.aqi-daily-scroll');
+                    if (newHourlyEl) newHourlyEl.scrollLeft = prevHourlyScroll;
+                    if (newDailyEl) newDailyEl.scrollLeft = prevDailyScroll;
+                };
+
+                // Делегируем клик на сам контейнер targetWrap, чтобы кнопки внутри <foreignObject> SVG гарантированно срабатывали
+                targetWrap.onclick = (e) => {
+                    const btn = e.target.closest('.aqi-step-btn');
+                    if (!btn || !isDevModeActive) return;
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const mult = e.shiftKey ? 10 : 1;
+                    const step = parseInt(btn.dataset.step, 10) * mult;
+                    const type = btn.dataset.aqiType;
+                    const idx = parseInt(btn.dataset.aqiIdx, 10);
+
+                    if (type === 'current') {
+                        const base = data.currentAqi !== undefined ? data.currentAqi : (data.hourly[0] ? data.hourly[0].aqi : 50);
+                        data.currentAqi = Math.max(0, Math.min(500, base + step));
+                    } else if (type === 'hourly' && data.hourly[idx]) {
+                        data.hourly[idx].aqi = Math.max(0, Math.min(500, data.hourly[idx].aqi + step));
+                        if (idx === 0 && data.currentAqi === undefined) data.currentAqi = data.hourly[0].aqi;
+                    } else if (type === 'daily' && data.daily[idx]) {
+                        data.daily[idx].aqi = Math.max(0, Math.min(500, data.daily[idx].aqi + step));
+                    }
+
+                    renderAirQualityPanel();
+                };
+
+                renderAirQualityPanel();
+                updateInformer();
+                return;
+            }
             if (data.mode === "archive") {
                 let currentArchiveDataset = null;
                 if (currentCityKey === "Запорожье") {
