@@ -2060,7 +2060,6 @@ const meteoforIcons = {
 
             
             let devCls = isDevModeActive ? 'dev-active' : '';
-
             if (data.mode === "airquality") {
                 const targetWrap = wrap;
 
@@ -2087,9 +2086,10 @@ const meteoforIcons = {
                     const dashOffset = circumference * (1 - pct);
 
                     const buildSmoothChartSvg = (points, type, labelKey, subLabelKey, minWidthPx) => {
-                        const w = Math.max(minWidthPx, points.length * (subLabelKey ? 86 : 78));
+                        const stepPx = subLabelKey ? (isDevModeActive ? 82 : 68) : (isDevModeActive ? 76 : 62);
+                        const w = Math.max(minWidthPx, points.length * stepPx);
                         const h = isDevModeActive ? 136 : 115;
-                        const padX = 42;
+                        const padX = subLabelKey ? 34 : 36;
                         const topY = isDevModeActive ? 46 : 28;
                         const botY = isDevModeActive ? 90 : 72;
                         const vals = points.map(p => p.aqi);
@@ -2113,7 +2113,7 @@ const meteoforIcons = {
                             pathD += ` C ${cx} ${p0.y}, ${cx} ${p1.y}, ${p1.x} ${p1.y}`;
                         }
 
-                        let svg = `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="display:block; overflow:visible;">`;
+                        let svg = `<svg width="${subLabelKey && !isWeekTab && !isDevModeActive ? '100%' : w}" height="${h}" viewBox="0 0 ${w} ${h}" style="display:block; overflow:visible; max-width:100%;">`;
                         svg += `<defs><linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="0%">`;
                         coords.forEach((c, i) => {
                             const offsetPct = coords.length === 1 ? 0 : (i / (coords.length - 1)) * 100;
@@ -2165,61 +2165,61 @@ const meteoforIcons = {
                         };
                     });
 
-                    let html = `<div style="display:grid; grid-template-columns: 1.45fr 1fr; gap:16px; padding:6px 2px; align-items:start;">`;
+                    let html = `<div style="display:flex; flex-direction:column; gap:16px; padding:6px 2px;">`;
 
-                    // === ЛЕВАЯ КОЛОНКА ===
-                    html += `<div style="display:flex; flex-direction:column; gap:16px; min-width:0;">`;
+                    // === 1. ВЕРХНИЙ РЯД: Круг слева + Почасовой прогноз справа ===
+                    html += `<div style="display:flex; flex-wrap:wrap; gap:16px; align-items:stretch;">`;
 
-                    // 1. Карточка текущего AQI с кольцом и стрелочками
+                    // Карточка текущего AQI с кольцом
                     const currentArrowsHtml = isDevModeActive ? `
-                        <div style="display:flex; flex-direction:column; gap:2px; margin-left:-12px;">
+                        <div style="display:flex; flex-direction:column; gap:3px; margin-left:-6px;">
                             <button type="button" class="aqi-step-btn" data-aqi-type="current" data-step="1" style="border:none; background:${btnBg}; color:${mainTextColor}; border-radius:4px; width:22px; height:20px; font-size:10px; cursor:pointer; line-height:1; padding:0;">▲</button>
                             <button type="button" class="aqi-step-btn" data-aqi-type="current" data-step="-1" style="border:none; background:${btnBg}; color:${mainTextColor}; border-radius:4px; width:22px; height:20px; font-size:10px; cursor:pointer; line-height:1; padding:0;">▼</button>
                         </div>` : '';
 
-                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:22px 26px; display:flex; align-items:center; gap:24px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                        <div style="position:relative; width:92px; height:92px; flex-shrink:0;">
-                            <svg width="92" height="92" viewBox="0 0 92 92" style="transform: rotate(-90deg);">
+                    html += `<div style="flex: 1 1 250px; background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:18px 22px; display:flex; align-items:center; justify-content:center; gap:18px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="position:relative; width:88px; height:88px; flex-shrink:0;">
+                            <svg width="88" height="88" viewBox="0 0 92 92" style="transform: rotate(-90deg);">
                                 <circle cx="46" cy="46" r="${radius}" fill="none" stroke="${ringTrackColor}" stroke-width="8"/>
                                 <circle cx="46" cy="46" r="${radius}" fill="none" stroke="${curInfo.color}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${circumference}" stroke-dashoffset="${dashOffset}"/>
                             </svg>
-                            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; color:${mainTextColor};">${currentAqi}</div>
+                            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:23px; font-weight:700; color:${mainTextColor};">${currentAqi}</div>
                         </div>
                         ${currentArrowsHtml}
-                        <div style="font-size:22px; font-weight:700; color:${mainTextColor};">${curInfo.title}</div>
+                        <div style="font-size:20px; font-weight:700; color:${mainTextColor}; line-height:1.2;">${curInfo.title}</div>
                     </div>`;
 
-                    // 2. Почасовой прогноз
-                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                        <div style="font-size:15px; font-weight:700; color:${mainTextColor}; margin-bottom:10px;">${lang.aqiHourlyTitle || "Почасовой прогноз"}</div>
-                        <div class="aqi-hourly-scroll" style="overflow-x:auto; padding-bottom:6px;">
+                    // Карточка почасового прогноза справа от круга
+                    html += `<div style="flex: 2.5 1 340px; min-width:0; background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:16px 18px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="font-size:15px; font-weight:700; color:${mainTextColor}; margin-bottom:8px;">${lang.aqiHourlyTitle || "Почасовой прогноз"}</div>
+                        <div class="aqi-hourly-scroll" style="overflow-x:auto; padding-bottom:4px;">
                             ${buildSmoothChartSvg(data.hourly, 'hourly', 'time', null, 560)}
                         </div>
                     </div>`;
 
-                    // 3. Ежедневный прогноз
-                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                        <div style="font-size:15px; font-weight:700; color:${mainTextColor}; margin-bottom:10px;">${lang.aqiDailyTitle || "Ежедневный прогноз"}</div>
+                    html += `</div>`; // конец верхнего ряда
+
+                    // === 2. СРЕДНИЙ РЯД: Ежедневный прогноз на всю ширину ===
+                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:16px 18px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="font-size:15px; font-weight:700; color:${mainTextColor}; margin-bottom:8px;">${lang.aqiDailyTitle || "Ежедневный прогноз"}</div>
                         <div class="aqi-daily-scroll" style="overflow-x:auto;">
-                            ${buildSmoothChartSvg(dailyParsed, 'daily', 'dayName', 'dayDate', 320)}
+                            ${buildSmoothChartSvg(dailyParsed, 'daily', 'dayName', 'dayDate', 260)}
                         </div>
                     </div>`;
 
-                    html += `</div>`;
-
-                    // === ПРАВАЯ КОЛОНКА ===
-                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:20px 22px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                        <div style="font-size:16px; font-weight:700; color:${mainTextColor}; margin-bottom:16px;">${lang.aqiScaleTitle || "Уровень индекса качества воздуха"}</div>
-                        <div style="display:flex; flex-direction:column; gap:14px;">`;
+                    // === 3. НИЖНИЙ РЯД: Шкала уровней качества воздуха на всю ширину ===
+                    html += `<div style="background:${cardBg}; border:${cardBorder}; border-radius:14px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                        <div style="font-size:16px; font-weight:700; color:${mainTextColor}; margin-bottom:14px;">${lang.aqiScaleTitle || "Уровень индекса качества воздуха"}</div>
+                        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px 22px;">`;
 
                     levels.forEach((lvl, idx) => {
                         const rangeText = idx === levels.length - 1 ? `${lvl.min}+` : `${lvl.min}-${lvl.max}`;
                         html += `<div style="display:flex; align-items:stretch; gap:12px;">
-                            <div style="width:3.5px; border-radius:3px; background:${lvl.color}; flex-shrink:0;"></div>
-                            <div style="flex:1;">
-                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                            <div style="width:4px; border-radius:3px; background:${lvl.color}; flex-shrink:0;"></div>
+                            <div style="flex:1; min-width:0;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:3px;">
                                     <span style="font-size:13.5px; font-weight:700; color:${mainTextColor};">${lvl.title}</span>
-                                    <span style="font-size:12.5px; font-weight:600; color:${subTextColor};">${rangeText}</span>
+                                    <span style="font-size:12.5px; font-weight:600; color:${subTextColor}; white-space:nowrap;">${rangeText}</span>
                                 </div>
                                 <div style="font-size:12px; line-height:1.4; color:${subTextColor};">${lvl.desc}</div>
                             </div>
@@ -2239,7 +2239,6 @@ const meteoforIcons = {
                     if (newDailyEl) newDailyEl.scrollLeft = prevDailyScroll;
                 };
 
-                // Делегируем клик на сам контейнер targetWrap, чтобы кнопки внутри <foreignObject> SVG гарантированно срабатывали
                 targetWrap.onclick = (e) => {
                     const btn = e.target.closest('.aqi-step-btn');
                     if (!btn || !isDevModeActive) return;
