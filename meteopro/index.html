@@ -614,11 +614,21 @@ let cityLastEditTimes = {
         }
 
         let updatesData = JSON.parse(localStorage.getItem('meteopro_updates') || '[]');
-        if (updatesData.length === 0) {
-            updatesData = [
-                { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
-                { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" }
-            ];
+        const defaultUpdates = [
+            { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
+            { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" }
+        ];
+
+        let isUpdatesChanged = false;
+        defaultUpdates.forEach(defItem => {
+            if (!updatesData.some(item => item.id === defItem.id)) {
+                updatesData.unshift(defItem);
+                isUpdatesChanged = true;
+            }
+        });
+
+        if (isUpdatesChanged) {
+            updatesData.sort((a, b) => b.id - a.id);
             localStorage.setItem('meteopro_updates', JSON.stringify(updatesData));
         }
 
