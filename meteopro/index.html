@@ -585,14 +585,14 @@ let cityLastEditTimes = {
   };
         
         let informerDataByCity = {
-        "Привітне":   { temp: -2, feels: -5, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Приветное":  { temp: -2, feels: -5, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Запоріжжя":  { temp: -2, feels: -5, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Запорожье":  { temp: -2, feels: -5, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Дніпро":     { temp: 7,  feels: 5,  sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
-        "Днепр":      { temp: 7,  feels: 5,  sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
-        "Томашпіль":  { temp: 1,  feels: -3, sky: "cloudy-sun", key: "cloudy-sun" },
-        "Томашполь":  { temp: 1,  feels: -3, sky: "cloudy-sun", key: "cloudy-sun" }
+        "Привітне":   { temp: 4, feels: 1, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
+        "Приветное":  { temp: 4, feels: 1, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
+        "Запоріжжя":  { temp: 4, feels: 1, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
+        "Запорожье":  { temp: 4, feels: 1, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
+        "Дніпро":     { temp: 5,  feels: 3,  sky: "clear",   key: "clear",   dateText: "Пн, 9 ноября 15:53" },
+        "Днепр":      { temp: 5,  feels: 3,  sky: "clear",   key: "clear",   dateText: "Пн, 9 ноября 15:53" },
+        "Томашпіль":  { temp: 5,  feels: -3, sky: "cloudy-sun", key: "cloudy-sun" },
+        "Томашполь":  { temp: 5,  feels: -3, sky: "cloudy-sun", key: "cloudy-sun" }
     };
         let currentCityKey = "Запорожье";
         
@@ -1142,46 +1142,46 @@ const archiveZaporozhyeData = [
         ];
 
         function createMonthRowsForCity(cityName) {
-            if (cityName === "Томашполь") {
-                return [
-                    [
-                        { dw: "Пн", date: "2 нояб", ic: "cloudy", maxT: 10, minT: 6 },
-                        { dw: "Вт", date: "3", ic: "cloudy-sun", maxT: 11, minT: 7 },
-                        { dw: "Ср", date: "4", ic: "cloudy", maxT: 12, minT: 9 },
-                        { dw: "Чт", date: "5", ic: "cloudy", maxT: 13, minT: 9 },
-                        { dw: "Пт", date: "6", ic: "cloudy-sun", maxT: 10, minT: 1 },
-                        { dw: "Сб", date: "7", ic: "c-rain-light", maxT: 5, minT: 1, isWknd: true },
-                        { dw: "Вс", date: "8", ic: "c-rain-light", maxT: 3, minT: 0, isWknd: true }
-                    ],
-                    [
-                        { dw: "Пн", date: "9", ic: "clear", maxT: 8, minT: 0 },
-                        { dw: "Вт", date: "10", ic: "c-rain-light", maxT: 6, minT: 1 },
-                        { dw: "Ср", date: "11", ic: "c-rain-light", maxT: 7, minT: 2 },
-                        { dw: "Чт", date: "12", ic: "c-rain-light", maxT: 5, minT: 2 },
-                        { dw: "Пт", date: "13", ic: "cloudy-sun", maxT: 4, minT: 4 },
-                        { dw: "Сб", date: "14", ic: "overcast", maxT: 8, minT: 6, isWknd: true },
-                        { dw: "Вс", date: "15", ic: "clear", maxT: 8, minT: 7, isWknd: true }
-                    ],
-                    [
-                        { dw: "Пн", date: "16", ic: "c-rain-light", maxT: 8, minT: 0 },
-                        { dw: "Вт", date: "17", ic: "c-rain-light", maxT: 3, minT: 1 },
-                        { dw: "Ср", date: "18", ic: "c-rain-light", maxT: 2, minT: 2 },
-                        { dw: "Чт", date: "19", ic: "cloudy-sun", maxT: 4, minT: 2 },
-                        { dw: "Пт", date: "20", ic: "overcast", maxT: 6, minT: 3 },
-                        { dw: "Сб", date: "21", ic: "clear", maxT: 7, minT: 3, isWknd: true },
-                        { dw: "Вс", date: "22", ic: "overcast", maxT: 5, minT: 5, isWknd: true }
-                    ],
-                    [
-                        { dw: "Пн", date: "23", ic: "clear", maxT: 3, minT: -1 },
-                        { dw: "Вт", date: "24", ic: "clear", maxT: 3, minT: 0 },
-                        { dw: "Ср", date: "25", ic: "cloudy-sun", maxT: 3, minT: -1 },
-                        { dw: "Чт", date: "26 нояб", ic: "snow", maxT: -1, minT: -5 },
-                        { dw: "Пт", date: "27", ic: "cloudy-sun", maxT: 3, minT: -1 },
-                        { dw: "Сб", date: "28", ic: "c-rain-light", maxT: 2, minT: -2, isWknd: true },
-                        { dw: "Вс", date: "29 нояб", ic: "c-rain-light", maxT: 2, minT: -1, isWknd: true }
-                    ]
-                ];
-            }
+    if (cityName === "Томашполь") {
+        return [
+            [
+                { dw: "Пн", date: "16 нояб", ic: "cloudy",        maxT: 8,  minT: 0 },
+                { dw: "Вт", date: "17",      ic: "cloudy-sun",    maxT: 9,  minT: 5 },
+                { dw: "Ср", date: "18",      ic: "cloudy",        maxT: 13, minT: 7 },
+                { dw: "Чт", date: "19",      ic: "cloudy",        maxT: 11, minT: 6 },
+                { dw: "Пт", date: "20",      ic: "cloudy-sun",    maxT: 11, minT: 7 },
+                { dw: "Сб", date: "21",      ic: "c-rain-light",  maxT: 8,  minT: 1,  isWknd: true },
+                { dw: "Вс", date: "22",      ic: "c-rain-light",  maxT: 5,  minT: 1,  isWknd: true }
+            ],
+            [
+                { dw: "Пн", date: "23",      ic: "clear",         maxT: 4,  minT: 0 },
+                { dw: "Вт", date: "24",      ic: "c-rain-light",  maxT: 4,  minT: 0 },
+                { dw: "Ср", date: "25",      ic: "c-rain-light",  maxT: 4,  minT: 0 },
+                { dw: "Чт", date: "26",      ic: "c-rain-light",  maxT: 4,  minT: 2 },
+                { dw: "Пт", date: "27",      ic: "cloudy-sun",    maxT: 4,  minT: 2 },
+                { dw: "Сб", date: "28",      ic: "overcast",      maxT: 4,  minT: 1,  isWknd: true },
+                { dw: "Вс", date: "29",      ic: "clear",         maxT: 4,  minT: 1,  isWknd: true }
+            ],
+            [
+                { dw: "Пн", date: "30",      ic: "c-rain-light",  maxT: 3,  minT: 0 },
+                { dw: "Вт", date: "1 дек",   ic: "c-rain-light",  maxT: 3,  minT: 0 },
+                { dw: "Ср", date: "2",       ic: "c-rain-light",  maxT: 3,  minT: -1 },
+                { dw: "Чт", date: "3",       ic: "cloudy-sun",    maxT: 2,  minT: -1 },
+                { dw: "Пт", date: "4",       ic: "overcast",      maxT: 2,  minT: -2 },
+                { dw: "Сб", date: "5",       ic: "clear",         maxT: 1,  minT: -3, isWknd: true },
+                { dw: "Вс", date: "6",       ic: "overcast",      maxT: 2,  minT: -3, isWknd: true }
+            ],
+            [
+                { dw: "Пн", date: "7",       ic: "clear",         maxT: 2,  minT: -2 },
+                { dw: "Вт", date: "8",       ic: "clear",         maxT: 2,  minT: -1 },
+                { dw: "Ср", date: "9",       ic: "cloudy-sun",    maxT: 2,  minT: -1 },
+                { dw: "Чт", date: "10",      ic: "snow",          maxT: 3,  minT: -2 },
+                { dw: "Пт", date: "11",      ic: "cloudy-sun",    maxT: 2,  minT: -2 },
+                { dw: "Сб", date: "12",      ic: "c-rain-light",  maxT: 2,  minT: -2, isWknd: true },
+                { dw: "Вс", date: "13",      ic: "c-rain-light",  maxT: 2,  minT: -2, isWknd: true }
+            ]
+        ];
+    }
 if (cityName && cityName.toString().toLowerCase().indexOf("запор") !== -1) {
         return [
            [
