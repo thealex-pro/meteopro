@@ -585,12 +585,12 @@ let cityLastEditTimes = {
   };
         
         let informerDataByCity = {
-        "Привітне":   { temp: 0, feels: -3, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Приветное":  { temp: 0, feels: -3, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Запоріжжя":  { temp: 0, feels: -3, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Запорожье":  { temp: 0, feels: -3, sky: "clear", key: "clear", dateText: "Пн, 16 ноября 9:07" },
-        "Дніпро":     { temp: 0,  feels: -3,  sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
-        "Днепр":      { temp: 0,  feels: -3,  sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
+        "Привітне":   { temp: 3, feels: -1, sky: "overcast", key: "overcast", dateText: "Пн, 16 ноября 9:07" },
+        "Приветное":  { temp: 3, feels: -1, sky: "overcast", key: "overcast", dateText: "Пн, 16 ноября 9:07" },
+        "Запоріжжя":  { temp: 3, feels: -1, sky: "overcast", key: "overcast", dateText: "Пн, 16 ноября 9:07" },
+        "Запорожье":  { temp: 3, feels: -1, sky: "overcast", key: "overcast", dateText: "Пн, 16 ноября 9:07" },
+        "Дніпро":     { temp: 4,  feels: -1,  sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
+        "Днепр":      { temp: 4,  feels: -1,  sky: "overcast",   key: "overcast",   dateText: "Пн, 9 ноября 15:53" },
         "Томашпіль":  { temp: 0,  feels: -3, sky: "cloudy-sun", key: "cloudy-sun" },
         "Томашполь":  { temp: 0,  feels: -3, sky: "cloudy-sun", key: "cloudy-sun" }
     };
@@ -1401,8 +1401,8 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
         ] },
                 "today": { mode: "single_day", items: [
             { time: "2:00",  ic: "overcast",     t: 1, windD: "SE", gust: 8,  rain: 0 },
-            { time: "5:00",  ic: "overcast",     t: 0, windD: "SE", gust: 8,  rain: 0 },
-            { time: "8:00",  ic: "cloudy",       t: 2, windD: "SE", gust: 8,  rain: 0 },
+            { time: "5:00",  ic: "overcast",     t: 3, windD: "SE", gust: 8,  rain: 0 },
+            { time: "8:00",  ic: "overcast",       t: 4, windD: "SE", gust: 8,  rain: 0 },
             { time: "11:00", ic: "o-rain-light", t: 7, windD: "SE", gust: 9,  rain: 0.1 },
             { time: "14:00", ic: "o-rain-light", t: 7, windD: "SE", gust: 9,  rain: 0.1 },
             { time: "17:00", ic: "o-rain-light", t: 7, windD: "SE", gust: 10, rain: 0.1 },
