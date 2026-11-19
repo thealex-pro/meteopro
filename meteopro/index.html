@@ -619,23 +619,36 @@ let cityLastEditTimes = {
         }
 
         let updatesData = JSON.parse(localStorage.getItem('meteopro_updates') || '[]');
-        const defaultUpdates = [
-            { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
-            { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" }
-        ];
+       const defaultUpdates = [
+    { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
+    { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" },
+    { id: 3, date: "17.11.2026", text: "Обновлена отрисовка ветра на разные цвета в зависимости от числа (например, 5 м/с — жёлтый, 15 м/с — красный)." },
+    { id: 4, date: "19.11.2026", text: "Открыта новая вкладка «По часам». Там есть погода, температура воздуха, направление ветра, порывы ветра, осадки в жидком эквиваленте и 2 новые функции — влажность воздуха и атмосферное давление (мм рт. ст.)." }
+];
 
         let isUpdatesChanged = false;
-        defaultUpdates.forEach(defItem => {
-            if (!updatesData.some(item => item.id === defItem.id)) {
-                updatesData.unshift(defItem);
-                isUpdatesChanged = true;
-            }
-        });
 
-        if (isUpdatesChanged) {
-            updatesData.sort((a, b) => b.id - a.id);
-            localStorage.setItem('meteopro_updates', JSON.stringify(updatesData));
+    const uniqueUpdates = [];
+    updatesData.forEach(item => {
+        if (!uniqueUpdates.some(u => u.date === item.date)) {
+            uniqueUpdates.push(item);
+        } else {
+            isUpdatesChanged = true;
         }
+    });
+    updatesData = uniqueUpdates;
+
+    defaultUpdates.forEach(defItem => {
+        if (!updatesData.some(item => item.id === defItem.id || item.text === defItem.text)) {
+            updatesData.unshift(defItem);
+            isUpdatesChanged = true;
+        }
+    });
+
+    if (isUpdatesChanged) {
+        updatesData.sort((a, b) => b.id - a.id);
+        localStorage.setItem('meteopro_updates', JSON.stringify(updatesData));
+    }
 
         const daysOfWeekList = {
             ru: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
@@ -1394,6 +1407,7 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
 
         function createDefaultCityData(cityName) {
             return {
+                "now": { mode: "empty" },
                 "yesterday": { mode: "single_day", items: [
             { time: "2:00",  ic: "overcast",     t: 8,  windD: "SW", gust: 7,  rain: 0 },
             { time: "5:00",  ic: "overcast",     t: 6,  windD: "SW", gust: 7,  rain: 0 },
@@ -1424,9 +1438,34 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
             { time: "20:00", ic: "overcast",     t: 9,  windD: "W",  gust: 14, rain: 0 },
             { time: "23:00", ic: "overcast",     t: 9,  windD: "W",  gust: 14, rain: 0 }
         ] },
-                 
-                "hourly": { mode: "empty" },
                 
+"hourly": { mode: "hourly_24", dateLabel: "Чт, 19 ноября", items: [
+                    { time: "0:00",  ic: "overcast",      t: 11, hum: 82, press: 731, windD: "S",  gust: 7,  rain: 0   },
+                    { time: "1:00",  ic: "o-rain-light",  t: 11, hum: 84, press: 731, windD: "S",  gust: 7,  rain: 0.1 },
+                    { time: "2:00",  ic: "o-rain-light",  t: 10, hum: 85, press: 730, windD: "SE", gust: 7,  rain: 0.2 },
+                    { time: "3:00",  ic: "o-rain-light",  t: 11, hum: 86, press: 731, windD: "N",  gust: 7,  rain: 0.1 },
+                    { time: "4:00",  ic: "overcast",      t: 11, hum: 86, press: 732, windD: "NW", gust: 7,  rain: 0   },
+                    { time: "5:00",  ic: "overcast",      t: 11, hum: 85, press: 730, windD: "NW", gust: 7,  rain: 0   },
+                    { time: "6:00",  ic: "o-rain-light",  t: 12, hum: 83, press: 731, windD: "SW", gust: 7,  rain: 0.3 },
+                    { time: "7:00",  ic: "o-rain-light",  t: 11, hum: 80, press: 730, windD: "SW", gust: 7,  rain: 0.3 },
+                    { time: "8:00",  ic: "o-rain-med",    t: 11, hum: 79, press: 730, windD: "S",  gust: 7,  rain: 1   },
+                    { time: "9:00",  ic: "o-rain-med",    t: 11, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.5 },
+                    { time: "10:00", ic: "o-rain-med",    t: 11, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.6 },
+                    { time: "11:00", ic: "o-rain-heavy",  t: 12, hum: 79, press: 730, windD: "N",  gust: 6,  rain: 7.5 },
+                    { time: "12:00", ic: "o-rain-heavy",  t: 11, hum: 81, press: 730, windD: "NW", gust: 7,  rain: 5.1 },
+                    { time: "13:00", ic: "o-rain-heavy",  t: 10, hum: 85, press: 730, windD: "NW", gust: 8,  rain: 2   },
+                    { time: "14:00", ic: "o-rain-light",  t: 10, hum: 86, press: 730, windD: "NW", gust: 10, rain: 1.4 },
+                    { time: "15:00", ic: "overcast",      t: 10, hum: 73, press: 730, windD: "NW", gust: 11, rain: 0   },
+                    { time: "16:00", ic: "overcast",      t: 9,  hum: 82, press: 730, windD: "W",  gust: 11, rain: 0   },
+                    { time: "17:00", ic: "cloudy",        t: 9,  hum: 78, press: 731, windD: "W",  gust: 11, rain: 0   },
+                    { time: "18:00", ic: "cloudy",        t: 9,  hum: 81, press: 732, windD: "W",  gust: 11, rain: 0   },
+                    { time: "19:00", ic: "cloudy",        t: 9,  hum: 81, press: 733, windD: "W",  gust: 11, rain: 0   },
+                    { time: "20:00", ic: "cloudy-sun",    t: 9,  hum: 81, press: 733, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "21:00", ic: "cloudy-sun",    t: 9,  hum: 82, press: 735, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "22:00", ic: "cloudy-sun",    t: 8,  hum: 83, press: 736, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "23:00", ic: "clear",         t: 8,  hum: 84, press: 735, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "24:00", ic: "clear",         t: 8,  hum: 85, press: 735, windD: "SW", gust: 9,  rain: 0   }
+                ] },                
                "3days": {
             mode: "grouped",
             days: [
@@ -2051,17 +2090,24 @@ const meteoforIcons = {
             const cityInLoc = lang.cities[currentCityKey] || currentCityKey;
             const titleTpl = lang.titles[currentTab] || "Погода";
             document.getElementById('mainTitle').innerText = titleTpl.replace('{city}', cityInLoc);
+const wrap = document.getElementById(`gridWrapDetail`);
+            const oldScrollContainer = wrap.querySelector('.single-day-scroll-container, .grouped-scroll-container, .twoweeks-monolith-scroll, .archive-scroll-container');
+            const savedScrollLeft = oldScrollContainer ? oldScrollContainer.scrollLeft : 0;
 
-            const wrap = document.getElementById(`gridWrapDetail`);
             const cityData = allCitiesData[currentCityKey] || allCitiesData["Запорожье"];
-            const data = cityData[currentTab];
-            
-            if (data.mode === "empty") { 
-                wrap.innerHTML = `<div class="empty-state">${lang.devInDev}</div>`; 
-                updateInformer(); 
-                return; 
-            }
+            let data = cityData[currentTab];
 
+if (currentTab === 'hourly' && (!data || data.mode === 'empty')) {
+    cityData['hourly'] = createDefaultCityData(currentCityKey)['hourly'];
+    data = cityData['hourly'];
+}
+
+   if (data && data.mode === "empty") {
+    wrap.innerHTML = `<div class="empty-state">${lang.devInDev}</div>`;
+    updateInformer();
+    return;
+}
+if (!data) return;
             
             let devCls = isDevModeActive ? 'dev-active' : '';
             if (data.mode === "airquality") {
@@ -2363,6 +2409,139 @@ const meteoforIcons = {
                 updateInformer();
                 setTimeout(drawArchiveCanvas, 100);
             }
+else if (data.mode === "hourly_24") {
+            const colsCount = data.items.length;
+            const gridColsStyle = `grid-template-columns: repeat(${colsCount}, minmax(74px, 1fr)); width: ${colsCount * 78}px;`;
+            const spanAllStyle = `grid-column: 1 / -1;`;
+
+            let html = `<div style="font-size:15px; font-weight:700; margin-bottom:10px; color:var(--text-main);">${data.dateLabel || "Чт, 19 ноября"} <span style="font-weight:400; color:var(--text-muted); margin-left:4px;">сегодня</span></div>`;
+            html += `<div class="single-day-scroll-container" style="overflow-x:auto;"><div class="weather-grid-single ${devCls}" style="${gridColsStyle}">`;
+
+            // 1. Часы (0:00 — 24:00)
+            data.items.forEach(it => html += `<div class="single-cell"><div class="single-time">${it.time}</div></div>`);
+
+            // 2. Родные иконки погоды + выпадающее меню МетеоПро
+            data.items.forEach((it, i) => {
+                let wMenu = buildWeatherDropdownHTML(`modSingleIco_${i}`);
+                let wText = getWeatherText(it.ic);
+                html += `
+                <div class="single-cell">
+                    <div class="w-ico ${isDevModeActive ? 'dev-clickable' : ''}" onclick="toggleDropdown('single-w', ${i}, event)" ontouchstart="handleIconTouch(this, event)">
+                        ${meteoforIcons[it.ic] || meteoforIcons['cloudy']}
+                        <div class="weather-tooltip">${wText}</div>
+                        <div class="icon-select-dropdown" id="dd-single-w-${i}">${wMenu}</div>
+                    </div>
+                </div>`;
+            });
+
+            // 3. Родной график температуры (плитки или плавные линии в зависимости от настройки)
+            html += `<div class="single-header-row" style="${spanAllStyle}">${lang.tempAir}</div>`;
+            html += `<div class="cell-graph-single" style="${spanAllStyle}"><canvas id="tempCanvasSingle"></canvas><div class="temp-labels-container" id="tempLabelsContainer"></div></div>`;
+
+            // Вспомогательный построитель линейного графика на всю ширину 25 колонок
+            const buildHourlyLineBlock = (field, color, suffix) => {
+                const svgW = colsCount * 78;
+                const svgH = isDevModeActive ? 74 : 58;
+                const topY = isDevModeActive ? 30 : 22;
+                const botY = svgH - 10;
+                const vals = data.items.map(x => Number(x[field] ?? 0));
+                const minV = Math.min(...vals);
+                const maxV = Math.max(...vals);
+                const range = (maxV - minV) || 1;
+                const stepX = svgW / colsCount;
+
+                const pts = vals.map((v, idx) => ({
+                    x: idx * stepX + stepX / 2,
+                    y: botY - ((v - minV) / range) * (botY - topY),
+                    v,
+                    idx
+                }));
+
+                let d = `M ${pts[0].x} ${pts[0].y}`;
+                for (let idx = 0; idx < pts.length - 1; idx++) {
+                    const cx = (pts[idx].x + pts[idx + 1].x) / 2;
+                    d += ` C ${cx} ${pts[idx].y}, ${cx} ${pts[idx + 1].y}, ${pts[idx + 1].x} ${pts[idx + 1].y}`;
+                }
+
+                let svg = `<div style="${spanAllStyle} position:relative; height:${svgH}px;">`;
+                svg += `<svg width="100%" height="${svgH}" viewBox="0 0 ${svgW} ${svgH}" preserveAspectRatio="none" style="display:block; overflow:visible;">`;
+                svg += `<path d="${d}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>`;
+                pts.forEach(p => {
+                    svg += `<circle cx="${p.x}" cy="${p.y}" r="3.5" fill="var(--bg-card, #ffffff)" stroke="${color}" stroke-width="2"/>`;
+                    if (isDevModeActive) {
+                        svg += `<foreignObject x="${p.x - 36}" y="${p.y - 28}" width="72" height="24" style="overflow:visible;">
+                            <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex; align-items:center; justify-content:center; gap:2px;">
+                                <span style="font-size:12px; font-weight:700; color:var(--text-main);">${p.v}${suffix}</span>
+                                <div class="dev-arrows" style="position:static; display:flex; flex-direction:column;">
+                                    <button onclick="modSingleData(${p.idx},'${field}',1)">▲</button>
+                                    <button onclick="modSingleData(${p.idx},'${field}',-1)">▼</button>
+                                </div>
+                            </div>
+                        </foreignObject>`;
+                    } else {
+                        svg += `<text x="${p.x}" y="${p.y - 8}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text-main)">${p.v}${suffix}</text>`;
+                    }
+                });
+                svg += `</svg></div>`;
+                return svg;
+            };
+
+            // 4. Влажность, % (исключительно линия голубого цвета)
+            html += `<div class="single-header-row" style="${spanAllStyle}">${lang.humidity || "Влажность, %"}</div>`;
+            html += buildHourlyLineBlock('hum', '#0ea5e9', '%');
+
+            // 5. Атмосферное давление, мм рт. ст. (исключительно линия серого цвета)
+            html += `<div class="single-header-row" style="${spanAllStyle}">${lang.pressure || "Атмосферное давление, мм рт. ст."}</div>`;
+            html += buildHourlyLineBlock('press', '#64748b', '');
+
+            // 6. Родное направление ветра + выпадающее меню МетеоПро
+            html += `<div class="single-header-row" style="${spanAllStyle}">${lang.windDir}</div>`;
+            data.items.forEach((it, i) => {
+                let windMenuHtml = `<div class="icon-select-dropdown wind-dropdown" id="dd-single-wind-${i}"><div id="wind-list-s-${i}">${windKeys.map(k => `<div class="icon-select-item wind-menu-item" onclick="modSingleWind(${i}, '${k}')"><div class="wind-item-icon">${wDir[k]}</div><span>${wTxt[k]}</span></div>`).join('')}</div></div>`;
+                html += `
+                <div class="single-cell">
+                    <div class="wnd-dir-wrap ${isDevModeActive ? 'dev-clickable' : ''}" onclick="toggleDropdown('single-wind', ${i}, event)">
+                        <div class="wind-icon">${wDir[it.windD]}</div>
+                        <div class="wind-dir-txt">${wTxt[it.windD]}</div>
+                        ${windMenuHtml}
+                    </div>
+                </div>`;
+            });
+
+            // 7. Родные порывы ветра
+            html += `<div class="single-header-row" style="${spanAllStyle}"><span class="info-icon">i</span> ${lang.windGust.replace('{unit}', getWindUnitLabel())}</div>`;
+            data.items.forEach((it, i) => {
+                let bgClass = it.gust >= 20 ? "gust-maroon" : it.gust >= 15 ? "gust-red" : it.gust >= 13 ? "gust-orange" : it.gust >= 5 ? "" : "gust-white";
+                let devCtrls = `<div class="dev-arrows" style="right:5px;"><button onclick="modSingleData(${i},'gust',1)">▲</button><button onclick="modSingleData(${i},'gust',-1)">▼</button></div>`;
+                html += `<div class="single-cell"><div class="gust-val-wrap"><div class="gust-bg ${bgClass}"><div class="gust-val">${convertWind(it.gust)}</div></div>${devCtrls}</div></div>`;
+            });
+
+            // 8. Родные осадки
+            html += `<div class="single-header-row" style="${spanAllStyle}"><span class="info-icon">i</span> ${lang.precipLiquid}</div>`;
+            data.items.forEach((it, i) => {
+                let h = it.rain > 0 ? Math.min(it.rain * 15, 30) : 0;
+                let displayRain = it.rain > 0 ? (it.rain % 1 === 0 ? it.rain : it.rain.toFixed(1)) : '0';
+                let devCtrls = `<div class="dev-arrows" style="top:-25px; right:5px;"><button onclick="modSingleData(${i},'rain',0.1)">▲</button><button onclick="modSingleData(${i},'rain',-0.1)">▼</button></div>`;
+                html += `<div class="single-cell" style="padding: 0;">
+                    <div class="rain-bar-container"><span class="rain-txt">${displayRain}</span>${it.rain > 0 ? `<div class="rain-fill" style="height: ${h}px;"></div>` : ''}</div>
+                    ${devCtrls}
+                </div>`;
+            });
+
+            html += `</div></div>`;
+            wrap.innerHTML = html;
+            setTimeout(drawCanvasSingleDay, 50);
+
+            data.items.forEach((it, i) => {
+                window[`modSingleIco_${i}`] = function(iconKey) {
+                    allCitiesData[currentCityKey][currentTab].items[i].ic = iconKey;
+                    renderAllDOM();
+                };
+            });
+
+            updateInformer();
+        }
+
             else if (data.mode === "single_day") {
                 let html = `<div class="single-day-scroll-container"><div class="weather-grid-single ${devCls}">`;
                 data.items.forEach(it => html += `<div class="single-cell"><div class="single-time">${it.time}</div></div>`);
@@ -2687,6 +2866,11 @@ let bgClass = gust >= 20 ? "gust-maroon" :
                 if (geoViewMode === "graph") {
                     setTimeout(drawGeoChartCanvas, 50);
                 }
+            }
+
+            if (savedScrollLeft > 0) {
+                const newScrollContainer = wrap.querySelector('.single-day-scroll-container, .grouped-scroll-container, .twoweeks-monolith-scroll, .archive-scroll-container');
+                if (newScrollContainer) newScrollContainer.scrollLeft = savedScrollLeft;
             }
         }
 
