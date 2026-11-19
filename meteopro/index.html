@@ -620,11 +620,12 @@ let cityLastEditTimes = {
 
         let updatesData = JSON.parse(localStorage.getItem('meteopro_updates') || '[]');
        const defaultUpdates = [
-    { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
-    { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" },
-    { id: 3, date: "17.11.2026", text: "Обновлена отрисовка ветра на разные цвета в зависимости от числа (например, 5 м/с — жёлтый, 15 м/с — красный)." },
-    { id: 4, date: "19.11.2026", text: "Открыта новая вкладка «По часам». Там есть погода, температура воздуха, направление ветра, порывы ветра, осадки в жидком эквиваленте и 2 новые функции — влажность воздуха и атмосферное давление (мм рт. ст.)." }
-];
+            { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
+            { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" },
+            { id: 3, date: "17.11.2026", text: "Обновлена отрисовка ветра на разные цвета в зависимости от числа (например, 5 м/с – жёлтый, 15 м/с – красный)." },
+            { id: 4, date: "19.11.2026", text: "Открыта новая вкладка «По часам». Там есть погода, температура воздуха, направление ветра, порывы ветра, осадки в жидком эквиваленте и 2 новые функции — влажность воздуха и атмосферное давление (мм рт. ст.)." },
+            { id: 5, date: "19.11.2026", text: "Верхний блок, так называемый «Информер», привязан к вкладке «По часам» и теперь обновляется 24/7 с максимально точными данными. Обновлена вкладка «По часам» — туда добавлен график «Ощущается как»." }
+        ];
 
         let isUpdatesChanged = false;
 
@@ -1440,32 +1441,32 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
         ] },
                 
 "hourly": { mode: "hourly_24", dateLabel: "Чт, 19 ноября", items: [
-                    { time: "0:00",  ic: "overcast",      t: 11, hum: 82, press: 731, windD: "S",  gust: 7,  rain: 0   },
-                    { time: "1:00",  ic: "o-rain-light",  t: 11, hum: 84, press: 731, windD: "S",  gust: 7,  rain: 0.1 },
-                    { time: "2:00",  ic: "o-rain-light",  t: 10, hum: 85, press: 730, windD: "SE", gust: 7,  rain: 0.2 },
-                    { time: "3:00",  ic: "o-rain-light",  t: 11, hum: 86, press: 731, windD: "N",  gust: 7,  rain: 0.1 },
-                    { time: "4:00",  ic: "overcast",      t: 11, hum: 86, press: 732, windD: "NW", gust: 7,  rain: 0   },
-                    { time: "5:00",  ic: "overcast",      t: 11, hum: 85, press: 730, windD: "NW", gust: 7,  rain: 0   },
-                    { time: "6:00",  ic: "o-rain-light",  t: 12, hum: 83, press: 731, windD: "SW", gust: 7,  rain: 0.3 },
-                    { time: "7:00",  ic: "o-rain-light",  t: 11, hum: 80, press: 730, windD: "SW", gust: 7,  rain: 0.3 },
-                    { time: "8:00",  ic: "o-rain-med",    t: 11, hum: 79, press: 730, windD: "S",  gust: 7,  rain: 1   },
-                    { time: "9:00",  ic: "o-rain-med",    t: 11, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.5 },
-                    { time: "10:00", ic: "o-rain-med",    t: 11, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.6 },
-                    { time: "11:00", ic: "o-rain-heavy",  t: 12, hum: 79, press: 730, windD: "N",  gust: 6,  rain: 7.5 },
-                    { time: "12:00", ic: "o-rain-heavy",  t: 11, hum: 81, press: 730, windD: "NW", gust: 7,  rain: 5.1 },
-                    { time: "13:00", ic: "o-rain-heavy",  t: 10, hum: 85, press: 730, windD: "NW", gust: 8,  rain: 2   },
-                    { time: "14:00", ic: "o-rain-light",  t: 10, hum: 86, press: 730, windD: "NW", gust: 10, rain: 1.4 },
-                    { time: "15:00", ic: "overcast",      t: 10, hum: 73, press: 730, windD: "NW", gust: 11, rain: 0   },
-                    { time: "16:00", ic: "overcast",      t: 9,  hum: 82, press: 730, windD: "W",  gust: 11, rain: 0   },
-                    { time: "17:00", ic: "cloudy",        t: 9,  hum: 78, press: 731, windD: "W",  gust: 11, rain: 0   },
-                    { time: "18:00", ic: "cloudy",        t: 9,  hum: 81, press: 732, windD: "W",  gust: 11, rain: 0   },
-                    { time: "19:00", ic: "cloudy",        t: 9,  hum: 81, press: 733, windD: "W",  gust: 11, rain: 0   },
-                    { time: "20:00", ic: "cloudy-sun",    t: 9,  hum: 81, press: 733, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "21:00", ic: "cloudy-sun",    t: 9,  hum: 82, press: 735, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "22:00", ic: "cloudy-sun",    t: 8,  hum: 83, press: 736, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "23:00", ic: "clear",         t: 8,  hum: 84, press: 735, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "24:00", ic: "clear",         t: 8,  hum: 85, press: 735, windD: "SW", gust: 9,  rain: 0   }
-                ] },                
+                    { time: "0:00",  ic: "overcast",      t: 11, feels: 10, hum: 82, press: 731, windD: "S",  gust: 7,  rain: 0   },
+                    { time: "1:00",  ic: "o-rain-light",  t: 11, feels: 10, hum: 84, press: 731, windD: "S",  gust: 7,  rain: 0.1 },
+                    { time: "2:00",  ic: "o-rain-light",  t: 10, feels: 9,  hum: 85, press: 730, windD: "SE", gust: 7,  rain: 0.2 },
+                    { time: "3:00",  ic: "o-rain-light",  t: 11, feels: 10, hum: 86, press: 731, windD: "N",  gust: 7,  rain: 0.1 },
+                    { time: "4:00",  ic: "overcast",      t: 11, feels: 10, hum: 86, press: 732, windD: "NW", gust: 7,  rain: 0   },
+                    { time: "5:00",  ic: "overcast",      t: 11, feels: 10, hum: 85, press: 730, windD: "NW", gust: 7,  rain: 0   },
+                    { time: "6:00",  ic: "o-rain-light",  t: 12, feels: 11, hum: 83, press: 731, windD: "SW", gust: 7,  rain: 0.3 },
+                    { time: "7:00",  ic: "o-rain-light",  t: 11, feels: 10, hum: 80, press: 730, windD: "SW", gust: 7,  rain: 0.3 },
+                    { time: "8:00",  ic: "o-rain-med",    t: 11, feels: 10, hum: 79, press: 730, windD: "S",  gust: 7,  rain: 1   },
+                    { time: "9:00",  ic: "o-rain-med",    t: 11, feels: 10, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.5 },
+                    { time: "10:00", ic: "o-rain-med",    t: 11, feels: 10, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.6 },
+                    { time: "11:00", ic: "o-rain-heavy",  t: 12, feels: 10, hum: 79, press: 730, windD: "N",  gust: 6,  rain: 7.5 },
+                    { time: "12:00", ic: "o-rain-heavy",  t: 11, feels: 9,  hum: 81, press: 730, windD: "NW", gust: 7,  rain: 5.1 },
+                    { time: "13:00", ic: "o-rain-heavy",  t: 10, feels: 8,  hum: 85, press: 730, windD: "NW", gust: 8,  rain: 2   },
+                    { time: "14:00", ic: "o-rain-light",  t: 10, feels: 8,  hum: 86, press: 730, windD: "NW", gust: 10, rain: 1.4 },
+                    { time: "15:00", ic: "overcast",      t: 10, feels: 8,  hum: 73, press: 730, windD: "NW", gust: 11, rain: 0   },
+                    { time: "16:00", ic: "overcast",      t: 9,  feels: 7,  hum: 82, press: 730, windD: "W",  gust: 11, rain: 0   },
+                    { time: "17:00", ic: "cloudy",        t: 9,  feels: 7,  hum: 78, press: 731, windD: "W",  gust: 11, rain: 0   },
+                    { time: "18:00", ic: "cloudy",        t: 9,  feels: 7,  hum: 81, press: 732, windD: "W",  gust: 11, rain: 0   },
+                    { time: "19:00", ic: "cloudy",        t: 9,  feels: 7,  hum: 81, press: 733, windD: "W",  gust: 11, rain: 0   },
+                    { time: "20:00", ic: "cloudy-sun",    t: 9,  feels: 7,  hum: 81, press: 733, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "21:00", ic: "cloudy-sun",    t: 9,  feels: 7,  hum: 82, press: 735, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "22:00", ic: "cloudy-sun",    t: 8,  feels: 6,  hum: 83, press: 736, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "23:00", ic: "clear",         t: 8,  feels: 6,  hum: 84, press: 735, windD: "SW", gust: 9,  rain: 0   },
+                    { time: "24:00", ic: "clear",         t: 8,  feels: 6,  hum: 85, press: 735, windD: "SW", gust: 9,  rain: 0   }
+                ] },
                "3days": {
             mode: "grouped",
             days: [
@@ -2471,7 +2472,7 @@ else if (data.mode === "hourly_24") {
                     if (isDevModeActive) {
                         svg += `<foreignObject x="${p.x - 36}" y="${p.y - 28}" width="72" height="24" style="overflow:visible;">
                             <div xmlns="http://www.w3.org/1999/xhtml" style="display:flex; align-items:center; justify-content:center; gap:2px;">
-                                <span style="font-size:12px; font-weight:700; color:var(--text-main);">${p.v}${suffix}</span>
+                               <span style="font-size:12px; font-weight:700; color:var(--text-main);">${field === 'feels' ? formatTemp(p.v) : p.v + suffix}</span>
                                 <div class="dev-arrows" style="position:static; display:flex; flex-direction:column;">
                                     <button onclick="modSingleData(${p.idx},'${field}',1)">▲</button>
                                     <button onclick="modSingleData(${p.idx},'${field}',-1)">▼</button>
@@ -2479,12 +2480,18 @@ else if (data.mode === "hourly_24") {
                             </div>
                         </foreignObject>`;
                     } else {
-                        svg += `<text x="${p.x}" y="${p.y - 8}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text-main)">${p.v}${suffix}</text>`;
+                        svg += `<text x="${p.x}" y="${p.y - 8}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--text-main)">${field === 'feels' ? formatTemp(p.v) : p.v + suffix}</text>`;
                     }
                 });
                 svg += `</svg></div>`;
-                return svg;
-            };
+                    return svg;
+                };
+
+                // 3.5. Ощущается как, °C
+                const feelsUnitLabel = tempUnit === 'F' ? '°F' : (tempUnit === 'K' ? 'K' : '°C');
+                const feelsTitle = currentLang === 'uk' ? 'Відчувається як' : (currentLang === 'en' ? 'Feels like' : 'Ощущается как');
+                html += `<div class="single-header-row" style="${spanAllStyle}">${feelsTitle}, ${feelsUnitLabel}</div>`;
+                html += buildHourlyLineBlock('feels', '#f59e0b', '°');
 
             // 4. Влажность, % (исключительно линия голубого цвета)
             html += `<div class="single-header-row" style="${spanAllStyle}">${lang.humidity || "Влажность, %"}</div>`;
@@ -3394,23 +3401,33 @@ let bgClass = gust >= 20 ? "gust-maroon" :
         function updateInformer() {
             const lang = i18n[currentLang];
             const inf = informerDataByCity[currentCityKey] || informerDataByCity["Запорожье"];
-            document.getElementById('nowBannerInformer').className = `now-banner-informer inf-bg-${inf.sky}`;
+
+            const cityData = allCitiesData[currentCityKey] || allCitiesData["Запорожье"];
+            const hourlyItems = cityData && cityData["hourly"] ? cityData["hourly"].items : null;
+            const currentHourStr = new Date().getHours() + ":00";
+            const currentHourItem = hourlyItems ? hourlyItems.find(item => item.time === currentHourStr) : null;
+
+            const activeSky = currentHourItem ? currentHourItem.ic : inf.sky;
+            const activeTemp = currentHourItem ? currentHourItem.t : inf.temp;
+            const activeFeels = (currentHourItem && currentHourItem.feels !== undefined) ? currentHourItem.feels : inf.feels;
+
+            document.getElementById('nowBannerInformer').className = `now-banner-informer inf-bg-${activeSky}`;
             const wrap = document.getElementById('infIconContainer');
-            
+
             let menuHtml = buildWeatherDropdownHTML('setInformerSky');
-            wrap.innerHTML = `${meteoforIcons[inf.sky] || meteoforIcons['cloudy']}<div class="icon-select-dropdown" id="infWeatherDropdown" style="left: 0; transform: none;">${menuHtml}</div>`;
-            
-            if(isDevModeActive) { 
-                wrap.classList.add('dev-clickable'); document.getElementById('infCtrlT').classList.add('active'); document.getElementById('infCtrlFeels').classList.add('active'); 
-            } else { 
-                wrap.classList.remove('dev-clickable'); document.getElementById('infCtrlT').classList.remove('active'); document.getElementById('infCtrlFeels').classList.remove('active'); 
+            wrap.innerHTML = `${meteoforIcons[activeSky] || meteoforIcons['cloudy']}<div class="icon-select-dropdown" id="infWeatherDropdown" style="left: 0; transform: none;">${menuHtml}</div>`;
+
+            if(isDevModeActive) {
+                wrap.classList.add('dev-clickable'); document.getElementById('infCtrlT').classList.add('active'); document.getElementById('infCtrlFeels').classList.add('active');
+            } else {
+                wrap.classList.remove('dev-clickable'); document.getElementById('infCtrlT').classList.remove('active'); document.getElementById('infCtrlFeels').classList.remove('active');
             }
-            
+
             const cityInLoc = lang.cities[currentCityKey] || currentCityKey;
-            const wTxt = getWeatherText(inf.sky).toLowerCase();
+            const wTxt = getWeatherText(activeSky).toLowerCase();
             const inCityStr = lang.inCity.replace('{city}', cityInLoc);
-            
-            document.getElementById('infTextContent').innerText = `${inCityStr} ${wTxt}, ${formatTemp(inf.temp)}, ${lang.feelsLike} ${formatTemp(inf.feels)}`;
+
+            document.getElementById('infTextContent').innerText = `${inCityStr} ${wTxt}, ${formatTemp(activeTemp)}, ${lang.feelsLike} ${formatTemp(activeFeels)}`;
         }
 
         function setInformerSky(iconKey) { 
