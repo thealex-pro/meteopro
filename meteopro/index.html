@@ -189,9 +189,11 @@
         .single-cell:last-child { border-right: none; }
         .single-time { font-size: 12px; color: var(--text-main); margin-bottom: 5px; }
         
-        .w-ico { width: 38px; height: 32px; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+.w-ico { width: 46px; height: 40px; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
         .w-ico.dev-clickable { border: 1.5px dashed #ff4757; background: rgba(255,71,87,0.1); border-radius: 4px; box-shadow: 0 0 4px rgba(255,71,87,0.3); }
         .w-ico svg { width: 100%; height: 100%; filter: none;}
+.w-ico img, .preview-svg img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.inf-icon-container img { width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
         
         .weather-tooltip { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #4b6584; color: #ffffff; padding: 4px 8px; border-radius: 5px; font-size: 11px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 250; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 6px; font-weight: 500; text-shadow: none; }
         .weather-tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 4px; border-style: solid; border-color: #4b6584 transparent transparent transparent; }
@@ -620,12 +622,14 @@ let cityLastEditTimes = {
 
         let updatesData = JSON.parse(localStorage.getItem('meteopro_updates') || '[]');
        const defaultUpdates = [
-            { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
-            { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" },
-            { id: 3, date: "17.11.2026", text: "Обновлена отрисовка ветра на разные цвета в зависимости от числа (например, 5 м/с – жёлтый, 15 м/с – красный)." },
-            { id: 4, date: "19.11.2026", text: "Открыта новая вкладка «По часам». Там есть погода, температура воздуха, направление ветра, порывы ветра, осадки в жидком эквиваленте и 2 новые функции — влажность воздуха и атмосферное давление (мм рт. ст.)." },
-            { id: 5, date: "19.11.2026", text: "Верхний блок, так называемый «Информер», привязан к вкладке «По часам» и теперь обновляется 24/7 с максимально точными данными. Обновлена вкладка «По часам» — туда добавлен график «Ощущается как»." }
-        ];
+        { id: 2, date: "13.11.2026", text: "Добавлена новая вкладка «Качество воздуха» во всех доступных населённых пунктах, будет 1 раз обновлена 14.11.2026." },
+        { id: 1, date: "04.11.2026", text: "Добавлена функция смены даты через интерактивный календарь при клике на число!" },
+        { id: 3, date: "17.11.2026", text: "Обновлена отрисовка ветра на разные цвета в зависимости от числа (например, 5 м/с - жёлтый, 15 м/с - красный)." },
+        { id: 4, date: "19.11.2026", text: "Открыта новая вкладка «По часам». Там есть погода, температура воздуха, направление ветра, порывы ветра, осадки в жидком эквиваленте и 2 новые функции — влажность воздуха и атмосферное давление (мм рт. ст.)." },
+        { id: 5, date: "19.11.2026", text: "Верхний блок, так называемый «Информер», привязан к вкладке «По часам» и теперь обновляется 24/7 с максимально точными данными. Обновлена вкладка «По часам» — туда добавлен график «Ощущается как»." },
+        { id: 6, date: "19.11.2026", text: "Обновлены иконки погоды и добавлены новые виды погодных явлений." },
+        { id: 7, date: "19.11.2026", text: "Исправлена ошибка: вкладка «Архив» в населённых пунктах снова на месте." }
+    ];
 
         let isUpdatesChanged = false;
 
@@ -945,43 +949,78 @@ let cityLastEditTimes = {
             }
         };
 const weatherTranslations = {
-            "clear": { ru: "Ясно", uk: "Ясно", en: "Clear", pl: "Czysto", gal: "Ясно" },
-            "clear-fog": { ru: "Ясно, туман", uk: "Ясно, туман", en: "Clear, fog", pl: "Czysto, mgła", gal: "Ясно, мгла" },
-            
-            "cloudy-sun": { ru: "Малооблачно", uk: "Малооблачно", en: "Partly cloudy", pl: "Mało zachmurzenie", gal: "Малооблачно" },
-            "cloudy-sun-fog": { ru: "Малооблачно, туман", uk: "Малооблачно, туман", en: "Partly cloudy, fog", pl: "Mało zachmurzenie, mgła", gal: "Малооблачно, мгла" },
-            "cloudy-rain-light": { ru: "Малооблачно, небольшой дождь", uk: "Малооблачно, невеликий дощ", en: "Partly cloudy, light rain", pl: "Mało zachmurzenie, lekki deszcz", gal: "Малооблачно, малий дощ" },
-            "cloudy-rain-med": { ru: "Малооблачно, дождь", uk: "Малооблачно, дощ", en: "Partly cloudy, rain", pl: "Mało zachmurzenie, deszcz", gal: "Малооблачно, дощ" },
-            "cloudy-rain-heavy": { ru: "Малооблачно, сильный дождь", uk: "Малооблачно, сильний дощ", en: "Partly cloudy, heavy rain", pl: "Mało zachmurzenie, ulewa", gal: "Малооблачно, моцний дощ" },
-            "cloudy-rain-light-thunder": { ru: "Малооблачно, небольшой дождь, гроза", uk: "Малооблачно, невеликий дощ, гроза", en: "Partly cloudy, light rain, storm", pl: "Mało zachmurzenie, lekki deszcz, burza", gal: "Малооблачно, малий дощ, громовиця" },
-            "cloudy-rain-med-thunder": { ru: "Малооблачно, дождь, гроза", uk: "Малооблачно, дощ, гроза", en: "Partly cloudy, rain, thunderstorm", pl: "Mało zachmurzenie, deszcz, burza", gal: "Малооблачно, дощ, громовиця" },
-            "cloudy-rain-heavy-thunder": { ru: "Малооблачно, сильный дождь, гроза", uk: "Малооблачно, сильний дощ, гроза", en: "Partly cloudy, heavy rain, storm", pl: "Mało zachmurzenie, ulewa, burza", gal: "Малооблачно, моцний дощ, громовиця" },
-            "cloudy-snow": { ru: "Малооблачно, снег", uk: "Малооблачно, сніг", en: "Partly cloudy, snow", pl: "Mało zachmurzenie, śnieg", gal: "Малооблачно, сніг" },
-            "cloudy-sleet": { ru: "Малооблачно, мокрый снег", uk: "Малооблачно, мокрий сніг", en: "Partly cloudy, sleet", pl: "Mało zachmurzenie, deszcz ze śniegiem", gal: "Малооблачно, мокрий сніг" },
+    // 1. ЯСНО (16)
+    "clear": { ru: "Ясно", uk: "Ясно", en: "Clear", pl: "Bezchmurnie", gal: "Ясно, як на Великдень" },
+    "clear-fog": { ru: "Ясно, туман", uk: "Ясно, туман", en: "Clear, fog", pl: "Bezchmurnie, mgła", gal: "Ясно, мряка стелиться" },
+    "clear-rain-light": { ru: "Ясно, небольшой дождь", uk: "Ясно, невеликий дощ", en: "Clear, light rain", pl: "Bezchmurnie, lekki deszcz", gal: "Ясно, дрібний дощик" },
+    "clear-rain-med": { ru: "Ясно, дождь", uk: "Ясно, дощ", en: "Clear, rain", pl: "Bezchmurnie, deszcz", gal: "Ясно, сліпий дощ" },
+    "clear-rain-heavy": { ru: "Ясно, сильный дождь", uk: "Ясно, сильний дощ", en: "Clear, heavy rain", pl: "Bezchmurnie, silny deszcz", gal: "Ясно, файна злива" },
+    "clear-rain-light-thunder": { ru: "Ясно, гроза с небольшим дождем", uk: "Ясно, гроза з невеликим дощем", en: "Clear, thunderstorm with light rain", pl: "Bezchmurnie, burza z lekkim deszczem", gal: "Ясно, гримить з дрібним дощем" },
+    "clear-rain-med-thunder": { ru: "Ясно, гроза с дождем", uk: "Ясно, гроза з дощем", en: "Clear, thunderstorm with rain", pl: "Bezchmurnie, burza z deszczem", gal: "Ясно, гроза з дощем" },
+    "clear-rain-heavy-thunder": { ru: "Ясно, гроза с сильным дождем", uk: "Ясно, гроза з сильним дощем", en: "Clear, thunderstorm with heavy rain", pl: "Bezchmurnie, burza z silnym deszczem", gal: "Ясно, гроза та злива" },
+    "clear-snow-thunder": { ru: "Ясно, гроза со снегом", uk: "Ясно, гроза зі снігом", en: "Clear, thunderstorm with snow", pl: "Bezchmurnie, burza ze śniegiem", gal: "Ясно, гроза зі снігом" },
+    "clear-snow-light": { ru: "Ясно, небольшой снег", uk: "Ясно, невеликий сніг", en: "Clear, light snow", pl: "Bezchmurnie, lekki śnieg", gal: "Ясно, сніжок притрушує" },
+    "clear-snow": { ru: "Ясно, снег", uk: "Ясно, сніг", en: "Clear, snow", pl: "Bezchmurnie, śnieg", gal: "Ясно, сніг паде" },
+    "clear-snow-heavy": { ru: "Ясно, сильный снег", uk: "Ясно, сильний сніг", en: "Clear, heavy snow", pl: "Bezchmurnie, silny śnieg", gal: "Ясно, мете снігом" },
+    "clear-sleet-light": { ru: "Ясно, небольшой снег с дождем", uk: "Ясно, невеликий сніг з дощем", en: "Clear, light sleet", pl: "Bezchmurnie, lekki deszcz ze śniegiem", gal: "Ясно, дрібна хляпавка" },
+    "clear-sleet": { ru: "Ясно, снег с дождем", uk: "Ясно, сніг з дощем", en: "Clear, sleet", pl: "Bezchmurnie, deszcz ze śniegiem", gal: "Ясно, сніг з дощем" },
+    "clear-sleet-heavy": { ru: "Ясно, сильный снег с дождем", uk: "Ясно, сильний сніг з дождем", en: "Clear, heavy sleet", pl: "Bezchmurnie, silny deszcz ze śniegiem", gal: "Ясно, велика хляпавка" },
+    "clear-sleet-thunder": { ru: "Ясно, гроза со снегом с дождем", uk: "Ясно, гроза зі снігом з дощем", en: "Clear, thunderstorm with sleet", pl: "Bezchmurnie, burza z deszczem ze śniegiem", gal: "Ясно, гроза та хляпавка" },
 
-            "cloudy": { ru: "Облачно", uk: "Хмарно", en: "Cloudy", pl: "Zachmurzenie", gal: "Хмарно" },
-            "cloudy-fog": { ru: "Облачно, туман", uk: "Хмарно, туман", en: "Cloudy, fog", pl: "Zachmurzenie, mgła", gal: "Хмарно, мгла" },
-            "c-rain-light": { ru: "Облачно, небольшой дождь", uk: "Хмарно, невеликий дощ", en: "Cloudy, light rain", pl: "Zachmurzenie, lekki deszcz", gal: "Хмарно, малий дощ" },
-            "c-rain-med": { ru: "Облачно, дождь", uk: "Хмарно, дощ", en: "Cloudy, rain", pl: "Zachmurzenie, deszcz", gal: "Хмарно, дощ" },
-            "c-rain-heavy": { ru: "Облачно, сильный дождь", uk: "Хмарно, сильний дощ", en: "Cloudy, heavy rain", pl: "Zachmurzenie, ulewa", gal: "Хмарно, моцний дощ" },
-            "c-rain-light-thunder": { ru: "Облачно, небольшой дождь, гроза", uk: "Хмарно, невеликий дощ, гроза", en: "Cloudy, light rain, storm", pl: "Zachmurzenie, lekki deszcz, burza", gal: "Хмарно, малий дощ, громовиця" },
-            "c-rain-med-thunder": { ru: "Облачно, дождь, гроза", uk: "Хмарно, дощ, гроза", en: "Cloudy, rain, thunderstorm", pl: "Zachmurzenie, deszcz, burza", gal: "Хмарно, дощ, громовиця" },
-            "c-rain-heavy-thunder": { ru: "Облачно, сильный дождь, гроза", uk: "Хмарно, сильний дощ, гроза", en: "Cloudy, heavy rain, storm", pl: "Zachmurzenie, ulewa, burza", gal: "Хмарно, моцний дощ, громовиця" },
-            "c-snow": { ru: "Облачно, снег", uk: "Хмарно, сніг", en: "Cloudy, snow", pl: "Zachmurzenie, śnieg", gal: "Хмарно, сніг" },
-            "c-sleet": { ru: "Облачно, мокрый снег", uk: "Хмарно, мокрий сніг", en: "Cloudy, sleet", pl: "Zachmurzenie, deszcz ze śniegiem", gal: "Хмарно, мокрий сніг" },
+    // 2. МАЛООБЛАЧНО (16)
+    "cloudy-sun": { ru: "Малооблачно", uk: "Малохмарно", en: "Mostly clear", pl: "Małe zachmurzenie", gal: "Трохи хмарок" },
+    "cloudy-sun-fog": { ru: "Малооблачно, туман", uk: "Малохмарно, туман", en: "Mostly clear, fog", pl: "Małe zachmurzenie, mgła", gal: "Трохи хмарок, мряка" },
+    "cloudy-rain-light": { ru: "Малооблачно, небольшой дождь", uk: "Малохмарно, невеликий дощ", en: "Mostly clear, light rain", pl: "Małe zachmurzenie, lekki deszcz", gal: "Трохи хмарок, кропить" },
+    "cloudy-rain-med": { ru: "Малооблачно, дождь", uk: "Малохмарно, дощ", en: "Mostly clear, rain", pl: "Małe zachmurzenie, deszcz", gal: "Трохи хмарок, паде дощ" },
+    "cloudy-rain-heavy": { ru: "Малооблачно, сильный дождь", uk: "Малохмарно, сильний дощ", en: "Mostly clear, heavy rain", pl: "Małe zachmurzenie, silny deszcz", gal: "Трохи хмарок, файно ллє" },
+    "cloudy-rain-light-thunder": { ru: "Малооблачно, гроза с небольшим дождем", uk: "Малохмарно, гроза з невеликим дощем", en: "Mostly clear, thunderstorm with light rain", pl: "Małe zachmurzenie, burza z lekkim deszczem", gal: "Трохи хмарок, гримить з дощиком" },
+    "cloudy-rain-med-thunder": { ru: "Малооблачно, гроза с дождем", uk: "Малохмарно, гроза з дощем", en: "Mostly clear, thunderstorm with rain", pl: "Małe zachmurzenie, burza z deszczem", gal: "Трохи хмарок, гримить і паде дощ" },
+    "cloudy-rain-heavy-thunder": { ru: "Малооблачно, гроза с сильным дождем", uk: "Малохмарно, гроза з сильним дощем", en: "Mostly clear, thunderstorm with heavy rain", pl: "Małe zachmurzenie, burza z silnym deszczem", gal: "Трохи хмарок, гроза та злива" },
+    "cloudy-snow-thunder": { ru: "Малооблачно, гроза со снегом", uk: "Малохмарно, гроза зі снігом", en: "Mostly clear, thunderstorm with snow", pl: "Małe zachmurzenie, burza ze śniegiem", gal: "Трохи хмарок, гроза зі снігом" },
+    "cloudy-snow-light": { ru: "Малооблачно, небольшой снег", uk: "Малохмарно, невеликий сніг", en: "Mostly clear, light snow", pl: "Małe zachmurzenie, lekki śnieg", gal: "Трохи хмарок, сніжок літає" },
+    "cloudy-snow": { ru: "Малооблачно, снег", uk: "Малохмарно, сніг", en: "Mostly clear, snow", pl: "Małe zachmurzenie, śnieg", gal: "Трохи хмарок, сніг паде" },
+    "cloudy-snow-heavy": { ru: "Малооблачно, сильный снег", uk: "Малохмарно, сильний сніг", en: "Mostly clear, heavy snow", pl: "Małe zachmurzenie, silny śnieg", gal: "Трохи хмарок, сипле снігом" },
+    "cloudy-sleet-light": { ru: "Малооблачно, небольшой снег с дождем", uk: "Малохмарно, невеликий сніг з дощем", en: "Mostly clear, light sleet", pl: "Małe zachmurzenie, lekki deszcz ze śniegiem", gal: "Трохи хмарок, дрібна хляпавка" },
+    "cloudy-sleet": { ru: "Малооблачно, снег с дождем", uk: "Малохмарно, сніг з дощем", en: "Mostly clear, sleet", pl: "Małe zachmurzenie, deszcz ze śniegiem", gal: "Трохи хмарок, сніг з дощем" },
+    "cloudy-sleet-heavy": { ru: "Малооблачно, сильный снег с дождем", uk: "Малохмарно, сильний сніг з дощем", en: "Mostly clear, heavy sleet", pl: "Małe zachmurzenie, silny deszcz ze śniegiem", gal: "Трохи хмарок, мокрий сніг валить" },
+    "cloudy-sleet-thunder": { ru: "Малооблачно, гроза со снегом с дождем", uk: "Малохмарно, гроза зі снігом з дощем", en: "Mostly clear, thunderstorm with sleet", pl: "Małe zachmurzenie, burza z deszczem ze śniegiem", gal: "Трохи хмарок, гроза та хляпавка" },
 
-            "overcast": { ru: "Пасмурно", uk: "Похмуро", en: "Overcast", pl: "Pochmurno", gal: "Похмуро" },
-            "overcast-fog": { ru: "Пасмурно, туман", uk: "Похмуро, туман", en: "Overcast, fog", pl: "Pochmurno, mgła", gal: "Похмуро, мгла" },
-            "o-rain-light": { ru: "Пасмурно, небольшой дождь", uk: "Похмуро, невеликий дощ", en: "Overcast, light rain", pl: "Pochmurno, lekki deszcz", gal: "Похмуро, малий дощ" },
-            "o-rain-med": { ru: "Пасмурно, дождь", uk: "Похмуро, дощ", en: "Overcast, rain", pl: "Pochmurno, deszcz", gal: "Похмуро, дощ" },
-            "o-rain-heavy": { ru: "Пасмурно, сильный дождь", uk: "Похмуро, сильний дощ", en: "Overcast, heavy rain", pl: "Pochmurno, ulewa", gal: "Похмуро, моцний дощ" },
-            "o-rain-light-thunder": { ru: "Пасмурно, небольшой дождь, гроза", uk: "Пасмурно, невеликий дощ, гроза", en: "Overcast, light rain, storm", pl: "Pochmurno, lekki deszcz, burza", gal: "Пасмурно, малий дощ, громовиця" },
-            "o-rain-med-thunder": { ru: "Пасмурно, дождь, гроза", uk: "Похмуро, дощ, гроза", en: "Overcast, rain, thunderstorm", pl: "Pochmurno, deszcz, burza", gal: "Пасмурно, дощ, громовиця" },
-            "o-rain-heavy-thunder": { ru: "Пасмурно, сильный дождь, гроза", uk: "Пасмурно, сильний дощ, гроза", en: "Overcast, heavy rain, storm", pl: "Pochmurno, ulewa, burza", gal: "Пасмурно, моцний дощ, громовиця" },
-            "snow": { ru: "Пасмурно, снег", uk: "Пасмурно, сніг", en: "Overcast, snow", pl: "Pochmurno, śnieg", gal: "Похмуро, сніг" },
-            "o-sleet": { ru: "Пасмурно, мокрый снег", uk: "Похмуро, мокрий сніг", en: "Overcast, sleet", pl: "Pochmurno, deszcz ze śniegiem", gal: "Похмуро, мокрий сніг" }
-        };
+    // 3. ОБЛАЧНО (16)
+    "cloudy": { ru: "Облачно", uk: "Хмарно", en: "Partly cloudy", pl: "Pochmurno", gal: "Хмарно" },
+    "cloudy-fog": { ru: "Облачно, туман", uk: "Хмарно, туман", en: "Partly cloudy, fog", pl: "Pochmurno, mgła", gal: "Хмарно, туман" },
+    "c-rain-light": { ru: "Облачно, небольшой дождь", uk: "Хмарно, невеликий дощ", en: "Partly cloudy, light rain", pl: "Pochmurno, lekki deszcz", gal: "Хмарно, мрячить дощик" },
+    "c-rain-med": { ru: "Облачно, дождь", uk: "Хмарно, дощ", en: "Partly cloudy, rain", pl: "Pochmurno, deszcz", gal: "Хмарно, паде дощ" },
+    "c-rain-heavy": { ru: "Облачно, сильный дождь", uk: "Хмарно, сильний дощ", en: "Partly cloudy, heavy rain", pl: "Pochmurno, silny deszcz", gal: "Хмарно, злива" },
+    "c-rain-light-thunder": { ru: "Облачно, гроза с небольшим дождем", uk: "Хмарно, гроза з невеликим дощем", en: "Partly cloudy, thunderstorm with light rain", pl: "Pochmurno, burza z lekkim deszczem", gal: "Хмарно, гримить з дощиком" },
+    "c-rain-med-thunder": { ru: "Облачно, гроза с дождем", uk: "Хмарно, гроза з дощем", en: "Partly cloudy, thunderstorm with rain", pl: "Pochmurno, burza z deszczem", gal: "Хмарно, гроза з дощем" },
+    "c-rain-heavy-thunder": { ru: "Облачно, гроза с сильным дождем", uk: "Хмарно, гроза з сильним дощем", en: "Partly cloudy, thunderstorm with heavy rain", pl: "Pochmurno, burza z silnym deszczem", gal: "Хмарно, буря та злива" },
+    "c-snow-thunder": { ru: "Облачно, гроза со снегом", uk: "Хмарно, гроза зі снігом", en: "Partly cloudy, thunderstorm with snow", pl: "Pochmurno, burza ze śniegiem", gal: "Хмарно, гроза зі снігом" },
+    "c-snow-light": { ru: "Облачно, небольшой снег", uk: "Хмарно, невеликий сніг", en: "Partly cloudy, light snow", pl: "Pochmurno, lekki śnieg", gal: "Хмарно, сніжок сипле" },
+    "c-snow": { ru: "Облачно, снег", uk: "Хмарно, сніг", en: "Partly cloudy, snow", pl: "Pochmurno, śnieg", gal: "Хмарно, сніг паде" },
+    "c-snow-heavy": { ru: "Облачно, сильный снег", uk: "Хмарно, сильний сніг", en: "Partly cloudy, heavy snow", pl: "Pochmurno, silny śnieg", gal: "Хмарно, завірюха" },
+    "c-sleet-light": { ru: "Облачно, небольшой снег с дождем", uk: "Хмарно, невеликий сніг з дощем", en: "Partly cloudy, light sleet", pl: "Pochmurno, lekki deszcz ze śniegiem", gal: "Хмарно, дрібний сніг з дощем" },
+    "c-sleet": { ru: "Облачно, снег с дождем", uk: "Хмарно, сніг з дощем", en: "Partly cloudy, sleet", pl: "Pochmurno, deszcz ze śniegiem", gal: "Хмарно, хляпавка" },
+    "c-sleet-heavy": { ru: "Облачно, сильный снег с дождем", uk: "Хмарно, сильний сніг з дощем", en: "Partly cloudy, heavy sleet", pl: "Pochmurno, silny deszcz ze śniegiem", gal: "Хмарно, мокрий сніг з дощем" },
+    "c-sleet-thunder": { ru: "Облачно, гроза со снегом с дождем", uk: "Хмарно, гроза зі снігом з дощем", en: "Partly cloudy, thunderstorm with sleet", pl: "Pochmurno, burza z deszczem ze śniegiem", gal: "Хмарно, гроза та сніг з дощем" },
 
+    // 4. ПАСМУРНО (16)
+    "overcast": { ru: "Пасмурно", uk: "Похмуро", en: "Overcast", pl: "Całkowite zachmurzenie", gal: "Хмари затягнули" },
+    "overcast-fog": { ru: "Пасмурно, туман", uk: "Похмуро, туман", en: "Overcast, fog", pl: "Całkowite zachmurzenie, mgła", gal: "Затягнуло, густий туман" },
+    "o-rain-light": { ru: "Пасмурно, небольшой дождь", uk: "Похмуро, невеликий дощ", en: "Overcast, light rain", pl: "Całkowite zachmurzenie, lekki deszcz", gal: "Похмуро, дрібний дощик" },
+    "o-rain-med": { ru: "Пасмурно, дождь", uk: "Похмуро, дощ", en: "Overcast, rain", pl: "Całkowite zachmurzenie, deszcz", gal: "Похмуро, паде дощ" },
+    "o-rain-heavy": { ru: "Пасмурно, сильный дождь", uk: "Похмуро, сильний дощ", en: "Overcast, heavy rain", pl: "Całkowite zachmurzenie, silny deszcz", gal: "Похмуро, ллє як з відра" },
+    "o-rain-light-thunder": { ru: "Пасмурно, гроза с небольшим дождем", uk: "Похмуро, гроза з невеликим дощем", en: "Overcast, thunderstorm with light rain", pl: "Całkowite zachmurzenie, burza z lekkim deszczem", gal: "Похмуро, гримить з дощиком" },
+    "o-rain-med-thunder": { ru: "Пасмурно, гроза с дождем", uk: "Похмуро, гроза з дощем", en: "Overcast, thunderstorm with rain", pl: "Całkowite zachmurzenie, burza z deszczem", gal: "Похмуро, гримить та ллє" },
+    "o-rain-heavy-thunder": { ru: "Пасмурно, гроза с сильным дождем", uk: "Похмуро, гроза з сильним дощем", en: "Overcast, thunderstorm with heavy rain", pl: "Całkowite zachmurzenie, burza z silnym deszczem", gal: "Похмуро, гроза та злива" },
+    "snow-thunder": { ru: "Пасмурно, гроза со снегом", uk: "Похмуро, гроза зі снігом", en: "Overcast, thunderstorm with snow", pl: "Całkowite zachmurzenie, burza ze śniegiem", gal: "Похмуро, гроза зі снігом" },
+    "snow-light": { ru: "Пасмурно, небольшой снег", uk: "Похмуро, невеликий сніг", en: "Overcast, light snow", pl: "Całkowite zachmurzenie, lekki śnieg", gal: "Похмуро, сніжок летить" },
+    "snow": { ru: "Пасмурно, снег", uk: "Похмуро, сніг", en: "Overcast, snow", pl: "Całkowite zachmurzenie, śnieg", gal: "Похмуро, паде сніг" },
+    "snow-heavy": { ru: "Пасмурно, сильный снег", uk: "Похмуро, сильний сніг", en: "Overcast, heavy snow", pl: "Całkowite zachmurzenie, silny śnieg", gal: "Похмуро, сипле снігом" },
+    "o-sleet-light": { ru: "Пасмурно, небольшой снег с дождем", uk: "Похмуро, невеликий сніг з дощем", en: "Overcast, light sleet", pl: "Całkowite zachmurzenie, lekki deszcz ze śniegiem", gal: "Похмуро, дрібна хляпавка" },
+    "o-sleet": { ru: "Пасмурно, снег с дождем", uk: "Похмуро, сніг з дощем", en: "Overcast, sleet", pl: "Całkowite zachmurzenie, deszcz ze śniegiem", gal: "Похмуро, хляпавка під ногами" },
+    "o-sleet-heavy": { ru: "Пасмурно, сильный снег с дождем", uk: "Похмуро, сильний сніг з дощем", en: "Overcast, heavy sleet", pl: "Całkowite zachmurzenie, silny deszcz ze śniegiem", gal: "Похмуро, сильна хляпавка" },
+    "o-sleet-thunder": { ru: "Пасмурно, гроза со снегом с дождем", uk: "Похмуро, гроза зі снігом з дощем", en: "Overcast, thunderstorm with sleet", pl: "Całkowite zachmurzenie, burza z deszczem ze śniegiem", gal: "Похмуро, гроза та хляпавка" }
+};
         const searchLocations = [
             "Привітне, Широківська громада, Запорізький район, Запорізька область",
     "Запоріжжя, Запорізький район, Запорізька область",
@@ -1847,65 +1886,108 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
         }
 
 const meteoforIcons = {
-            // ==================== 1. ЯСНО ====================
-            "clear": `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="6" fill="#f1c40f"/><path d="M16 3v3M16 26v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 23.1l2.1 2.1M6.8 25.2l2.1-2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "clear-fog": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M5 21h22M8 24h16M11 27h10" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
+    // ==================== 1. ЯСНО (16) ====================
+    "clear": `<img src="icons/clear.png" alt="">`,
+    "clear-fog": `<img src="icons/clear-fog.png" alt="">`,
+    "clear-rain-light": `<img src="icons/clear-rain-light.png" alt="">`,
+    "clear-rain-med": `<img src="icons/clear-rain-med.png" alt="">`,
+    "clear-rain-heavy": `<img src="icons/clear-rain-heavy.png" alt="">`,
+    "clear-rain-light-thunder": `<img src="icons/clear-rain-light-thunder.png" alt="">`,
+    "clear-rain-med-thunder": `<img src="icons/clear-rain-med-thunder.png" alt="">`,
+    "clear-rain-heavy-thunder": `<img src="icons/clear-rain-heavy-thunder.png" alt="">`,
+    "clear-snow-thunder": `<img src="icons/clear-snow-thunder.png" alt="">`,
+    "clear-snow-light": `<img src="icons/clear-snow-light.png" alt="">`,
+    "clear-snow": `<img src="icons/clear-snow.png" alt="">`,
+    "clear-snow-heavy": `<img src="icons/clear-snow-heavy.png" alt="">`,
+    "clear-sleet-light": `<img src="icons/clear-sleet-light.png" alt="">`,
+    "clear-sleet": `<img src="icons/clear-sleet.png" alt="">`,
+    "clear-sleet-heavy": `<img src="icons/clear-sleet-heavy.png" alt="">`,
+    "clear-sleet-thunder": `<img src="icons/clear-sleet-thunder.png" alt="">`,
 
-            // ==================== 2. МАЛООБЛАЧНО ====================
-            "cloudy-sun": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 24a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#bdc3c7"/></svg>`,
-            "cloudy-sun-fog": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 20a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#bdc3c7"/><path d="M5 23h22M8 26h16" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "cloudy-rain-light": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 21a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M13 23l-1.5 4M18 23l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-            "cloudy-rain-med": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 20a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M12 22l-1.5 4M16 22l-1.5 4M20 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-            "cloudy-rain-heavy": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M11 21l-2 5M15 21l-2 5M19 21l-2 5M13 26l-2 4M17 26l-2 4" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "cloudy-rain-light-thunder": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 20a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M12 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M18 19l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "cloudy-rain-med-thunder": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M11 21l-1.5 4M15 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M19 18l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "cloudy-rain-heavy-thunder": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M10 21l-2 5M14 21l-2 5M18 21l-2 5" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/><path d="M21 18l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "cloudy-snow-light": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M16 21v5M13.5 23.5l5 0M14 22l4 3M14 25l4-3"/></g></svg>`,
-            "cloudy-snow": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M13 21v5M10.5 23.5l5 0M11 22l4 3M11 25l4-3"/><path d="M19 21v5M16.5 23.5l5 0M17 22l4 3M17 25l4-3"/></g></svg>`,
-            "cloudy-snow-heavy": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M10 21v5M7.5 23.5l5 0M8 22l4 3M8 25l4-3"/><path d="M16 21v5M13.5 23.5l5 0M14 22l4 3M14 25l4-3"/><path d="M22 21v5M19.5 23.5l5 0M20 22l4 3M20 25l4-3"/></g></svg>`,
-            "cloudy-sleet-light": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M11 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M18 21v5M15.5 23.5l5 0M16 22l4 3M16 25l4-3"/></g></svg>`,
-            "cloudy-sleet": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M11 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M18 21v5M15.5 23.5l5 0M16 22l4 3M16 25l4-3"/></g></svg>`,
-            "cloudy-sleet-heavy": `<svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="6" fill="#f1c40f"/><path d="M16 3v3M3 16h3M26 16h3M6.8 6.8l2.1 2.1M23.1 8.9l2.1-2.1" stroke="#f1c40f" stroke-width="2" stroke-linecap="round"/><path d="M10 19a4 4 0 0 1 0-8h1a5 5 0 0 1 9 2h1a4 4 0 0 1 0 6Z" fill="#7f8c8d"/><path d="M9 22l-1.5 4M13 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M19 21v5M16.5 23.5l5 0M17 22l4 3M17 25l4-3"/></g></svg>`,
+    // ==================== 2. МАЛООБЛАЧНО (16) ====================
+    "cloudy-sun": `<img src="icons/cloudy-sun.png" alt="">`,
+    "cloudy-sun-fog": `<img src="icons/cloudy-sun-fog.png" alt="">`,
+    "cloudy-rain-light": `<img src="icons/cloudy-rain-light.png" alt="">`,
+    "cloudy-rain-med": `<img src="icons/cloudy-rain-med.png" alt="">`,
+    "cloudy-rain-heavy": `<img src="icons/cloudy-rain-heavy.png" alt="">`,
+    "cloudy-rain-light-thunder": `<img src="icons/cloudy-rain-light-thunder.png" alt="">`,
+    "cloudy-rain-med-thunder": `<img src="icons/cloudy-rain-med-thunder.png" alt="">`,
+    "cloudy-rain-heavy-thunder": `<img src="icons/cloudy-rain-heavy-thunder.png" alt="">`,
+    "cloudy-snow-thunder": `<img src="icons/cloudy-snow-thunder.png" alt="">`,
+    "cloudy-snow-light": `<img src="icons/cloudy-snow-light.png" alt="">`,
+    "cloudy-snow": `<img src="icons/cloudy-snow.png" alt="">`,
+    "cloudy-snow-heavy": `<img src="icons/cloudy-snow-heavy.png" alt="">`,
+    "cloudy-sleet-light": `<img src="icons/cloudy-sleet-light.png" alt="">`,
+    "cloudy-sleet": `<img src="icons/cloudy-sleet.png" alt="">`,
+    "cloudy-sleet-heavy": `<img src="icons/cloudy-sleet-heavy.png" alt="">`,
+    "cloudy-sleet-thunder": `<img src="icons/cloudy-sleet-thunder.png" alt="">`,
 
-            // ==================== 3. ОБЛАЧНО ====================
-            "cloudy": `<svg viewBox="0 0 32 32"><path d="M18 10a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 23a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#bdc3c7"/></svg>`,
-            "cloudy-fog": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#bdc3c7"/><path d="M4 21h24M7 24h18M10 27h12" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "c-rain-light": `<svg viewBox="0 0 32 32"><path d="M18 9a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 20a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M10 22l-1.5 4M15 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-            "c-rain-med": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M8 21l-1.5 4M13 21l-1.5 4M18 21l-1.5 4M10 26l-1.5 4M15 26l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-            "c-rain-heavy": `<svg viewBox="0 0 32 32"><path d="M18 7a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M7 20l-2 5M12 20l-2 5M17 20l-2 5M9 25l-2 5M14 25l-2 5" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "c-rain-light-thunder": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M9 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M15 18l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "c-rain-med-thunder": `<svg viewBox="0 0 32 32"><path d="M18 7a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M8 20l-1.5 4M12 20l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M16 17l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "c-rain-heavy-thunder": `<svg viewBox="0 0 32 32"><path d="M18 6a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 17a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M7 19l-2 5M11 19l-2 5M15 19l-2 5" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/><path d="M17 16l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "c-snow-light": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M13 21v5M10.5 23.5l5 0M11 22l4 3M11 25l4-3"/></g></svg>`,
-            "c-snow": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M10 21v5M7.5 23.5l5 0M8 22l4 3M8 25l4-3"/><path d="M17 21v5M14.5 23.5l5 0M15 22l4 3M15 25l4-3"/></g></svg>`,
-            "c-snow-heavy": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M8 21v5M5.5 23.5l5 0M6 22l4 3M6 25l4-3"/><path d="M14 21v5M11.5 23.5l5 0M12 22l4 3M12 25l4-3"/><path d="M20 21v5M17.5 23.5l5 0M18 22l4 3M18 25l4-3"/></g></svg>`,
-            "c-sleet-light": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M9 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M16 21v5M13.5 23.5l5 0M14 22l4 3M14 25l4-3"/></g></svg>`,
-            "c-sleet": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M9 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M16 21v5M13.5 23.5l5 0M14 22l4 3M14 25l4-3"/></g></svg>`,
-            "c-sleet-heavy": `<svg viewBox="0 0 32 32"><path d="M18 8a5 5 0 0 1 4 2" stroke="#f1c40f" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M5 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M8 22l-1.5 4M12 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M18 21v5M15.5 23.5l5 0M16 22l4 3M16 25l4-3"/></g></svg>`,
+    // ==================== 3. ОБЛАЧНО (16) ====================
+    "cloudy": `<img src="icons/cloudy.png" alt="">`,
+    "cloudy-fog": `<img src="icons/cloudy-fog.png" alt="">`,
+    "c-rain-light": `<img src="icons/c-rain-light.png" alt="">`,
+    "c-rain-med": `<img src="icons/c-rain-med.png" alt="">`,
+    "c-rain-heavy": `<img src="icons/c-rain-heavy.png" alt="">`,
+    "c-rain-light-thunder": `<img src="icons/c-rain-light-thunder.png" alt="">`,
+    "c-rain-med-thunder": `<img src="icons/c-rain-med-thunder.png" alt="">`,
+    "c-rain-heavy-thunder": `<img src="icons/c-rain-heavy-thunder.png" alt="">`,
+    "c-snow-thunder": `<img src="icons/c-snow-thunder.png" alt="">`,
+    "c-snow-light": `<img src="icons/c-snow-light.png" alt="">`,
+    "c-snow": `<img src="icons/c-snow.png" alt="">`,
+    "c-snow-heavy": `<img src="icons/c-snow-heavy.png" alt="">`,
+    "c-sleet-light": `<img src="icons/c-sleet-light.png" alt="">`,
+    "c-sleet": `<img src="icons/c-sleet.png" alt="">`,
+    "c-sleet-heavy": `<img src="icons/c-sleet-heavy.png" alt="">`,
+    "c-sleet-thunder": `<img src="icons/c-sleet-thunder.png" alt="">`,
 
-            // ==================== 4. ПАСМУРНО ====================
-            "overcast": `<svg viewBox="0 0 32 32"><path d="M6 22a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/></svg>`,
-            "overcast-fog": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M4 21h24M7 24h18M10 27h12" stroke="#bdc3c7" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "o-rain-light": `<svg viewBox="0 0 32 32"><path d="M6 19a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M11 21l-1.5 4M17 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-            "o-rain-med": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M9 20l-1.5 4M14 20l-1.5 4M19 20l-1.5 4M11 25l-1.5 4M16 25l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-            "o-rain-heavy": `<svg viewBox="0 0 32 32"><path d="M6 17a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M8 19l-2 5M13 19l-2 5M18 19l-2 5M10 24l-2 5M15 24l-2 5" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/></svg>`,
-            "o-rain-light-thunder": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M10 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M16 17l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "o-rain-med-thunder": `<svg viewBox="0 0 32 32"><path d="M6 17a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M9 20l-1.5 4M14 20l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><path d="M18 16l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "o-rain-heavy-thunder": `<svg viewBox="0 0 32 32"><path d="M6 16a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M7 18l-2 5M11 18l-2 5M15 18l-2 5" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/><path d="M18 15l-2 3h2l-1 3 3-4h-2l1-2z" fill="#f1c40f"/></svg>`,
-            "snow-light": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M13 21v5M10.5 23.5l5 0M11 22l4 3M11 25l4-3"/></g></svg>`,
-            "snow": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M10 21v5M7.5 23.5l5 0M8 22l4 3M8 25l4-3"/><path d="M17 21v5M14.5 23.5l5 0M15 22l4 3M15 25l4-3"/></g></svg>`,
-            "snow-heavy": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M8 21v5M5.5 23.5l5 0M6 22l4 3M6 25l4-3"/><path d="M14 21v5M11.5 23.5l5 0M12 22l4 3M12 25l4-3"/><path d="M20 21v5M17.5 23.5l5 0M18 22l4 3M18 25l4-3"/></g></svg>`,
-            "o-sleet-light": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M10 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M17 21v5M14.5 23.5l5 0M15 22l4 3M15 25l4-3"/></g></svg>`,
-            "o-sleet": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M10 21l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M17 21v5M14.5 23.5l5 0M15 22l4 3M15 25l4-3"/></g></svg>`,
-            "o-sleet-heavy": `<svg viewBox="0 0 32 32"><path d="M6 18a5 5 0 0 1 0-10h1a6 6 0 0 1 11 2h1a5 5 0 0 1 0 8Z" fill="#7f8c8d"/><path d="M8 22l-1.5 4M12 22l-1.5 4" stroke="#3498db" stroke-width="1.8" stroke-linecap="round"/><g stroke="#3498db" stroke-width="1" stroke-linecap="round"><path d="M18 21v5M15.5 23.5l5 0M16 22l4 3M16 25l4-3"/></g></svg>`
-        };        
-        const fullWeatherList = [
+    // ==================== 4. ПАСМУРНО (16) ====================
+    "overcast": `<img src="icons/overcast.png" alt="">`,
+    "overcast-fog": `<img src="icons/overcast-fog.png" alt="">`,
+    "o-rain-light": `<img src="icons/rain-light.png" alt="">`,
+    "o-rain-med": `<img src="icons/rain-med.png" alt="">`,
+    "o-rain-heavy": `<img src="icons/rain-heavy.png" alt="">`,
+    "o-rain-light-thunder": `<img src="icons/rain-light-thunder.png" alt="">`,
+    "o-rain-med-thunder": `<img src="icons/rain-med-thunder.png" alt="">`,
+    "o-rain-heavy-thunder": `<img src="icons/rain-heavy-thunder.png" alt="">`,
+    "snow-thunder": `<img src="icons/snow-thunder.png" alt="">`,
+    "snow-light": `<img src="icons/snow-light.png" alt="">`,
+    "snow": `<img src="icons/snow.png" alt="">`,
+    "snow-heavy": `<img src="icons/snow-heavy.png" alt="">`,
+    "o-sleet-light": `<img src="icons/sleet-light.png" alt="">`,
+    "o-sleet": `<img src="icons/sleet.png" alt="">`,
+    "o-sleet-heavy": `<img src="icons/sleet-heavy.png" alt="">`,
+    "o-sleet-thunder": `<img src="icons/sleet-thunder.png" alt="">`
+};
+
+const fullWeatherList = [
+    // Ясно
     { key: "clear" }, { key: "clear-fog" },
-    { key: "cloudy-sun" }, { key: "cloudy-sun-fog" }, { key: "cloudy-rain-light" }, { key: "cloudy-rain-med" }, { key: "cloudy-rain-heavy" }, { key: "cloudy-rain-light-thunder" }, { key: "cloudy-rain-med-thunder" }, { key: "cloudy-rain-heavy-thunder" }, { key: "cloudy-snow-light" }, { key: "cloudy-snow" }, { key: "cloudy-snow-heavy" }, { key: "cloudy-sleet-light" }, { key: "cloudy-sleet" }, { key: "cloudy-sleet-heavy" },
-    { key: "cloudy" }, { key: "cloudy-fog" }, { key: "c-rain-light" }, { key: "c-rain-med" }, { key: "c-rain-heavy" }, { key: "c-rain-light-thunder" }, { key: "c-rain-med-thunder" }, { key: "c-rain-heavy-thunder" }, { key: "c-snow-light" }, { key: "c-snow" }, { key: "c-snow-heavy" }, { key: "c-sleet-light" }, { key: "c-sleet" }, { key: "c-sleet-heavy" },
-    { key: "overcast" }, { key: "overcast-fog" }, { key: "o-rain-light" }, { key: "o-rain-med" }, { key: "o-rain-heavy" }, { key: "o-rain-light-thunder" }, { key: "o-rain-med-thunder" }, { key: "o-rain-heavy-thunder" }, { key: "snow-light" }, { key: "snow" }, { key: "snow-heavy" }, { key: "o-sleet-light" }, { key: "o-sleet" }, { key: "o-sleet-heavy" }
-];
+    { key: "clear-rain-light" }, { key: "clear-rain-med" }, { key: "clear-rain-heavy" },
+    { key: "clear-rain-light-thunder" }, { key: "clear-rain-med-thunder" }, { key: "clear-rain-heavy-thunder" },
+    { key: "clear-snow-thunder" }, { key: "clear-snow-light" }, { key: "clear-snow" }, { key: "clear-snow-heavy" },
+    { key: "clear-sleet-light" }, { key: "clear-sleet" }, { key: "clear-sleet-heavy" }, { key: "clear-sleet-thunder" },
 
+    // Малооблачно
+    { key: "cloudy-sun" }, { key: "cloudy-sun-fog" },
+    { key: "cloudy-rain-light" }, { key: "cloudy-rain-med" }, { key: "cloudy-rain-heavy" },
+    { key: "cloudy-rain-light-thunder" }, { key: "cloudy-rain-med-thunder" }, { key: "cloudy-rain-heavy-thunder" },
+    { key: "cloudy-snow-thunder" }, { key: "cloudy-snow-light" }, { key: "cloudy-snow" }, { key: "cloudy-snow-heavy" },
+    { key: "cloudy-sleet-light" }, { key: "cloudy-sleet" }, { key: "cloudy-sleet-heavy" }, { key: "cloudy-sleet-thunder" },
+
+    // Облачно
+    { key: "cloudy" }, { key: "cloudy-fog" },
+    { key: "c-rain-light" }, { key: "c-rain-med" }, { key: "c-rain-heavy" },
+    { key: "c-rain-light-thunder" }, { key: "c-rain-med-thunder" }, { key: "c-rain-heavy-thunder" },
+    { key: "c-snow-thunder" }, { key: "c-snow-light" }, { key: "c-snow" }, { key: "c-snow-heavy" },
+    { key: "c-sleet-light" }, { key: "c-sleet" }, { key: "c-sleet-heavy" }, { key: "c-sleet-thunder" },
+
+    // Пасмурно
+    { key: "overcast" }, { key: "overcast-fog" },
+    { key: "o-rain-light" }, { key: "o-rain-med" }, { key: "o-rain-heavy" },
+    { key: "o-rain-light-thunder" }, { key: "o-rain-med-thunder" }, { key: "o-rain-heavy-thunder" },
+    { key: "snow-thunder" }, { key: "snow-light" }, { key: "snow" }, { key: "snow-heavy" },
+    { key: "o-sleet-light" }, { key: "o-sleet" }, { key: "o-sleet-heavy" }, { key: "o-sleet-thunder" }
+];
         function getWeatherText(key) {
             let tr = weatherTranslations[key];
             if(!tr) return "Погода";
@@ -2108,8 +2190,18 @@ if (currentTab === 'hourly' && (!data || data.mode === 'empty')) {
     updateInformer();
     return;
 }
-if (!data) return;
-            
+if (currentTab === 'archive') {
+        data = { mode: "archive" };
+    }
+
+    if (data && data.mode === "empty") {
+        wrap.innerHTML = `<div class="empty-state">${lang.devInDev}</div>`;
+        updateInformer();
+        return;
+    }
+    if (!data) return;
+
+           
             let devCls = isDevModeActive ? 'dev-active' : '';
             if (data.mode === "airquality") {
                 const targetWrap = wrap;
@@ -2321,18 +2413,19 @@ if (!data) return;
                 return;
             }
             if (data.mode === "archive") {
-                let currentArchiveDataset = null;
-                if (currentCityKey === "Запорожье") {
-                    currentArchiveDataset = archiveZaporozhyeData;
-                } else if (currentCityKey === "Томашполь") {
-                    currentArchiveDataset = archiveTomashpolData;
-                }
+        let currentArchiveDataset = null;
+        if (currentCityKey && (currentCityKey.startsWith("Запорожье") || currentCityKey.startsWith("Запоріжжя"))) {
+            currentArchiveDataset = archiveZaporozhyeData;
+        } else if (currentCityKey && (currentCityKey.startsWith("Томашполь") || currentCityKey.startsWith("Томашпіль"))) {
+            currentArchiveDataset = archiveTomashpolData;
+        }
 
-                if (!currentArchiveDataset) {
-                    wrap.innerHTML = `<div class="empty-state">${lang.archiveNotAvailable}</div>`;
-                    updateInformer();
-                    return;
-                }
+        if (!currentArchiveDataset) {
+            wrap.innerHTML = `<div class="empty-state">${lang.archiveNotAvailable}</div>`;
+            updateInformer();
+            return;
+        }
+
 
                 let monthsNames = lang.monthsShort || i18n['ru'].monthsShort;
                 let html = `<div class="archive-scroll-container"><div class="archive-grid ${devCls}" id="archiveGridContainer" style="grid-template-columns: repeat(${currentArchiveDataset.length}, minmax(55px, 1fr));">`;
@@ -2375,7 +2468,7 @@ if (!data) return;
                 });
 
                html += `<div class="single-header-row" style="min-width: 100%; width: 100%;"><span class="info-icon">i</span> ${lang.windGust.replace('{unit}', getWindUnitLabel())}</div>`;
-        currentArchivedDataset.forEach((item, i) => {
+        currentArchiveDataset.forEach((item, i) => {
             let bgClass = item.gust >= 20 ? "gust-maroon" :
                           item.gust >= 15 ? "gust-red" :
                           item.gust >= 13 ? "gust-orange" :
