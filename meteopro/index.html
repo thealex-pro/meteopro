@@ -1246,17 +1246,17 @@ if (cityName && cityName.toString().toLowerCase().indexOf("запор") !== -1) 
                 { dw: "Пн", date: "16 нояб", ic: "cloudy",        maxT: 7,  minT: -2 },
                 { dw: "Вт", date: "17",      ic: "o-rain-med",    maxT: 7,  minT: 1 },
                 { dw: "Ср", date: "18",      ic: "o-rain-med",    maxT: 12, minT: 6 },
-                { dw: "Чт", date: "19",      ic: "c-rain-heavy",  maxT: 11, minT: 8 },
-                { dw: "Пт", date: "20",      ic: "o-rain-med",    maxT: 12, minT: 7 },
+                { dw: "Чт", date: "19",      ic: "c-rain-heavy",  maxT: 11, minT: 7 },
+                { dw: "Пт", date: "20",      ic: "o-rain-med",    maxT: 13, minT: 7 },
                 { dw: "Сб", date: "21",      ic: "cloudy",        maxT: 11, minT: 6, isWknd: true },
-                { dw: "Вс", date: "22",      ic: "c-rain-light",  maxT: 7,  minT: 1, isWknd: true }
+                { dw: "Вс", date: "22",      ic: "o-rain-light",  maxT: 6,  minT: 1, isWknd: true }
             ],
             [
-                { dw: "Пн", date: "23 нояб", ic: "cloudy-sleet",  maxT: 6, minT: 0 },
+                { dw: "Пн", date: "23 нояб", ic: "cloudy-sleet",  maxT: 9, minT: 2 },
                 { dw: "Вт", date: "24",      ic: "overcast",      maxT: 4, minT: -1 },
-                { dw: "Ср", date: "25",      ic: "c-sleet-light", maxT: 3, minT: -1 },
-                { dw: "Чт", date: "26",      ic: "overcast",      maxT: 4, minT: 0 },
-                { dw: "Пт", date: "27",      ic: "c-sleet",       maxT: 6, minT: 1 },
+                { dw: "Ср", date: "25",      ic: "c-sleet-light", maxT: 1, minT: -2 },
+                { dw: "Чт", date: "26",      ic: "overcast",      maxT: 3, minT: -1 },
+                { dw: "Пт", date: "27",      ic: "c-sleet",       maxT: 6, minT: 0 },
                 { dw: "Сб", date: "28",      ic: "overcast",      maxT: 7, minT: -1, isWknd: true },
                 { dw: "Вс", date: "29",      ic: "overcast-fog",  maxT: 8, minT: 0,  isWknd: true }
             ],
@@ -1286,17 +1286,17 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
                 { dw: "Пн", date: "16 нояб", ic: "cloudy",        maxT: 7,  minT: -2 },
                 { dw: "Вт", date: "17",      ic: "o-rain-med",    maxT: 7,  minT: 1 },
                 { dw: "Ср", date: "18",      ic: "o-rain-med",    maxT: 12, minT: 6 },
-                { dw: "Чт", date: "19",      ic: "c-rain-heavy",  maxT: 11, minT: 8 },
-                { dw: "Пт", date: "20",      ic: "o-rain-med",    maxT: 12, minT: 7 },
+                { dw: "Чт", date: "19",      ic: "c-rain-heavy",  maxT: 11, minT: 7 },
+                { dw: "Пт", date: "20",      ic: "o-rain-med",    maxT: 13, minT: 7 },
                 { dw: "Сб", date: "21",      ic: "cloudy",        maxT: 11, minT: 6, isWknd: true },
-                { dw: "Вс", date: "22",      ic: "c-rain-light",  maxT: 7,  minT: 1, isWknd: true }
+                { dw: "Вс", date: "22",      ic: "o-rain-light",  maxT: 6,  minT: 1, isWknd: true }
             ],
             [
-                { dw: "Пн", date: "23 нояб", ic: "cloudy-sleet",  maxT: 6, minT: 0 },
+                { dw: "Пн", date: "23 нояб", ic: "cloudy-sleet",  maxT: 9, minT: 2 },
                 { dw: "Вт", date: "24",      ic: "overcast",      maxT: 4, minT: -1 },
-                { dw: "Ср", date: "25",      ic: "c-sleet-light", maxT: 3, minT: -1 },
-                { dw: "Чт", date: "26",      ic: "overcast",      maxT: 4, minT: 0 },
-                { dw: "Пт", date: "27",      ic: "c-sleet",       maxT: 6, minT: 1 },
+                { dw: "Ср", date: "25",      ic: "c-sleet-light", maxT: 1, minT: -2 },
+                { dw: "Чт", date: "26",      ic: "overcast",      maxT: 3, minT: -1 },
+                { dw: "Пт", date: "27",      ic: "c-sleet",       maxT: 6, minT: 0 },
                 { dw: "Сб", date: "28",      ic: "overcast",      maxT: 7, minT: -1, isWknd: true },
                 { dw: "Вс", date: "29",      ic: "overcast-fog",  maxT: 8, minT: 0,  isWknd: true }
             ],
@@ -1449,18 +1449,8 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
             return {
                 "now": { mode: "empty" },
                 "yesterday": { mode: "single_day", items: [
-            { time: "2:00",  ic: "overcast",     t: 8,  windD: "SW", gust: 7,  rain: 0 },
-            { time: "5:00",  ic: "overcast",     t: 6,  windD: "SW", gust: 7,  rain: 0 },
-            { time: "8:00",  ic: "overcast",     t: 7,  windD: "SW", gust: 7,  rain: 0 },
-            { time: "11:00", ic: "o-rain-light", t: 8,  windD: "S",  gust: 9,  rain: 0.6 },
-            { time: "14:00", ic: "o-rain-med",   t: 12, windD: "S",  gust: 10, rain: 1.3 },
-            { time: "17:00", ic: "o-rain-med",   t: 11, windD: "S",  gust: 11, rain: 1.4 },
-            { time: "20:00", ic: "o-rain-med",   t: 11, windD: "S",  gust: 11, rain: 3.1 },
-            { time: "23:00", ic: "o-rain-med",   t: 11, windD: "S",  gust: 11, rain: 2.1 }
-        ] },
-                "today": { mode: "single_day", items: [
             { time: "2:00",  ic: "o-rain-light", t: 11, windD: "S",  gust: 7,  rain: 0 },
-            { time: "5:00",  ic: "o-rain-light", t: 11, windD: "S",  gust: 7,  rain: 0 },
+            { time: "5:00",  ic: "o-rain-light", t: 11, windD: "N",  gust: 7,  rain: 0 },
             { time: "8:00",  ic: "o-rain-light", t: 11, windD: "SE", gust: 7,  rain: 1.2 },
             { time: "11:00", ic: "o-rain-heavy", t: 11, windD: "SE", gust: 7,  rain: 15.1 },
             { time: "14:00", ic: "o-rain-heavy", t: 10, windD: "NW", gust: 12, rain: 7.4 },
@@ -1468,72 +1458,82 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
             { time: "20:00", ic: "cloudy-sun",   t: 8,  windD: "W",  gust: 10, rain: 0 },
             { time: "23:00", ic: "clear",        t: 7,  windD: "SW", gust: 8,  rain: 0 }
         ] },
-                "tomorrow": { mode: "single_day", items: [
-            { time: "2:00",  ic: "overcast",     t: 7,  windD: "SW", gust: 6,  rain: 0 },
+                "today": { mode: "single_day", items: [
+            { time: "2:00",  ic: "cloudy-sun",   t: 7,  windD: "S",  gust: 5,  rain: 0 },
             { time: "5:00",  ic: "overcast",     t: 7,  windD: "SE", gust: 7,  rain: 0 },
-            { time: "8:00",  ic: "overcast",     t: 8,  windD: "SE", gust: 9,  rain: 0 },
-            { time: "11:00", ic: "o-rain-med",   t: 10, windD: "SE", gust: 14, rain: 4.6 },
-            { time: "14:00", ic: "o-rain-med",   t: 13, windD: "SE", gust: 15, rain: 3.5 },
-            { time: "17:00", ic: "o-rain-light", t: 12, windD: "SW", gust: 14, rain: 0.8 },
-            { time: "20:00", ic: "overcast",     t: 9,  windD: "W",  gust: 14, rain: 0 },
-            { time: "23:00", ic: "overcast",     t: 9,  windD: "W",  gust: 14, rain: 0 }
+            { time: "8:00",  ic: "c-rain-light", t: 9,  windD: "SE", gust: 8,  rain: 0.1 },
+            { time: "11:00", ic: "o-rain-med",   t: 11, windD: "SE", gust: 14, rain: 1.2 },
+            { time: "14:00", ic: "o-rain-med",   t: 13, windD: "S",  gust: 18, rain: 2.5 },
+            { time: "17:00", ic: "o-rain-light", t: 12, windD: "W",  gust: 15, rain: 0.5 },
+            { time: "20:00", ic: "overcast",     t: 10, windD: "W",  gust: 16, rain: 0 },
+            { time: "23:00", ic: "overcast",     t: 9,  windD: "W",  gust: 13, rain: 0 }
+        ] },
+               "tomorrow": { mode: "single_day", items: [
+            { time: "2:00",  ic: "overcast", t: 7,  windD: "W",  gust: 13, rain: 0 },
+            { time: "5:00",  ic: "overcast", t: 6,  windD: "W",  gust: 11, rain: 0 },
+            { time: "8:00",  ic: "cloudy",   t: 6,  windD: "SW", gust: 9,  rain: 0 },
+            { time: "11:00", ic: "cloudy",   t: 9,  windD: "SW", gust: 8,  rain: 0 },
+            { time: "14:00", ic: "cloudy",   t: 11, windD: "SW", gust: 4,  rain: 0 },
+            { time: "17:00", ic: "overcast", t: 9,  windD: "SW", gust: 5,  rain: 0 },
+            { time: "20:00", ic: "overcast", t: 7,  windD: "S",  gust: 3,  rain: 0 },
+            { time: "23:00", ic: "overcast", t: 7,  windD: "SW", gust: 4,  rain: 0 }
         ] },
                 
 "hourly": { mode: "hourly_24", dateLabel: "Чт, 19 ноября", items: [
-                    { time: "0:00",  ic: "overcast",      t: 11, feels: 10, hum: 82, press: 731, windD: "S",  gust: 7,  rain: 0   },
-                    { time: "1:00",  ic: "o-rain-light",  t: 11, feels: 10, hum: 84, press: 731, windD: "S",  gust: 7,  rain: 0.1 },
-                    { time: "2:00",  ic: "o-rain-light",  t: 10, feels: 9,  hum: 85, press: 730, windD: "SE", gust: 7,  rain: 0.2 },
-                    { time: "3:00",  ic: "o-rain-light",  t: 11, feels: 10, hum: 86, press: 731, windD: "N",  gust: 7,  rain: 0.1 },
-                    { time: "4:00",  ic: "overcast",      t: 11, feels: 10, hum: 86, press: 732, windD: "NW", gust: 7,  rain: 0   },
-                    { time: "5:00",  ic: "overcast",      t: 11, feels: 10, hum: 85, press: 730, windD: "NW", gust: 7,  rain: 0   },
-                    { time: "6:00",  ic: "o-rain-light",  t: 12, feels: 11, hum: 83, press: 731, windD: "SW", gust: 7,  rain: 0.3 },
-                    { time: "7:00",  ic: "o-rain-light",  t: 11, feels: 10, hum: 80, press: 730, windD: "SW", gust: 7,  rain: 0.3 },
-                    { time: "8:00",  ic: "o-rain-med",    t: 11, feels: 10, hum: 79, press: 730, windD: "S",  gust: 7,  rain: 1   },
-                    { time: "9:00",  ic: "o-rain-med",    t: 11, feels: 10, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.5 },
-                    { time: "10:00", ic: "o-rain-med",    t: 11, feels: 10, hum: 81, press: 730, windD: "S",  gust: 6,  rain: 1.6 },
-                    { time: "11:00", ic: "o-rain-heavy",  t: 12, feels: 10, hum: 79, press: 730, windD: "N",  gust: 6,  rain: 7.5 },
-                    { time: "12:00", ic: "o-rain-heavy",  t: 11, feels: 9,  hum: 81, press: 730, windD: "NW", gust: 7,  rain: 5.1 },
-                    { time: "13:00", ic: "o-rain-heavy",  t: 10, feels: 8,  hum: 85, press: 730, windD: "NW", gust: 8,  rain: 2   },
-                    { time: "14:00", ic: "o-rain-light",  t: 10, feels: 8,  hum: 86, press: 730, windD: "NW", gust: 10, rain: 1.4 },
-                    { time: "15:00", ic: "overcast",      t: 10, feels: 8,  hum: 73, press: 730, windD: "NW", gust: 11, rain: 0   },
-                    { time: "16:00", ic: "overcast",      t: 9,  feels: 7,  hum: 82, press: 730, windD: "W",  gust: 11, rain: 0   },
-                    { time: "17:00", ic: "cloudy",        t: 9,  feels: 7,  hum: 78, press: 731, windD: "W",  gust: 11, rain: 0   },
-                    { time: "18:00", ic: "cloudy",        t: 9,  feels: 7,  hum: 81, press: 732, windD: "W",  gust: 11, rain: 0   },
-                    { time: "19:00", ic: "cloudy",        t: 9,  feels: 7,  hum: 81, press: 733, windD: "W",  gust: 11, rain: 0   },
-                    { time: "20:00", ic: "cloudy-sun",    t: 9,  feels: 7,  hum: 81, press: 733, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "21:00", ic: "cloudy-sun",    t: 9,  feels: 7,  hum: 82, press: 735, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "22:00", ic: "cloudy-sun",    t: 8,  feels: 6,  hum: 83, press: 736, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "23:00", ic: "clear",         t: 8,  feels: 6,  hum: 84, press: 735, windD: "SW", gust: 9,  rain: 0   },
-                    { time: "24:00", ic: "clear",         t: 8,  feels: 6,  hum: 85, press: 735, windD: "SW", gust: 9,  rain: 0   }
-                ] },
+            { time: "0:00",  ic: "overcast",     t: 8,  feels: -1, hum: 86, press: 730, windD: "S",  gust: 7,  rain: 0 },
+            { time: "1:00",  ic: "overcast",     t: 8,  feels: -2, hum: 84, press: 730, windD: "S",  gust: 6,  rain: 0 },
+            { time: "2:00",  ic: "overcast-fog", t: 8,  feels: -1, hum: 86, press: 730, windD: "SE", gust: 6,  rain: 0 },
+            { time: "3:00",  ic: "overcast",     t: 7,  feels: -3, hum: 88, press: 730, windD: "N",  gust: 6,  rain: 0 },
+            { time: "4:00",  ic: "overcast",     t: 7,  feels: -3, hum: 90, press: 730, windD: "NW", gust: 6,  rain: 0 },
+            { time: "5:00",  ic: "overcast",     t: 7,  feels: -3, hum: 89, press: 729, windD: "NW", gust: 5,  rain: 0 },
+            { time: "6:00",  ic: "o-rain-light", t: 7,  feels: 0,  hum: 85, press: 730, windD: "SW", gust: 5,  rain: 0.3 },
+            { time: "7:00",  ic: "o-rain-light", t: 7,  feels: 1,  hum: 80, press: 730, windD: "SW", gust: 14, rain: 0.3 },
+            { time: "8:00",  ic: "o-rain-med",   t: 8,  feels: 0,  hum: 79, press: 730, windD: "S",  gust: 15, rain: 0.5 },
+            { time: "9:00",  ic: "o-rain-med",   t: 11, feels: 1,  hum: 83, press: 730, windD: "S",  gust: 16, rain: 0.8 },
+            { time: "10:00", ic: "o-rain-med",   t: 11, feels: 0,  hum: 88, press: 730, windD: "S",  gust: 16, rain: 1 },
+            { time: "11:00", ic: "o-rain-heavy", t: 11, feels: 2,  hum: 91, press: 730, windD: "N",  gust: 15, rain: 1.8 },
+            { time: "12:00", ic: "o-rain-light", t: 12, feels: 1,  hum: 95, press: 730, windD: "NW", gust: 18, rain: 0.4 },
+            { time: "13:00", ic: "o-rain-med",   t: 12, feels: 0,  hum: 95, press: 730, windD: "NW", gust: 13, rain: 0.8 },
+            { time: "14:00", ic: "o-rain-med",   t: 13, feels: -1, hum: 94, press: 730, windD: "S",  gust: 15, rain: 1.4 },
+            { time: "15:00", ic: "o-rain-med",   t: 13, feels: 0,  hum: 86, press: 730, windD: "SW", gust: 14, rain: 0.7 },
+            { time: "16:00", ic: "o-rain-heavy", t: 13, feels: 0,  hum: 82, press: 730, windD: "SW", gust: 13, rain: 2.3 },
+            { time: "17:00", ic: "o-rain-med",   t: 12, feels: 0,  hum: 81, press: 731, windD: "W",  gust: 13, rain: 1.3 },
+            { time: "18:00", ic: "overcast",     t: 11, feels: 0,  hum: 81, press: 734, windD: "W",  gust: 16, rain: 0 },
+            { time: "19:00", ic: "overcast",     t: 10, feels: 0,  hum: 85, press: 733, windD: "W",  gust: 16, rain: 0 },
+            { time: "20:00", ic: "overcast",     t: 10, feels: -1, hum: 81, press: 734, windD: "W",  gust: 14, rain: 0 },
+            { time: "21:00", ic: "overcast-fog", t: 10, feels: -1, hum: 84, press: 734, windD: "W",  gust: 13, rain: 0 },
+            { time: "22:00", ic: "cloudy",       t: 9,  feels: -1, hum: 83, press: 740, windD: "W",  gust: 13, rain: 0 },
+            { time: "23:00", ic: "cloudy",       t: 9,  feels: -1, hum: 84, press: 737, windD: "W",  gust: 12, rain: 0 },
+            { time: "24:00", ic: "cloudy",       t: 8,  feels: -1, hum: 85, press: 735, windD: "W",  gust: 11, rain: 0 }
+        ] },
                "3days": {
             mode: "grouped",
             days: [
                 {
-                    date: "Пт, 20 ноября", isWknd: false,
-                    parts: [
-                        { tNm: "Ночь",  ic: "overcast",     t: 7,  wD: "SW", gust: 6,  rain: 0 },
-                        { tNm: "Утро",  ic: "overcast",     t: 8,  wD: "SE", gust: 9,  rain: 0 },
-                        { tNm: "День",  ic: "o-rain-med",   t: 13, wD: "SW", gust: 15, rain: 9 },
-                        { tNm: "Вечер", ic: "o-rain-light", t: 9,  wD: "W",  gust: 14, rain: 0.5 }
-                    ]
-                },
-                {
                     date: "Сб, 21 ноября", isWknd: true,
                     parts: [
-                        { tNm: "Ночь",  ic: "overcast",     t: 6,  wD: "W",  gust: 12, rain: 0 },
-                        { tNm: "Утро",  ic: "cloudy",       t: 9,  wD: "W",  gust: 10, rain: 0 },
-                        { tNm: "День",  ic: "overcast",     t: 11, wD: "SW", gust: 7,  rain: 0 },
-                        { tNm: "Вечер", ic: "cloudy-sun",   t: 6,  wD: "S",  gust: 5,  rain: 0 }
+                        { tNm: "Ночь",  ic: "overcast", t: 7,  wD: "W",  gust: 13, rain: 0 },
+                        { tNm: "Утро",  ic: "cloudy",   t: 6,  wD: "SW", gust: 11, rain: 0 },
+                        { tNm: "День",  ic: "cloudy",   t: 11, wD: "S",  gust: 6,  rain: 0 },
+                        { tNm: "Вечер", ic: "overcast", t: 7,  wD: "SW", gust: 4,  rain: 0 }
                     ]
                 },
                 {
                     date: "Вс, 22 ноября", isWknd: true,
                     parts: [
-                        { tNm: "Ночь",  ic: "cloudy-sun",   t: 5,  wD: "S",  gust: 5,  rain: 0 },
-                        { tNm: "Утро",  ic: "cloudy",       t: 5,  wD: "S",  gust: 4,  rain: 0 },
-                        { tNm: "День",  ic: "c-rain-light", t: 7,  wD: "SW", gust: 7,  rain: 0.5 },
-                        { tNm: "Вечер", ic: "clear",        t: 1,  wD: "W",  gust: 6,  rain: 0 }
+                        { tNm: "Ночь",  ic: "o-rain-light", t: 6, wD: "W",  gust: 4, rain: 0.5 },
+                        { tNm: "Утро",  ic: "overcast",     t: 3, wD: "NW", gust: 5, rain: 0 },
+                        { tNm: "День",  ic: "overcast",     t: 5, wD: "W",  gust: 3, rain: 0 },
+                        { tNm: "Вечер", ic: "overcast",     t: 1, wD: "SW", gust: 4, rain: 0 }
+                    ]
+                },
+                {
+                    date: "Пн, 23 ноября", isWknd: false,
+                    parts: [
+                        { tNm: "Ночь",  ic: "cloudy-sun",    t: 1, wD: "S",  gust: 6,  rain: 0 },
+                        { tNm: "Утро",  ic: "o-sleet-light", t: 5, wD: "S",  gust: 7,  rain: 1.5 },
+                        { tNm: "День",  ic: "o-rain-heavy",  t: 9, wD: "SE", gust: 10, rain: 11.5 },
+                        { tNm: "Вечер", ic: "o-rain-med",    t: 9, wD: "W",  gust: 11, rain: 2.5 }
                     ]
                 }
             ]
@@ -1544,19 +1544,19 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
                 {
                     date: "Сб, 21 ноября", isWknd: true,
                     parts: [
-                        { tNm: "Ночь",  ic: "overcast",     t: 6,  wD: "W",  gust: 12, rain: 0 },
-                        { tNm: "Утро",  ic: "cloudy",       t: 9,  wD: "W",  gust: 10, rain: 0 },
-                        { tNm: "День",  ic: "overcast",     t: 11, wD: "SW", gust: 7,  rain: 0 },
-                        { tNm: "Вечер", ic: "cloudy-sun",   t: 6,  wD: "S",  gust: 5,  rain: 0 }
+                        { tNm: "Ночь",  ic: "overcast", t: 7,  wD: "W",  gust: 13, rain: 0 },
+                        { tNm: "Утро",  ic: "cloudy",   t: 6,  wD: "SW", gust: 11, rain: 0 },
+                        { tNm: "День",  ic: "cloudy",   t: 11, wD: "S",  gust: 6,  rain: 0 },
+                        { tNm: "Вечер", ic: "overcast", t: 7,  wD: "SW", gust: 4,  rain: 0 }
                     ]
                 },
                 {
                     date: "Вс, 22 ноября", isWknd: true,
                     parts: [
-                        { tNm: "Ночь",  ic: "cloudy-sun",   t: 5,  wD: "S",  gust: 5,  rain: 0 },
-                        { tNm: "Утро",  ic: "cloudy",       t: 5,  wD: "NW", gust: 4,  rain: 0 },
-                        { tNm: "День",  ic: "c-rain-light", t: 7,  wD: "NW", gust: 7,  rain: 0.5 },
-                        { tNm: "Вечер", ic: "clear",        t: 1,  wD: "SW", gust: 6,  rain: 0 }
+                        { tNm: "Ночь",  ic: "o-rain-light", t: 6, wD: "W",  gust: 4, rain: 0.5 },
+                        { tNm: "Утро",  ic: "overcast",     t: 3, wD: "NW", gust: 5, rain: 0 },
+                        { tNm: "День",  ic: "overcast",     t: 5, wD: "W",  gust: 3, rain: 0 },
+                        { tNm: "Вечер", ic: "overcast",     t: 1, wD: "SW", gust: 4, rain: 0 }
                     ]
                 }
             ]
@@ -1569,15 +1569,15 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
                     { dw: "Пн", date: "16 нояб", ic: "cloudy",        maxT: 7,  minT: -2, windD: "NW", gust: 8,  rain: 0 },
                     { dw: "Вт", date: "17 нояб", ic: "o-rain-med",    maxT: 7,  minT: 1,  windD: "SE", gust: 10, rain: 4 },
                     { dw: "Ср", date: "18 нояб", ic: "o-rain-med",    maxT: 12, minT: 6,  windD: "S",  gust: 11, rain: 8.5 },
-                    { dw: "Чт", date: "19 нояб", ic: "c-rain-heavy",  maxT: 11, minT: 8,  windD: "SE", gust: 13, rain: 24 },
-                    { dw: "Пт", date: "20 нояб", ic: "o-rain-med",    maxT: 12, minT: 7,  windD: "SE", gust: 15, rain: 9.1 },
-                    { dw: "Сб", date: "21 нояб", ic: "cloudy",        maxT: 11, minT: 6,  windD: "W",  gust: 12, rain: 0,   isWknd: true },
-                    { dw: "Вс", date: "22 нояб", ic: "c-rain-light",  maxT: 7,  minT: 1,  windD: "NW", gust: 7,  rain: 0.5, isWknd: true },
-                    { dw: "Пн", date: "23 нояб", ic: "cloudy-sleet",  maxT: 6,  minT: 0,  windD: "NW", gust: 8,  rain: 1 },
+                    { dw: "Чт", date: "19 нояб", ic: "c-rain-heavy",  maxT: 11, minT: 7,  windD: "SE", gust: 13, rain: 24 },
+                    { dw: "Пт", date: "20 нояб", ic: "o-rain-med",    maxT: 13, minT: 7,  windD: "SE", gust: 18, rain: 4.6 },
+                    { dw: "Сб", date: "21 нояб", ic: "cloudy",        maxT: 11, minT: 6,  windD: "SW", gust: 13, rain: 0,   isWknd: true },
+                    { dw: "Вс", date: "22 нояб", ic: "o-rain-light",  maxT: 6,  minT: 1,  windD: "W",  gust: 5,  rain: 0.5, isWknd: true },
+                    { dw: "Пн", date: "23 нояб", ic: "cloudy-sleet",  maxT: 9,  minT: 2,  windD: "NW", gust: 11, rain: 1 },
                     { dw: "Вт", date: "24 нояб", ic: "overcast",      maxT: 4,  minT: -1, windD: "NW", gust: 7,  rain: 0 },
-                    { dw: "Ср", date: "25 нояб", ic: "c-sleet-light", maxT: 3,  minT: -1, windD: "N",  gust: 7,  rain: 1 },
-                    { dw: "Чт", date: "26 нояб", ic: "overcast",      maxT: 4,  minT: 0,  windD: "N",  gust: 6,  rain: 0 },
-                    { dw: "Пт", date: "27 нояб", ic: "c-sleet",       maxT: 6,  minT: 1,  windD: "SW", gust: 6,  rain: 1.5 },
+                    { dw: "Ср", date: "25 нояб", ic: "c-sleet-light", maxT: 1,  minT: -2, windD: "N",  gust: 7,  rain: 1 },
+                    { dw: "Чт", date: "26 нояб", ic: "overcast",      maxT: 3,  minT: -1, windD: "N",  gust: 6,  rain: 0 },
+                    { dw: "Пт", date: "27 нояб", ic: "c-sleet",       maxT: 6,  minT: 0,  windD: "SW", gust: 6,  rain: 1.5 },
                     { dw: "Сб", date: "28 нояб", ic: "overcast",      maxT: 7,  minT: -1, windD: "SW", gust: 6,  rain: 0,   isWknd: true },
                     { dw: "Вс", date: "29 нояб", ic: "overcast-fog",  maxT: 8,  minT: 0,  windD: "SW", gust: 7,  rain: 0,   isWknd: true }
                 ]
@@ -1592,37 +1592,31 @@ if (cityName && (cityName.toString().toLowerCase().indexOf("привет") !== -
                 "geomagnetic": {
                     mode: "geomagnetic",
                     days: [
-                        { date: "Чт, 19 нояб", values: [3, 5, 0, 0, 0, 1, 3, 4] },
                         { date: "Пт, 20 нояб", values: [3, 4, 4, 3, 4, 3, 4, 3] },
-                        { date: "Сб, 21 нояб", values: [3, 2, 3, 2, 2, 1, 2, 2] }
+                        { date: "Сб, 21 нояб", values: [3, 2, 3, 2, 2, 1, 2, 2] },
+                        { date: "Вс, 22 нояб", values: [1, 3, 4, 3, 2, 2, 2, 1] }
                     ]
                 },
                "airquality": {
-                    mode: "airquality",
-                    currentAqi: 99,
-                    hourly: [
-                        { time: "0:00", aqi: 77 }, { time: "1:00", aqi: 49 }, { time: "2:00", aqi: 58 }, { time: "3:00", aqi: 51 },
-                        { time: "4:00", aqi: 66 }, { time: "5:00", aqi: 49 }, { time: "6:00", aqi: 58 }, { time: "7:00", aqi: 70 },
-                        { time: "8:00", aqi: 88 }, { time: "9:00", aqi: 100 }, { time: "10:00", aqi: 71 }, { time: "11:00", aqi: 51 },
-                        { time: "12:00", aqi: 62 }, { time: "13:00", aqi: 78 }, { time: "14:00", aqi: 66 }, { time: "15:00", aqi: 78 },
-                        { time: "16:00", aqi: 62 }, { time: "17:00", aqi: 50 }, { time: "18:00", aqi: 46 }, { time: "19:00", aqi: 35 },
-                        { time: "20:00", aqi: 48 }, { time: "21:00", aqi: 74 }, { time: "22:00", aqi: 83 }, { time: "23:00", aqi: 45 }
-                    ],
-                    daily: [
-                        { date: "Чт, 19 нояб", aqi: 100 },
-                        { date: "Пт, 20 нояб", aqi: 93 },
-                        { date: "Сб, 21 нояб", aqi: 92 },
-                        { date: "Вс, 22 нояб", aqi: 91 },
-                        { date: "Пн, 23 нояб", aqi: 50 },
-                        { date: "Вт, 24 нояб", aqi: 48 },
-                        { date: "Ср, 25 нояб", aqi: 45 },
-                        { date: "Чт, 26 нояб", aqi: 44 },
-                        { date: "Пт, 27 нояб", aqi: 42 },
-                        { date: "Сб, 28 нояб", aqi: 40 }
-                    ]
-                }
-            };
+            mode: "airquality",
+            currentAqi: 36,
+            hourly: [
+                { time: "0:00", aqi: 81 }, { time: "1:00", aqi: 65 }, { time: "2:00", aqi: 58 }, { time: "3:00", aqi: 51 },
+                { time: "4:00", aqi: 66 }, { time: "5:00", aqi: 50 }, { time: "6:00", aqi: 68 }, { time: "7:00", aqi: 62 },
+                { time: "8:00", aqi: 60 }, { time: "9:00", aqi: 59 }, { time: "10:00", aqi: 67 }, { time: "11:00", aqi: 49 },
+                { time: "12:00", aqi: 39 }, { time: "13:00", aqi: 29 }, { time: "14:00", aqi: 42 }, { time: "15:00", aqi: 50 },
+                { time: "16:00", aqi: 51 }, { time: "17:00", aqi: 50 }, { time: "18:00", aqi: 46 }, { time: "19:00", aqi: 35 },
+                { time: "20:00", aqi: 48 }, { time: "21:00", aqi: 47 }, { time: "22:00", aqi: 41 }, { time: "23:00", aqi: 19 }
+            ],
+            daily: [
+                { date: "Чт, 19 нояб", aqi: 81 },
+                { date: "Пт, 20 нояб", aqi: 47 },
+                { date: "Сб, 21 нояб", aqi: 103 },
+                { date: "Вс, 22 нояб", aqi: 49 }
+            ]
         }
+    };
+}
         let allCitiesData = {
   "Запорожье": createDefaultCityData("Запорожье"),
   "Запоріжжя": createDefaultCityData("Запорожье"),
